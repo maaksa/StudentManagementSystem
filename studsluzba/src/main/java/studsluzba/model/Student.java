@@ -21,11 +21,8 @@ public class Student implements Serializable {
 	private int idstudent;
 
 	private int godinaUpisa;
-
 	private String ime;
-
 	private String prezime;
-
 	private String srednjeIme;
 	private LocalDate daumRodjenja;
 	private String mestoRodjenja;
@@ -36,16 +33,20 @@ public class Student implements Serializable {
 	private String ulica;
 	private int brojUlice;
 	private long brojTelefona;
-	private String email;
+	private String Privemail;
+	private String Studemail;
 	private String brojLicneKarte;
 	private String licnuKartuIzdao;
-	// private SrednjaSkola srednjaSkola;
+	private SrednjaSkola srednjaSkola;
 	private double uspehSrednjaSKola;
 	private double uspehPrijemni;
 	// private VisokaSkola visokaSkola;
 	private boolean prelaz;
-	// private StudIndeks indeks;
+	private List<StudIndex> indexi;
 
+	
+	
+	
 	// bi-directional many-to-one association to StudProgram
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idstudProgram")
@@ -188,12 +189,17 @@ public class Student implements Serializable {
 		this.brojTelefona = brojTelefona;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getPrivemail() {
+		return Privemail;
 	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setPrivemail(String privemail) {
+		Privemail = privemail;
+	}
+	public String getStudemail() {
+		return Studemail;
+	}
+	public void setStudemail(String studemail) {
+		Studemail = studemail;
 	}
 
 	public String getBrojLicneKarte() {

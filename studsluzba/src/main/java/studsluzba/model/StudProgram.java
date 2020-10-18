@@ -1,6 +1,5 @@
 package studsluzba.model;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.*;
@@ -13,20 +12,18 @@ import java.util.List;
 @Entity
 @Table(name = "studProgram")
 @NamedQuery(name = "StudProgram.findAll", query = "SELECT s FROM StudProgram s")
-public class StudProgram implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class StudProgram {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idstudProgram;
 
 	private String naziv;
-
 	private String skraceniNaziv;
 	private LocalDate godinaAkreditacije;
 	private int trajanje;
 	private String nazivZvanja;
-	// private VrstaStudija vrstaStudija;
+	private VrstaStudija vrstaStudija;
 	private List<Predmet> predmeti;
 
 	// bi-directional many-to-one association to Student
@@ -38,7 +35,7 @@ public class StudProgram implements Serializable {
 
 	public StudProgram() {
 	}
-
+	
 	public int getIdstudProgram() {
 		return this.idstudProgram;
 	}
@@ -96,6 +93,12 @@ public class StudProgram implements Serializable {
 
 	public void setPredmets(List<Predmet> predmets) {
 		this.predmets = predmets;
+	}
+	public VrstaStudija getVrstaStudija() {
+		return vrstaStudija;
+	}
+	public void setVrstaStudija(VrstaStudija vrstaStudija) {
+		this.vrstaStudija = vrstaStudija;
 	}
 
 }

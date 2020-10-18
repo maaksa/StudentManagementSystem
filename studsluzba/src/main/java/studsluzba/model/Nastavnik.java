@@ -23,7 +23,7 @@ public class Nastavnik {
 	private String srednjeIme;
 	private String email;
 	private String obrazovanje;
-	//private List<Zvanje> zvanja;
+	private List<Zvanje> zvanja;
 	
 	@ManyToMany
 	private List<Predmet> predmeti;
@@ -61,7 +61,12 @@ public class Nastavnik {
 	public void setPredmeti(List<Predmet> predmeti) {
 		this.predmeti = predmeti;
 	}
-	
+	public List<Zvanje> getZvanja() {
+		return zvanja;
+	}
+	public void setZvanja(List<Zvanje> zvanja) {
+		this.zvanja = zvanja;
+	}
 	
 	
 	

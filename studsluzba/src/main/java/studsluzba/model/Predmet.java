@@ -15,7 +15,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="predmet")
-public class Predmet {
+public class Predmet 
+{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +29,7 @@ public class Predmet {
 	private int brojESPB;
 	private int fondPredavanja;
 	private int fondVezbi;
+	
 	// proveriti kod surle
 	private int brojSemestra;
 	
@@ -38,6 +40,7 @@ public class Predmet {
 	
 	@ManyToMany
 	private List<Nastavnik> nastavnici;
+	//proveri kod surle
 	
 	
 	public Predmet() {

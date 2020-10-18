@@ -1,5 +1,7 @@
 package studsluzba.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,5 +16,7 @@ public class SkolskaGodina {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSkolskaGodina;
 	
+	private List<Predmet> predemti;
+	private List<Nastavnik> nastavnici;
 	
 }
