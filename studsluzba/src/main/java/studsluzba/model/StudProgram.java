@@ -23,19 +23,18 @@ public class StudProgram {
 	private LocalDate godinaAkreditacije;
 	private int trajanje;
 	private String nazivZvanja;
-	private VrstaStudija vrstaStudija;
-	private List<Predmet> predmeti;
+	private VrstaStudija vrstaStudija; 		//ovo vadimo is sifarnika
 
 	// bi-directional many-to-one association to Student
 	@OneToMany(mappedBy = "studProgram")
 	private List<Student> students;
 
 	@OneToMany(mappedBy = "studProgram")
-	private List<Predmet> predmets;
+	private List<Predmet> predmeti;
 
 	public StudProgram() {
 	}
-	
+
 	public int getIdstudProgram() {
 		return this.idstudProgram;
 	}
@@ -58,6 +57,30 @@ public class StudProgram {
 
 	public void setSkraceniNaziv(String skraceniNaziv) {
 		this.skraceniNaziv = skraceniNaziv;
+	}
+
+	public LocalDate getGodinaAkreditacije() {
+		return godinaAkreditacije;
+	}
+
+	public void setGodinaAkreditacije(LocalDate godinaAkreditacije) {
+		this.godinaAkreditacije = godinaAkreditacije;
+	}
+
+	public int getTrajanje() {
+		return trajanje;
+	}
+
+	public void setTrajanje(int trajanje) {
+		this.trajanje = trajanje;
+	}
+
+	public String getNazivZvanja() {
+		return nazivZvanja;
+	}
+
+	public void setNazivZvanja(String nazivZvanja) {
+		this.nazivZvanja = nazivZvanja;
 	}
 
 	public List<Student> getStudents() {
@@ -87,16 +110,18 @@ public class StudProgram {
 		return skraceniNaziv + "-" + naziv;
 	}
 
-	public List<Predmet> getPredmets() {
-		return predmets;
+	public List<Predmet> getPredmeti() {
+		return predmeti;
 	}
 
-	public void setPredmets(List<Predmet> predmets) {
-		this.predmets = predmets;
+	public void setPredmeti(List<Predmet> predmets) {
+		this.predmeti = predmets;
 	}
+
 	public VrstaStudija getVrstaStudija() {
 		return vrstaStudija;
 	}
+
 	public void setVrstaStudija(VrstaStudija vrstaStudija) {
 		this.vrstaStudija = vrstaStudija;
 	}

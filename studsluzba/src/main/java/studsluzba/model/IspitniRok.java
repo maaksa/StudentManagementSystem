@@ -22,7 +22,6 @@ public class IspitniRok {
 	private List<Ispit> ispiti;
 
 	public IspitniRok(int idIspitniRok, LocalDate datumPocetka, LocalDate datumZavrsetka, List<Ispit> ispiti) {
-		super();
 		this.idIspitniRok = idIspitniRok;
 		this.datumPocetka = datumPocetka;
 		this.datumZavrsetka = datumZavrsetka;

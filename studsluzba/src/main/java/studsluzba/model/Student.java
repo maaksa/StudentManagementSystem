@@ -20,10 +20,10 @@ public class Student implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idstudent;
 
-	private int godinaUpisa;
 	private String ime;
 	private String prezime;
 	private String srednjeIme;
+	private long jmbg;
 	private LocalDate daumRodjenja;
 	private String mestoRodjenja;
 	private String drzavljanstvo;
@@ -37,16 +37,19 @@ public class Student implements Serializable {
 	private String Studemail;
 	private String brojLicneKarte;
 	private String licnuKartuIzdao;
-	private SrednjaSkola srednjaSkola;
-	private double uspehSrednjaSKola;
+	private SrednjaSkola srednjaSkola; // sifarnik???
+
+	private boolean upisaoPrvuGodinu;
+	private double uspehSrednjaSkola;
 	private double uspehPrijemni;
-	// private VisokaSkola visokaSkola;
+
 	private boolean prelaz;
+	// private VisokaSkola visokaSkola; da li ovo da bude String ili entitet /
+	// sifarnik???
+	
+	@OneToMany
 	private List<StudIndex> indexi;
 
-	
-	
-	
 	// bi-directional many-to-one association to StudProgram
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idstudProgram")
@@ -55,9 +58,8 @@ public class Student implements Serializable {
 	public Student() {
 	}
 
-	public Student(int godinaUpisa, String ime, String prezime, StudProgram studProgram) {
+	public Student(String ime, String prezime, StudProgram studProgram) {
 		super();
-		this.godinaUpisa = godinaUpisa;
 		this.ime = ime;
 		this.prezime = prezime;
 		this.studProgram = studProgram;
@@ -69,14 +71,6 @@ public class Student implements Serializable {
 
 	public void setIdstudent(int idstudent) {
 		this.idstudent = idstudent;
-	}
-
-	public int getGodinaUpisa() {
-		return this.godinaUpisa;
-	}
-
-	public void setGodinaUpisa(int godinaUpisa) {
-		this.godinaUpisa = godinaUpisa;
 	}
 
 	public String getIme() {
@@ -105,7 +99,7 @@ public class Student implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Student [idstudent=" + idstudent + ", godinaUpisa=" + godinaUpisa + ", ime=" + ime + ", prezime="
+		return "Student [idstudent=" + idstudent + ", ime=" + ime + ", prezime="
 				+ prezime + ", studProgram=" + studProgram + "]";
 	}
 
@@ -115,6 +109,14 @@ public class Student implements Serializable {
 
 	public void setSrednjeIme(String srednjeIme) {
 		this.srednjeIme = srednjeIme;
+	}
+
+	public long getJmbg() {
+		return jmbg;
+	}
+
+	public void setJmbg(long jmbg) {
+		this.jmbg = jmbg;
 	}
 
 	public LocalDate getDaumRodjenja() {
@@ -192,12 +194,15 @@ public class Student implements Serializable {
 	public String getPrivemail() {
 		return Privemail;
 	}
+
 	public void setPrivemail(String privemail) {
 		Privemail = privemail;
 	}
+
 	public String getStudemail() {
 		return Studemail;
 	}
+
 	public void setStudemail(String studemail) {
 		Studemail = studemail;
 	}
@@ -218,12 +223,28 @@ public class Student implements Serializable {
 		this.licnuKartuIzdao = licnuKartuIzdao;
 	}
 
+	public List<StudIndex> getIndexi() {
+		return indexi;
+	}
+
+	public void setIndexi(List<StudIndex> indexi) {
+		this.indexi = indexi;
+	}
+
+	public boolean isUpisaoPrvuGodinu() {
+		return upisaoPrvuGodinu;
+	}
+
+	public void setUpisaoPrvuGodinu(boolean upisaoPrvuGodinu) {
+		this.upisaoPrvuGodinu = upisaoPrvuGodinu;
+	}
+
 	public double getUspehSrednjaSKola() {
-		return uspehSrednjaSKola;
+		return uspehSrednjaSkola;
 	}
 
 	public void setUspehSrednjaSKola(double uspehSrednjaSKola) {
-		this.uspehSrednjaSKola = uspehSrednjaSKola;
+		this.uspehSrednjaSkola = uspehSrednjaSKola;
 	}
 
 	public double getUspehPrijemni() {

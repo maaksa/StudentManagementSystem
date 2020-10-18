@@ -11,38 +11,31 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
-
 @Entity
-@Table(name="predmet")
-public class Predmet 
-{
-	
+@Table(name = "predmet")
+public class Predmet {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String sifraPredmeta;
-	
 	private String nazivPredmeta;
 	private String opis;
 	private int brojESPB;
 	private int fondPredavanja;
 	private int fondVezbi;
-	
-	// proveriti kod surle
-	private int brojSemestra;
-	
-	
+
+	private int brojSemestra;			//proveriti kod surle
+
 	@ManyToOne
-	@JoinColumn(name="idstudProgram")
+	@JoinColumn(name = "idstudProgram")
 	private StudProgram studProgram;
-	
+
 	@ManyToMany
-	private List<Nastavnik> nastavnici;
-	//proveri kod surle
-	
-	
+	private List<Nastavnik> nastavnici; // proveri kod surle
+
+
 	public Predmet() {
 		super();
 	}
@@ -71,6 +64,46 @@ public class Predmet
 		this.nazivPredmeta = nazivPredmeta;
 	}
 
+	public String getOpis() {
+		return opis;
+	}
+
+	public void setOpis(String opis) {
+		this.opis = opis;
+	}
+
+	public int getBrojESPB() {
+		return brojESPB;
+	}
+
+	public void setBrojESPB(int brojESPB) {
+		this.brojESPB = brojESPB;
+	}
+
+	public int getFondPredavanja() {
+		return fondPredavanja;
+	}
+
+	public void setFondPredavanja(int fondPredavanja) {
+		this.fondPredavanja = fondPredavanja;
+	}
+
+	public int getFondVezbi() {
+		return fondVezbi;
+	}
+
+	public void setFondVezbi(int fondVezbi) {
+		this.fondVezbi = fondVezbi;
+	}
+
+	public int getBrojSemestra() {
+		return brojSemestra;
+	}
+
+	public void setBrojSemestra(int brojSemestra) {
+		this.brojSemestra = brojSemestra;
+	}
+
 	public StudProgram getStudProgram() {
 		return studProgram;
 	}
@@ -86,6 +119,5 @@ public class Predmet
 	public void setNastavnici(List<Nastavnik> nastavnici) {
 		this.nastavnici = nastavnici;
 	}
-	
-	
+
 }

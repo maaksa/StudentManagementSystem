@@ -15,8 +15,8 @@ public class SkolskaGodina {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSkolskaGodina;
-	
+
 	private List<Predmet> predemti;
 	private List<Nastavnik> nastavnici;
-	
+
 }

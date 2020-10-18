@@ -10,7 +10,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "zvanje")
-public class Zvanje {
+public class Zvanje
+{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Zvanjeid;
@@ -58,6 +59,4 @@ public class Zvanje {
 	public void setNazivZvanja(String nazivZvanja) {
 		this.nazivZvanja = nazivZvanja;
 	}
-	
-
 }

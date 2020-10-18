@@ -10,25 +10,33 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="nastavnik")
-public class Nastavnik {
-	
+@Table(name = "nastavnik")
+public class Nastavnik
+{
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idNastavnik;	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idNastavnik;
 
 	private String ime;
-
 	private String prezime;
 	private String srednjeIme;
 	private String email;
 	private String obrazovanje;
 	private List<Zvanje> zvanja;
-	
-	@ManyToMany
-	private List<Predmet> predmeti;
 
-	
+	@ManyToMany
+	private List<Predmet> predmeti;		//da li je potrebno da znamo koje predmete sve drzi
+
+	public Nastavnik(int idNastavnik, String ime, String prezime, String srednjeIme, String email, String obrazovanje) 
+	{
+		this.idNastavnik = idNastavnik;
+		this.ime = ime;
+		this.prezime = prezime;
+		this.srednjeIme = srednjeIme;
+		this.email = email;
+		this.obrazovanje = obrazovanje;
+	}
 
 	public int getIdNastavnik() {
 		return idNastavnik;
@@ -54,6 +62,30 @@ public class Nastavnik {
 		this.prezime = prezime;
 	}
 
+	public String getSrednjeIme() {
+		return srednjeIme;
+	}
+
+	public void setSrednjeIme(String srednjeIme) {
+		this.srednjeIme = srednjeIme;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getObrazovanje() {
+		return obrazovanje;
+	}
+
+	public void setObrazovanje(String obrazovanje) {
+		this.obrazovanje = obrazovanje;
+	}
+
 	public List<Predmet> getPredmeti() {
 		return predmeti;
 	}
@@ -61,14 +93,13 @@ public class Nastavnik {
 	public void setPredmeti(List<Predmet> predmeti) {
 		this.predmeti = predmeti;
 	}
+
 	public List<Zvanje> getZvanja() {
 		return zvanja;
 	}
+
 	public void setZvanja(List<Zvanje> zvanja) {
 		this.zvanja = zvanja;
 	}
-	
-	
-	
-	
+
 }

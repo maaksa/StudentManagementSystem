@@ -6,26 +6,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "studIndex")
-public class StudIndex 
-{
+public class StudIndex {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idStudIndex;
 
+	@OneToOne
+	private StudProgram program;
 	private int broj;
 	private int godina;
-	private StudProgram program;
 	private boolean aktivan;
 	private LocalDate odKadJeAktivan;
-	
+
 	private Student student; // proveriti
 
-	public StudIndex(int idStudIndex, int broj, int godina, StudProgram program, boolean aktivan, LocalDate odKadJeAktivan) 
-	{
+	public StudIndex(int idStudIndex, int broj, int godina, StudProgram program, boolean aktivan, LocalDate odKadJeAktivan) {
 		super();
 		this.idStudIndex = idStudIndex;
 		this.broj = broj;
@@ -82,12 +82,12 @@ public class StudIndex
 	public void setOdKadJeAktivan(LocalDate odKadJeAktivan) {
 		this.odKadJeAktivan = odKadJeAktivan;
 	}
+
 	@Override
-	public String toString() 
-	{
-		return "Studentski index = [id = " + idStudIndex + ", broj =  " + broj + ", godina = " + godina + ", studijski program " + 
-				program.getSkraceniNaziv() + ", aktivan od = " + odKadJeAktivan + ", pripada = " + student.getIme() + "]";
+	public String toString() {
+		return "Studentski index = [id = " + idStudIndex + ", broj =  " + broj + ", godina = " + godina
+				+ ", studijski program " + program.getSkraceniNaziv() + ", aktivan od = " + odKadJeAktivan
+				+ ", pripada = " + student.getIme() + "]";
 	}
-	
 
 }
