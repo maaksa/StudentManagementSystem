@@ -37,15 +37,14 @@ public class Student implements Serializable {
 	private String Studemail;
 	private String brojLicneKarte;
 	private String licnuKartuIzdao;
-	private SrednjaSkola srednjaSkola; // sifarnik???
+	private SrednjaSkola srednjaSkola;
+	private VisokaSkola VisokaSkola;
 
 	private boolean upisaoPrvuGodinu;
 	private double uspehSrednjaSkola;
 	private double uspehPrijemni;
 
 	private boolean prelaz;
-	// private VisokaSkola visokaSkola; da li ovo da bude String ili entitet /
-	// sifarnik???
 	
 	@OneToMany
 	private List<StudIndex> indexi;
@@ -262,5 +261,16 @@ public class Student implements Serializable {
 	public void setPrelaz(boolean prelaz) {
 		this.prelaz = prelaz;
 	}
-
+	public VisokaSkola getVisokaSkola() {
+		return VisokaSkola;
+	}
+	public void setVisokaSkola(VisokaSkola visokaSkola) {
+		VisokaSkola = visokaSkola;
+	}
+	public SrednjaSkola getSrednjaSkola() {
+		return srednjaSkola;
+	}
+	public void setSrednjaSkola(SrednjaSkola srednjaSkola) {
+		this.srednjaSkola = srednjaSkola;
+	}
 }

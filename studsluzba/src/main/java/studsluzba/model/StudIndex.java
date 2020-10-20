@@ -23,8 +23,6 @@ public class StudIndex {
 	private boolean aktivan;
 	private LocalDate odKadJeAktivan;
 
-	private Student student; // proveriti
-
 	public StudIndex(int idStudIndex, int broj, int godina, StudProgram program, boolean aktivan, LocalDate odKadJeAktivan) {
 		super();
 		this.idStudIndex = idStudIndex;
@@ -86,8 +84,7 @@ public class StudIndex {
 	@Override
 	public String toString() {
 		return "Studentski index = [id = " + idStudIndex + ", broj =  " + broj + ", godina = " + godina
-				+ ", studijski program " + program.getSkraceniNaziv() + ", aktivan od = " + odKadJeAktivan
-				+ ", pripada = " + student.getIme() + "]";
+				+ ", studijski program " + program.getSkraceniNaziv() + ", aktivan od = " + odKadJeAktivan;
 	}
 
 }

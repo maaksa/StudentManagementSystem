@@ -23,7 +23,7 @@ public class StudProgram {
 	private LocalDate godinaAkreditacije;
 	private int trajanje;
 	private String nazivZvanja;
-	private VrstaStudija vrstaStudija; 		//ovo vadimo is sifarnika
+	private VrstaStudija vrstaStudija; 	
 
 	// bi-directional many-to-one association to Student
 	@OneToMany(mappedBy = "studProgram")

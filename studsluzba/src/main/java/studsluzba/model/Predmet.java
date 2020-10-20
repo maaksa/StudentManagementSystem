@@ -26,15 +26,11 @@ public class Predmet {
 	private int fondPredavanja;
 	private int fondVezbi;
 
-	private int brojSemestra;			//proveriti kod surle
+	private int brojSemestra;			
 
 	@ManyToOne
 	@JoinColumn(name = "idstudProgram")
 	private StudProgram studProgram;
-
-	@ManyToMany
-	private List<Nastavnik> nastavnici; // proveri kod surle
-
 
 	public Predmet() {
 		super();
@@ -111,13 +107,4 @@ public class Predmet {
 	public void setStudProgram(StudProgram studProgram) {
 		this.studProgram = studProgram;
 	}
-
-	public List<Nastavnik> getNastavnici() {
-		return nastavnici;
-	}
-
-	public void setNastavnici(List<Nastavnik> nastavnici) {
-		this.nastavnici = nastavnici;
-	}
-
 }

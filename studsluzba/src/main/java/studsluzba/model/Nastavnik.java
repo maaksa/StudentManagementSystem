@@ -23,10 +23,7 @@ public class Nastavnik
 	private String srednjeIme;
 	private String email;
 	private String obrazovanje;
-	private List<Zvanje> zvanja; // Poz od Luke
-
-	@ManyToMany
-	private List<Predmet> predmeti;		//da li je potrebno da znamo koje predmete sve drzi
+	private List<Zvanje> zvanja;
 
 	public Nastavnik(int idNastavnik, String ime, String prezime, String srednjeIme, String email, String obrazovanje) 
 	{
@@ -84,14 +81,6 @@ public class Nastavnik
 
 	public void setObrazovanje(String obrazovanje) {
 		this.obrazovanje = obrazovanje;
-	}
-
-	public List<Predmet> getPredmeti() {
-		return predmeti;
-	}
-
-	public void setPredmeti(List<Predmet> predmeti) {
-		this.predmeti = predmeti;
 	}
 
 	public List<Zvanje> getZvanja() {

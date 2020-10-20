@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "ispitniRok")
 public class IspitniRok {
@@ -20,6 +21,7 @@ public class IspitniRok {
 	private LocalDate datumPocetka;
 	private LocalDate datumZavrsetka;
 	private List<Ispit> ispiti;
+	private SkolskaGodina skolskaGod;
 
 	public IspitniRok(int idIspitniRok, LocalDate datumPocetka, LocalDate datumZavrsetka, List<Ispit> ispiti) {
 		this.idIspitniRok = idIspitniRok;
@@ -59,5 +61,10 @@ public class IspitniRok {
 	public void setIspiti(List<Ispit> ispiti) {
 		this.ispiti = ispiti;
 	}
-
+	public SkolskaGodina getSkolskaGod() {
+		return skolskaGod;
+	}
+	public void setSkolskaGod(SkolskaGodina skolskaGod) {
+		this.skolskaGod = skolskaGod;
+	}
 }
