@@ -23,7 +23,7 @@ public class Nastavnik
 	private String srednjeIme;
 	private String email;
 	private String obrazovanje;
-	private List<Zvanje> zvanja;
+	private List<Zvanje> zvanja; // Poz od Luke
 
 	@ManyToMany
 	private List<Predmet> predmeti;		//da li je potrebno da znamo koje predmete sve drzi
