@@ -10,8 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ispit")
-public class Ispit 
-{
+public class Ispit {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +20,11 @@ public class Ispit
 	private Predmet predmet;
 	private Nastavnik nastavnik;
 	private String vremePocetka;
-	private boolean unetiPoeni;			//pitamo surlu
+	private boolean unetiPoeni;
 
+	public Ispit() {
+		super();
+	}
 
 	public Ispit(int idIspit, LocalDate datumOdrzavanja, Predmet predmet, Nastavnik nastavnik, String vremePocetka) {
 		this.idIspit = idIspit;

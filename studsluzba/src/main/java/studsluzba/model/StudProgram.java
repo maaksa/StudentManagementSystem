@@ -91,6 +91,7 @@ public class StudProgram {
 		this.students = students;
 	}
 
+	/*
 	public Student addStudent(Student student) {
 		getStudents().add(student);
 		student.setStudProgram(this);
@@ -104,7 +105,7 @@ public class StudProgram {
 
 		return student;
 	}
-
+*/
 	@Override
 	public String toString() {
 		return skraceniNaziv + "-" + naziv;

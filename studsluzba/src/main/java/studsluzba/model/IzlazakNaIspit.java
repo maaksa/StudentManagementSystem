@@ -14,7 +14,7 @@ public class IzlazakNaIspit
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idIzlazak;
 	
-	//da li treba da bude povezano sa predmetom
+	
 	private int brojOsvojenihPoena;
 	private String napomena;
 	private boolean ponistavanje;

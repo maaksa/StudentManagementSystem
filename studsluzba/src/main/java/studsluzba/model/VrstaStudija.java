@@ -17,6 +17,12 @@ public class VrstaStudija
 	private String punNaziv;
 	private String skraceniNaziv;
 	
+	
+	
+	public VrstaStudija() {
+		super();
+	}
+
 	public VrstaStudija(int vrstaStudijaid, String punNaziv, String skraceniNaziv) 
 	{
 		super();

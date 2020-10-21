@@ -10,8 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "zvanje")
-public class Zvanje
-{
+public class Zvanje {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Zvanjeid;
@@ -20,8 +19,11 @@ public class Zvanje
 	private String uzaNaucnaOblast;
 	private String nazivZvanja;
 
-	public Zvanje(int zvanjeid, LocalDate datumIzbora, String uzaNaucnaOblast, String nazivZvanja)
-	{
+	public Zvanje() {
+		super();
+	}
+
+	public Zvanje(int zvanjeid, LocalDate datumIzbora, String uzaNaucnaOblast, String nazivZvanja) {
 		Zvanjeid = zvanjeid;
 		this.datumIzbora = datumIzbora;
 		this.uzaNaucnaOblast = uzaNaucnaOblast;

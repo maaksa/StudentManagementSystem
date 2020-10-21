@@ -19,4 +19,32 @@ public class SkolskaGodina {
 	private List<Predmet> predemti;
 	private List<Nastavnik> nastavnici;
 
+	public SkolskaGodina() {
+		super();
+	}
+
+	public int getIdSkolskaGodina() {
+		return idSkolskaGodina;
+	}
+
+	public void setIdSkolskaGodina(int idSkolskaGodina) {
+		this.idSkolskaGodina = idSkolskaGodina;
+	}
+
+	public List<Predmet> getPredemti() {
+		return predemti;
+	}
+
+	public void setPredemti(List<Predmet> predemti) {
+		this.predemti = predemti;
+	}
+
+	public List<Nastavnik> getNastavnici() {
+		return nastavnici;
+	}
+
+	public void setNastavnici(List<Nastavnik> nastavnici) {
+		this.nastavnici = nastavnici;
+	}
+
 }

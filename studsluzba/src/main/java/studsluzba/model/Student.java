@@ -49,19 +49,20 @@ public class Student implements Serializable {
 	@OneToMany
 	private List<StudIndex> indexi;
 
+	//PROVERITI da li ovde skolska godina ili drziPredmet?
 	// bi-directional many-to-one association to StudProgram
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	@JoinColumn(name = "idstudProgram")
-	private StudProgram studProgram;
+	@JoinColumn(name = "idSkolskaGodina")
+	private SkolskaGodina skolskaGodina;
 
 	public Student() {
 	}
 
-	public Student(String ime, String prezime, StudProgram studProgram) {
+	public Student(String ime, String prezime, SkolskaGodina skolskaGodina) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
-		this.studProgram = studProgram;
+		this.skolskaGodina = skolskaGodina;
 	}
 
 	public int getIdstudent() {
@@ -88,18 +89,12 @@ public class Student implements Serializable {
 		this.prezime = prezime;
 	}
 
-	public StudProgram getStudProgram() {
-		return this.studProgram;
-	}
-
-	public void setStudProgram(StudProgram studProgram) {
-		this.studProgram = studProgram;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "Student [idstudent=" + idstudent + ", ime=" + ime + ", prezime="
-				+ prezime + ", studProgram=" + studProgram + "]";
+				+ prezime + ", skolska godina =" + skolskaGodina + "]";
 	}
 
 	public String getSrednjeIme() {

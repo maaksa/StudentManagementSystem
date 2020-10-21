@@ -10,14 +10,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "prijavaIspit")
-public class PrijavaIspita 
-{
+public class PrijavaIspita {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPrijava;
 	private LocalDate datum;
 	private Ispit ispit;
-	
+
+	public PrijavaIspita() {
+		super();
+	}
+
 	public PrijavaIspita(int idPrijava, LocalDate datum, Ispit ispit) {
 		super();
 		this.idPrijava = idPrijava;
@@ -48,6 +51,5 @@ public class PrijavaIspita
 	public void setIspit(Ispit ispit) {
 		this.ispit = ispit;
 	}
-	
-	
+
 }

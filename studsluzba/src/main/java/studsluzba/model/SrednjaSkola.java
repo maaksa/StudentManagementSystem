@@ -18,6 +18,10 @@ public class SrednjaSkola {
 	private String mesto;
 	private String vrsta;
 
+	public SrednjaSkola() {
+		super();
+	}
+
 	public SrednjaSkola(int idSrednjaSkola, String naziv, String mesto, String vrsta) {
 		this.idSrednjaSkola = idSrednjaSkola;
 		this.naziv = naziv;
@@ -56,6 +60,5 @@ public class SrednjaSkola {
 	public void setVrsta(String vrsta) {
 		this.vrsta = vrsta;
 	}
-	
 
 }

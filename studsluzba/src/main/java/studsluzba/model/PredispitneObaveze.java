@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import enums.VrstaObaveze;
+
 
 @Entity
 @Table(name = "predispitneObaveze")
@@ -15,13 +15,19 @@ public class PredispitneObaveze {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int predispitneid;
 
-	private VrstaObaveze vrsta;
+	private String vrstaObabeza;
 	private int maxBrp;
 	private Predmet predmet;
+	
+	
 
-	public PredispitneObaveze(int predispitneid, VrstaObaveze vrsta, int maxBrp, Predmet predmet) {
+	public PredispitneObaveze() {
+		super();
+	}
+
+	public PredispitneObaveze(int predispitneid, String vrstaObabeza, int maxBrp, Predmet predmet) {
 		this.predispitneid = predispitneid;
-		this.vrsta = vrsta;
+		this.vrstaObabeza = vrstaObabeza;
 		this.maxBrp = maxBrp;
 		this.predmet = predmet;
 	}
@@ -34,13 +40,6 @@ public class PredispitneObaveze {
 		this.predispitneid = predispitneid;
 	}
 
-	public VrstaObaveze getVrsta() {
-		return vrsta;
-	}
-
-	public void setVrsta(VrstaObaveze vrsta) {
-		this.vrsta = vrsta;
-	}
 
 	public int getMaxBrp() {
 		return maxBrp;
