@@ -1,5 +1,7 @@
 package studsluzba.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +14,11 @@ public class UpisGodina {
 	
 	
 	private SkolskaGodina skolskaGodina;
+	
+	private Student student;
+	private int godinaUpisa;
+	private LocalDate datum;
+	private String napomena;
 
 
 	public UpisGodina() {

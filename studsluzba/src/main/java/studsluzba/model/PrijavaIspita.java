@@ -11,11 +11,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "prijavaIspit")
 public class PrijavaIspita {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPrijava;
 	private LocalDate datum;
 	private Ispit ispit;
+	private Student student;
 
 	public PrijavaIspita() {
 		super();
@@ -52,4 +54,11 @@ public class PrijavaIspita {
 		this.ispit = ispit;
 	}
 
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 }

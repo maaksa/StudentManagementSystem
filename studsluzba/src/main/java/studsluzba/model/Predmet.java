@@ -25,6 +25,7 @@ public class Predmet {
 	private int brojESPB;
 	private int fondPredavanja;
 	private int fondVezbi;
+	private List<PredispitneObaveze> obaveze;
 
 	private int brojSemestra;			
 
@@ -106,5 +107,11 @@ public class Predmet {
 
 	public void setStudProgram(StudProgram studProgram) {
 		this.studProgram = studProgram;
+	}
+	public List<PredispitneObaveze> getObaveze() {
+		return obaveze;
+	}
+	public void setObaveze(List<PredispitneObaveze> obaveze) {
+		this.obaveze = obaveze;
 	}
 }

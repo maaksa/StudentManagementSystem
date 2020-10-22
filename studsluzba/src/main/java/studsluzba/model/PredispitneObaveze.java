@@ -16,20 +16,17 @@ public class PredispitneObaveze {
 	private int predispitneid;
 
 	private String vrstaObabeza;
-	private int maxBrp;
-	private Predmet predmet;
-	
+	private int maxBrp;	
 	
 
 	public PredispitneObaveze() {
 		super();
 	}
 
-	public PredispitneObaveze(int predispitneid, String vrstaObabeza, int maxBrp, Predmet predmet) {
+	public PredispitneObaveze(int predispitneid, String vrstaObabeza, int maxBrp) {
 		this.predispitneid = predispitneid;
 		this.vrstaObabeza = vrstaObabeza;
 		this.maxBrp = maxBrp;
-		this.predmet = predmet;
 	}
 
 	public int getPredispitneid() {
@@ -49,12 +46,4 @@ public class PredispitneObaveze {
 		this.maxBrp = maxBrp;
 	}
 
-	public Predmet getPredmet() {
-		return predmet;
-	}
-
-	public void setPredmet(Predmet predmet) {
-		this.predmet = predmet;
-	}
-
-	}
+}
