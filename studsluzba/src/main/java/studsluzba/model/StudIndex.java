@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,8 +18,13 @@ public class StudIndex {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idStudIndex;
 
-	@OneToOne
+	@ManyToOne
 	private StudProgram program;
+	
+	@OneToOne
+	@JoinColumn(name = "idStudent")
+	private Student student;
+	
 	private int broj;
 	private int godina;
 	private boolean aktivan;

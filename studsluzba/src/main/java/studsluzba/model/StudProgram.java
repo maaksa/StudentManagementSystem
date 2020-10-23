@@ -24,15 +24,13 @@ public class StudProgram {
 	private int trajanje;
 	private String nazivZvanja;
 	
-	@OneToOne
+	@OneToMany
 	@JoinColumn(name = "idVrstaStudija")
-	private VrstaStudija vrstaStudija; 	
+	private List<VrstaStudija> vrstaStudija; 	
 	
-	@OneToOne
+	@OneToMany
 	@JoinColumn(name = "idStudIndex")
-	private StudIndex studIndex;
-
-	// bi-directional many-to-one association to Student
+	private List<StudIndex> studIndex;
 	
 
 	@OneToMany
@@ -119,12 +117,6 @@ public class StudProgram {
 		this.predmeti = predmets;
 	}
 
-	public VrstaStudija getVrstaStudija() {
-		return vrstaStudija;
-	}
-
-	public void setVrstaStudija(VrstaStudija vrstaStudija) {
-		this.vrstaStudija = vrstaStudija;
-	}
+	
 
 }

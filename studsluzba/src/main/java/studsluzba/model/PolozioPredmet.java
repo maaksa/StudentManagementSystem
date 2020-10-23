@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,14 +17,17 @@ public class PolozioPredmet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPolozioPredmet;
 	private int ocena;
+	private float ukupanBrojPoena;
+	private boolean priznatSaDrugogFaksa;
 
-	@OneToOne
-	@JoinColumn(name = "idVisokaSkola")
-	private VisokaSkola visokaSkola;
+	//@OneToOne
+	//@JoinColumn(name = "idVisokaSkola")
+//	private VisokaSkola visokaSkola;
 
-	@OneToOne
-	@JoinColumn(name = "idStudent")
-	private Student student;
+	//student indeks da bude
+	@ManyToOne
+	@JoinColumn(name = "idStudIndex")
+	private StudIndex studentIndex;
 
 	@OneToOne
 	@JoinColumn(name = "idPredmet")
@@ -49,20 +53,12 @@ public class PolozioPredmet {
 		this.ocena = ocena;
 	}
 
-	public VisokaSkola getVisokaSkola() {
-		return visokaSkola;
+	public StudIndex getStudent() {
+		return studentIndex;
 	}
 
-	public void setVisokaSkola(VisokaSkola visokaSkola) {
-		this.visokaSkola = visokaSkola;
-	}
-
-	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setStudentIndex(StudIndex studentIndex) {
+		this.studentIndex = studentIndex;
 	}
 
 	public Predmet getPredmet() {

@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,11 +17,12 @@ public class SlusaPredmet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSlusaPredmet;
 	
-	@OneToOne
-	@JoinColumn(name = "idStudent")
-	private Student student;
 	
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "idStudent")
+	private StudIndex index;
+	
+	@ManyToOne
 	@JoinColumn(name = "idDrziPredmet")
 	private DrziPredmet drziPredmet;
 
@@ -28,20 +30,14 @@ public class SlusaPredmet {
 		super();
 	}
 
-	public SlusaPredmet(Student student, DrziPredmet drziPredmet) {
+	public SlusaPredmet(StudIndex index, DrziPredmet drziPredmet) {
 		super();
-		this.student = student;
+		this.index = index;
 		this.drziPredmet = drziPredmet;
 
 	}
 
-	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
+	
 
 	public DrziPredmet getDrziPredmet() {
 		return drziPredmet;

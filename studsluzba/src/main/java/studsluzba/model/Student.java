@@ -53,14 +53,9 @@ public class Student  {
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idStudIndex")
 	private List<StudIndex> indexi;
-
-	// PROVERITI da li ovde skolska godina ili drziPredmet?
-	// bi-directional many-to-one association to StudProgram
-	/*
-	 * @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	 * 
-	 * @JoinColumn(name = "idSkolskaGodina") private SkolskaGodina skolskaGodina;
-	 */
+	
+	@OneToMany(mappedBy = "index")
+	private List<SlusaPredmet> slusaPredmet;
 
 	public Student() {
 	}

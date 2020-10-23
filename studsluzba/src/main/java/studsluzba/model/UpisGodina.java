@@ -1,12 +1,15 @@
 package studsluzba.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,13 +22,19 @@ public class UpisGodina {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUpisGodina;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "idSkolskaGodina")
 	private SkolskaGodina skolskaGodina;
 	
-	@OneToOne
-	@JoinColumn(name = "idStudent")
-	private Student student;
+	
+	@ManyToOne
+	@JoinColumn(name = "idStudIndex")
+	private StudIndex studentIndex;
+	
+	@OneToMany
+	@JoinColumn(name = "idPredmet")
+	private List<Predmet> predmetPrenos;
+	
 	private LocalDate datum;
 	private String napomena;
 

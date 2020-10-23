@@ -1,10 +1,13 @@
 package studsluzba.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -17,17 +20,20 @@ public class DrziPredmet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDrziPredmet;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "idPredmet")
-	private Predmet predmet; // koje kardinalnosti napisati za vezu predmet nastvanik
+	private Predmet predmet; 
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "idNastavnik")
 	private Nastavnik nastavnik;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "idSkolskaGodina")
 	private SkolskaGodina skolskaGod;
+	
+	@OneToMany(mappedBy = "drziPredmet")
+	private List<SlusaPredmet> slusaPredmet;
 
 	public DrziPredmet() {
 		super();

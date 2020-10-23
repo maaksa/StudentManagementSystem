@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,11 +18,14 @@ public class SkolskaGodina {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSkolskaGodina;
+	private int datum;
+	private boolean aktivna;
 
-	// Da li trebaju liste ili samo ID
-	// private List<Predmet> predemti;
-	// private List<Nastavnik> nastavnici;
-	// private List<Student> studenti;
+	
+	
+	@OneToMany
+	@JoinColumn(name = "idIspitniRok") 
+	private List<IspitniRok> ispitniRokovi;
 
 	public SkolskaGodina() {
 		super();

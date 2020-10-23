@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,8 +27,9 @@ public class IspitniRok {
 	@JoinColumn(name = "idIspit") 
 	private List<Ispit> ispiti;
 
-	// provera
-	// private SkolskaGodina skolskaGod;
+	@ManyToOne
+	@JoinColumn(name = "ispitniRokovi") 
+	private SkolskaGodina skolskaGod;
 
 	public IspitniRok(int idIspitniRok, LocalDate datumPocetka, LocalDate datumZavrsetka, List<Ispit> ispiti) {
 		this.idIspitniRok = idIspitniRok;

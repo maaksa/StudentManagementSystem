@@ -32,8 +32,8 @@ public class Predmet {
 	@JoinColumn(name = "idPredIspitne")
 	private List<PredispitneObaveze> obaveze;
 
-	// Provera da li treba
-	@ManyToOne // (optional = true)
+	
+	@ManyToOne
 	@JoinColumn(name = "idstudProgram")
 	private StudProgram studProgram;
 

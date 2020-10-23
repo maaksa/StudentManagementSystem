@@ -24,9 +24,10 @@ public class ObnovaGodina {
 	private LocalDate datum;
 	private String napomena;
 	
-	@OneToOne
-	@JoinColumn(name = "idStudent")
-	private Student student;
+	//indeks
+	@ManyToOne
+	@JoinColumn(name = "idStudIndex")
+	private StudIndex studentIndeks;
 	
 	@OneToOne
 	@JoinColumn(name = "idSkolskaGodina")
@@ -49,12 +50,12 @@ public class ObnovaGodina {
 		this.idObnovaGodina = idObnovaGodina;
 	}
 
-	public Student getStudent() {
-		return student;
+	public StudIndex getStudentIndex() {
+		return studentIndeks;
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setStudentIndex(StudIndex studentIndeks) {
+		this.studentIndeks = studentIndeks;
 	}
 
 	public SkolskaGodina getSkolskaGodina() {
