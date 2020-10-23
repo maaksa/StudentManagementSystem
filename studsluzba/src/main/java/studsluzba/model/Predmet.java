@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +18,7 @@ public class Predmet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int idPredmet;
 
 	private String sifraPredmeta;
 	private String nazivPredmeta;
@@ -25,24 +26,26 @@ public class Predmet {
 	private int brojESPB;
 	private int fondPredavanja;
 	private int fondVezbi;
+	private int brojSemestra;
+
+	@OneToMany
+	@JoinColumn(name = "idPredIspitne")
 	private List<PredispitneObaveze> obaveze;
 
-	private int brojSemestra;			
-
-	@ManyToOne
-	@JoinColumn(name = "idstudProgram")
-	private StudProgram studProgram;
-
+		//Provera da li treba 
+	  @ManyToOne //(optional = true)
+	  @JoinColumn(name = "idstudProgram") private StudProgram studProgram;
+	 
 	public Predmet() {
 		super();
 	}
 
 	public int getId() {
-		return id;
+		return idPredmet;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.idPredmet = id;
 	}
 
 	public String getSifraPredmeta() {
@@ -101,16 +104,10 @@ public class Predmet {
 		this.brojSemestra = brojSemestra;
 	}
 
-	public StudProgram getStudProgram() {
-		return studProgram;
-	}
-
-	public void setStudProgram(StudProgram studProgram) {
-		this.studProgram = studProgram;
-	}
 	public List<PredispitneObaveze> getObaveze() {
 		return obaveze;
 	}
+
 	public void setObaveze(List<PredispitneObaveze> obaveze) {
 		this.obaveze = obaveze;
 	}

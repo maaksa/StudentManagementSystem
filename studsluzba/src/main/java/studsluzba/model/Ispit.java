@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,10 +20,16 @@ public class Ispit {
 	private int idIspit;
 
 	private LocalDate datumOdrzavanja;
-	private Predmet predmet;
-	private Nastavnik nastavnik;
 	private String vremePocetka;
 	private boolean unetiPoeni;
+	
+	@OneToOne
+	@JoinColumn(name = "idPredmet") 
+	private Predmet predmet;
+	
+	@OneToOne 
+	@JoinColumn(name = "idNastavnik")
+	private Nastavnik nastavnik;
 
 	public Ispit() {
 		super();

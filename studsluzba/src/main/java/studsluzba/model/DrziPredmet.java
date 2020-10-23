@@ -3,14 +3,26 @@ package studsluzba.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 public class DrziPredmet {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDrziPredmet;
-	private Predmet predmet;
+	
+	@OneToOne
+	@JoinColumn(name = "idPredmet")
+	private Predmet predmet; // koje kardinalnosti napisati za vezu predmet nastvanik
+	
+	@OneToOne
+	@JoinColumn(name = "idNastavnik")
 	private Nastavnik nastavnik;
+	
+	@OneToOne
+	@JoinColumn(name = "idSkolskaGodina")
 	private SkolskaGodina skolskaGod;
 
 	public DrziPredmet() {

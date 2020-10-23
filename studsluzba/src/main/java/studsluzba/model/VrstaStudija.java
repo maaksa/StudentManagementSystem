@@ -12,7 +12,7 @@ public class VrstaStudija
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int vrstaStudijaid;
+	private int idVrstaStudija;
 	
 	private String punNaziv;
 	private String skraceniNaziv;
@@ -26,17 +26,17 @@ public class VrstaStudija
 	public VrstaStudija(int vrstaStudijaid, String punNaziv, String skraceniNaziv) 
 	{
 		super();
-		this.vrstaStudijaid = vrstaStudijaid;
+		this.idVrstaStudija = vrstaStudijaid;
 		this.punNaziv = punNaziv;
 		this.skraceniNaziv = skraceniNaziv;
 	}
 
 	public int getVrstaStudijaid() {
-		return vrstaStudijaid;
+		return idVrstaStudija;
 	}
 
 	public void setVrstaStudijaid(int vrstaStudijaid) {
-		this.vrstaStudijaid = vrstaStudijaid;
+		this.idVrstaStudija = vrstaStudijaid;
 	}
 
 	public String getPunNaziv() {

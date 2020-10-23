@@ -13,10 +13,10 @@ import javax.persistence.Table;
 public class PredispitneObaveze {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int predispitneid;
+	private int idPredIspitne;
 
 	private String vrstaObabeza;
-	private int maxBrp;	
+	private int poeni;	
 	
 
 	public PredispitneObaveze() {
@@ -24,26 +24,26 @@ public class PredispitneObaveze {
 	}
 
 	public PredispitneObaveze(int predispitneid, String vrstaObabeza, int maxBrp) {
-		this.predispitneid = predispitneid;
+		this.idPredIspitne = predispitneid;
 		this.vrstaObabeza = vrstaObabeza;
-		this.maxBrp = maxBrp;
+		this.poeni = maxBrp;
 	}
 
 	public int getPredispitneid() {
-		return predispitneid;
+		return idPredIspitne;
 	}
 
 	public void setPredispitneid(int predispitneid) {
-		this.predispitneid = predispitneid;
+		this.idPredIspitne = predispitneid;
 	}
 
 
 	public int getMaxBrp() {
-		return maxBrp;
+		return poeni;
 	}
 
 	public void setMaxBrp(int maxBrp) {
-		this.maxBrp = maxBrp;
+		this.poeni = maxBrp;
 	}
 
 }

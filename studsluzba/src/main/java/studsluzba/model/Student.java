@@ -13,12 +13,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "student")
 @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s")
-public class Student implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Student  {
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idstudent;
+	private int idStudent;
 
 	private String ime;
 	private String prezime;
@@ -37,40 +37,47 @@ public class Student implements Serializable {
 	private String Studemail;
 	private String brojLicneKarte;
 	private String licnuKartuIzdao;
-	private SrednjaSkola srednjaSkola;
-	private VisokaSkola VisokaSkola;
-
 	private boolean upisaoPrvuGodinu;
 	private double uspehSrednjaSkola;
 	private double uspehPrijemni;
-
 	private boolean prelaz;
-	
-	@OneToMany
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idSrednjaSkola")
+	private SrednjaSkola srednjaSkola;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idVisokaSkola")
+	private VisokaSkola VisokaSkola;
+
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idStudIndex")
 	private List<StudIndex> indexi;
 
-	//PROVERITI da li ovde skolska godina ili drziPredmet?
+	// PROVERITI da li ovde skolska godina ili drziPredmet?
 	// bi-directional many-to-one association to StudProgram
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	@JoinColumn(name = "idSkolskaGodina")
-	private SkolskaGodina skolskaGodina;
+	/*
+	 * @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	 * 
+	 * @JoinColumn(name = "idSkolskaGodina") private SkolskaGodina skolskaGodina;
+	 */
 
 	public Student() {
 	}
 
-	public Student(String ime, String prezime, SkolskaGodina skolskaGodina) {
+	public Student(String ime, String prezime) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
-		this.skolskaGodina = skolskaGodina;
+
 	}
 
 	public int getIdstudent() {
-		return this.idstudent;
+		return this.idStudent;
 	}
 
 	public void setIdstudent(int idstudent) {
-		this.idstudent = idstudent;
+		this.idStudent = idstudent;
 	}
 
 	public String getIme() {
@@ -89,12 +96,9 @@ public class Student implements Serializable {
 		this.prezime = prezime;
 	}
 
-	
-
 	@Override
 	public String toString() {
-		return "Student [idstudent=" + idstudent + ", ime=" + ime + ", prezime="
-				+ prezime + ", skolska godina =" + skolskaGodina + "]";
+		return "Student [idstudent=" + idStudent + ", ime=" + ime + ", prezime=" + prezime + ", skolska godina =" + "]";
 	}
 
 	public String getSrednjeIme() {
@@ -256,15 +260,19 @@ public class Student implements Serializable {
 	public void setPrelaz(boolean prelaz) {
 		this.prelaz = prelaz;
 	}
+
 	public VisokaSkola getVisokaSkola() {
 		return VisokaSkola;
 	}
+
 	public void setVisokaSkola(VisokaSkola visokaSkola) {
 		VisokaSkola = visokaSkola;
 	}
+
 	public SrednjaSkola getSrednjaSkola() {
 		return srednjaSkola;
 	}
+
 	public void setSrednjaSkola(SrednjaSkola srednjaSkola) {
 		this.srednjaSkola = srednjaSkola;
 	}

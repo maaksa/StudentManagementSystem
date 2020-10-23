@@ -16,8 +16,10 @@ public class SkolskaGodina {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSkolskaGodina;
 
-	private List<Predmet> predemti;
-	private List<Nastavnik> nastavnici;
+	// Da li trebaju liste ili samo ID
+	// private List<Predmet> predemti;
+	// private List<Nastavnik> nastavnici;
+	// private List<Student> studenti;
 
 	public SkolskaGodina() {
 		super();
@@ -30,21 +32,14 @@ public class SkolskaGodina {
 	public void setIdSkolskaGodina(int idSkolskaGodina) {
 		this.idSkolskaGodina = idSkolskaGodina;
 	}
-
-	public List<Predmet> getPredemti() {
-		return predemti;
-	}
-
-	public void setPredemti(List<Predmet> predemti) {
-		this.predemti = predemti;
-	}
-
-	public List<Nastavnik> getNastavnici() {
-		return nastavnici;
-	}
-
-	public void setNastavnici(List<Nastavnik> nastavnici) {
-		this.nastavnici = nastavnici;
-	}
-
+	/*
+	 * public List<Predmet> getPredemti() { return predemti; }
+	 * 
+	 * public void setPredemti(List<Predmet> predemti) { this.predemti = predemti; }
+	 * 
+	 * public List<Nastavnik> getNastavnici() { return nastavnici; }
+	 * 
+	 * public void setNastavnici(List<Nastavnik> nastavnici) { this.nastavnici =
+	 * nastavnici; }
+	 */
 }

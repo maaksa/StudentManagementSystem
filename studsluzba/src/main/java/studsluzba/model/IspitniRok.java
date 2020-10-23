@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "ispitniRok")
@@ -20,8 +20,12 @@ public class IspitniRok {
 
 	private LocalDate datumPocetka;
 	private LocalDate datumZavrsetka;
+
+	@OneToMany(mappedBy = "idZvanje")
 	private List<Ispit> ispiti;
-	private SkolskaGodina skolskaGod;
+
+	// provera
+	// private SkolskaGodina skolskaGod;
 
 	public IspitniRok(int idIspitniRok, LocalDate datumPocetka, LocalDate datumZavrsetka, List<Ispit> ispiti) {
 		this.idIspitniRok = idIspitniRok;
@@ -61,10 +65,5 @@ public class IspitniRok {
 	public void setIspiti(List<Ispit> ispiti) {
 		this.ispiti = ispiti;
 	}
-	public SkolskaGodina getSkolskaGod() {
-		return skolskaGod;
-	}
-	public void setSkolskaGod(SkolskaGodina skolskaGod) {
-		this.skolskaGod = skolskaGod;
-	}
+
 }

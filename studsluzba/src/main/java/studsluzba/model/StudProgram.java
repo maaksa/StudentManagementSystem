@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "studProgram")
-@NamedQuery(name = "StudProgram.findAll", query = "SELECT s FROM StudProgram s")
+//@NamedQuery(name = "StudProgram.findAll", query = "SELECT s FROM StudProgram s")
 public class StudProgram {
 
 	@Id
@@ -23,11 +23,17 @@ public class StudProgram {
 	private LocalDate godinaAkreditacije;
 	private int trajanje;
 	private String nazivZvanja;
+	
+	@OneToOne
+	@JoinColumn(name = "idVrstaStudija")
 	private VrstaStudija vrstaStudija; 	
+	
+	@OneToOne
+	@JoinColumn(name = "idStudIndex")
+	private StudIndex studIndex;
 
 	// bi-directional many-to-one association to Student
-	@OneToMany(mappedBy = "studProgram")
-	private List<Student> students;
+	
 
 	@OneToMany(mappedBy = "studProgram")
 	private List<Predmet> predmeti;
@@ -83,14 +89,7 @@ public class StudProgram {
 		this.nazivZvanja = nazivZvanja;
 	}
 
-	public List<Student> getStudents() {
-		return this.students;
-	}
-
-	public void setStudents(List<Student> students) {
-		this.students = students;
-	}
-
+	
 	/*
 	public Student addStudent(Student student) {
 		getStudents().add(student);

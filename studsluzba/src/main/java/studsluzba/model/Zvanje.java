@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Zvanje {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Zvanjeid;
+	private int idZvanje;
 
 	private LocalDate datumIzbora;
 	private String uzaNaucnaOblast;
@@ -24,18 +24,18 @@ public class Zvanje {
 	}
 
 	public Zvanje(int zvanjeid, LocalDate datumIzbora, String uzaNaucnaOblast, String nazivZvanja) {
-		Zvanjeid = zvanjeid;
+		idZvanje = zvanjeid;
 		this.datumIzbora = datumIzbora;
 		this.uzaNaucnaOblast = uzaNaucnaOblast;
 		this.nazivZvanja = nazivZvanja;
 	}
 
 	public int getZvanjeid() {
-		return Zvanjeid;
+		return idZvanje;
 	}
 
 	public void setZvanjeid(int zvanjeid) {
-		Zvanjeid = zvanjeid;
+		idZvanje = zvanjeid;
 	}
 
 	public LocalDate getDatumIzbora() {

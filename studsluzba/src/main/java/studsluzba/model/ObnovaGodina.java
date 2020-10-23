@@ -13,12 +13,13 @@ public class ObnovaGodina {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idObnovaGodina;
 	
+	/*
 	private Student student;
 	private SkolskaGodina skolskaGodina;
 	private List<Predmet> predmetPrenos;
 	private LocalDate datum;
 	private String napomena;
-	
+	*/
 	
 	public ObnovaGodina() {
 		super();

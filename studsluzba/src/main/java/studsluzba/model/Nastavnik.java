@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +24,8 @@ public class Nastavnik
 	private String srednjeIme;
 	private String email;
 	private String obrazovanje;
+	
+	@OneToMany(mappedBy="idZvanje")
 	private List<Zvanje> zvanja;
 
 	public Nastavnik(int idNastavnik, String ime, String prezime, String srednjeIme, String email, String obrazovanje) 

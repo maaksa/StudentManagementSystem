@@ -3,25 +3,32 @@ package studsluzba.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 public class SlusaPredmet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSlusaPredmet;
+	
+	@OneToOne
+	@JoinColumn(name = "idStudent")
 	private Student student;
-	private Predmet predmet;
-	private SkolskaGodina skolskaGodina;
+	
+	@OneToOne
+	@JoinColumn(name = "idDrziPredmet")
+	private DrziPredmet drziPredmet;
 
 	public SlusaPredmet() {
 		super();
 	}
 
-	public SlusaPredmet(Student student, Predmet predmet, SkolskaGodina skolskaGodina) {
+	public SlusaPredmet(Student student, DrziPredmet drziPredmet) {
 		super();
 		this.student = student;
-		this.predmet = predmet;
-		this.skolskaGodina = skolskaGodina;
+		this.drziPredmet = drziPredmet;
+
 	}
 
 	public Student getStudent() {
@@ -32,20 +39,14 @@ public class SlusaPredmet {
 		this.student = student;
 	}
 
-	public Predmet getPredmet() {
-		return predmet;
+	public DrziPredmet getDrziPredmet() {
+		return drziPredmet;
 	}
 
-	public void setPredmet(Predmet predmet) {
-		this.predmet = predmet;
+	public void setDrziPredmet(DrziPredmet drziPredmet) {
+		this.drziPredmet = drziPredmet;
 	}
-
-	public SkolskaGodina getSkolskaGodina() {
-		return skolskaGodina;
-	}
-
-	public void setSkolskaGodina(SkolskaGodina skolskaGodina) {
-		this.skolskaGodina = skolskaGodina;
-	}
+	
+	
 
 }

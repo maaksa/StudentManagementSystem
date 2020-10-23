@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 public class UpisGodina {
 
@@ -12,10 +13,10 @@ public class UpisGodina {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUpisGodina;
 	
-	
+	@OneToOne
 	private SkolskaGodina skolskaGodina;
 	
-	private Student student;
+	//private Student student;
 	private int godinaUpisa;
 	private LocalDate datum;
 	private String napomena;
