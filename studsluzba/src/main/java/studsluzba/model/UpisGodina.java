@@ -2,11 +2,17 @@ package studsluzba.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name = "upisGodina")
 public class UpisGodina {
 
 	@Id
@@ -14,10 +20,12 @@ public class UpisGodina {
 	private int idUpisGodina;
 	
 	@OneToOne
+	@JoinColumn(name = "idSkolskaGodina")
 	private SkolskaGodina skolskaGodina;
 	
-	//private Student student;
-	private int godinaUpisa;
+	@OneToOne
+	@JoinColumn(name = "idStudent")
+	private Student student;
 	private LocalDate datum;
 	private String napomena;
 

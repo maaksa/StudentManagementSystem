@@ -12,7 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "student")
-@NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s")
+//@NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s")
 public class Student  {
 
 
@@ -46,9 +46,9 @@ public class Student  {
 	@JoinColumn(name = "idSrednjaSkola")
 	private SrednjaSkola srednjaSkola;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "idVisokaSkola")
-	private VisokaSkola VisokaSkola;
+	private VisokaSkola visokaSkola;
 
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idStudIndex")
@@ -261,14 +261,16 @@ public class Student  {
 		this.prelaz = prelaz;
 	}
 
+	
 	public VisokaSkola getVisokaSkola() {
-		return VisokaSkola;
+		return visokaSkola;
 	}
 
 	public void setVisokaSkola(VisokaSkola visokaSkola) {
-		VisokaSkola = visokaSkola;
+		visokaSkola = visokaSkola;
 	}
 
+	
 	public SrednjaSkola getSrednjaSkola() {
 		return srednjaSkola;
 	}

@@ -35,7 +35,8 @@ public class StudProgram {
 	// bi-directional many-to-one association to Student
 	
 
-	@OneToMany(mappedBy = "studProgram")
+	@OneToMany
+	@JoinColumn(name = "idPredmet")
 	private List<Predmet> predmeti;
 
 	public StudProgram() {

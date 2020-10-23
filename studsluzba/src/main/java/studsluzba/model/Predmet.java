@@ -32,10 +32,11 @@ public class Predmet {
 	@JoinColumn(name = "idPredIspitne")
 	private List<PredispitneObaveze> obaveze;
 
-		//Provera da li treba 
-	  @ManyToOne //(optional = true)
-	  @JoinColumn(name = "idstudProgram") private StudProgram studProgram;
-	 
+	// Provera da li treba
+	@ManyToOne // (optional = true)
+	@JoinColumn(name = "idstudProgram")
+	private StudProgram studProgram;
+
 	public Predmet() {
 		super();
 	}
