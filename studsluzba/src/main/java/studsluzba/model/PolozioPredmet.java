@@ -56,7 +56,9 @@ public class PolozioPredmet {
 	public StudIndex getStudent() {
 		return studentIndex;
 	}
-
+	public StudIndex getStudentIndex() {
+		return studentIndex;
+	}
 	public void setStudentIndex(StudIndex studentIndex) {
 		this.studentIndex = studentIndex;
 	}
@@ -68,5 +70,4 @@ public class PolozioPredmet {
 	public void setPredmet(Predmet predmet) {
 		this.predmet = predmet;
 	}
-
 }
