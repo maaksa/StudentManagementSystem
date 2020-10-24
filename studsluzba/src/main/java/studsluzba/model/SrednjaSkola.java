@@ -1,10 +1,6 @@
 package studsluzba.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "srednjaSkola")
@@ -18,23 +14,31 @@ public class SrednjaSkola {
 	private String mesto;
 	private String vrsta;
 
-	public SrednjaSkola() {
-		super();
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idStudent")
+	private Student student;
+
+	public SrednjaSkola(){
+
 	}
 
-	public SrednjaSkola(int idSrednjaSkola, String naziv, String mesto, String vrsta) {
-		this.idSrednjaSkola = idSrednjaSkola;
+	public SrednjaSkola(String naziv, String mesto, String vrsta) {
 		this.naziv = naziv;
 		this.mesto = mesto;
 		this.vrsta = vrsta;
 	}
 
-	public int getIdSrednjaSkola() {
-		return idSrednjaSkola;
+
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
-	public void setIdSrednjaSkola(int idSrednjaSkola) {
-		this.idSrednjaSkola = idSrednjaSkola;
+	public Student getStudent() {
+		return student;
+	}
+
+	public int getIdSrednjaSkola() {
+		return idSrednjaSkola;
 	}
 
 	public String getNaziv() {

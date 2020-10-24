@@ -15,4 +15,5 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 	List<Student> findStudent(String ime, String prezime);
 
 
+
 }

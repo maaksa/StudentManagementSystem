@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import studsluzba.model.Student;
+import studsluzba.model.*;
 import studsluzba.repositories.StudentRepository;
 
 
@@ -22,7 +22,32 @@ public class StudentRepositoryTest {
 	
 	@Test
     public void saveStudentTest() throws Exception {
+        SrednjaSkola srednjaSkola = new SrednjaSkola();
         Student s = new Student();
+        StudIndex studIndex = new StudIndex();
+        PolozioPredmet polozioPredmet = new PolozioPredmet();
+        StudProgram studProgram = new StudProgram();
+
+        //studProg
+
+        //polozioPred
+        polozioPredmet.setOcena(10);
+        polozioPredmet.setPredmet(null);
+
+        //index
+        studIndex.setGodina(2018);
+        studIndex.setAktivan(true);
+        studIndex.setBroj(15);
+        studIndex.setOdKadJeAktivan(LocalDate.now());
+        //studIndex.setProgram(null);
+        studIndex.addPolozioPredmet(polozioPredmet);
+
+        //srednja sk
+        srednjaSkola.setMesto("Beograd");
+        srednjaSkola.setNaziv("3. Gimnazija");
+        srednjaSkola.setVrsta("gimnazija");
+
+        //student
         s.setIme("Misa");
         s.setPrezime("Misic");
         s.setSrednjeIme("Marko");
@@ -37,17 +62,24 @@ public class StudentRepositoryTest {
         s.setMestoRodjenja("Beograd");
         s.setNacionalnost("Srbina");
         s.setPol('m');
-
+        s.setPrelaz(false);
+        s.setUspehSrednjaSKola(4.50);
+        s.setPrivemail("mm@gmail.com");
+        s.setStudemail("mm@raf.rs");
+        s.setSrednjaSkola(srednjaSkola);
+        s.setUpisaoPrvuGodinu(false);
+        s.setVisokaSkola(null);
+        s.addIndex(studIndex);
 
         studRepo.save(s);
     }
 	
-	@Test
+	/*@Test
     public void findStudentTest() throws Exception {        
         List<Student> studenti = studRepo.findStudent("misa", null);
         for(Student s:studenti)
         	System.out.println(s);
-	}
+	}*/
         
    }
 

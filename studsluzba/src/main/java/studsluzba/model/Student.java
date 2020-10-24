@@ -2,6 +2,7 @@ package studsluzba.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -41,22 +42,29 @@ public class Student {
     private double uspehPrijemni;
     private boolean prelaz;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "idSrednjaSkola")
     private SrednjaSkola srednjaSkola;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idVisokaSkola")
     private VisokaSkola visokaSkola;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idStudIndex")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<StudIndex> indexi;
+
+    public void addIndex(StudIndex studIndex) {
+        if (indexi == null) {
+            indexi = new ArrayList<>();
+        }
+        indexi.add(studIndex);
+        studIndex.setStudent(this);
+    }
 
     @OneToMany(mappedBy = "index")
     private List<SlusaPredmet> slusaPredmet;
 
-    public Student(){
+    public Student() {
 
     }
 

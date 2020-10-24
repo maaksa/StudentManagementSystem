@@ -1,102 +1,105 @@
 package studsluzba.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "studIndex")
 public class StudIndex {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idStudIndex;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idStudIndex;
 
-	@ManyToOne
-	private StudProgram program;
-	
-	@OneToOne
-	@JoinColumn(name = "idStudent")
-	private Student student;
-	
-	private int broj;
-	private int godina;
-	private boolean aktivan;
-	private LocalDate odKadJeAktivan;
-	
-	@OneToMany(mappedBy = "studentIndex")
-	private List<PolozioPredmet> polozioPredmet;
+ /*   @ManyToOne(cascade = CascadeType.ALL)
+    private StudProgram program;*/
 
-	public StudIndex(int idStudIndex, int broj, int godina, StudProgram program, boolean aktivan, LocalDate odKadJeAktivan) {
-		super();
-		this.idStudIndex = idStudIndex;
-		this.broj = broj;
-		this.godina = godina;
-		this.program = program;
-		this.aktivan = aktivan;
-		this.odKadJeAktivan = odKadJeAktivan;
-	}
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idStudent")
+    private Student student;
 
-	public int getIdStudIndex() {
-		return idStudIndex;
-	}
+    private int broj;
+    private int godina;
+    private boolean aktivan;
+    private LocalDate odKadJeAktivan;
 
-	public void setIdStudIndex(int idStudIndex) {
-		this.idStudIndex = idStudIndex;
-	}
+    @OneToMany(mappedBy = "studentIndex", cascade = CascadeType.ALL)
+    private List<PolozioPredmet> polozioPredmete;
 
-	public int getBroj() {
-		return broj;
-	}
+    public StudIndex(int broj, int godina, StudProgram program, boolean aktivan, LocalDate odKadJeAktivan) {
+        this.broj = broj;
+        this.godina = godina;
+        //this.program = program;
+        this.aktivan = aktivan;
+        this.odKadJeAktivan = odKadJeAktivan;
+    }
 
-	public void setBroj(int broj) {
-		this.broj = broj;
-	}
+    public StudIndex() {
 
-	public int getGodina() {
-		return godina;
-	}
+    }
 
-	public void setGodina(int godina) {
-		this.godina = godina;
-	}
+    public void addPolozioPredmet(PolozioPredmet polozioPredmet) {
+        if (polozioPredmete == null) {
+            polozioPredmete = new ArrayList<>();
+        }
+        polozioPredmete.add(polozioPredmet);
+        polozioPredmet.setStudentIndex(this);
+    }
 
-	public StudProgram getProgram() {
-		return program;
-	}
+    public int getIdStudIndex() {
+        return idStudIndex;
+    }
 
-	public void setProgram(StudProgram program) {
-		this.program = program;
-	}
+    public int getBroj() {
+        return broj;
+    }
 
-	public boolean isAktivan() {
-		return aktivan;
-	}
+    public void setBroj(int broj) {
+        this.broj = broj;
+    }
 
-	public void setAktivan(boolean aktivan) {
-		this.aktivan = aktivan;
-	}
+    public int getGodina() {
+        return godina;
+    }
 
-	public LocalDate getOdKadJeAktivan() {
-		return odKadJeAktivan;
-	}
+    public void setGodina(int godina) {
+        this.godina = godina;
+    }
 
-	public void setOdKadJeAktivan(LocalDate odKadJeAktivan) {
-		this.odKadJeAktivan = odKadJeAktivan;
-	}
+/*    public StudProgram getProgram() {
+        return program;
+    }
 
-	@Override
-	public String toString() {
-		return "Studentski index = [id = " + idStudIndex + ", broj =  " + broj + ", godina = " + godina
-				+ ", studijski program " + program.getSkraceniNaziv() + ", aktivan od = " + odKadJeAktivan;
-	}
+    public void setProgram(StudProgram program) {
+        this.program = program;
+    }*/
+
+    public boolean isAktivan() {
+        return aktivan;
+    }
+
+    public void setAktivan(boolean aktivan) {
+        this.aktivan = aktivan;
+    }
+
+    public LocalDate getOdKadJeAktivan() {
+        return odKadJeAktivan;
+    }
+
+    public void setOdKadJeAktivan(LocalDate odKadJeAktivan) {
+        this.odKadJeAktivan = odKadJeAktivan;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    @Override
+    public String toString() {
+        return "Studentski index = [id = " + idStudIndex + ", broj =  " + broj + ", godina = " + godina
+                + ", studijski program " /*+ program.getSkraceniNaziv()*/ + ", aktivan od = " + odKadJeAktivan;
+    }
 
 }

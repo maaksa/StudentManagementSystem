@@ -28,12 +28,12 @@ public class StudProgram {
 	@JoinColumn(name = "idVrstaStudija")
 	private List<VrstaStudija> vrstaStudija; 	
 	
-	@OneToMany
+	/*@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idStudIndex")
-	private List<StudIndex> studIndex;
+	private List<StudIndex> studIndex;*/
 	
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idPredmet")
 	private List<Predmet> predmeti;
 
