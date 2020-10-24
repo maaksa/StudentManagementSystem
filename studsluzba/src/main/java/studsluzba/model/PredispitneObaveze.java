@@ -27,9 +27,9 @@ public class PredispitneObaveze {
 	@JoinColumn(name = "idSkolskaGodina")
 	private SkolskaGodina skolskaGodina;
 	
-	@ManyToOne
+/*	@ManyToOne
 	@JoinColumn(name = "obaveze")
-	private Predmet predmet;
+	private Predmet predmet;*/
 
 	public PredispitneObaveze() {
 		super();

@@ -7,116 +7,113 @@ import java.util.List;
 
 /**
  * The persistent class for the studProgram database table.
- * 
  */
 @Entity
 @Table(name = "studProgram")
 //@NamedQuery(name = "StudProgram.findAll", query = "SELECT s FROM StudProgram s")
 public class StudProgram {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idstudProgram;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idstudProgram;
 
-	private String naziv;
-	private String skraceniNaziv;
-	private LocalDate godinaAkreditacije;
-	private int trajanje;
-	private String nazivZvanja;
-	
-	@OneToMany
-	@JoinColumn(name = "idVrstaStudija")
-	private List<VrstaStudija> vrstaStudija; 	
-	
-	/*@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idStudIndex")
-	private List<StudIndex> studIndex;*/
-	
+    private String naziv;
+    private String skraceniNaziv;
+    private LocalDate godinaAkreditacije;
+    private int trajanje;
+    private String nazivZvanja;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idPredmet")
-	private List<Predmet> predmeti;
+    @OneToMany
+    @JoinColumn(name = "idVrstaStudija")
+    private List<VrstaStudija> vrstaStudija;
 
-	public StudProgram() {
-	}
+    /*@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idStudIndex")
+    private List<StudIndex> studIndex;*/
 
-	public int getIdstudProgram() {
-		return this.idstudProgram;
-	}
+    /*@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idPredmet")
+    private List<Predmet> predmeti;*/
 
-	public void setIdstudProgram(int idstudProgram) {
-		this.idstudProgram = idstudProgram;
-	}
+    public StudProgram() {
+    }
 
-	public String getNaziv() {
-		return this.naziv;
-	}
+    public int getIdstudProgram() {
+        return this.idstudProgram;
+    }
 
-	public void setNaziv(String naziv) {
-		this.naziv = naziv;
-	}
+    public void setIdstudProgram(int idstudProgram) {
+        this.idstudProgram = idstudProgram;
+    }
 
-	public String getSkraceniNaziv() {
-		return this.skraceniNaziv;
-	}
+    public String getNaziv() {
+        return this.naziv;
+    }
 
-	public void setSkraceniNaziv(String skraceniNaziv) {
-		this.skraceniNaziv = skraceniNaziv;
-	}
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
+    }
 
-	public LocalDate getGodinaAkreditacije() {
-		return godinaAkreditacije;
-	}
+    public String getSkraceniNaziv() {
+        return this.skraceniNaziv;
+    }
 
-	public void setGodinaAkreditacije(LocalDate godinaAkreditacije) {
-		this.godinaAkreditacije = godinaAkreditacije;
-	}
+    public void setSkraceniNaziv(String skraceniNaziv) {
+        this.skraceniNaziv = skraceniNaziv;
+    }
 
-	public int getTrajanje() {
-		return trajanje;
-	}
+    public LocalDate getGodinaAkreditacije() {
+        return godinaAkreditacije;
+    }
 
-	public void setTrajanje(int trajanje) {
-		this.trajanje = trajanje;
-	}
+    public void setGodinaAkreditacije(LocalDate godinaAkreditacije) {
+        this.godinaAkreditacije = godinaAkreditacije;
+    }
 
-	public String getNazivZvanja() {
-		return nazivZvanja;
-	}
+    public int getTrajanje() {
+        return trajanje;
+    }
 
-	public void setNazivZvanja(String nazivZvanja) {
-		this.nazivZvanja = nazivZvanja;
-	}
+    public void setTrajanje(int trajanje) {
+        this.trajanje = trajanje;
+    }
 
-	
-	/*
-	public Student addStudent(Student student) {
-		getStudents().add(student);
-		student.setStudProgram(this);
+    public String getNazivZvanja() {
+        return nazivZvanja;
+    }
 
-		return student;
-	}
+    public void setNazivZvanja(String nazivZvanja) {
+        this.nazivZvanja = nazivZvanja;
+    }
 
-	public Student removeStudent(Student student) {
-		getStudents().remove(student);
-		student.setStudProgram(null);
 
-		return student;
-	}
+    /*
+    public Student addStudent(Student student) {
+        getStudents().add(student);
+        student.setStudProgram(this);
+
+        return student;
+    }
+
+    public Student removeStudent(Student student) {
+        getStudents().remove(student);
+        student.setStudProgram(null);
+
+        return student;
+    }
 */
-	@Override
-	public String toString() {
-		return skraceniNaziv + "-" + naziv;
-	}
+    @Override
+    public String toString() {
+        return skraceniNaziv + "-" + naziv;
+    }
+/*
+    public List<Predmet> getPredmeti() {
+        return predmeti;
+    }
 
-	public List<Predmet> getPredmeti() {
-		return predmeti;
-	}
+    public void setPredmeti(List<Predmet> predmets) {
+        this.predmeti = predmets;
+    }*/
 
-	public void setPredmeti(List<Predmet> predmets) {
-		this.predmeti = predmets;
-	}
-
-	
 
 }

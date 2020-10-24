@@ -33,8 +33,8 @@ public class Student {
     private String ulica;
     private int brojUlice;
     private long brojTelefona;
-    private String Privemail;
-    private String Studemail;
+    private String privemail;
+    private String studemail;
     private String brojLicneKarte;
     private String licnuKartuIzdao;
     private boolean upisaoPrvuGodinu;
@@ -42,7 +42,7 @@ public class Student {
     private double uspehPrijemni;
     private boolean prelaz;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idSrednjaSkola")
     private SrednjaSkola srednjaSkola;
 
@@ -50,19 +50,11 @@ public class Student {
     @JoinColumn(name = "idVisokaSkola")
     private VisokaSkola visokaSkola;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<StudIndex> indexi;
 
-    public void addIndex(StudIndex studIndex) {
-        if (indexi == null) {
-            indexi = new ArrayList<>();
-        }
-        indexi.add(studIndex);
-        studIndex.setStudent(this);
-    }
-
-    @OneToMany(mappedBy = "index")
-    private List<SlusaPredmet> slusaPredmet;
+   /* @OneToMany(mappedBy = "index")
+    private List<SlusaPredmet> slusaPredmet;*/
 
     public Student() {
 
@@ -82,14 +74,22 @@ public class Student {
         this.ulica = ulica;
         this.brojUlice = brojUlice;
         this.brojTelefona = brojTelefona;
-        Privemail = privemail;
-        Studemail = studemail;
+        this.privemail = privemail;
+        this.studemail = studemail;
         this.brojLicneKarte = brojLicneKarte;
         this.licnuKartuIzdao = licnuKartuIzdao;
         this.upisaoPrvuGodinu = upisaoPrvuGodinu;
         this.uspehSrednjaSkola = uspehSrednjaSkola;
         this.uspehPrijemni = uspehPrijemni;
         this.prelaz = prelaz;
+    }
+
+    public void addIndex(StudIndex studIndex) {
+        if (indexi == null) {
+            indexi = new ArrayList<>();
+        }
+        indexi.add(studIndex);
+        studIndex.setStudent(this);
     }
 
     public int getIdstudent() {
@@ -129,8 +129,8 @@ public class Student {
                 ", ulica='" + ulica + '\'' +
                 ", brojUlice=" + brojUlice +
                 ", brojTelefona=" + brojTelefona +
-                ", Privemail='" + Privemail + '\'' +
-                ", Studemail='" + Studemail + '\'' +
+                ", Privemail='" + privemail + '\'' +
+                ", Studemail='" + studemail + '\'' +
                 ", brojLicneKarte='" + brojLicneKarte + '\'' +
                 ", licnuKartuIzdao='" + licnuKartuIzdao + '\'' +
                 ", upisaoPrvuGodinu=" + upisaoPrvuGodinu +
@@ -229,19 +229,19 @@ public class Student {
     }
 
     public String getPrivemail() {
-        return Privemail;
+        return privemail;
     }
 
     public void setPrivemail(String privemail) {
-        Privemail = privemail;
+        privemail = privemail;
     }
 
     public String getStudemail() {
-        return Studemail;
+        return studemail;
     }
 
     public void setStudemail(String studemail) {
-        Studemail = studemail;
+        studemail = studemail;
     }
 
     public String getBrojLicneKarte() {

@@ -1,6 +1,8 @@
 package studsluzba.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "polozioPredmet")
@@ -18,16 +20,27 @@ public class PolozioPredmet {
 //	private VisokaSkola visokaSkola;
 
     //student indeks da bude
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idStudIndex")
     private StudIndex studentIndex;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    /*@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idPredmet")
-    private Predmet predmet;
+    private List<Predmet> predmeti;*/
+
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "polozioPredmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<Predmet> predmeti;
 
     public PolozioPredmet() {
 
+    }
+
+    public void addPredmet(Predmet predmet) {
+        if (predmeti == null) {
+            predmeti = new ArrayList<>();
+        }
+        predmeti.add(predmet);
+        predmet.setPolozioPredmet(this);
     }
 
     public int getIdPolozioPredmet() {
@@ -54,11 +67,23 @@ public class PolozioPredmet {
         this.studentIndex = studentIndex;
     }
 
-    public Predmet getPredmet() {
-        return predmet;
+    public List<Predmet> getPredmeti() {
+        return predmeti;
     }
 
-    public void setPredmet(Predmet predmet) {
-        this.predmet = predmet;
+    public void setPredmeti(List<Predmet> predmeti) {
+        this.predmeti = predmeti;
+    }
+
+    @Override
+    public String toString() {
+        return "PolozioPredmet{" +
+                "idPolozioPredmet=" + idPolozioPredmet +
+                ", ocena=" + ocena +
+                ", ukupanBrojPoena=" + ukupanBrojPoena +
+                ", priznatSaDrugogFaksa=" + priznatSaDrugogFaksa +
+                ", studentIndex=" + studentIndex +
+                ", predmeti=" + predmeti +
+                '}';
     }
 }

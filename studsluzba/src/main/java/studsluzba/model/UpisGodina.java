@@ -31,9 +31,9 @@ public class UpisGodina {
 	@JoinColumn(name = "idStudIndex")
 	private StudIndex studentIndex;
 	
-	@OneToMany
+/*	@OneToMany
 	@JoinColumn(name = "idPredmet")
-	private List<Predmet> predmetPrenos;
+	private List<Predmet> predmetPrenos;*/
 	
 	private LocalDate datum;
 	private String napomena;

@@ -11,7 +11,6 @@ public class VisokaSkola {
 	private int idVisokaSkola;
 	private String naziv;
 
-
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idStudent")
 	private Student student;

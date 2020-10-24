@@ -33,9 +33,9 @@ public class ObnovaGodina {
 	@JoinColumn(name = "idSkolskaGodina")
 	private SkolskaGodina skolskaGodina;
 	
-	@OneToMany
+	/*@OneToMany
 	@JoinColumn(name = "idPredmet")
-	private List<Predmet> predmetPrenos;
+	private List<Predmet> predmetPrenos;*/
 	
 
 	public ObnovaGodina() {
@@ -66,13 +66,13 @@ public class ObnovaGodina {
 		this.skolskaGodina = skolskaGodina;
 	}
 
-	public List<Predmet> getPredmetPrenos() {
+	/*public List<Predmet> getPredmetPrenos() {
 		return predmetPrenos;
 	}
 
 	public void setPredmetPrenos(List<Predmet> predmetPrenos) {
 		this.predmetPrenos = predmetPrenos;
-	}
+	}*/
 
 	public LocalDate getDatum() {
 		return datum;

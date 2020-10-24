@@ -13,10 +13,11 @@ public class StudIndex {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idStudIndex;
 
- /*   @ManyToOne(cascade = CascadeType.ALL)
+   /* @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idstudProgram")
     private StudProgram program;*/
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idStudent")
     private Student student;
 
@@ -25,7 +26,7 @@ public class StudIndex {
     private boolean aktivan;
     private LocalDate odKadJeAktivan;
 
-    @OneToMany(mappedBy = "studentIndex", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "studentIndex", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<PolozioPredmet> polozioPredmete;
 
     public StudIndex(int broj, int godina, StudProgram program, boolean aktivan, LocalDate odKadJeAktivan) {

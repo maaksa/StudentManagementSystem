@@ -27,12 +27,24 @@ public class StudentRepositoryTest {
         StudIndex studIndex = new StudIndex();
         PolozioPredmet polozioPredmet = new PolozioPredmet();
         StudProgram studProgram = new StudProgram();
+        Predmet predmet = new Predmet();
+
+
+        //predmet
+        predmet.setBrojESPB(6);
+        predmet.setBrojSemestra(5);
+        predmet.setFondPredavanja(40);
+        predmet.setFondVezbi(40);
+        predmet.setOpis("bal bla bla...");
+        predmet.setNazivPredmeta("Upravljanje informacijama");
+        predmet.setSifraPredmeta("sdasd123242");
+
 
         //studProg
 
         //polozioPred
         polozioPredmet.setOcena(10);
-        polozioPredmet.setPredmet(null);
+        polozioPredmet.addPredmet(predmet);
 
         //index
         studIndex.setGodina(2018);
@@ -70,12 +82,17 @@ public class StudentRepositoryTest {
         s.setUpisaoPrvuGodinu(false);
         s.setVisokaSkola(null);
         s.addIndex(studIndex);
+        s.setUlica("Petra Petrica");
 
         studRepo.save(s);
 
-        //upit izvlacenje studenta preko broja indeksa
+        /*//upit izvlacenje studenta preko broja indeksa
         Student student = studRepo.selectStudentByIndex(15);
-        System.out.println(student);
+        System.out.println(student);*/
+
+        //upit selekcija svih položenih ispita preko broja indeksa studenta
+        List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(15);
+        System.out.println(polozioPredmeti);
 
     }
 }
