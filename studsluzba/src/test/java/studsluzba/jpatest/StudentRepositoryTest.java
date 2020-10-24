@@ -60,8 +60,8 @@ public class StudentRepositoryTest {
         srednjaSkola.setVrsta("gimnazija");
 
         //student
-        s.setIme("misa");
-        s.setPrezime("misic");
+        s.setIme("Maxa");
+        s.setPrezime("Maximovic");
         s.setSrednjeIme("Marko");
         s.setBrojLicneKarte("32425252");
         s.setBrojTelefona(060123433);
