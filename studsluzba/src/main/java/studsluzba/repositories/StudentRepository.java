@@ -14,6 +14,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 			+ "(:prezime is null or lower(s.prezime) like :prezime)")			
 	List<Student> findStudent(String ime, String prezime);
 
-
+	@Query("Select Student s from StudIndex where broj equals :br")
+	Student SelectStudentByIndex(int br);
 
 }
