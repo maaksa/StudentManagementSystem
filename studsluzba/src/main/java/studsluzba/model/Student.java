@@ -114,7 +114,30 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student [idstudent=" + idStudent + ", ime=" + ime + ", prezime=" + prezime + ", skolska godina =" + "]";
+        return "Student{" +
+                "idStudent=" + idStudent +
+                ", ime='" + ime + '\'' +
+                ", prezime='" + prezime + '\'' +
+                ", srednjeIme='" + srednjeIme + '\'' +
+                ", jmbg=" + jmbg +
+                ", daumRodjenja=" + daumRodjenja +
+                ", mestoRodjenja='" + mestoRodjenja + '\'' +
+                ", drzavljanstvo='" + drzavljanstvo + '\'' +
+                ", nacionalnost='" + nacionalnost + '\'' +
+                ", pol=" + pol +
+                ", mesto='" + mesto + '\'' +
+                ", ulica='" + ulica + '\'' +
+                ", brojUlice=" + brojUlice +
+                ", brojTelefona=" + brojTelefona +
+                ", Privemail='" + Privemail + '\'' +
+                ", Studemail='" + Studemail + '\'' +
+                ", brojLicneKarte='" + brojLicneKarte + '\'' +
+                ", licnuKartuIzdao='" + licnuKartuIzdao + '\'' +
+                ", upisaoPrvuGodinu=" + upisaoPrvuGodinu +
+                ", uspehSrednjaSkola=" + uspehSrednjaSkola +
+                ", uspehPrijemni=" + uspehPrijemni +
+                ", prelaz=" + prelaz +
+                '}';
     }
 
     public String getSrednjeIme() {
@@ -294,4 +317,5 @@ public class Student {
     public void setSrednjaSkola(SrednjaSkola srednjaSkola) {
         this.srednjaSkola = srednjaSkola;
     }
+
 }

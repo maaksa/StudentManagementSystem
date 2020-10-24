@@ -98,8 +98,13 @@ public class StudIndex {
 
     @Override
     public String toString() {
-        return "Studentski index = [id = " + idStudIndex + ", broj =  " + broj + ", godina = " + godina
-                + ", studijski program " /*+ program.getSkraceniNaziv()*/ + ", aktivan od = " + odKadJeAktivan;
+        return "StudIndex{" +
+                "idStudIndex=" + idStudIndex +
+                ", student=" + student +
+                ", broj=" + broj +
+                ", godina=" + godina +
+                ", aktivan=" + aktivan +
+                ", odKadJeAktivan=" + odKadJeAktivan +
+                '}';
     }
-
 }

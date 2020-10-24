@@ -16,11 +16,11 @@ import studsluzba.repositories.StudentRepository;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class StudentRepositoryTest {
-	
-	@Autowired
-	StudentRepository studRepo;
-	
-	@Test
+
+    @Autowired
+    StudentRepository studRepo;
+
+    @Test
     public void saveStudentTest() throws Exception {
         SrednjaSkola srednjaSkola = new SrednjaSkola();
         Student s = new Student();
@@ -48,8 +48,8 @@ public class StudentRepositoryTest {
         srednjaSkola.setVrsta("gimnazija");
 
         //student
-        s.setIme("Misa");
-        s.setPrezime("Misic");
+        s.setIme("misa");
+        s.setPrezime("misic");
         s.setSrednjeIme("Marko");
         s.setBrojLicneKarte("32425252");
         s.setBrojTelefona(060123433);
@@ -72,14 +72,11 @@ public class StudentRepositoryTest {
         s.addIndex(studIndex);
 
         studRepo.save(s);
+
+        //upit izvlacenje studenta preko broja indeksa
+        Student student = studRepo.selectStudentByIndex(15);
+        System.out.println(student);
+
     }
-	
-	/*@Test
-    public void findStudentTest() throws Exception {        
-        List<Student> studenti = studRepo.findStudent("misa", null);
-        for(Student s:studenti)
-        	System.out.println(s);
-	}*/
-        
-   }
+}
 
