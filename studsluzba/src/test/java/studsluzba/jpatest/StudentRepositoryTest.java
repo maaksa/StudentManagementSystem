@@ -1,5 +1,6 @@
 package studsluzba.jpatest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.Test;
@@ -25,6 +26,19 @@ public class StudentRepositoryTest {
         s.setIme("Misa");
         s.setPrezime("Misic");
         s.setSrednjeIme("Marko");
+        s.setBrojLicneKarte("32425252");
+        s.setBrojTelefona(060123433);
+        s.setBrojUlice(50);
+        s.setDaumRodjenja(LocalDate.now());
+        s.setDrzavljanstvo("srpsko");
+        s.setJmbg(12345678);
+        s.setMesto("Beograd");
+        s.setLicnuKartuIzdao("Izdavac");
+        s.setMestoRodjenja("Beograd");
+        s.setNacionalnost("Srbina");
+        s.setPol('m');
+
+
         studRepo.save(s);
     }
 	
