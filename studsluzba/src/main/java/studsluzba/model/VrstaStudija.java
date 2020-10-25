@@ -1,10 +1,6 @@
 package studsluzba.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="vrstaStudija")
@@ -16,8 +12,10 @@ public class VrstaStudija
 	
 	private String punNaziv;
 	private String skraceniNaziv;
-	
-	
+
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name = "idstudProgram")
+	private StudProgram studProgram;
 	
 	public VrstaStudija() {
 		super();
@@ -35,10 +33,6 @@ public class VrstaStudija
 		return idVrstaStudija;
 	}
 
-	public void setVrstaStudijaid(int vrstaStudijaid) {
-		this.idVrstaStudija = vrstaStudijaid;
-	}
-
 	public String getPunNaziv() {
 		return punNaziv;
 	}
@@ -54,6 +48,12 @@ public class VrstaStudija
 	public void setSkraceniNaziv(String skraceniNaziv) {
 		this.skraceniNaziv = skraceniNaziv;
 	}
-	
-	
+
+	public void setStudProgram(StudProgram studProgram) {
+		this.studProgram = studProgram;
+	}
+
+	public StudProgram getStudProgram() {
+		return studProgram;
+	}
 }

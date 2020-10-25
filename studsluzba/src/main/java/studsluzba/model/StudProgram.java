@@ -3,6 +3,7 @@ package studsluzba.model;
 import java.time.LocalDate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,27 +24,37 @@ public class StudProgram {
     private int trajanje;
     private String nazivZvanja;
 
-    @OneToMany
-    @JoinColumn(name = "idVrstaStudija")
-    private List<VrstaStudija> vrstaStudija;
+    @OneToMany(mappedBy = "studProgram", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<VrstaStudija> vrsteStudija;
 
     /*@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idStudIndex")
     private List<StudIndex> studIndex;*/
 
-    /*@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idPredmet")
-    private List<Predmet> predmeti;*/
+    @OneToMany(mappedBy = "studProgram", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<Predmet> predmeti;
 
     public StudProgram() {
     }
 
-    public int getIdstudProgram() {
-        return this.idstudProgram;
+    public void addVrstaStudija(VrstaStudija vrstaStudija) {
+        if (vrsteStudija == null) {
+            vrsteStudija = new ArrayList<>();
+        }
+        vrsteStudija.add(vrstaStudija);
+        vrstaStudija.setStudProgram(this);
     }
 
-    public void setIdstudProgram(int idstudProgram) {
-        this.idstudProgram = idstudProgram;
+    public void addPredmet(Predmet predmet) {
+        if (predmeti == null) {
+            predmeti = new ArrayList<>();
+        }
+        predmeti.add(predmet);
+        predmet.setStudProgram(this);
+    }
+
+    public int getIdstudProgram() {
+        return this.idstudProgram;
     }
 
     public String getNaziv() {
@@ -86,34 +97,37 @@ public class StudProgram {
         this.nazivZvanja = nazivZvanja;
     }
 
+    public List<VrstaStudija> getVrsteStudija() {
+        return vrsteStudija;
+    }
 
     /*
-    public Student addStudent(Student student) {
-        getStudents().add(student);
-        student.setStudProgram(this);
+        public Student addStudent(Student student) {
+            getStudents().add(student);
+            student.setStudProgram(this);
 
-        return student;
-    }
+            return student;
+        }
 
-    public Student removeStudent(Student student) {
-        getStudents().remove(student);
-        student.setStudProgram(null);
+        public Student removeStudent(Student student) {
+            getStudents().remove(student);
+            student.setStudProgram(null);
 
-        return student;
-    }
-*/
+            return student;
+        }
+    */
     @Override
     public String toString() {
         return skraceniNaziv + "-" + naziv;
     }
-/*
+
     public List<Predmet> getPredmeti() {
         return predmeti;
     }
 
     public void setPredmeti(List<Predmet> predmets) {
         this.predmeti = predmets;
-    }*/
+    }
 
 
 }

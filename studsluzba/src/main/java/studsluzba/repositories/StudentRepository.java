@@ -23,4 +23,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 	@Query("select p from PolozioPredmet p where p.idPolozioPredmet = (select k.student.idStudent from StudIndex k where k.broj = :br)")
 	List<PolozioPredmet> selectPolozeniPredByIndex(int br);
 
+	@Query("select p from Predmet p where p.idPredmet = (select sp.idstudProgram from StudProgram sp where sp.skraceniNaziv like :skraceni_naziv)")
+	List<Predmet> selectPredmetiByStudProg(String skraceni_naziv);
+
 }

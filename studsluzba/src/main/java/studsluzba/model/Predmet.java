@@ -28,10 +28,10 @@ public class Predmet {
 	@JoinColumn(name = "idPredIspitne")
 	private List<PredispitneObaveze> obaveze;*/
 
-	
-	/*@ManyToOne
-	@JoinColumn(name = "idstudProgram")
-	private StudProgram studProgram;*/
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idstudProgram")
+	private StudProgram studProgram;
 
     public Predmet() {
     }
@@ -104,7 +104,15 @@ public class Predmet {
         this.brojSemestra = brojSemestra;
     }
 
-	/*public List<PredispitneObaveze> getObaveze() {
+    public void setStudProgram(StudProgram studProgram) {
+        this.studProgram = studProgram;
+    }
+
+    public StudProgram getStudProgram() {
+        return studProgram;
+    }
+
+    /*public List<PredispitneObaveze> getObaveze() {
 		return obaveze;
 	}
 

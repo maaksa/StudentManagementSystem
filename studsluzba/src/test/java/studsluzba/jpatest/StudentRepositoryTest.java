@@ -28,7 +28,11 @@ public class StudentRepositoryTest {
         PolozioPredmet polozioPredmet = new PolozioPredmet();
         StudProgram studProgram = new StudProgram();
         Predmet predmet = new Predmet();
+        VrstaStudija vrstaStudija = new VrstaStudija();
 
+        //vrsta studija
+        vrstaStudija.setPunNaziv("Osnovne akademske studije");
+        vrstaStudija.setSkraceniNaziv("OAS");
 
         //predmet
         predmet.setBrojESPB(6);
@@ -39,8 +43,14 @@ public class StudentRepositoryTest {
         predmet.setNazivPredmeta("Upravljanje informacijama");
         predmet.setSifraPredmeta("sdasd123242");
 
-
         //studProg
+        studProgram.addVrstaStudija(vrstaStudija);
+        studProgram.addPredmet(predmet);
+        studProgram.setGodinaAkreditacije(LocalDate.now());
+        studProgram.setNaziv("Racunarske nauke");
+        studProgram.setSkraceniNaziv("RN");
+        studProgram.setNazivZvanja("Diplomirani informaticar");
+        studProgram.setTrajanje(8);
 
         //polozioPred
         polozioPredmet.setOcena(10);
@@ -91,8 +101,11 @@ public class StudentRepositoryTest {
         System.out.println(student);*/
 
         //upit selekcija svih položenih ispita preko broja indeksa studenta
-        List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(15);
-        System.out.println(polozioPredmeti);
+        //List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(15);
+        //System.out.println(polozioPredmeti);
+
+        List<Predmet> predmeti = studRepo.selectPredmetiByStudProg("RN");
+        System.out.println(predmet);
 
     }
 }
