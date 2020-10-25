@@ -26,6 +26,9 @@ public class StudIndex {
     private boolean aktivan;
     private LocalDate odKadJeAktivan;
 
+   // @OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+   // private List<PrijavaIspita> prijavaIspita;
+
     @OneToMany(mappedBy = "studentIndex", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<PolozioPredmet> polozioPredmete;
 

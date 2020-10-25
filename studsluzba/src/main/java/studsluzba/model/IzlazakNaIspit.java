@@ -23,6 +23,7 @@ public class IzlazakNaIspit {
 	@OneToOne
 	@JoinColumn(name = "idPrijava")
 	private PrijavaIspita prijavljenIspit;
+
 	private boolean izasaoNaIspit;
 	
 	@OneToOne

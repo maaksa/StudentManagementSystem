@@ -39,9 +39,9 @@ public class StudentRepositoryTest {
         predmet.setBrojSemestra(5);
         predmet.setFondPredavanja(40);
         predmet.setFondVezbi(40);
-        predmet.setOpis("bal bla bla...");
-        predmet.setNazivPredmeta("Upravljanje informacijama");
-        predmet.setSifraPredmeta("sdasd123242");
+        predmet.setOpis("Najjaci predmet");
+        predmet.setNazivPredmeta("Softverske komponente");
+        predmet.setSifraPredmeta("sk1");
 
         //studProg
         studProgram.addVrstaStudija(vrstaStudija);
@@ -59,21 +59,21 @@ public class StudentRepositoryTest {
         //index
         studIndex.setGodina(2018);
         studIndex.setAktivan(true);
-        studIndex.setBroj(15);
+        studIndex.setBroj(57);
         studIndex.setOdKadJeAktivan(LocalDate.now());
         //studIndex.setProgram(null);
         studIndex.addPolozioPredmet(polozioPredmet);
 
         //srednja sk
-        srednjaSkola.setMesto("Beograd");
-        srednjaSkola.setNaziv("3. Gimnazija");
-        srednjaSkola.setVrsta("gimnazija");
+        srednjaSkola.setMesto("Obrenovac");
+        srednjaSkola.setNaziv("Gimnazija u Obrenovcu");
+        srednjaSkola.setVrsta("Gimnazija");
 
         //student
-        s.setIme("Maxa");
-        s.setPrezime("Maximovic");
-        s.setSrednjeIme("Marko");
-        s.setBrojLicneKarte("32425252");
+        s.setIme("Nikola");
+        s.setPrezime("Paunovic");
+        s.setSrednjeIme("Paun");
+        s.setBrojLicneKarte("3242525235");
         s.setBrojTelefona(060123433);
         s.setBrojUlice(50);
         s.setDaumRodjenja(LocalDate.now());
@@ -86,8 +86,8 @@ public class StudentRepositoryTest {
         s.setPol('m');
         s.setPrelaz(false);
         s.setUspehSrednjaSKola(4.50);
-        s.setPrivemail("mm@gmail.com");
-        s.setStudemail("mm@raf.rs");
+        s.setPrivemail("np@gmail.com");
+        s.setStudemail("np@raf.rs");
         s.setSrednjaSkola(srednjaSkola);
         s.setUpisaoPrvuGodinu(false);
         s.setVisokaSkola(null);
@@ -101,11 +101,11 @@ public class StudentRepositoryTest {
         System.out.println(student);*/
 
         //upit selekcija svih položenih ispita preko broja indeksa studenta
-        //List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(15);
-        //System.out.println(polozioPredmeti);
+        List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(57);
+        System.out.println(polozioPredmeti);
 
-        List<Predmet> predmeti = studRepo.selectPredmetiByStudProg("RN");
-        System.out.println(predmet);
+       // List<Predmet> predmeti = studRepo.selectPredmetiByStudProg("RN");
+      //  System.out.println(predmet);
 
     }
 }
