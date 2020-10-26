@@ -68,12 +68,14 @@ public class StudentRepositoryTest {
         srednjaSkola.setMesto("Obrenovac");
         srednjaSkola.setNaziv("Gimnazija u Obrenovcu");
         srednjaSkola.setVrsta("Gimnazija");
+        srednjaSkola.setStudent(s);
+        //srednjaSkola.addStudent(s);
 
         //student
         s.setIme("Nikola");
         s.setPrezime("Paunovic");
         s.setSrednjeIme("Paun");
-        s.setBrojLicneKarte("3242525235");
+        s.setBrojLicneKarte("52156654433");
         s.setBrojTelefona(060123433);
         s.setBrojUlice(50);
         s.setDaumRodjenja(LocalDate.now());
@@ -86,27 +88,31 @@ public class StudentRepositoryTest {
         s.setPol('m');
         s.setPrelaz(false);
         s.setUspehSrednjaSKola(4.50);
-        s.setPrivemail("np@gmail.com");
-        s.setStudemail("np@raf.rs");
-        s.setSrednjaSkola(srednjaSkola);
+        s.setPrivemail("nn@gmail.com");
+        s.setStudemail("nn@raf.rs");
         s.setUpisaoPrvuGodinu(false);
         s.setVisokaSkola(null);
         s.addIndex(studIndex);
         s.setUlica("Petra Petrica");
+        s.setSrednjaSkola(srednjaSkola);
 
-        studRepo.save(s);
+        //studRepo.save(s);
 
         /*//upit izvlacenje studenta preko broja indeksa
         Student student = studRepo.selectStudentByIndex(15);
         System.out.println(student);*/
 
         //upit selekcija svih položenih ispita preko broja indeksa studenta
-        List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(57);
-        System.out.println(polozioPredmeti);
+        /*List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(57);
+        System.out.println(polozioPredmeti);*/
 
-       // List<Predmet> predmeti = studRepo.selectPredmetiByStudProg("RN");
-      //  System.out.println(predmet);
+        //upit selekcija studenta koristeci ime ili prezime ili ime i prezime
+        /*List<Student> studenti = studRepo.findStudentByNameAndSurname("nikola", null);
+        System.out.println(studenti);*/
 
+        //upit selekcija studenata koji su zavrsili odredjenu srednju skolu
+        List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
+        System.out.println(studenti);
     }
 }
 

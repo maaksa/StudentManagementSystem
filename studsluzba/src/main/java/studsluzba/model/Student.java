@@ -42,9 +42,14 @@ public class Student {
     private double uspehPrijemni;
     private boolean prelaz;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    /*@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idSrednjaSkola")
+    private SrednjaSkola srednjaSkola;*/
+
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idSrednjaSkola")
     private SrednjaSkola srednjaSkola;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idVisokaSkola")
@@ -317,5 +322,6 @@ public class Student {
     public void setSrednjaSkola(SrednjaSkola srednjaSkola) {
         this.srednjaSkola = srednjaSkola;
     }
+
 
 }

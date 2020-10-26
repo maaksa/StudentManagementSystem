@@ -1,6 +1,8 @@
 package studsluzba.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "srednjaSkola")
@@ -14,7 +16,10 @@ public class SrednjaSkola {
 	private String mesto;
 	private String vrsta;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	/*@OneToMany(mappedBy = "srednjaSkola", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	private List<Student> studenti;*/
+
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name = "idStudent")
 	private Student student;
 
@@ -28,13 +33,24 @@ public class SrednjaSkola {
 		this.vrsta = vrsta;
 	}
 
+/*	public void addStudent(Student student) {
+		if (studenti == null) {
+			studenti = new ArrayList<>();
+		}
+		studenti.add(student);
+		student.setSrednjaSkola(this);
+	}*/
 
-	public void setStudent(Student student) {
-		this.student = student;
-	}
+/*	public List<Student> getStudenti() {
+		return studenti;
+	}*/
 
 	public Student getStudent() {
 		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 	public int getIdSrednjaSkola() {
