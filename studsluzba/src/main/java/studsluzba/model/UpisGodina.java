@@ -3,15 +3,7 @@ package studsluzba.model;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
@@ -22,12 +14,12 @@ public class UpisGodina {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUpisGodina;
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name = "idSkolskaGodina")
 	private SkolskaGodina skolskaGodina;
 	
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name = "idStudIndex")
 	private StudIndex studentIndex;
 	
@@ -35,7 +27,7 @@ public class UpisGodina {
 	@JoinColumn(name = "idPredmet")
 	private List<Predmet> predmetPrenos;*/
 	
-	private LocalDate datum;
+	private int datum;
 	private String napomena;
 
 
@@ -59,9 +51,34 @@ public class UpisGodina {
 	}
 
 
+	public void setStudentIndex(StudIndex studentIndex) {
+		this.studentIndex = studentIndex;
+	}
+
 	public void setSkolskaGodina(SkolskaGodina skolskaGodina) {
 		this.skolskaGodina = skolskaGodina;
 	}
-	
-	
+
+	public int getDatum() {
+		return datum;
+	}
+
+	public void setDatum(int datum) {
+		this.datum = datum;
+	}
+
+	public String getNapomena() {
+		return napomena;
+	}
+
+	public void setNapomena(String napomena) {
+		this.napomena = napomena;
+	}
+
+	@Override
+	public String toString() {
+		return '{' +
+				"datum=" + datum +
+				'}' + '\n';
+	}
 }

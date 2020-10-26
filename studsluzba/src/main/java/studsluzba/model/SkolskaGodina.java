@@ -2,14 +2,7 @@ package studsluzba.model;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "skolskaGodina")
@@ -21,12 +14,16 @@ public class SkolskaGodina {
 	private int datum;
 	private boolean aktivna;
 
-	
-	
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idObnovaGodina")
+	private ObnovaGodina obnovaGodine;
+
+	/* ODKOMENTARISATI
 	@OneToMany
 	@JoinColumn(name = "idIspitniRok") 
 	private List<IspitniRok> ispitniRokovi;
-
+	*/
 	public SkolskaGodina() {
 		super();
 	}
@@ -48,4 +45,27 @@ public class SkolskaGodina {
 	 * public void setNastavnici(List<Nastavnik> nastavnici) { this.nastavnici =
 	 * nastavnici; }
 	 */
+
+	public int getDatum() {
+		return datum;
+	}
+
+	public void setDatum(int datum) {
+		this.datum = datum;
+	}
+
+	public boolean isAktivna() {
+		return aktivna;
+	}
+
+	public void setAktivna(boolean aktivna) {
+		this.aktivna = aktivna;
+	}
+
+	@Override
+	public String toString() {
+		return "SkolskaGodina{" +
+				"datum=" + datum +
+				'}';
+	}
 }

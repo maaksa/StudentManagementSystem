@@ -5,10 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import studsluzba.model.PolozioPredmet;
-import studsluzba.model.Predmet;
-import studsluzba.model.StudIndex;
-import studsluzba.model.Student;
+import studsluzba.model.*;
 
 public interface StudentRepository extends CrudRepository<Student, Integer> {
 
@@ -23,5 +20,11 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 
     @Query("select s from Student s inner join s.srednjaSkola as sr where lower(sr.naziv) like :ime_srednje_skole")
     List<Student> findStudentByHighSchool(String ime_srednje_skole);
+
+    @Query("select u from UpisGodina u inner join u.studentIndex as si where si.broj = :br")
+    List<UpisGodina> findUpisaneGodineByIndex(int br);
+
+    @Query("select o from ObnovaGodina o inner join o.studentIndeks as si where si.broj = :br")
+    List<ObnovaGodina> findObnovljeneGodineByIndex(int br);
 
 }

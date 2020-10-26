@@ -30,6 +30,13 @@ public class StudIndex {
    // private List<PrijavaIspita> prijavaIspita;
 
     @OneToMany(mappedBy = "studentIndex", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<UpisGodina> upisGodina;
+
+    @OneToMany(mappedBy = "studentIndeks", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<ObnovaGodina> obnovljeneGodine;
+
+
+    @OneToMany(mappedBy = "studentIndex", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<PolozioPredmet> polozioPredmete;
 
     public StudIndex(int broj, int godina, StudProgram program, boolean aktivan, LocalDate odKadJeAktivan) {
@@ -50,6 +57,22 @@ public class StudIndex {
         }
         polozioPredmete.add(polozioPredmet);
         polozioPredmet.setStudentIndex(this);
+    }
+
+    public void addUpisGodina(UpisGodina upisGodine) {
+        if (upisGodina == null) {
+            upisGodina = new ArrayList<>();
+        }
+        upisGodina.add(upisGodine);
+        upisGodine.setStudentIndex(this);
+    }
+
+    public void addObnovaGodine(ObnovaGodina obnovaGodina) {
+        if (obnovljeneGodine == null) {
+            obnovljeneGodine = new ArrayList<>();
+        }
+        obnovljeneGodine.add(obnovaGodina);
+        obnovaGodina.setStudentIndex(this);
     }
 
     public int getIdStudIndex() {

@@ -29,6 +29,25 @@ public class StudentRepositoryTest {
         StudProgram studProgram = new StudProgram();
         Predmet predmet = new Predmet();
         VrstaStudija vrstaStudija = new VrstaStudija();
+        SkolskaGodina skolskaGodina = new SkolskaGodina();
+        ObnovaGodina obnovaGodina = new ObnovaGodina();
+        UpisGodina upisGodina = new UpisGodina();
+
+
+        //Upis godine
+        upisGodina.setDatum(2020);
+        upisGodina.setSkolskaGodina(skolskaGodina);
+        upisGodina.setNapomena("napomena");
+
+        //Obnova godine
+        obnovaGodina.setDatum(2020);
+        obnovaGodina.setNapomena("Napomena");
+        obnovaGodina.setSkolskaGodina(skolskaGodina);
+
+        //Skolska godina
+        skolskaGodina.setDatum(2020);
+        skolskaGodina.setAktivna(true);
+
 
         //vrsta studija
         vrstaStudija.setPunNaziv("Osnovne akademske studije");
@@ -63,6 +82,8 @@ public class StudentRepositoryTest {
         studIndex.setOdKadJeAktivan(LocalDate.now());
         //studIndex.setProgram(null);
         studIndex.addPolozioPredmet(polozioPredmet);
+        studIndex.addUpisGodina(upisGodina);
+        studIndex.addObnovaGodine(obnovaGodina);
 
         //srednja sk
         srednjaSkola.setMesto("Obrenovac");
@@ -96,6 +117,7 @@ public class StudentRepositoryTest {
         s.setUlica("Petra Petrica");
         s.setSrednjaSkola(srednjaSkola);
 
+
         //studRepo.save(s);
 
         /*//upit izvlacenje studenta preko broja indeksa
@@ -111,8 +133,15 @@ public class StudentRepositoryTest {
         System.out.println(studenti);*/
 
         //upit selekcija studenata koji su zavrsili odredjenu srednju skolu
-        List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
-        System.out.println(studenti);
+        //List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
+        //System.out.println(studenti);
+
+       // List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(57);
+       // System.out.println(upisaneGodine);
+
+         List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(57);
+        System.out.println(obnovaGodine);
+
     }
 }
 
