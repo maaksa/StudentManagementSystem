@@ -24,10 +24,7 @@ public class PolozioPredmet {
     @JoinColumn(name = "idStudIndex")
     private StudIndex studentIndex;
 
-    /*@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idPredmet")
-    private List<Predmet> predmeti;*/
-
+    //suvisno?  jedan ispit
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "polozioPredmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Predmet> predmeti;
 
