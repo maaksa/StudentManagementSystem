@@ -30,8 +30,6 @@ public class SlusaPredmet {
 
 	}
 
-	
-
 	public DrziPredmet getDrziPredmet() {
 		return drziPredmet;
 	}

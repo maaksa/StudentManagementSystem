@@ -37,6 +37,7 @@ public class StudentRepositoryTest {
         Zvanje zvanje = new Zvanje();
         Nastavnik nastavnik = new Nastavnik();
         IzlazakNaIspit izlazakNaIspit = new IzlazakNaIspit();
+        IzlazakNaIspit izlazakNaIspit1 = new IzlazakNaIspit();
         PredispitneObaveze predispitneObaveze = new PredispitneObaveze();
         OsvojeniPredispitniPoeni osvojeniPredispitniPoeni = new OsvojeniPredispitniPoeni();
         SlusaPredmet slusaPredmet = new SlusaPredmet();
@@ -98,6 +99,8 @@ public class StudentRepositoryTest {
         ispit.setNastavnik(nastavnik);
         ispit.addPrijavaIspita(prijavaIspita);
         ispit.setSifraIspita("1234");
+        ispit.addIzlazakNaIspit(izlazakNaIspit);
+        ispit.addIzlazakNaIspit(izlazakNaIspit1);
 
         //izlazak na Ispit
 
@@ -105,9 +108,15 @@ public class StudentRepositoryTest {
         izlazakNaIspit.setIzasaoNaIspit(true);
         izlazakNaIspit.setPonistavanje(false);
         izlazakNaIspit.setBrojOsvojenihPoena(95);
-        izlazakNaIspit.setIspit(ispit);
         izlazakNaIspit.setPrijavljenIspit(prijavaIspita);
+        //izlazakNaIspit.setIspit(ispit);
 
+        izlazakNaIspit1.setNapomena("Staaaaaa god");
+        izlazakNaIspit1.setIzasaoNaIspit(true);
+        izlazakNaIspit1.setPonistavanje(false);
+        izlazakNaIspit1.setBrojOsvojenihPoena(90);
+        izlazakNaIspit1.setPrijavljenIspit(prijavaIspita);
+        //izlazakNaIspit1.setIspit(ispit);
 
         //prijavaIpsita
         prijavaIspita.addStudIndex(studIndex);

@@ -1,12 +1,6 @@
 package studsluzba.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "izlazakIspit")
@@ -21,12 +15,12 @@ public class IzlazakNaIspit {
 	private boolean izasaoNaIspit;
 
 	// proveriti
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idPrijava")
 	private PrijavaIspita prijavljenIspit;
 
 	
-	@OneToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name = "idIspit") 
 	private Ispit ispit;
 
@@ -89,5 +83,7 @@ public class IzlazakNaIspit {
 	public void setIspit(Ispit ispit) {
 		this.ispit = ispit;
 	}
+
+
 
 }

@@ -23,6 +23,13 @@ public class Ispit {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idPredmet")
 	private Predmet predmet;
+
+	/*@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idIzlazak")
+	private IzlazakNaIspit izlazakNaIspit;*/
+
+	@OneToMany(mappedBy = "ispit", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	private List<IzlazakNaIspit> izlasciNaIspit;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idNastavnik")
@@ -48,6 +55,14 @@ public class Ispit {
 		}
 		prijavaIspita.add(prijava);
 		prijava.setIspit(this);
+	}
+
+	public void addIzlazakNaIspit(IzlazakNaIspit izlazakNaIspit){
+		if(izlasciNaIspit == null){
+			izlasciNaIspit = new ArrayList<>();
+		}
+		izlasciNaIspit.add(izlazakNaIspit);
+		izlazakNaIspit.setIspit(this);
 	}
 
 	public int getIdIspit() {
@@ -105,4 +120,5 @@ public class Ispit {
 	public void setSifraIspita(String sifraIspita) {
 		this.sifraIspita = sifraIspita;
 	}
+
 }
