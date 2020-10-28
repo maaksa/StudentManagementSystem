@@ -12,6 +12,7 @@ public class DrziPredmet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDrziPredmet;
+	private String sifra;
 	
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name = "idPredmet")
@@ -75,7 +76,16 @@ public class DrziPredmet {
 		return slusaPredmet;
 	}
 
+	public String getSifra() {
+		return sifra;
+	}
+
+	public void setSifra(String sifra) {
+		this.sifra = sifra;
+	}
+
 	public void setSlusaPredmet(List<SlusaPredmet> slusaPredmet) {
 		this.slusaPredmet = slusaPredmet;
+
 	}
 }

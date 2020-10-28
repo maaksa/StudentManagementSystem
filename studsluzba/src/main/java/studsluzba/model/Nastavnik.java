@@ -22,6 +22,9 @@ public class Nastavnik {
     @OneToMany(mappedBy = "nastavnik", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Zvanje> zvanja;
 
+    @OneToMany(mappedBy = "nastavnik", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<DrziPredmet> drziPredmet;
+
     public Nastavnik(String ime, String prezime, String srednjeIme, String email, String obrazovanje) {
         this.ime = ime;
         this.prezime = prezime;
@@ -32,6 +35,14 @@ public class Nastavnik {
 
     public Nastavnik() {
 
+    }
+
+    public void addDrziPredmet(DrziPredmet drzi) {
+        if (drziPredmet == null) {
+            drziPredmet = new ArrayList<>();
+        }
+        drziPredmet.add(drzi);
+        drzi.setNastavnik(this);
     }
 
     public void addZvanje(Zvanje zvanje) {

@@ -41,6 +41,9 @@ public class StudentRepositoryTest {
         OsvojeniPredispitniPoeni osvojeniPredispitniPoeni = new OsvojeniPredispitniPoeni();
         SlusaPredmet slusaPredmet = new SlusaPredmet();
         DrziPredmet drziPredmet = new DrziPredmet();
+        PredispitneObaveze predispitneObaveze1 = new PredispitneObaveze();
+
+
 
         // Slusa predmet
         slusaPredmet.setIndex(studIndex);
@@ -48,21 +51,28 @@ public class StudentRepositoryTest {
 
         //Drzi predmet
         drziPredmet.addSlusaPredmet(slusaPredmet);
-        drziPredmet.setNastavnik(nastavnik);
+        //drziPredmet.setNastavnik(nastavnik);
         drziPredmet.setPredmet(predmet);
         drziPredmet.setSkolskaGod(skolskaGodina);
+        drziPredmet.setSifra("1234");
 
         //Osvojene pred
-        osvojeniPredispitniPoeni.setUkupanBrojPoena(95);
+        osvojeniPredispitniPoeni.setUkupanBrojPoena(45);
         osvojeniPredispitniPoeni.setStudentIndeks(studIndex);
         osvojeniPredispitniPoeni.addPredIspitne(predispitneObaveze);
-        osvojeniPredispitniPoeni.addPredIspitne(predispitneObaveze);
+
 
         //pred ispitne obaveze
         predispitneObaveze.setPoeni(45);
         predispitneObaveze.setMaxBrp(50);
         predispitneObaveze.setVrstaObabeza("Kolokvijum");
         predispitneObaveze.setSkolskaGodina(skolskaGodina);
+
+
+        predispitneObaveze1.setPoeni(30);
+        predispitneObaveze1.setMaxBrp(50);
+        predispitneObaveze1.setVrstaObabeza("Kolokvijum");
+        predispitneObaveze1.setSkolskaGodina(skolskaGodina);
 
 
 
@@ -73,6 +83,7 @@ public class StudentRepositoryTest {
         nastavnik.setEmail("pp@raf.rs");
         nastavnik.setObrazovanje("treci stepen");
         nastavnik.setSrednjeIme("Pera");
+        nastavnik.addDrziPredmet(drziPredmet);
 
         //zvanje
         zvanje.setDatumIzbora(LocalDate.now());
@@ -131,7 +142,7 @@ public class StudentRepositoryTest {
         predmet.setSifraPredmeta("sk1");
         predmet.setIspit(ispit);
         predmet.addPredIspitne(predispitneObaveze);
-        predmet.addPredIspitne(predispitneObaveze);
+        predmet.addPredIspitne(predispitneObaveze1);
 
 
         //studProg
@@ -192,7 +203,7 @@ public class StudentRepositoryTest {
 
 
 
-       // studRepo.save(s);
+        //studRepo.save(s);
 
         //upit izvlacenje studenta preko broja indeksa
        // Student student = studRepo.selectStudentByIndex(45);

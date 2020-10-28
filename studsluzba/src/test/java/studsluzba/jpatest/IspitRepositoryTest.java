@@ -29,8 +29,8 @@ public class IspitRepositoryTest {
         //Float avg = ispitRepository.getAverageGradeOnTheExam("1234");
        // System.out.println(avg);
 
-      //  List<PredispitneObaveze> predispitneObaveze = ispitRepository.getPoint(45,"Softverske komponente", 2020);
-       // System.out.println(predispitneObaveze);
+        List<PredispitneObaveze> predispitneObaveze = ispitRepository.getPoint(45,"Softverske komponente", 2020);
+        System.out.println(predispitneObaveze);
     }
 
 }

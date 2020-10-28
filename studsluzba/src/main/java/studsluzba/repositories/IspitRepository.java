@@ -23,7 +23,7 @@ public interface IspitRepository extends CrudRepository<Ispit, Integer> {
     //        "where pi.ispit.predmet.nazivPredmeta like :nazivPredmeta and s.broj = :broj)")
    // Float getCountIspitOut(String nazivPredmeta,int broj);
 
-    @Query("select p.poeni from PredispitneObaveze p where p.predmet.idPredmet = (select pre.predmet.idPredmet from" +
+    @Query("select p from PredispitneObaveze p where p.predmet.idPredmet = (select pre.predmet.idPredmet from" +
             " DrziPredmet pre where pre.predmet.nazivPredmeta like :naziv and" +
             " pre.skolskaGod.datum = :godina and pre.idDrziPredmet = (select sl.drziPredmet.idDrziPredmet from SlusaPredmet sl where " +
             "sl.index.broj = :broj))")

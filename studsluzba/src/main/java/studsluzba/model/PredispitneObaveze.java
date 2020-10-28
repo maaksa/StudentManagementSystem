@@ -13,7 +13,8 @@ public class PredispitneObaveze {
 	private int idPredIspitne;
 
 	private String vrstaObabeza;
-	private int poeni;	
+	private int poeni;
+	private  int maxBrp;
 	
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name = "idSkolskaGodina")
@@ -32,20 +33,6 @@ public class PredispitneObaveze {
 		super();
 	}
 
-	public PredispitneObaveze( String vrstaObabeza, int maxBrp) {
-		this.vrstaObabeza = vrstaObabeza;
-		this.poeni = maxBrp;
-	}
-
-
-
-	public int getMaxBrp() {
-		return poeni;
-	}
-
-	public void setMaxBrp(int maxBrp) {
-		this.poeni = maxBrp;
-	}
 
 	public String getVrstaObabeza() {
 		return vrstaObabeza;
@@ -61,6 +48,14 @@ public class PredispitneObaveze {
 
 	public void setPoeni(int poeni) {
 		this.poeni = poeni;
+	}
+
+	public int getMaxBrp() {
+		return maxBrp;
+	}
+
+	public void setMaxBrp(int maxBrp) {
+		this.maxBrp = maxBrp;
 	}
 
 	public SkolskaGodina getSkolskaGodina() {
@@ -87,7 +82,10 @@ public class PredispitneObaveze {
 		this.osvojeniPredispitniPoeni = osvojeniPredispitniPoeni;
 	}
 
-	public void setIdPredIspitne(int idPredIspitne) {
-		this.idPredIspitne = idPredIspitne;
+	@Override
+	public String toString() {
+		return "PredispitneObaveze{" +
+				"poeni=" + poeni +
+				'}';
 	}
 }
