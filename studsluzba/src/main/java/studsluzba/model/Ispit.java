@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -16,36 +17,40 @@ public class Ispit {
 	private LocalDate datumOdrzavanja;
 	private String vremePocetka;
 	private boolean unetiPoeni;
-	
-	@OneToOne
-	@JoinColumn(name = "idPredmet") 
+
+	//ne treba
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idPredmet")
 	private Predmet predmet;
 	
-	@OneToOne 
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idNastavnik")
 	private Nastavnik nastavnik;
 
-	@OneToMany(mappedBy = "ispit")
+	@OneToMany(mappedBy = "ispit", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	private List<PrijavaIspita> prijavaIspita;
 
 	public Ispit() {
 		super();
 	}
 
-	public Ispit(int idIspit, LocalDate datumOdrzavanja, Predmet predmet, Nastavnik nastavnik, String vremePocetka) {
-		this.idIspit = idIspit;
+	public Ispit(LocalDate datumOdrzavanja, Predmet predmet, Nastavnik nastavnik, String vremePocetka) {
 		this.datumOdrzavanja = datumOdrzavanja;
-		this.predmet = predmet;
+		//this.predmet = predmet;
 		this.nastavnik = nastavnik;
 		this.vremePocetka = vremePocetka;
 	}
 
-	public int getIdIspit() {
-		return idIspit;
+	public void addPrijavaIspita(PrijavaIspita prijava){
+		if(prijavaIspita == null){
+			prijavaIspita = new ArrayList<>();
+		}
+		prijavaIspita.add(prijava);
+		prijava.setIspit(this);
 	}
 
-	public void setIdIspit(int idIspit) {
-		this.idIspit = idIspit;
+	public int getIdIspit() {
+		return idIspit;
 	}
 
 	public LocalDate getDatumOdrzavanja() {
@@ -62,6 +67,10 @@ public class Ispit {
 
 	public void setPredmet(Predmet predmet) {
 		this.predmet = predmet;
+	}
+
+	public void setIdIspit(int idIspit) {
+		this.idIspit = idIspit;
 	}
 
 	public Nastavnik getNastavnik() {
@@ -87,5 +96,6 @@ public class Ispit {
 	public void setUnetiPoeni(boolean unetiPoeni) {
 		this.unetiPoeni = unetiPoeni;
 	}
+
 
 }

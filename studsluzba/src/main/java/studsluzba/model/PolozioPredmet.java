@@ -28,6 +28,8 @@ public class PolozioPredmet {
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "polozioPredmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Predmet> predmeti;
 
+
+
     public PolozioPredmet() {
 
     }

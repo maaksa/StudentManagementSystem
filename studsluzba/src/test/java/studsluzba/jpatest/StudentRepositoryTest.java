@@ -32,7 +32,35 @@ public class StudentRepositoryTest {
         SkolskaGodina skolskaGodina = new SkolskaGodina();
         ObnovaGodina obnovaGodina = new ObnovaGodina();
         UpisGodina upisGodina = new UpisGodina();
+        Ispit ispit = new Ispit();
+        PrijavaIspita prijavaIspita = new PrijavaIspita();
+        Zvanje zvanje = new Zvanje();
+        Nastavnik nastavnik = new Nastavnik();
 
+        //nastavnil
+        nastavnik.addZvanje(zvanje);
+        nastavnik.setIme("Petar");
+        nastavnik.setPrezime("Petric");
+        nastavnik.setEmail("pp@raf.rs");
+        nastavnik.setObrazovanje("treci stepen");
+        nastavnik.setSrednjeIme("Pera");
+
+        //zvanje
+        zvanje.setDatumIzbora(LocalDate.now());
+        zvanje.setNazivZvanja("Dipl inzinjer");
+        zvanje.setUzaNaucnaOblast("truc truc...");
+
+        //ispit
+        ispit.setDatumOdrzavanja(LocalDate.now());
+        ispit.setUnetiPoeni(false);
+        ispit.setVremePocetka("12:00");
+        ispit.setPredmet(predmet);
+        ispit.setNastavnik(nastavnik);
+        ispit.addPrijavaIspita(prijavaIspita);
+
+        //prijavaIpsita
+        prijavaIspita.addStudIndex(studIndex);
+        prijavaIspita.setDatum(LocalDate.now());
 
         //Upis godine
         upisGodina.setDatum(2020);
@@ -61,6 +89,7 @@ public class StudentRepositoryTest {
         predmet.setOpis("Najjaci predmet");
         predmet.setNazivPredmeta("Softverske komponente");
         predmet.setSifraPredmeta("sk1");
+        predmet.setIspit(ispit);
 
         //studProg
         studProgram.addVrstaStudija(vrstaStudija);
@@ -72,7 +101,7 @@ public class StudentRepositoryTest {
         studProgram.setTrajanje(8);
 
         //polozioPred
-        polozioPredmet.setOcena(10);
+        polozioPredmet.setOcena(8);
         polozioPredmet.addPredmet(predmet);
 
         //index
@@ -93,9 +122,9 @@ public class StudentRepositoryTest {
         //srednjaSkola.addStudent(s);
 
         //student
-        s.setIme("Nikola");
-        s.setPrezime("Paunovic");
-        s.setSrednjeIme("Paun");
+        s.setIme("Filip");
+        s.setPrezime("Cmiljanovic");
+        s.setSrednjeIme("Fica");
         s.setBrojLicneKarte("52156654433");
         s.setBrojTelefona(060123433);
         s.setBrojUlice(50);
@@ -118,7 +147,8 @@ public class StudentRepositoryTest {
         s.setSrednjaSkola(srednjaSkola);
 
 
-        //studRepo.save(s);
+
+        studRepo.save(s);
 
         /*//upit izvlacenje studenta preko broja indeksa
         Student student = studRepo.selectStudentByIndex(15);
@@ -136,11 +166,13 @@ public class StudentRepositoryTest {
         //List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
         //System.out.println(studenti);
 
-       // List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(57);
-       // System.out.println(upisaneGodine);
+        //pregled svih upisanih godina za broj indeksa
+        // List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(57);
+        // System.out.println(upisaneGodine);
 
-         List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(57);
-        System.out.println(obnovaGodine);
+        //pregled obnovljenih godina za broj indeksa
+        /* List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(57);
+        System.out.println(obnovaGodine);*/
 
     }
 }

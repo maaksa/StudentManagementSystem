@@ -24,6 +24,10 @@ public class Predmet {
     @JoinColumn(name = "idPolozioPredmet")
     private PolozioPredmet polozioPredmet;
 
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "idIspit")
+    private Ispit ispit;
+
 	/*@OneToMany
 	@JoinColumn(name = "idPredIspitne")
 	private List<PredispitneObaveze> obaveze;*/
@@ -110,6 +114,10 @@ public class Predmet {
 
     public StudProgram getStudProgram() {
         return studProgram;
+    }
+
+    public void setIspit(Ispit ispit) {
+        this.ispit = ispit;
     }
 
     /*public List<PredispitneObaveze> getObaveze() {

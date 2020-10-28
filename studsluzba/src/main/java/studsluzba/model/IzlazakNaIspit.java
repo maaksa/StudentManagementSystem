@@ -32,7 +32,6 @@ public class IzlazakNaIspit {
 
 	public IzlazakNaIspit() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getIdIzlazak() {

@@ -1,98 +1,93 @@
 package studsluzba.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "nastavnik")
-public class Nastavnik
-{
+public class Nastavnik {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idNastavnik;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idNastavnik;
 
-	private String ime;
-	private String prezime;
-	private String srednjeIme;
-	private String email;
-	private String obrazovanje;
-	
-	@OneToMany
-	@JoinColumn(name = "idZvanje") 
-	private List<Zvanje> zvanja;
+    private String ime;
+    private String prezime;
+    private String srednjeIme;
+    private String email;
+    private String obrazovanje;
 
-	public Nastavnik(int idNastavnik, String ime, String prezime, String srednjeIme, String email, String obrazovanje) 
-	{
-		this.idNastavnik = idNastavnik;
-		this.ime = ime;
-		this.prezime = prezime;
-		this.srednjeIme = srednjeIme;
-		this.email = email;
-		this.obrazovanje = obrazovanje;
-	}
+    @OneToMany(mappedBy = "nastavnik", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<Zvanje> zvanja;
 
-	public int getIdNastavnik() {
-		return idNastavnik;
-	}
+    public Nastavnik(String ime, String prezime, String srednjeIme, String email, String obrazovanje) {
+        this.ime = ime;
+        this.prezime = prezime;
+        this.srednjeIme = srednjeIme;
+        this.email = email;
+        this.obrazovanje = obrazovanje;
+    }
 
-	public void setIdNastavnik(int idNastavnik) {
-		this.idNastavnik = idNastavnik;
-	}
+    public Nastavnik() {
 
-	public String getIme() {
-		return ime;
-	}
+    }
 
-	public void setIme(String ime) {
-		this.ime = ime;
-	}
+    public void addZvanje(Zvanje zvanje) {
+        if (zvanja == null) {
+            zvanja = new ArrayList<>();
+        }
+        zvanja.add(zvanje);
+        zvanje.setNastavnik(this);
+    }
 
-	public String getPrezime() {
-		return prezime;
-	}
+    public String getIme() {
+        return ime;
+    }
 
-	public void setPrezime(String prezime) {
-		this.prezime = prezime;
-	}
+    public void setIme(String ime) {
+        this.ime = ime;
+    }
 
-	public String getSrednjeIme() {
-		return srednjeIme;
-	}
+    public String getPrezime() {
+        return prezime;
+    }
 
-	public void setSrednjeIme(String srednjeIme) {
-		this.srednjeIme = srednjeIme;
-	}
+    public void setPrezime(String prezime) {
+        this.prezime = prezime;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getSrednjeIme() {
+        return srednjeIme;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setSrednjeIme(String srednjeIme) {
+        this.srednjeIme = srednjeIme;
+    }
 
-	public String getObrazovanje() {
-		return obrazovanje;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setObrazovanje(String obrazovanje) {
-		this.obrazovanje = obrazovanje;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public List<Zvanje> getZvanja() {
-		return zvanja;
-	}
+    public String getObrazovanje() {
+        return obrazovanje;
+    }
 
-	public void setZvanja(List<Zvanje> zvanja) {
-		this.zvanja = zvanja;
-	}
+    public void setObrazovanje(String obrazovanje) {
+        this.obrazovanje = obrazovanje;
+    }
+
+    public List<Zvanje> getZvanja() {
+        return zvanja;
+    }
+
+    public void setZvanja(List<Zvanje> zvanja) {
+        this.zvanja = zvanja;
+    }
 
 }

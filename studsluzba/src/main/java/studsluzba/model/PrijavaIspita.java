@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -9,53 +10,58 @@ import javax.persistence.*;
 @Table(name = "prijavaIspit")
 public class PrijavaIspita {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idPrijava;
-	private LocalDate datum;
-	
-	@ManyToOne
-	@JoinColumn(name = "idIspit")
-	private Ispit ispit;
-	
-	//@OneToMany
-	//@JoinColumn(name = "idStudent")
-	//private List<StudIndex> student;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idPrijava;
+    private LocalDate datum;
 
-	public PrijavaIspita() {
-		super();
-	}
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idIspit")
+    private Ispit ispit;
 
-	public PrijavaIspita(int idPrijava, LocalDate datum, Ispit ispit) {
-		super();
-		this.idPrijava = idPrijava;
-		this.datum = datum;
-		this.ispit = ispit;
-	}
+    @OneToMany(mappedBy = "prijavaIspita", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<StudIndex> studIndexi;
 
-	public int getIdPrijava() {
-		return idPrijava;
-	}
+    public PrijavaIspita() {
+        super();
+    }
 
-	public void setIdPrijava(int idPrijava) {
-		this.idPrijava = idPrijava;
-	}
+    public PrijavaIspita(LocalDate datum, Ispit ispit) {
+        super();
+        this.datum = datum;
+        this.ispit = ispit;
+    }
 
-	public LocalDate getDatum() {
-		return datum;
-	}
+    public void addStudIndex(StudIndex studIndex) {
+        if (studIndexi == null) {
+            studIndexi = new ArrayList<>();
+        }
+        studIndexi.add(studIndex);
+        studIndex.setPrijavaIspita(this);
+    }
 
-	public void setDatum(LocalDate datum) {
-		this.datum = datum;
-	}
+    public int getIdPrijava() {
+        return idPrijava;
+    }
 
-	public Ispit getIspit() {
-		return ispit;
-	}
+    public LocalDate getDatum() {
+        return datum;
+    }
 
-	public void setIspit(Ispit ispit) {
-		this.ispit = ispit;
-	}
+    public void setDatum(LocalDate datum) {
+        this.datum = datum;
+    }
 
+    public Ispit getIspit() {
+        return ispit;
+    }
+
+    public void setIspit(Ispit ispit) {
+        this.ispit = ispit;
+    }
+
+    public List<StudIndex> getStudIndexi() {
+        return studIndexi;
+    }
 
 }

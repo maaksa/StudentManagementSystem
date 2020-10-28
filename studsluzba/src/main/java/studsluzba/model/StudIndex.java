@@ -26,15 +26,16 @@ public class StudIndex {
     private boolean aktivan;
     private LocalDate odKadJeAktivan;
 
-   // @OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-   // private List<PrijavaIspita> prijavaIspita;
+    //@OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}) lista?
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idPrijava")
+    private PrijavaIspita prijavaIspita;
 
     @OneToMany(mappedBy = "studentIndex", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<UpisGodina> upisGodina;
 
     @OneToMany(mappedBy = "studentIndeks", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<ObnovaGodina> obnovljeneGodine;
-
 
     @OneToMany(mappedBy = "studentIndex", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<PolozioPredmet> polozioPredmete;
@@ -121,6 +122,14 @@ public class StudIndex {
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public void setPrijavaIspita(PrijavaIspita prijavaIspita) {
+        this.prijavaIspita = prijavaIspita;
+    }
+
+    public PrijavaIspita getPrijavaIspita() {
+        return prijavaIspita;
     }
 
     @Override

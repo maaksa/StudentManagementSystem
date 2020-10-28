@@ -23,27 +23,23 @@ public class IspitniRok {
 	private LocalDate datumPocetka;
 	private LocalDate datumZavrsetka;
 
-	@OneToMany
+/*	@OneToMany
 	@JoinColumn(name = "idIspit") 
-	private List<Ispit> ispiti;
+	private List<Ispit> ispiti;*/
 
 	@ManyToOne
 	@JoinColumn(name = "ispitniRokovi") 
 	private SkolskaGodina skolskaGod;
 
-	public IspitniRok(int idIspitniRok, LocalDate datumPocetka, LocalDate datumZavrsetka, List<Ispit> ispiti) {
+	public IspitniRok(LocalDate datumPocetka, LocalDate datumZavrsetka, List<Ispit> ispiti) {
 		this.idIspitniRok = idIspitniRok;
 		this.datumPocetka = datumPocetka;
 		this.datumZavrsetka = datumZavrsetka;
-		this.ispiti = ispiti;
+		//this.ispiti = ispiti;
 	}
 
 	public int getIdIspitniRok() {
 		return idIspitniRok;
-	}
-
-	public void setIdIspitniRok(int idIspitniRok) {
-		this.idIspitniRok = idIspitniRok;
 	}
 
 	public LocalDate getDatumPocetka() {
@@ -62,12 +58,12 @@ public class IspitniRok {
 		this.datumZavrsetka = datumZavrsetka;
 	}
 
-	public List<Ispit> getIspiti() {
+/*	public List<Ispit> getIspiti() {
 		return ispiti;
 	}
 
 	public void setIspiti(List<Ispit> ispiti) {
 		this.ispiti = ispiti;
-	}
+	}*/
 
 }
