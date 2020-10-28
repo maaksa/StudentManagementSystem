@@ -18,13 +18,13 @@ public class IzlazakNaIspit {
 	private int brojOsvojenihPoena;
 	private String napomena;
 	private boolean ponistavanje;
+	private boolean izasaoNaIspit;
 
 	// proveriti
 	@OneToOne
 	@JoinColumn(name = "idPrijava")
 	private PrijavaIspita prijavljenIspit;
 
-	private boolean izasaoNaIspit;
 	
 	@OneToOne
 	@JoinColumn(name = "idIspit") 

@@ -1,5 +1,6 @@
 package studsluzba.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -28,16 +29,25 @@ public class Predmet {
     @JoinColumn(name = "idIspit")
     private Ispit ispit;
 
-	/*@OneToMany
-	@JoinColumn(name = "idPredIspitne")
-	private List<PredispitneObaveze> obaveze;*/
+	@OneToMany(mappedBy = "predmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	private List<PredispitneObaveze> obaveze;
 
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idstudProgram")
 	private StudProgram studProgram;
 
+
+
     public Predmet() {
+    }
+
+    public void addPredIspitne(PredispitneObaveze predObaveze){
+        if(obaveze == null){
+            obaveze = new ArrayList<>();
+        }
+        obaveze.add(predObaveze);
+        predObaveze.setPredmet(this);
     }
 
     public void setPolozioPredmet(PolozioPredmet polozioPredmet) {
@@ -127,6 +137,26 @@ public class Predmet {
 	public void setObaveze(List<PredispitneObaveze> obaveze) {
 		this.obaveze = obaveze;
 	}*/
+
+    public int getIdPredmet() {
+        return idPredmet;
+    }
+
+    public void setIdPredmet(int idPredmet) {
+        this.idPredmet = idPredmet;
+    }
+
+    public Ispit getIspit() {
+        return ispit;
+    }
+
+    public List<PredispitneObaveze> getObaveze() {
+        return obaveze;
+    }
+
+    public void setObaveze(List<PredispitneObaveze> obaveze) {
+        this.obaveze = obaveze;
+    }
 
     @Override
     public String toString() {

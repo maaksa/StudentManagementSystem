@@ -14,6 +14,7 @@ public class Ispit {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idIspit;
 
+	private String sifraIspita;
 	private LocalDate datumOdrzavanja;
 	private String vremePocetka;
 	private boolean unetiPoeni;
@@ -97,5 +98,11 @@ public class Ispit {
 		this.unetiPoeni = unetiPoeni;
 	}
 
+	public String getSifraIspita() {
+		return sifraIspita;
+	}
 
+	public void setSifraIspita(String sifraIspita) {
+		this.sifraIspita = sifraIspita;
+	}
 }

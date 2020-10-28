@@ -36,6 +36,35 @@ public class StudentRepositoryTest {
         PrijavaIspita prijavaIspita = new PrijavaIspita();
         Zvanje zvanje = new Zvanje();
         Nastavnik nastavnik = new Nastavnik();
+        IzlazakNaIspit izlazakNaIspit = new IzlazakNaIspit();
+        PredispitneObaveze predispitneObaveze = new PredispitneObaveze();
+        OsvojeniPredispitniPoeni osvojeniPredispitniPoeni = new OsvojeniPredispitniPoeni();
+        SlusaPredmet slusaPredmet = new SlusaPredmet();
+        DrziPredmet drziPredmet = new DrziPredmet();
+
+        // Slusa predmet
+        slusaPredmet.setIndex(studIndex);
+
+
+        //Drzi predmet
+        drziPredmet.addSlusaPredmet(slusaPredmet);
+        drziPredmet.setNastavnik(nastavnik);
+        drziPredmet.setPredmet(predmet);
+        drziPredmet.setSkolskaGod(skolskaGodina);
+
+        //Osvojene pred
+        osvojeniPredispitniPoeni.setUkupanBrojPoena(95);
+        osvojeniPredispitniPoeni.setStudentIndeks(studIndex);
+        osvojeniPredispitniPoeni.addPredIspitne(predispitneObaveze);
+        osvojeniPredispitniPoeni.addPredIspitne(predispitneObaveze);
+
+        //pred ispitne obaveze
+        predispitneObaveze.setPoeni(45);
+        predispitneObaveze.setMaxBrp(50);
+        predispitneObaveze.setVrstaObabeza("Kolokvijum");
+        predispitneObaveze.setSkolskaGodina(skolskaGodina);
+
+
 
         //nastavnil
         nastavnik.addZvanje(zvanje);
@@ -57,6 +86,17 @@ public class StudentRepositoryTest {
         ispit.setPredmet(predmet);
         ispit.setNastavnik(nastavnik);
         ispit.addPrijavaIspita(prijavaIspita);
+        ispit.setSifraIspita("1234");
+
+        //izlazak na Ispit
+
+        izlazakNaIspit.setNapomena("Sta god");
+        izlazakNaIspit.setIzasaoNaIspit(true);
+        izlazakNaIspit.setPonistavanje(false);
+        izlazakNaIspit.setBrojOsvojenihPoena(95);
+        izlazakNaIspit.setIspit(ispit);
+        izlazakNaIspit.setPrijavljenIspit(prijavaIspita);
+
 
         //prijavaIpsita
         prijavaIspita.addStudIndex(studIndex);
@@ -90,6 +130,9 @@ public class StudentRepositoryTest {
         predmet.setNazivPredmeta("Softverske komponente");
         predmet.setSifraPredmeta("sk1");
         predmet.setIspit(ispit);
+        predmet.addPredIspitne(predispitneObaveze);
+        predmet.addPredIspitne(predispitneObaveze);
+
 
         //studProg
         studProgram.addVrstaStudija(vrstaStudija);
@@ -101,18 +144,19 @@ public class StudentRepositoryTest {
         studProgram.setTrajanje(8);
 
         //polozioPred
-        polozioPredmet.setOcena(8);
+        polozioPredmet.setOcena(10);
         polozioPredmet.addPredmet(predmet);
 
         //index
         studIndex.setGodina(2018);
         studIndex.setAktivan(true);
-        studIndex.setBroj(57);
+        studIndex.setBroj(45);
         studIndex.setOdKadJeAktivan(LocalDate.now());
         //studIndex.setProgram(null);
         studIndex.addPolozioPredmet(polozioPredmet);
         studIndex.addUpisGodina(upisGodina);
         studIndex.addObnovaGodine(obnovaGodina);
+        studIndex.addOsvojeniPoeni(osvojeniPredispitniPoeni);
 
         //srednja sk
         srednjaSkola.setMesto("Obrenovac");
@@ -122,9 +166,9 @@ public class StudentRepositoryTest {
         //srednjaSkola.addStudent(s);
 
         //student
-        s.setIme("Filip");
-        s.setPrezime("Cmiljanovic");
-        s.setSrednjeIme("Fica");
+        s.setIme("Milos");
+        s.setPrezime("Maksimovic");
+        s.setSrednjeIme("Maxa");
         s.setBrojLicneKarte("52156654433");
         s.setBrojTelefona(060123433);
         s.setBrojUlice(50);
@@ -148,31 +192,31 @@ public class StudentRepositoryTest {
 
 
 
-        studRepo.save(s);
+       // studRepo.save(s);
 
-        /*//upit izvlacenje studenta preko broja indeksa
-        Student student = studRepo.selectStudentByIndex(15);
-        System.out.println(student);*/
+        //upit izvlacenje studenta preko broja indeksa
+       // Student student = studRepo.selectStudentByIndex(45);
+       //System.out.println(student);
 
         //upit selekcija svih položenih ispita preko broja indeksa studenta
-        /*List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(57);
-        System.out.println(polozioPredmeti);*/
+       // List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(45);
+        //System.out.println(polozioPredmeti);
 
         //upit selekcija studenta koristeci ime ili prezime ili ime i prezime
-        /*List<Student> studenti = studRepo.findStudentByNameAndSurname("nikola", null);
-        System.out.println(studenti);*/
+       // List<Student> studenti = studRepo.findStudentByNameAndSurname("milos", null);
+       // System.out.println(studenti);
 
         //upit selekcija studenata koji su zavrsili odredjenu srednju skolu
         //List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
         //System.out.println(studenti);
 
         //pregled svih upisanih godina za broj indeksa
-        // List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(57);
-        // System.out.println(upisaneGodine);
+        // List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(45);
+         //System.out.println(upisaneGodine);
 
         //pregled obnovljenih godina za broj indeksa
-        /* List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(57);
-        System.out.println(obnovaGodine);*/
+        //List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(45);
+       // System.out.println(obnovaGodine);
 
     }
 }

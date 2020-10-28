@@ -1,15 +1,9 @@
 package studsluzba.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "osvojeniPoeni")
@@ -20,18 +14,27 @@ public class OsvojeniPredispitniPoeni {
 	private int idOsvojeniPoeni;
 	private int ukupanBrojPoena;
 
-	@ManyToOne
-	@JoinColumn(name = "idStudent")
-	private Student student;
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name = "idStudIndex")
+	private StudIndex studentIndeks;
 
-	@OneToMany
-	@JoinColumn(name = "idPredIspitne")
+	@OneToMany(mappedBy = "osvojeniPredispitniPoeni", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	private List <PredispitneObaveze> predIspitneObaveze;
 
 	public OsvojeniPredispitniPoeni() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	public void addPredIspitne(PredispitneObaveze predObaveze){
+		if(predIspitneObaveze == null){
+			predIspitneObaveze = new ArrayList<>();
+		}
+		predIspitneObaveze.add(predObaveze);
+		predObaveze.setOsvojeniPredispitniPoeni(this);
+	}
+
+
 
 	public int getIdOsvojeniPoeni() {
 		return idOsvojeniPoeni;
@@ -49,12 +52,12 @@ public class OsvojeniPredispitniPoeni {
 		this.ukupanBrojPoena = ukupanBrojPoena;
 	}
 
-	public Student getStudent() {
-		return student;
+	public StudIndex getStudentIndeks() {
+		return studentIndeks;
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setStudentIndeks(StudIndex studentIndeks) {
+		this.studentIndeks = studentIndeks;
 	}
 
 	public List<PredispitneObaveze> getPredIspitneObaveze() {
@@ -64,5 +67,7 @@ public class OsvojeniPredispitniPoeni {
 	public void setPredIspitneObaveze(List<PredispitneObaveze> predIspitneObaveze) {
 		this.predIspitneObaveze = predIspitneObaveze;
 	}
+
+
 
 }

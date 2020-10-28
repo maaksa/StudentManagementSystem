@@ -17,15 +17,15 @@ public class StudIndex {
     @JoinColumn(name = "idstudProgram")
     private StudProgram program;*/
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "idStudent")
-    private Student student;
-
     private int broj;
     private int godina;
     private boolean aktivan;
     private LocalDate odKadJeAktivan;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idStudent")
+    private Student student;
+    
     //@OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}) lista?
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idPrijava")
@@ -40,6 +40,9 @@ public class StudIndex {
     @OneToMany(mappedBy = "studentIndex", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<PolozioPredmet> polozioPredmete;
 
+    @OneToMany(mappedBy = "studentIndeks", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<OsvojeniPredispitniPoeni> predIspitne;
+
     public StudIndex(int broj, int godina, StudProgram program, boolean aktivan, LocalDate odKadJeAktivan) {
         this.broj = broj;
         this.godina = godina;
@@ -50,6 +53,14 @@ public class StudIndex {
 
     public StudIndex() {
 
+    }
+
+    public void addOsvojeniPoeni(OsvojeniPredispitniPoeni poeniOsvojeni){
+        if(predIspitne == null){
+            predIspitne = new ArrayList<>();
+        }
+        predIspitne.add(poeniOsvojeni);
+        poeniOsvojeni.setStudentIndeks(this);
     }
 
     public void addPolozioPredmet(PolozioPredmet polozioPredmet) {
@@ -131,6 +142,8 @@ public class StudIndex {
     public PrijavaIspita getPrijavaIspita() {
         return prijavaIspita;
     }
+
+
 
     @Override
     public String toString() {

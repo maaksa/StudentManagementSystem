@@ -1,15 +1,9 @@
 package studsluzba.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "drziPredmet")
@@ -19,19 +13,19 @@ public class DrziPredmet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDrziPredmet;
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name = "idPredmet")
 	private Predmet predmet; 
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name = "idNastavnik")
 	private Nastavnik nastavnik;
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name = "idSkolskaGodina")
 	private SkolskaGodina skolskaGod;
 	
-	@OneToMany(mappedBy = "drziPredmet")
+	@OneToMany(mappedBy = "drziPredmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	private List<SlusaPredmet> slusaPredmet;
 
 	public DrziPredmet() {
@@ -43,6 +37,14 @@ public class DrziPredmet {
 		this.predmet = predmet;
 		this.nastavnik = nastavnik;
 		this.skolskaGod = skolskaGod;
+	}
+
+	public void addSlusaPredmet(SlusaPredmet predmeti){
+		if(slusaPredmet == null){
+			slusaPredmet = new ArrayList<>();
+		}
+		slusaPredmet.add(predmeti);
+		predmeti.setDrziPredmet(this);
 	}
 
 	public Predmet getPredmet() {
@@ -69,4 +71,11 @@ public class DrziPredmet {
 		this.skolskaGod = skolskaGod;
 	}
 
+	public List<SlusaPredmet> getSlusaPredmet() {
+		return slusaPredmet;
+	}
+
+	public void setSlusaPredmet(List<SlusaPredmet> slusaPredmet) {
+		this.slusaPredmet = slusaPredmet;
+	}
 }

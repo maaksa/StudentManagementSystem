@@ -1,13 +1,6 @@
 package studsluzba.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "slusaPredmet")
@@ -18,11 +11,11 @@ public class SlusaPredmet {
 	private int idSlusaPredmet;
 	
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name = "idStudent")
 	private StudIndex index;
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name = "idDrziPredmet")
 	private DrziPredmet drziPredmet;
 
@@ -46,7 +39,12 @@ public class SlusaPredmet {
 	public void setDrziPredmet(DrziPredmet drziPredmet) {
 		this.drziPredmet = drziPredmet;
 	}
-	
-	
 
+	public StudIndex getIndex() {
+		return index;
+	}
+
+	public void setIndex(StudIndex index) {
+		this.index = index;
+	}
 }
