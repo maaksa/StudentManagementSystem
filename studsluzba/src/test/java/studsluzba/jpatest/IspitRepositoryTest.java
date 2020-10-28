@@ -36,8 +36,10 @@ public class IspitRepositoryTest {
 
         //za datog studenta i predmet vratiti koliko je puta student polagao predmet (izašao na
         //ispit)
-        Integer cnt = ispitRepository.getCountIspitOut("Softverske komponente", 45);
-        System.out.println(cnt);
+        /*Integer cnt = ispitRepository.getCountIspitOut("Softverske komponente", 45);
+        System.out.println(cnt);*/
+
+
     }
 
 }

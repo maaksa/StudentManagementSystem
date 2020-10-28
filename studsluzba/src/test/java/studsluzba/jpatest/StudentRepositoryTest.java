@@ -133,7 +133,7 @@ public class StudentRepositoryTest {
         obnovaGodina.setSkolskaGodina(skolskaGodina);
 
         //Skolska godina
-        skolskaGodina.setDatum(2020);
+        skolskaGodina.setDatum(2019);
         skolskaGodina.setAktivna(true);
 
 
@@ -164,7 +164,7 @@ public class StudentRepositoryTest {
         studProgram.setTrajanje(8);
 
         //polozioPred
-        polozioPredmet.setOcena(10);
+        polozioPredmet.setOcena(9);
         polozioPredmet.addPredmet(predmet);
 
         //index
@@ -186,9 +186,9 @@ public class StudentRepositoryTest {
         //srednjaSkola.addStudent(s);
 
         //student
-        s.setIme("Milos");
-        s.setPrezime("Maksimovic");
-        s.setSrednjeIme("Maxa");
+        s.setIme("Nikola");
+        s.setPrezime("Punovic");
+        s.setSrednjeIme("Paun");
         s.setBrojLicneKarte("52156654433");
         s.setBrojTelefona(060123433);
         s.setBrojUlice(50);
@@ -212,7 +212,7 @@ public class StudentRepositoryTest {
 
 
 
-        //studRepo.save(s);
+        studRepo.save(s);
 
         //upit izvlacenje studenta preko broja indeksa
        // Student student = studRepo.selectStudentByIndex(45);

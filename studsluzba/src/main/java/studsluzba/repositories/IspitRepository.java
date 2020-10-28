@@ -19,13 +19,13 @@ public interface IspitRepository extends CrudRepository<Ispit, Integer> {
     @Query("select avg(pp.ocena) from PolozioPredmet pp where pp.studentIndex.prijavaIspita.ispit.sifraIspita like :ispitSifra")
     Float getAverageGradeOnTheExam(String ispitSifra);
 
-    //- za datog studenta i predmet vratiti koliko je puta student polagao predmet (izašao na ispit)
     @Query("select count(iz.izasaoNaIspit) from IzlazakNaIspit iz where iz.ispit.idIspit = (select i.idIspit " +
             "from Ispit i where i.predmet.nazivPredmeta like :nazivPredmeta " +
             "and i.idIspit = (select si.prijavaIspita.ispit.idIspit from StudIndex si where si.broj = :broj))")
     Integer getCountIspitOut(String nazivPredmeta, int broj);
 
-
+//selekcija ostvarenih poena na predispinim obavezama za studenta na određenom
+//predmetu u školskoj godini
     @Query("select p from PredispitneObaveze p where p.predmet.idPredmet = (select pre.predmet.idPredmet from" +
             " DrziPredmet pre where pre.predmet.nazivPredmeta like :naziv and" +
             " pre.skolskaGod.datum = :godina and pre.idDrziPredmet = (select sl.drziPredmet.idDrziPredmet from SlusaPredmet sl where " +
