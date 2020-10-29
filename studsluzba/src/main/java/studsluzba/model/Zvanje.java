@@ -20,7 +20,6 @@ public class Zvanje {
     private Nastavnik nastavnik;
 
     public Zvanje() {
-        super();
     }
 
     public Zvanje(LocalDate datumIzbora, String uzaNaucnaOblast, String nazivZvanja) {
@@ -57,7 +56,7 @@ public class Zvanje {
         this.nazivZvanja = nazivZvanja;
     }
 
-	public void setNastavnik(Nastavnik nastavnik) {
-		this.nastavnik = nastavnik;
-	}
+    public void setNastavnik(Nastavnik nastavnik) {
+        this.nastavnik = nastavnik;
+    }
 }

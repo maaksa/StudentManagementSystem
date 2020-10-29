@@ -142,10 +142,6 @@ public class Predmet {
         return idPredmet;
     }
 
-    public void setIdPredmet(int idPredmet) {
-        this.idPredmet = idPredmet;
-    }
-
     public Ispit getIspit() {
         return ispit;
     }

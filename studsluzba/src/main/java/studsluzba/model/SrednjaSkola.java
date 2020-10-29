@@ -8,30 +8,30 @@ import java.util.List;
 @Table(name = "srednjaSkola")
 public class SrednjaSkola {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idSrednjaSkola;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idSrednjaSkola;
 
-	private String naziv;
-	private String mesto;
-	private String vrsta;
+    private String naziv;
+    private String mesto;
+    private String vrsta;
 
 	/*@OneToMany(mappedBy = "srednjaSkola", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	private List<Student> studenti;*/
 
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name = "idStudent")
-	private Student student;
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idStudent")
+    private Student student;
 
-	public SrednjaSkola(){
+    public SrednjaSkola() {
 
-	}
+    }
 
-	public SrednjaSkola(String naziv, String mesto, String vrsta) {
-		this.naziv = naziv;
-		this.mesto = mesto;
-		this.vrsta = vrsta;
-	}
+    public SrednjaSkola(String naziv, String mesto, String vrsta) {
+        this.naziv = naziv;
+        this.mesto = mesto;
+        this.vrsta = vrsta;
+    }
 
 /*	public void addStudent(Student student) {
 		if (studenti == null) {
@@ -45,40 +45,40 @@ public class SrednjaSkola {
 		return studenti;
 	}*/
 
-	public Student getStudent() {
-		return student;
-	}
+    public Student getStudent() {
+        return student;
+    }
 
-	public void setStudent(Student student) {
-		this.student = student;
-	}
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
-	public int getIdSrednjaSkola() {
-		return idSrednjaSkola;
-	}
+    public int getIdSrednjaSkola() {
+        return idSrednjaSkola;
+    }
 
-	public String getNaziv() {
-		return naziv;
-	}
+    public String getNaziv() {
+        return naziv;
+    }
 
-	public void setNaziv(String naziv) {
-		this.naziv = naziv;
-	}
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
+    }
 
-	public String getMesto() {
-		return mesto;
-	}
+    public String getMesto() {
+        return mesto;
+    }
 
-	public void setMesto(String mesto) {
-		this.mesto = mesto;
-	}
+    public void setMesto(String mesto) {
+        this.mesto = mesto;
+    }
 
-	public String getVrsta() {
-		return vrsta;
-	}
+    public String getVrsta() {
+        return vrsta;
+    }
 
-	public void setVrsta(String vrsta) {
-		this.vrsta = vrsta;
-	}
+    public void setVrsta(String vrsta) {
+        this.vrsta = vrsta;
+    }
 
 }

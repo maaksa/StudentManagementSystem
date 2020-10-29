@@ -24,11 +24,13 @@ public interface IspitRepository extends CrudRepository<Ispit, Integer> {
             "and i.idIspit = (select si.prijavaIspita.ispit.idIspit from StudIndex si where si.broj = :broj))")
     Integer getCountIspitOut(String nazivPredmeta, int broj);
 
-//selekcija ostvarenih poena na predispinim obavezama za studenta na određenom
-//predmetu u školskoj godini
+    //selekcija ostvarenih poena na predispinim obavezama za studenta na određenom
+    //predmetu u školskoj godini
     @Query("select p from PredispitneObaveze p where p.predmet.idPredmet = (select pre.predmet.idPredmet from" +
             " DrziPredmet pre where pre.predmet.nazivPredmeta like :naziv and" +
             " pre.skolskaGod.datum = :godina and pre.idDrziPredmet = (select sl.drziPredmet.idDrziPredmet from SlusaPredmet sl where " +
             "sl.index.broj = :broj))")
     List<PredispitneObaveze> getPoint(int broj, String naziv, int godina);
+
+    //List<StudIndex> sortStudByExamResults(String sifraIspita);
 }

@@ -8,64 +8,61 @@ import javax.persistence.*;
 @Table(name = "skolskaGodina")
 public class SkolskaGodina {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idSkolskaGodina;
-	private int datum;
-	private boolean aktivna;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idSkolskaGodina;
+    private int datum;
+    private boolean aktivna;
 
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idObnovaGodina")
-	private ObnovaGodina obnovaGodine;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idObnovaGodina")
+    private ObnovaGodina obnovaGodine;
 
-	/* ODKOMENTARISATI
-	@OneToMany
-	@JoinColumn(name = "idIspitniRok") 
-	private List<IspitniRok> ispitniRokovi;
-	*/
-	public SkolskaGodina() {
-		super();
-	}
+    /* ODKOMENTARISATI
+    @OneToMany
+    @JoinColumn(name = "idIspitniRok")
+    private List<IspitniRok> ispitniRokovi;
+    */
 
-	public int getIdSkolskaGodina() {
-		return idSkolskaGodina;
-	}
+    public SkolskaGodina() {
+        super();
+    }
 
-	public void setIdSkolskaGodina(int idSkolskaGodina) {
-		this.idSkolskaGodina = idSkolskaGodina;
-	}
-	/*
-	 * public List<Predmet> getPredemti() { return predemti; }
-	 * 
-	 * public void setPredemti(List<Predmet> predemti) { this.predemti = predemti; }
-	 * 
-	 * public List<Nastavnik> getNastavnici() { return nastavnici; }
-	 * 
-	 * public void setNastavnici(List<Nastavnik> nastavnici) { this.nastavnici =
-	 * nastavnici; }
-	 */
+    public int getIdSkolskaGodina() {
+        return idSkolskaGodina;
+    }
+    /*
+     * public List<Predmet> getPredemti() { return predemti; }
+     *
+     * public void setPredemti(List<Predmet> predemti) { this.predemti = predemti; }
+     *
+     * public List<Nastavnik> getNastavnici() { return nastavnici; }
+     *
+     * public void setNastavnici(List<Nastavnik> nastavnici) { this.nastavnici =
+     * nastavnici; }
+     */
 
-	public int getDatum() {
-		return datum;
-	}
+    public int getDatum() {
+        return datum;
+    }
 
-	public void setDatum(int datum) {
-		this.datum = datum;
-	}
+    public void setDatum(int datum) {
+        this.datum = datum;
+    }
 
-	public boolean isAktivna() {
-		return aktivna;
-	}
+    public boolean isAktivna() {
+        return aktivna;
+    }
 
-	public void setAktivna(boolean aktivna) {
-		this.aktivna = aktivna;
-	}
+    public void setAktivna(boolean aktivna) {
+        this.aktivna = aktivna;
+    }
 
-	@Override
-	public String toString() {
-		return "SkolskaGodina{" +
-				"datum=" + datum +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "SkolskaGodina{" +
+                "datum=" + datum +
+                '}';
+    }
 }

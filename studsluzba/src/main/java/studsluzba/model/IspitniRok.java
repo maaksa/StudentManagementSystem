@@ -38,6 +38,10 @@ public class IspitniRok {
 		//this.ispiti = ispiti;
 	}
 
+	public IspitniRok(){
+
+	}
+
 	public int getIdIspitniRok() {
 		return idIspitniRok;
 	}

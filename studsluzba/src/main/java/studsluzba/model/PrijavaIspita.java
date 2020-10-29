@@ -23,11 +23,9 @@ public class PrijavaIspita {
     private List<StudIndex> studIndexi;
 
     public PrijavaIspita() {
-        super();
     }
 
     public PrijavaIspita(LocalDate datum, Ispit ispit) {
-        super();
         this.datum = datum;
         this.ispit = ispit;
     }

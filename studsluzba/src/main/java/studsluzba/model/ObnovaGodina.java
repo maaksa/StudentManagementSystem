@@ -31,15 +31,11 @@ public class ObnovaGodina {
 	
 
 	public ObnovaGodina() {
-		super();
+
 	}
 
 	public int getIdObnovaGodina() {
 		return idObnovaGodina;
-	}
-
-	public void setIdObnovaGodina(int idObnovaGodina) {
-		this.idObnovaGodina = idObnovaGodina;
 	}
 
 	public StudIndex getStudentIndex() {

@@ -25,7 +25,7 @@ public class StudIndex {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idStudent")
     private Student student;
-    
+
     //@OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}) lista?
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idPrijava")
@@ -55,8 +55,8 @@ public class StudIndex {
 
     }
 
-    public void addOsvojeniPoeni(OsvojeniPredispitniPoeni poeniOsvojeni){
-        if(predIspitne == null){
+    public void addOsvojeniPoeni(OsvojeniPredispitniPoeni poeniOsvojeni) {
+        if (predIspitne == null) {
             predIspitne = new ArrayList<>();
         }
         predIspitne.add(poeniOsvojeni);
@@ -142,7 +142,6 @@ public class StudIndex {
     public PrijavaIspita getPrijavaIspita() {
         return prijavaIspita;
     }
-
 
 
     @Override

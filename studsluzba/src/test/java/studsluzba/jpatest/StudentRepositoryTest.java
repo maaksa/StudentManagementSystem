@@ -45,7 +45,6 @@ public class StudentRepositoryTest {
         PredispitneObaveze predispitneObaveze1 = new PredispitneObaveze();
 
 
-
         // Slusa predmet
         slusaPredmet.setIndex(studIndex);
 
@@ -74,7 +73,6 @@ public class StudentRepositoryTest {
         predispitneObaveze1.setMaxBrp(50);
         predispitneObaveze1.setVrstaObabeza("Kolokvijum");
         predispitneObaveze1.setSkolskaGodina(skolskaGodina);
-
 
 
         //nastavnil
@@ -211,20 +209,19 @@ public class StudentRepositoryTest {
         s.setSrednjaSkola(srednjaSkola);
 
 
-
         studRepo.save(s);
 
         //upit izvlacenje studenta preko broja indeksa
-       // Student student = studRepo.selectStudentByIndex(45);
-       //System.out.println(student);
+        // Student student = studRepo.selectStudentByIndex(45);
+        //System.out.println(student);
 
         //upit selekcija svih položenih ispita preko broja indeksa studenta
-       // List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(45);
+        // List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(45);
         //System.out.println(polozioPredmeti);
 
         //upit selekcija studenta koristeci ime ili prezime ili ime i prezime
-       // List<Student> studenti = studRepo.findStudentByNameAndSurname("milos", null);
-       // System.out.println(studenti);
+        // List<Student> studenti = studRepo.findStudentByNameAndSurname("milos", null);
+        // System.out.println(studenti);
 
         //upit selekcija studenata koji su zavrsili odredjenu srednju skolu
         //List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
@@ -232,11 +229,11 @@ public class StudentRepositoryTest {
 
         //pregled svih upisanih godina za broj indeksa
         // List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(45);
-         //System.out.println(upisaneGodine);
+        //System.out.println(upisaneGodine);
 
         //pregled obnovljenih godina za broj indeksa
         //List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(45);
-       // System.out.println(obnovaGodine);
+        // System.out.println(obnovaGodine);
 
     }
 }

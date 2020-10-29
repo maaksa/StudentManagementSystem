@@ -30,7 +30,7 @@ public class DrziPredmet {
 	private List<SlusaPredmet> slusaPredmet;
 
 	public DrziPredmet() {
-		super();
+
 	}
 
 	public DrziPredmet(Predmet predmet, Nastavnik nastavnik, SkolskaGodina skolskaGod) {

@@ -25,15 +25,12 @@ public class IzlazakNaIspit {
 	private Ispit ispit;
 
 	public IzlazakNaIspit() {
-		super();
+
+
 	}
 
 	public int getIdIzlazak() {
 		return idIzlazak;
-	}
-
-	public void setIdIzlazak(int idIzlazak) {
-		this.idIzlazak = idIzlazak;
 	}
 
 	public int getBrojOsvojenihPoena() {

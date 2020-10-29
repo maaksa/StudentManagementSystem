@@ -25,9 +25,8 @@ public class PolozioPredmet {
     private StudIndex studentIndex;
 
     //suvisno?  jedan ispit
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "polozioPredmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "polozioPredmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Predmet> predmeti;
-
 
 
     public PolozioPredmet() {

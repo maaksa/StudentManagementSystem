@@ -6,43 +6,43 @@ import javax.persistence.*;
 @Table(name = "slusaPredmet")
 public class SlusaPredmet {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idSlusaPredmet;
-	
-	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name = "idStudent")
-	private StudIndex index;
-	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name = "idDrziPredmet")
-	private DrziPredmet drziPredmet;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idSlusaPredmet;
 
-	public SlusaPredmet() {
-		super();
-	}
 
-	public SlusaPredmet(StudIndex index, DrziPredmet drziPredmet) {
-		super();
-		this.index = index;
-		this.drziPredmet = drziPredmet;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idStudent")
+    private StudIndex index;
 
-	}
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idDrziPredmet")
+    private DrziPredmet drziPredmet;
 
-	public DrziPredmet getDrziPredmet() {
-		return drziPredmet;
-	}
+    public SlusaPredmet() {
 
-	public void setDrziPredmet(DrziPredmet drziPredmet) {
-		this.drziPredmet = drziPredmet;
-	}
+    }
 
-	public StudIndex getIndex() {
-		return index;
-	}
+    public SlusaPredmet(StudIndex index, DrziPredmet drziPredmet) {
+        super();
+        this.index = index;
+        this.drziPredmet = drziPredmet;
 
-	public void setIndex(StudIndex index) {
-		this.index = index;
-	}
+    }
+
+    public DrziPredmet getDrziPredmet() {
+        return drziPredmet;
+    }
+
+    public void setDrziPredmet(DrziPredmet drziPredmet) {
+        this.drziPredmet = drziPredmet;
+    }
+
+    public StudIndex getIndex() {
+        return index;
+    }
+
+    public void setIndex(StudIndex index) {
+        this.index = index;
+    }
 }

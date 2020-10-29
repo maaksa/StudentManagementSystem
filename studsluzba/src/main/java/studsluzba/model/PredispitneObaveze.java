@@ -8,84 +8,83 @@ import javax.persistence.*;
 @Entity
 @Table(name = "predispitneObaveze")
 public class PredispitneObaveze {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idPredIspitne;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idPredIspitne;
 
-	private String vrstaObabeza;
-	private int poeni;
-	private  int maxBrp;
-	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name = "idSkolskaGodina")
-	private SkolskaGodina skolskaGodina;
-	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name = "idPredmet")
-	private Predmet predmet;
+    private String vrstaObabeza;
+    private int poeni;
+    private int maxBrp;
 
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name = "idOsvojeniPoeni")
-	private OsvojeniPredispitniPoeni osvojeniPredispitniPoeni;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idSkolskaGodina")
+    private SkolskaGodina skolskaGodina;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idPredmet")
+    private Predmet predmet;
 
-	public PredispitneObaveze() {
-		super();
-	}
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idOsvojeniPoeni")
+    private OsvojeniPredispitniPoeni osvojeniPredispitniPoeni;
 
 
-	public String getVrstaObabeza() {
-		return vrstaObabeza;
-	}
+    public PredispitneObaveze() {
+    }
 
-	public void setVrstaObabeza(String vrstaObabeza) {
-		this.vrstaObabeza = vrstaObabeza;
-	}
 
-	public int getPoeni() {
-		return poeni;
-	}
+    public String getVrstaObabeza() {
+        return vrstaObabeza;
+    }
 
-	public void setPoeni(int poeni) {
-		this.poeni = poeni;
-	}
+    public void setVrstaObabeza(String vrstaObabeza) {
+        this.vrstaObabeza = vrstaObabeza;
+    }
 
-	public int getMaxBrp() {
-		return maxBrp;
-	}
+    public int getPoeni() {
+        return poeni;
+    }
 
-	public void setMaxBrp(int maxBrp) {
-		this.maxBrp = maxBrp;
-	}
+    public void setPoeni(int poeni) {
+        this.poeni = poeni;
+    }
 
-	public SkolskaGodina getSkolskaGodina() {
-		return skolskaGodina;
-	}
+    public int getMaxBrp() {
+        return maxBrp;
+    }
 
-	public void setSkolskaGodina(SkolskaGodina skolskaGodina) {
-		this.skolskaGodina = skolskaGodina;
-	}
+    public void setMaxBrp(int maxBrp) {
+        this.maxBrp = maxBrp;
+    }
 
-	public Predmet getPredmet() {
-		return predmet;
-	}
+    public SkolskaGodina getSkolskaGodina() {
+        return skolskaGodina;
+    }
 
-	public void setPredmet(Predmet predmet) {
-		this.predmet = predmet;
-	}
+    public void setSkolskaGodina(SkolskaGodina skolskaGodina) {
+        this.skolskaGodina = skolskaGodina;
+    }
 
-	public OsvojeniPredispitniPoeni getOsvojeniPredispitniPoeni() {
-		return osvojeniPredispitniPoeni;
-	}
+    public Predmet getPredmet() {
+        return predmet;
+    }
 
-	public void setOsvojeniPredispitniPoeni(OsvojeniPredispitniPoeni osvojeniPredispitniPoeni) {
-		this.osvojeniPredispitniPoeni = osvojeniPredispitniPoeni;
-	}
+    public void setPredmet(Predmet predmet) {
+        this.predmet = predmet;
+    }
 
-	@Override
-	public String toString() {
-		return "PredispitneObaveze{" +
-				"poeni=" + poeni +
-				'}';
-	}
+    public OsvojeniPredispitniPoeni getOsvojeniPredispitniPoeni() {
+        return osvojeniPredispitniPoeni;
+    }
+
+    public void setOsvojeniPredispitniPoeni(OsvojeniPredispitniPoeni osvojeniPredispitniPoeni) {
+        this.osvojeniPredispitniPoeni = osvojeniPredispitniPoeni;
+    }
+
+    @Override
+    public String toString() {
+        return "PredispitneObaveze{" +
+                "poeni=" + poeni +
+                '}';
+    }
 }

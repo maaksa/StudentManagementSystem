@@ -10,115 +10,111 @@ import javax.persistence.*;
 @Table(name = "ispit")
 public class Ispit {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idIspit;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idIspit;
 
-	private String sifraIspita;
-	private LocalDate datumOdrzavanja;
-	private String vremePocetka;
-	private boolean unetiPoeni;
+    private String sifraIspita;
+    private LocalDate datumOdrzavanja;
+    private String vremePocetka;
+    private boolean unetiPoeni;
 
-	//ne treba
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idPredmet")
-	private Predmet predmet;
+    //ne treba
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idPredmet")
+    private Predmet predmet;
 
-	/*@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idIzlazak")
-	private IzlazakNaIspit izlazakNaIspit;*/
+    @OneToMany(mappedBy = "ispit", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<IzlazakNaIspit> izlasciNaIspit;
 
-	@OneToMany(mappedBy = "ispit", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	private List<IzlazakNaIspit> izlasciNaIspit;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idNastavnik")
-	private Nastavnik nastavnik;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idNastavnik")
+    private Nastavnik nastavnik;
 
-	@OneToMany(mappedBy = "ispit", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	private List<PrijavaIspita> prijavaIspita;
+    @OneToMany(mappedBy = "ispit", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<PrijavaIspita> prijavaIspita;
 
-	public Ispit() {
-		super();
-	}
+    public Ispit() {
 
-	public Ispit(LocalDate datumOdrzavanja, Predmet predmet, Nastavnik nastavnik, String vremePocetka) {
-		this.datumOdrzavanja = datumOdrzavanja;
-		//this.predmet = predmet;
-		this.nastavnik = nastavnik;
-		this.vremePocetka = vremePocetka;
-	}
+    }
 
-	public void addPrijavaIspita(PrijavaIspita prijava){
-		if(prijavaIspita == null){
-			prijavaIspita = new ArrayList<>();
-		}
-		prijavaIspita.add(prijava);
-		prijava.setIspit(this);
-	}
+    public Ispit(LocalDate datumOdrzavanja, Predmet predmet, Nastavnik nastavnik, String vremePocetka) {
+        this.datumOdrzavanja = datumOdrzavanja;
+        //this.predmet = predmet;
+        this.nastavnik = nastavnik;
+        this.vremePocetka = vremePocetka;
+    }
 
-	public void addIzlazakNaIspit(IzlazakNaIspit izlazakNaIspit){
-		if(izlasciNaIspit == null){
-			izlasciNaIspit = new ArrayList<>();
-		}
-		izlasciNaIspit.add(izlazakNaIspit);
-		izlazakNaIspit.setIspit(this);
-	}
+    public void addPrijavaIspita(PrijavaIspita prijava) {
+        if (prijavaIspita == null) {
+            prijavaIspita = new ArrayList<>();
+        }
+        prijavaIspita.add(prijava);
+        prijava.setIspit(this);
+    }
 
-	public int getIdIspit() {
-		return idIspit;
-	}
+    public void addIzlazakNaIspit(IzlazakNaIspit izlazakNaIspit) {
+        if (izlasciNaIspit == null) {
+            izlasciNaIspit = new ArrayList<>();
+        }
+        izlasciNaIspit.add(izlazakNaIspit);
+        izlazakNaIspit.setIspit(this);
+    }
 
-	public LocalDate getDatumOdrzavanja() {
-		return datumOdrzavanja;
-	}
+    public int getIdIspit() {
+        return idIspit;
+    }
 
-	public void setDatumOdrzavanja(LocalDate datumOdrzavanja) {
-		this.datumOdrzavanja = datumOdrzavanja;
-	}
+    public LocalDate getDatumOdrzavanja() {
+        return datumOdrzavanja;
+    }
 
-	public Predmet getPredmet() {
-		return predmet;
-	}
+    public void setDatumOdrzavanja(LocalDate datumOdrzavanja) {
+        this.datumOdrzavanja = datumOdrzavanja;
+    }
 
-	public void setPredmet(Predmet predmet) {
-		this.predmet = predmet;
-	}
+    public Predmet getPredmet() {
+        return predmet;
+    }
 
-	public void setIdIspit(int idIspit) {
-		this.idIspit = idIspit;
-	}
+    public void setPredmet(Predmet predmet) {
+        this.predmet = predmet;
+    }
 
-	public Nastavnik getNastavnik() {
-		return nastavnik;
-	}
+    public void setIdIspit(int idIspit) {
+        this.idIspit = idIspit;
+    }
 
-	public void setNastavnik(Nastavnik nastavnik) {
-		this.nastavnik = nastavnik;
-	}
+    public Nastavnik getNastavnik() {
+        return nastavnik;
+    }
 
-	public String getVremePocetka() {
-		return vremePocetka;
-	}
+    public void setNastavnik(Nastavnik nastavnik) {
+        this.nastavnik = nastavnik;
+    }
 
-	public void setVremePocetka(String vremePocetka) {
-		this.vremePocetka = vremePocetka;
-	}
+    public String getVremePocetka() {
+        return vremePocetka;
+    }
 
-	public boolean isUnetiPoeni() {
-		return unetiPoeni;
-	}
+    public void setVremePocetka(String vremePocetka) {
+        this.vremePocetka = vremePocetka;
+    }
 
-	public void setUnetiPoeni(boolean unetiPoeni) {
-		this.unetiPoeni = unetiPoeni;
-	}
+    public boolean isUnetiPoeni() {
+        return unetiPoeni;
+    }
 
-	public String getSifraIspita() {
-		return sifraIspita;
-	}
+    public void setUnetiPoeni(boolean unetiPoeni) {
+        this.unetiPoeni = unetiPoeni;
+    }
 
-	public void setSifraIspita(String sifraIspita) {
-		this.sifraIspita = sifraIspita;
-	}
+    public String getSifraIspita() {
+        return sifraIspita;
+    }
+
+    public void setSifraIspita(String sifraIspita) {
+        this.sifraIspita = sifraIspita;
+    }
 
 }
