@@ -40,7 +40,7 @@ public class Ispit {
 
     public Ispit(LocalDate datumOdrzavanja, Predmet predmet, Nastavnik nastavnik, String vremePocetka) {
         this.datumOdrzavanja = datumOdrzavanja;
-        //this.predmet = predmet;
+        this.predmet = predmet;
         this.nastavnik = nastavnik;
         this.vremePocetka = vremePocetka;
     }

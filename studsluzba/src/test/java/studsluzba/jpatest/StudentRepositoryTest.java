@@ -33,6 +33,7 @@ public class StudentRepositoryTest {
         ObnovaGodina obnovaGodina = new ObnovaGodina();
         UpisGodina upisGodina = new UpisGodina();
         Ispit ispit = new Ispit();
+        IspitniRok rok = new IspitniRok();
         PrijavaIspita prijavaIspita = new PrijavaIspita();
         Zvanje zvanje = new Zvanje();
         Nastavnik nastavnik = new Nastavnik();
@@ -99,9 +100,10 @@ public class StudentRepositoryTest {
         ispit.setSifraIspita("1234");
         ispit.addIzlazakNaIspit(izlazakNaIspit);
         ispit.addIzlazakNaIspit(izlazakNaIspit1);
+        
+        //ispitni rok
 
         //izlazak na Ispit
-
         izlazakNaIspit.setNapomena("Sta god");
         izlazakNaIspit.setIzasaoNaIspit(true);
         izlazakNaIspit.setPonistavanje(false);
