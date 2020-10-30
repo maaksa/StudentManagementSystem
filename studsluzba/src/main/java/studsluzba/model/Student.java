@@ -42,30 +42,23 @@ public class Student {
     private double uspehPrijemni;
     private boolean prelaz;
 
-    /*@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "idSrednjaSkola")
-    private SrednjaSkola srednjaSkola;*/
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idSrednjaSkola")
     private SrednjaSkola srednjaSkola;
 
-
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idVisokaSkola")
     private VisokaSkola visokaSkola;
 
     @OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<StudIndex> indexi;
 
-   /* @OneToMany(mappedBy = "index")
-    private List<SlusaPredmet> slusaPredmet;*/
-
     public Student() {
 
     }
 
-    public Student(String ime, String prezime, String srednjeIme, long jmbg, LocalDate daumRodjenja, String mestoRodjenja, String drzavljanstvo, String nacionalnost, char pol, String mesto, String ulica, int brojUlice, long brojTelefona, String privemail, String studemail, String brojLicneKarte, String licnuKartuIzdao, boolean upisaoPrvuGodinu, double uspehSrednjaSkola, double uspehPrijemni, boolean prelaz) {
+    public Student(String ime, String prezime, String srednjeIme, long jmbg, LocalDate daumRodjenja, String mestoRodjenja, String drzavljanstvo, String nacionalnost, char pol, String mesto, String ulica, int brojUlice, long brojTelefona, String privemail, String studemail, String brojLicneKarte, String licnuKartuIzdao, boolean upisaoPrvuGodinu, double uspehSrednjaSkola, double uspehPrijemni, boolean prelaz, SrednjaSkola srednjaSkola, VisokaSkola visokaSkola) {
         this.ime = ime;
         this.prezime = prezime;
         this.srednjeIme = srednjeIme;
@@ -87,6 +80,9 @@ public class Student {
         this.uspehSrednjaSkola = uspehSrednjaSkola;
         this.uspehPrijemni = uspehPrijemni;
         this.prelaz = prelaz;
+        this.srednjaSkola = srednjaSkola;
+        this.visokaSkola = visokaSkola;
+        indexi = new ArrayList<>();
     }
 
     public void addIndex(StudIndex studIndex) {
@@ -117,32 +113,16 @@ public class Student {
         this.prezime = prezime;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "idStudent=" + idStudent +
-                ", ime='" + ime + '\'' +
-                ", prezime='" + prezime + '\'' +
-                ", srednjeIme='" + srednjeIme + '\'' +
-                ", jmbg=" + jmbg +
-                ", daumRodjenja=" + daumRodjenja +
-                ", mestoRodjenja='" + mestoRodjenja + '\'' +
-                ", drzavljanstvo='" + drzavljanstvo + '\'' +
-                ", nacionalnost='" + nacionalnost + '\'' +
-                ", pol=" + pol +
-                ", mesto='" + mesto + '\'' +
-                ", ulica='" + ulica + '\'' +
-                ", brojUlice=" + brojUlice +
-                ", brojTelefona=" + brojTelefona +
-                ", Privemail='" + privemail + '\'' +
-                ", Studemail='" + studemail + '\'' +
-                ", brojLicneKarte='" + brojLicneKarte + '\'' +
-                ", licnuKartuIzdao='" + licnuKartuIzdao + '\'' +
-                ", upisaoPrvuGodinu=" + upisaoPrvuGodinu +
-                ", uspehSrednjaSkola=" + uspehSrednjaSkola +
-                ", uspehPrijemni=" + uspehPrijemni +
-                ", prelaz=" + prelaz +
-                '}';
+    public int getIdStudent() {
+        return idStudent;
+    }
+
+    public double getUspehSrednjaSkola() {
+        return uspehSrednjaSkola;
+    }
+
+    public void setUspehSrednjaSkola(double uspehSrednjaSkola) {
+        this.uspehSrednjaSkola = uspehSrednjaSkola;
     }
 
     public String getSrednjeIme() {
@@ -311,17 +291,45 @@ public class Student {
     }
 
     public void setVisokaSkola(VisokaSkola visokaSkola) {
-        visokaSkola = visokaSkola;
+        this.visokaSkola = visokaSkola;
     }
-
 
     public SrednjaSkola getSrednjaSkola() {
         return srednjaSkola;
     }
 
     public void setSrednjaSkola(SrednjaSkola srednjaSkola) {
+
         this.srednjaSkola = srednjaSkola;
     }
 
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "idStudent=" + idStudent +
+                ", ime='" + ime + '\'' +
+                ", prezime='" + prezime + '\'' +
+                ", srednjeIme='" + srednjeIme + '\'' +
+                ", jmbg=" + jmbg +
+                ", daumRodjenja=" + daumRodjenja +
+                ", mestoRodjenja='" + mestoRodjenja + '\'' +
+                ", drzavljanstvo='" + drzavljanstvo + '\'' +
+                ", nacionalnost='" + nacionalnost + '\'' +
+                ", pol=" + pol +
+                ", mesto='" + mesto + '\'' +
+                ", ulica='" + ulica + '\'' +
+                ", brojUlice=" + brojUlice +
+                ", brojTelefona=" + brojTelefona +
+                ", privemail='" + privemail + '\'' +
+                ", studemail='" + studemail + '\'' +
+                ", brojLicneKarte='" + brojLicneKarte + '\'' +
+                ", licnuKartuIzdao='" + licnuKartuIzdao + '\'' +
+                ", upisaoPrvuGodinu=" + upisaoPrvuGodinu +
+                ", uspehSrednjaSkola=" + uspehSrednjaSkola +
+                ", uspehPrijemni=" + uspehPrijemni +
+                ", prelaz=" + prelaz +
+                ", srednjaSkola=" + srednjaSkola +
+                ", visokaSkola=" + visokaSkola +
+                '}';
+    }
 }

@@ -26,6 +26,10 @@ public class VrstaStudija {
         this.skraceniNaziv = skraceniNaziv;
     }
 
+    public int getIdVrstaStudija() {
+        return idVrstaStudija;
+    }
+
     public int getVrstaStudijaid() {
         return idVrstaStudija;
     }
@@ -52,5 +56,15 @@ public class VrstaStudija {
 
     public StudProgram getStudProgram() {
         return studProgram;
+    }
+
+    @Override
+    public String toString() {
+        return "VrstaStudija{" +
+                "idVrstaStudija=" + idVrstaStudija +
+                ", punNaziv='" + punNaziv + '\'' +
+                ", skraceniNaziv='" + skraceniNaziv + '\'' +
+                ", studProgram=" + studProgram +
+                '}';
     }
 }

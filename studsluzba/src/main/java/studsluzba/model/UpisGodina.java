@@ -1,6 +1,7 @@
 package studsluzba.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -35,6 +36,17 @@ public class UpisGodina {
 
     }
 
+    public UpisGodina(SkolskaGodina skolskaGodina, StudIndex studentIndex, int datum, String napomena) {
+        this.skolskaGodina = skolskaGodina;
+        this.studentIndex = studentIndex;
+        this.datum = datum;
+        this.napomena = napomena;
+        //predmetPrenos  = new ArrayList<>();
+    }
+
+    public StudIndex getStudentIndex() {
+        return studentIndex;
+    }
 
     public int getIdUpisGodina() {
         return idUpisGodina;
@@ -71,8 +83,8 @@ public class UpisGodina {
 
     @Override
     public String toString() {
-        return '{' +
+        return "UpisGodina{" +
                 "datum=" + datum +
-                '}' + '\n';
+                '}';
     }
 }

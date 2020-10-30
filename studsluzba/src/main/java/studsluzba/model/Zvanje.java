@@ -28,6 +28,14 @@ public class Zvanje {
         this.nazivZvanja = nazivZvanja;
     }
 
+    public int getIdZvanje() {
+        return idZvanje;
+    }
+
+    public Nastavnik getNastavnik() {
+        return nastavnik;
+    }
+
     public int getZvanjeid() {
         return idZvanje;
     }
@@ -58,5 +66,16 @@ public class Zvanje {
 
     public void setNastavnik(Nastavnik nastavnik) {
         this.nastavnik = nastavnik;
+    }
+
+    @Override
+    public String toString() {
+        return "Zvanje{" +
+                "idZvanje=" + idZvanje +
+                ", datumIzbora=" + datumIzbora +
+                ", uzaNaucnaOblast='" + uzaNaucnaOblast + '\'' +
+                ", nazivZvanja='" + nazivZvanja + '\'' +
+                ", nastavnik=" + nastavnik +
+                '}';
     }
 }

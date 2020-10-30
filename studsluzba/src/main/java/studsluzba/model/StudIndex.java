@@ -13,10 +13,6 @@ public class StudIndex {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idStudIndex;
 
-   /* @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idstudProgram")
-    private StudProgram program;*/
-
     private int broj;
     private int godina;
     private boolean aktivan;
@@ -43,16 +39,38 @@ public class StudIndex {
     @OneToMany(mappedBy = "studentIndeks", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<OsvojeniPredispitniPoeni> predIspitne;
 
-    public StudIndex(int broj, int godina, StudProgram program, boolean aktivan, LocalDate odKadJeAktivan) {
+    @OneToMany(mappedBy = "index", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<SlusaPredmet> slusaPredmete;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idstudProgram")
+    private StudProgram studProgram;
+
+    public StudIndex(int broj, int godina, boolean aktivan, LocalDate odKadJeAktivan, Student student, PrijavaIspita prijavaIspita, StudProgram studProgram) {
         this.broj = broj;
         this.godina = godina;
-        //this.program = program;
         this.aktivan = aktivan;
         this.odKadJeAktivan = odKadJeAktivan;
+        this.student = student;
+        this.prijavaIspita = prijavaIspita;
+        this.studProgram = studProgram;
+        slusaPredmete = new ArrayList<>();
+        predIspitne = new ArrayList<>();
+        polozioPredmete = new ArrayList<>();
+        obnovljeneGodine = new ArrayList<>();
+        upisGodina = new ArrayList<>();
     }
 
     public StudIndex() {
 
+    }
+
+    public void addSlusaPred(SlusaPredmet slusa) {
+        if (slusaPredmete == null) {
+            slusaPredmete = new ArrayList<>();
+        }
+        slusaPredmete.add(slusa);
+        slusa.setIndex(this);
     }
 
     public void addOsvojeniPoeni(OsvojeniPredispitniPoeni poeniOsvojeni) {
@@ -87,6 +105,10 @@ public class StudIndex {
         obnovaGodina.setStudentIndex(this);
     }
 
+    public void setStudProgram(StudProgram studProgram) {
+        this.studProgram = studProgram;
+    }
+
     public int getIdStudIndex() {
         return idStudIndex;
     }
@@ -107,13 +129,33 @@ public class StudIndex {
         this.godina = godina;
     }
 
-/*    public StudProgram getProgram() {
-        return program;
+    public StudProgram getStudProgram() {
+        return studProgram;
     }
 
-    public void setProgram(StudProgram program) {
-        this.program = program;
-    }*/
+    public List<UpisGodina> getUpisGodina() {
+        return upisGodina;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public List<ObnovaGodina> getObnovljeneGodine() {
+        return obnovljeneGodine;
+    }
+
+    public List<OsvojeniPredispitniPoeni> getPredIspitne() {
+        return predIspitne;
+    }
+
+    public List<PolozioPredmet> getPolozioPredmete() {
+        return polozioPredmete;
+    }
+
+    public List<SlusaPredmet> getSlusaPredmete() {
+        return slusaPredmete;
+    }
 
     public boolean isAktivan() {
         return aktivan;
@@ -143,16 +185,17 @@ public class StudIndex {
         return prijavaIspita;
     }
 
-
     @Override
     public String toString() {
         return "StudIndex{" +
                 "idStudIndex=" + idStudIndex +
-                ", student=" + student +
                 ", broj=" + broj +
                 ", godina=" + godina +
                 ", aktivan=" + aktivan +
                 ", odKadJeAktivan=" + odKadJeAktivan +
+                ", student=" + student +
+                ", prijavaIspita=" + prijavaIspita +
+                ", studProgram=" + studProgram +
                 '}';
     }
 }

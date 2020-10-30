@@ -8,84 +8,90 @@ import javax.persistence.*;
 @Entity
 @Table(name = "drziPredmet")
 public class DrziPredmet {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idDrziPredmet;
-	private String sifra;
-	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name = "idPredmet")
-	private Predmet predmet; 
-	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name = "idNastavnik")
-	private Nastavnik nastavnik;
-	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name = "idSkolskaGodina")
-	private SkolskaGodina skolskaGod;
-	
-	@OneToMany(mappedBy = "drziPredmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	private List<SlusaPredmet> slusaPredmet;
 
-	public DrziPredmet() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idDrziPredmet;
+    private String sifra;
 
-	}
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idPredmet")
+    private Predmet predmet;
 
-	public DrziPredmet(Predmet predmet, Nastavnik nastavnik, SkolskaGodina skolskaGod) {
-		super();
-		this.predmet = predmet;
-		this.nastavnik = nastavnik;
-		this.skolskaGod = skolskaGod;
-	}
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idNastavnik")
+    private Nastavnik nastavnik;
 
-	public void addSlusaPredmet(SlusaPredmet predmeti){
-		if(slusaPredmet == null){
-			slusaPredmet = new ArrayList<>();
-		}
-		slusaPredmet.add(predmeti);
-		predmeti.setDrziPredmet(this);
-	}
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idSkolskaGodina")
+    private SkolskaGodina skolskaGod;
 
-	public Predmet getPredmet() {
-		return predmet;
-	}
+    @OneToMany(mappedBy = "drziPredmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<SlusaPredmet> slusaPredmet;
 
-	public void setPredmet(Predmet predmet) {
-		this.predmet = predmet;
-	}
+    public DrziPredmet() {
 
-	public Nastavnik getNastavnik() {
-		return nastavnik;
-	}
+    }
 
-	public void setNastavnik(Nastavnik nastavnik) {
-		this.nastavnik = nastavnik;
-	}
+    public DrziPredmet(String sifra, Predmet predmet, Nastavnik nastavnik, SkolskaGodina skolskaGod) {
+        this.sifra = sifra;
+        this.predmet = predmet;
+        this.nastavnik = nastavnik;
+        this.skolskaGod = skolskaGod;
+        slusaPredmet = new ArrayList<>();
+    }
 
-	public SkolskaGodina getSkolskaGod() {
-		return skolskaGod;
-	}
+    public void addSlusaPredmet(SlusaPredmet predmeti) {
+        if (slusaPredmet == null) {
+            slusaPredmet = new ArrayList<>();
+        }
+        slusaPredmet.add(predmeti);
+        predmeti.setDrziPredmet(this);
+    }
 
-	public void setSkolskaGod(SkolskaGodina skolskaGod) {
-		this.skolskaGod = skolskaGod;
-	}
+    public int getIdDrziPredmet() {
+        return idDrziPredmet;
+    }
 
-	public List<SlusaPredmet> getSlusaPredmet() {
-		return slusaPredmet;
-	}
+    public Predmet getPredmet() {
+        return predmet;
+    }
 
-	public String getSifra() {
-		return sifra;
-	}
+    public void setPredmet(Predmet predmet) {
+        this.predmet = predmet;
+    }
 
-	public void setSifra(String sifra) {
-		this.sifra = sifra;
-	}
+    public Nastavnik getNastavnik() {
+        return nastavnik;
+    }
 
-	public void setSlusaPredmet(List<SlusaPredmet> slusaPredmet) {
-		this.slusaPredmet = slusaPredmet;
+    public void setNastavnik(Nastavnik nastavnik) {
+        this.nastavnik = nastavnik;
+    }
 
-	}
+    public SkolskaGodina getSkolskaGod() {
+        return skolskaGod;
+    }
+
+    public void setSkolskaGod(SkolskaGodina skolskaGod) {
+        this.skolskaGod = skolskaGod;
+    }
+
+    public List<SlusaPredmet> getSlusaPredmet() {
+        return slusaPredmet;
+    }
+
+    public String getSifra() {
+        return sifra;
+    }
+
+    public void setSifra(String sifra) {
+        this.sifra = sifra;
+    }
+
+    public void setSlusaPredmet(List<SlusaPredmet> slusaPredmet) {
+        this.slusaPredmet = slusaPredmet;
+
+    }
+
 }

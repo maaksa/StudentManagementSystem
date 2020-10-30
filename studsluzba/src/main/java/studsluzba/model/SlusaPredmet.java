@@ -10,7 +10,6 @@ public class SlusaPredmet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSlusaPredmet;
 
-
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idStudent")
     private StudIndex index;
@@ -24,10 +23,12 @@ public class SlusaPredmet {
     }
 
     public SlusaPredmet(StudIndex index, DrziPredmet drziPredmet) {
-        super();
         this.index = index;
         this.drziPredmet = drziPredmet;
+    }
 
+    public int getIdSlusaPredmet() {
+        return idSlusaPredmet;
     }
 
     public DrziPredmet getDrziPredmet() {
@@ -45,4 +46,6 @@ public class SlusaPredmet {
     public void setIndex(StudIndex index) {
         this.index = index;
     }
+
+
 }

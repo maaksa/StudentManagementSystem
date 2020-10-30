@@ -15,9 +15,10 @@ public class PolozioPredmet {
     private float ukupanBrojPoena;
     private boolean priznatSaDrugogFaksa;
 
-    //@OneToOne
-    //@JoinColumn(name = "idVisokaSkola")
-//	private VisokaSkola visokaSkola;
+    //ne treba>
+    /*@OneToOne
+    @JoinColumn(name = "idVisokaSkola")
+	private VisokaSkola visokaSkola;*/
 
     //student indeks da bude
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
@@ -33,12 +34,32 @@ public class PolozioPredmet {
 
     }
 
+    public PolozioPredmet(int ocena, float ukupanBrojPoena, boolean priznatSaDrugogFaksa, StudIndex studentIndex) {
+        this.ocena = ocena;
+        this.ukupanBrojPoena = ukupanBrojPoena;
+        this.priznatSaDrugogFaksa = priznatSaDrugogFaksa;
+        this.studentIndex = studentIndex;
+        predmeti = new ArrayList<>();
+    }
+
     public void addPredmet(Predmet predmet) {
         if (predmeti == null) {
             predmeti = new ArrayList<>();
         }
         predmeti.add(predmet);
         predmet.setPolozioPredmet(this);
+    }
+
+    public void setPriznatSaDrugogFaksa(boolean priznatSaDrugogFaksa) {
+        this.priznatSaDrugogFaksa = priznatSaDrugogFaksa;
+    }
+
+    public float getUkupanBrojPoena() {
+        return ukupanBrojPoena;
+    }
+
+    public void setUkupanBrojPoena(float ukupanBrojPoena) {
+        this.ukupanBrojPoena = ukupanBrojPoena;
     }
 
     public int getIdPolozioPredmet() {
@@ -81,7 +102,6 @@ public class PolozioPredmet {
                 ", ukupanBrojPoena=" + ukupanBrojPoena +
                 ", priznatSaDrugogFaksa=" + priznatSaDrugogFaksa +
                 ", studentIndex=" + studentIndex +
-                ", predmeti=" + predmeti +
                 '}';
     }
 }

@@ -27,14 +27,25 @@ public class StudProgram {
     @OneToMany(mappedBy = "studProgram", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<VrstaStudija> vrsteStudija;
 
-    /*@OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idStudIndex")
-    private List<StudIndex> studIndex;*/
+    private List<StudIndex> studIndexi;
 
     @OneToMany(mappedBy = "studProgram", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Predmet> predmeti;
 
     public StudProgram() {
+    }
+
+    public StudProgram(String naziv, String skraceniNaziv, LocalDate godinaAkreditacije, int trajanje, String nazivZvanja) {
+        this.naziv = naziv;
+        this.skraceniNaziv = skraceniNaziv;
+        this.godinaAkreditacije = godinaAkreditacije;
+        this.trajanje = trajanje;
+        this.nazivZvanja = nazivZvanja;
+        predmeti = new ArrayList<>();
+        studIndexi = new ArrayList<>();
+        vrsteStudija = new ArrayList<>();
     }
 
     public void addVrstaStudija(VrstaStudija vrstaStudija) {
@@ -45,12 +56,24 @@ public class StudProgram {
         vrstaStudija.setStudProgram(this);
     }
 
+    public void addStudIndex(StudIndex studIndex) {
+        if (studIndexi == null) {
+            studIndexi = new ArrayList<>();
+        }
+        studIndexi.add(studIndex);
+        studIndex.setStudProgram(this);
+    }
+
     public void addPredmet(Predmet predmet) {
         if (predmeti == null) {
             predmeti = new ArrayList<>();
         }
         predmeti.add(predmet);
         predmet.setStudProgram(this);
+    }
+
+    public List<StudIndex> getStudIndexi() {
+        return studIndexi;
     }
 
     public int getIdstudProgram() {
@@ -101,25 +124,13 @@ public class StudProgram {
         return vrsteStudija;
     }
 
-    /*
-        public Student addStudent(Student student) {
-            getStudents().add(student);
-            student.setStudProgram(this);
 
-            return student;
-        }
+    /*public Student removeStudent(Student student) {
+        getStudents().remove(student);
+        student.setStudProgram(null);
 
-        public Student removeStudent(Student student) {
-            getStudents().remove(student);
-            student.setStudProgram(null);
-
-            return student;
-        }
-    */
-    @Override
-    public String toString() {
-        return skraceniNaziv + "-" + naziv;
-    }
+        return student;
+    }*/
 
     public List<Predmet> getPredmeti() {
         return predmeti;
@@ -129,5 +140,15 @@ public class StudProgram {
         this.predmeti = predmets;
     }
 
-
+    @Override
+    public String toString() {
+        return "StudProgram{" +
+                "idstudProgram=" + idstudProgram +
+                ", naziv='" + naziv + '\'' +
+                ", skraceniNaziv='" + skraceniNaziv + '\'' +
+                ", godinaAkreditacije=" + godinaAkreditacije +
+                ", trajanje=" + trajanje +
+                ", nazivZvanja='" + nazivZvanja + '\'' +
+                '}';
+    }
 }

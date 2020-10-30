@@ -29,25 +29,49 @@ public class Predmet {
     @JoinColumn(name = "idIspit")
     private Ispit ispit;
 
-	@OneToMany(mappedBy = "predmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	private List<PredispitneObaveze> obaveze;
+    @OneToMany(mappedBy = "predmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<PredispitneObaveze> obaveze;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idObnovaGodina")
+    private ObnovaGodina obnova;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idstudProgram")
-	private StudProgram studProgram;
-
-
+    private StudProgram studProgram;
 
     public Predmet() {
     }
 
-    public void addPredIspitne(PredispitneObaveze predObaveze){
-        if(obaveze == null){
+    public Predmet(String sifraPredmeta, String nazivPredmeta, String opis, int brojESPB, int fondPredavanja, int fondVezbi, int brojSemestra, PolozioPredmet polozioPredmet, Ispit ispit, ObnovaGodina obnovaGodina, StudProgram studProgram) {
+        this.sifraPredmeta = sifraPredmeta;
+        this.nazivPredmeta = nazivPredmeta;
+        this.opis = opis;
+        this.brojESPB = brojESPB;
+        this.fondPredavanja = fondPredavanja;
+        this.fondVezbi = fondVezbi;
+        this.brojSemestra = brojSemestra;
+        this.polozioPredmet = polozioPredmet;
+        this.ispit = ispit;
+        this.obnova = obnovaGodina;
+        this.studProgram = studProgram;
+        obaveze = new ArrayList<>();
+    }
+
+    public void addPredIspitne(PredispitneObaveze predObaveze) {
+        if (obaveze == null) {
             obaveze = new ArrayList<>();
         }
         obaveze.add(predObaveze);
         predObaveze.setPredmet(this);
+    }
+
+    public void setObnova(ObnovaGodina obnova) {
+        this.obnova = obnova;
+    }
+
+    public ObnovaGodina getObnova() {
+        return obnova;
     }
 
     public void setPolozioPredmet(PolozioPredmet polozioPredmet) {
@@ -130,14 +154,6 @@ public class Predmet {
         this.ispit = ispit;
     }
 
-    /*public List<PredispitneObaveze> getObaveze() {
-		return obaveze;
-	}
-
-	public void setObaveze(List<PredispitneObaveze> obaveze) {
-		this.obaveze = obaveze;
-	}*/
-
     public int getIdPredmet() {
         return idPredmet;
     }
@@ -154,16 +170,11 @@ public class Predmet {
         this.obaveze = obaveze;
     }
 
+
     @Override
     public String toString() {
         return "Predmet{" +
-                "sifraPredmeta='" + sifraPredmeta + '\'' +
-                ", nazivPredmeta='" + nazivPredmeta + '\'' +
-                ", opis='" + opis + '\'' +
-                ", brojESPB=" + brojESPB +
-                ", fondPredavanja=" + fondPredavanja +
-                ", fondVezbi=" + fondVezbi +
-                ", brojSemestra=" + brojSemestra +
+                "nazivPredmeta='" + nazivPredmeta + '\'' +
                 '}';
     }
 }

@@ -25,6 +25,12 @@ public class OsvojeniPredispitniPoeni {
 
     }
 
+    public OsvojeniPredispitniPoeni(int ukupanBrojPoena, StudIndex studentIndeks) {
+        this.ukupanBrojPoena = ukupanBrojPoena;
+        this.studentIndeks = studentIndeks;
+        predIspitneObaveze = new ArrayList<>();
+    }
+
     public void addPredIspitne(PredispitneObaveze predObaveze) {
         if (predIspitneObaveze == null) {
             predIspitneObaveze = new ArrayList<>();
@@ -32,7 +38,6 @@ public class OsvojeniPredispitniPoeni {
         predIspitneObaveze.add(predObaveze);
         predObaveze.setOsvojeniPredispitniPoeni(this);
     }
-
 
     public int getIdOsvojeniPoeni() {
         return idOsvojeniPoeni;
@@ -62,5 +67,12 @@ public class OsvojeniPredispitniPoeni {
         this.predIspitneObaveze = predIspitneObaveze;
     }
 
-
+    @Override
+    public String toString() {
+        return "OsvojeniPredispitniPoeni{" +
+                "idOsvojeniPoeni=" + idOsvojeniPoeni +
+                ", ukupanBrojPoena=" + ukupanBrojPoena +
+                ", studentIndeks=" + studentIndeks +
+                '}';
+    }
 }

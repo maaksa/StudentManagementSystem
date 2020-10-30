@@ -24,14 +24,14 @@ public class StudProgramRepositoryTest {
     public void studPrgoramTest() throws Exception {
 
         //upit selekcija svih polozenih ispita preko broja stud indeksa
-        // List<Predmet> predmeti = studProgramRepo.selectPredmetiByStudProg("RN");
-        // System.out.println(predmeti);
+//         List<Predmet> predmeti = studProgramRepo.selectPredmetiByStudProg("RN");
+//         System.out.println(predmeti);
 
         //prosečna ocena studenata na predmetu za raspon godina (na primer zadaje se godine
         //2015-2018 i vraća se prosečna ocena svih studenata koji su položili predmet u tom
         //periodu)
-        Float prosecnaOcena = studProgramRepo.selectProsecnaOcenaZaRasponGodina("Softverske komponente", 2018, 2019);
-        System.out.println(prosecnaOcena);
+//        Float prosecnaOcena = studProgramRepo.selectProsecnaOcenaZaRasponGodina("Softverske komponente", 2018, 2020);
+//        System.out.println(prosecnaOcena);
 
     }
 

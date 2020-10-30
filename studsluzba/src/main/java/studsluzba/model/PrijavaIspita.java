@@ -25,9 +25,11 @@ public class PrijavaIspita {
     public PrijavaIspita() {
     }
 
+
     public PrijavaIspita(LocalDate datum, Ispit ispit) {
         this.datum = datum;
         this.ispit = ispit;
+        studIndexi = new ArrayList<>();
     }
 
     public void addStudIndex(StudIndex studIndex) {

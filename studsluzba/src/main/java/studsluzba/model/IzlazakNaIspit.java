@@ -5,82 +5,100 @@ import javax.persistence.*;
 @Entity
 @Table(name = "izlazakIspit")
 public class IzlazakNaIspit {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idIzlazak;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idIzlazak;
 
-	private int brojOsvojenihPoena;
-	private String napomena;
-	private boolean ponistavanje;
-	private boolean izasaoNaIspit;
+    private int brojOsvojenihPoena;
+    private String napomena;
+    private boolean ponistavanje;
+    private boolean izasaoNaIspit;
 
-	// proveriti
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idPrijava")
-	private PrijavaIspita prijavljenIspit;
-
-	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name = "idIspit") 
-	private Ispit ispit;
-
-	public IzlazakNaIspit() {
+    // proveriti
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idPrijava")
+    private PrijavaIspita prijavljenIspit;
 
 
-	}
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idIspit")
+    private Ispit ispit;
 
-	public int getIdIzlazak() {
-		return idIzlazak;
-	}
+    public IzlazakNaIspit() {
 
-	public int getBrojOsvojenihPoena() {
-		return brojOsvojenihPoena;
-	}
+    }
 
-	public void setBrojOsvojenihPoena(int brojOsvojenihPoena) {
-		this.brojOsvojenihPoena = brojOsvojenihPoena;
-	}
+    public IzlazakNaIspit(int brojOsvojenihPoena, String napomena, boolean ponistavanje, boolean izasaoNaIspit, PrijavaIspita prijavljenIspit, Ispit ispit) {
+        this.brojOsvojenihPoena = brojOsvojenihPoena;
+        this.napomena = napomena;
+        this.ponistavanje = ponistavanje;
+        this.izasaoNaIspit = izasaoNaIspit;
+        this.prijavljenIspit = prijavljenIspit;
+        this.ispit = ispit;
+    }
 
-	public String getNapomena() {
-		return napomena;
-	}
+    public int getIdIzlazak() {
+        return idIzlazak;
+    }
 
-	public void setNapomena(String napomena) {
-		this.napomena = napomena;
-	}
+    public int getBrojOsvojenihPoena() {
+        return brojOsvojenihPoena;
+    }
 
-	public boolean isPonistavanje() {
-		return ponistavanje;
-	}
+    public void setBrojOsvojenihPoena(int brojOsvojenihPoena) {
+        this.brojOsvojenihPoena = brojOsvojenihPoena;
+    }
 
-	public void setPonistavanje(boolean ponistavanje) {
-		this.ponistavanje = ponistavanje;
-	}
+    public String getNapomena() {
+        return napomena;
+    }
 
-	public PrijavaIspita getPrijavljenIspit() {
-		return prijavljenIspit;
-	}
+    public void setNapomena(String napomena) {
+        this.napomena = napomena;
+    }
 
-	public void setPrijavljenIspit(PrijavaIspita prijavljenIspit) {
-		this.prijavljenIspit = prijavljenIspit;
-	}
+    public boolean isPonistavanje() {
+        return ponistavanje;
+    }
 
-	public boolean isIzasaoNaIspit() {
-		return izasaoNaIspit;
-	}
+    public void setPonistavanje(boolean ponistavanje) {
+        this.ponistavanje = ponistavanje;
+    }
 
-	public void setIzasaoNaIspit(boolean izasaoNaIspit) {
-		this.izasaoNaIspit = izasaoNaIspit;
-	}
+    public PrijavaIspita getPrijavljenIspit() {
+        return prijavljenIspit;
+    }
 
-	public Ispit getIspit() {
-		return ispit;
-	}
+    public void setPrijavljenIspit(PrijavaIspita prijavljenIspit) {
+        this.prijavljenIspit = prijavljenIspit;
+    }
 
-	public void setIspit(Ispit ispit) {
-		this.ispit = ispit;
-	}
+    public boolean isIzasaoNaIspit() {
+        return izasaoNaIspit;
+    }
 
+    public void setIzasaoNaIspit(boolean izasaoNaIspit) {
+        this.izasaoNaIspit = izasaoNaIspit;
+    }
 
+    public Ispit getIspit() {
+        return ispit;
+    }
 
+    public void setIspit(Ispit ispit) {
+        this.ispit = ispit;
+    }
+
+    @Override
+    public String toString() {
+        return "IzlazakNaIspit{" +
+                "idIzlazak=" + idIzlazak +
+                ", brojOsvojenihPoena=" + brojOsvojenihPoena +
+                ", napomena='" + napomena + '\'' +
+                ", ponistavanje=" + ponistavanje +
+                ", izasaoNaIspit=" + izasaoNaIspit +
+                ", prijavljenIspit=" + prijavljenIspit +
+                ", ispit=" + ispit +
+                '}';
+    }
 }

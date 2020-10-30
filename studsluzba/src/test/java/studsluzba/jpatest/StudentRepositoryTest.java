@@ -33,7 +33,7 @@ public class StudentRepositoryTest {
         ObnovaGodina obnovaGodina = new ObnovaGodina();
         UpisGodina upisGodina = new UpisGodina();
         Ispit ispit = new Ispit();
-        IspitniRok rok = new IspitniRok();
+        IspitniRok ispitniRok = new IspitniRok();
         PrijavaIspita prijavaIspita = new PrijavaIspita();
         Zvanje zvanje = new Zvanje();
         Nastavnik nastavnik = new Nastavnik();
@@ -44,18 +44,19 @@ public class StudentRepositoryTest {
         SlusaPredmet slusaPredmet = new SlusaPredmet();
         DrziPredmet drziPredmet = new DrziPredmet();
         PredispitneObaveze predispitneObaveze1 = new PredispitneObaveze();
-
+        VisokaSkola visokaSkola = new VisokaSkola();
 
         // Slusa predmet
         slusaPredmet.setIndex(studIndex);
-
+        slusaPredmet.setDrziPredmet(drziPredmet);//ovo
 
         //Drzi predmet
         drziPredmet.addSlusaPredmet(slusaPredmet);
-        //drziPredmet.setNastavnik(nastavnik);
+        drziPredmet.setNastavnik(nastavnik);
         drziPredmet.setPredmet(predmet);
         drziPredmet.setSkolskaGod(skolskaGodina);
         drziPredmet.setSifra("1234");
+
 
         //Osvojene pred
         osvojeniPredispitniPoeni.setUkupanBrojPoena(45);
@@ -100,8 +101,11 @@ public class StudentRepositoryTest {
         ispit.setSifraIspita("1234");
         ispit.addIzlazakNaIspit(izlazakNaIspit);
         ispit.addIzlazakNaIspit(izlazakNaIspit1);
-        
+
         //ispitni rok
+        ispitniRok.setDatumPocetka("14.06.2021");
+        ispitniRok.setDatumZavrsetka("20.06.2021");
+        ispitniRok.addIspit(ispit);
 
         //izlazak na Ispit
         izlazakNaIspit.setNapomena("Sta god");
@@ -131,10 +135,14 @@ public class StudentRepositoryTest {
         obnovaGodina.setDatum(2020);
         obnovaGodina.setNapomena("Napomena");
         obnovaGodina.setSkolskaGodina(skolskaGodina);
+        obnovaGodina.setStudentIndeks(studIndex);
+        obnovaGodina.addPredmetPrenos(predmet);
+        obnovaGodina.addPredmetPrenos(predmet);
 
         //Skolska godina
         skolskaGodina.setDatum(2019);
         skolskaGodina.setAktivna(true);
+        skolskaGodina.addIspitniRok(ispitniRok);
 
 
         //vrsta studija
@@ -162,28 +170,36 @@ public class StudentRepositoryTest {
         studProgram.setSkraceniNaziv("RN");
         studProgram.setNazivZvanja("Diplomirani informaticar");
         studProgram.setTrajanje(8);
+        studProgram.addStudIndex(studIndex);
 
         //polozioPred
         polozioPredmet.setOcena(9);
         polozioPredmet.addPredmet(predmet);
+        polozioPredmet.setPriznatSaDrugogFaksa(false);
+        polozioPredmet.setUkupanBrojPoena(80);
 
         //index
         studIndex.setGodina(2018);
         studIndex.setAktivan(true);
         studIndex.setBroj(45);
         studIndex.setOdKadJeAktivan(LocalDate.now());
-        //studIndex.setProgram(null);
         studIndex.addPolozioPredmet(polozioPredmet);
         studIndex.addUpisGodina(upisGodina);
         studIndex.addObnovaGodine(obnovaGodina);
         studIndex.addOsvojeniPoeni(osvojeniPredispitniPoeni);
+        studIndex.addSlusaPred(slusaPredmet);
 
         //srednja sk
         srednjaSkola.setMesto("Obrenovac");
         srednjaSkola.setNaziv("Gimnazija u Obrenovcu");
         srednjaSkola.setVrsta("Gimnazija");
-        srednjaSkola.setStudent(s);
-        //srednjaSkola.addStudent(s);
+        srednjaSkola.addStudent(s);
+
+        //visoka skola
+        visokaSkola.setNaziv("visa etf");
+        visokaSkola.setMesto("Beograd");
+        visokaSkola.setVrsta("visoka skola");
+        visokaSkola.addStudent(s);
 
         //student
         s.setIme("Nikola");
@@ -208,34 +224,33 @@ public class StudentRepositoryTest {
         s.setVisokaSkola(null);
         s.addIndex(studIndex);
         s.setUlica("Petra Petrica");
-        s.setSrednjaSkola(srednjaSkola);
+        s.setUspehSrednjaSKola(4.52);
 
-
-        studRepo.save(s);
+        //studRepo.save(s);
 
         //upit izvlacenje studenta preko broja indeksa
-        // Student student = studRepo.selectStudentByIndex(45);
-        //System.out.println(student);
+//         Student student = studRepo.selectStudentByIndex(45);
+//        System.out.println(student);
 
         //upit selekcija svih položenih ispita preko broja indeksa studenta
-        // List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(45);
-        //System.out.println(polozioPredmeti);
+//         List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(45);
+//        System.out.println(polozioPredmeti);
 
         //upit selekcija studenta koristeci ime ili prezime ili ime i prezime
-        // List<Student> studenti = studRepo.findStudentByNameAndSurname("milos", null);
-        // System.out.println(studenti);
+//         List<Student> studenti = studRepo.findStudentByNameAndSurname("nikola", null);
+//         System.out.println(studenti);
 
         //upit selekcija studenata koji su zavrsili odredjenu srednju skolu
-        //List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
-        //System.out.println(studenti);
+//        List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
+//        System.out.println(studenti);
 
         //pregled svih upisanih godina za broj indeksa
-        // List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(45);
-        //System.out.println(upisaneGodine);
+//         List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(45);
+//        System.out.println(upisaneGodine);
 
         //pregled obnovljenih godina za broj indeksa
-        //List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(45);
-        // System.out.println(obnovaGodine);
+//        List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(45);
+//         System.out.println(obnovaGodine);
 
     }
 }

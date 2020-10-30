@@ -32,6 +32,14 @@ public class PredispitneObaveze {
     public PredispitneObaveze() {
     }
 
+    public PredispitneObaveze(String vrstaObabeza, int poeni, int maxBrp, SkolskaGodina skolskaGodina, Predmet predmet, OsvojeniPredispitniPoeni osvojeniPredispitniPoeni) {
+        this.vrstaObabeza = vrstaObabeza;
+        this.poeni = poeni;
+        this.maxBrp = maxBrp;
+        this.skolskaGodina = skolskaGodina;
+        this.predmet = predmet;
+        this.osvojeniPredispitniPoeni = osvojeniPredispitniPoeni;
+    }
 
     public String getVrstaObabeza() {
         return vrstaObabeza;
@@ -79,6 +87,10 @@ public class PredispitneObaveze {
 
     public void setOsvojeniPredispitniPoeni(OsvojeniPredispitniPoeni osvojeniPredispitniPoeni) {
         this.osvojeniPredispitniPoeni = osvojeniPredispitniPoeni;
+    }
+
+    public int getIdPredIspitne() {
+        return idPredIspitne;
     }
 
     @Override

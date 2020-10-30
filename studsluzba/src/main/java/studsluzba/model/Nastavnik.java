@@ -31,6 +31,8 @@ public class Nastavnik {
         this.srednjeIme = srednjeIme;
         this.email = email;
         this.obrazovanje = obrazovanje;
+        drziPredmet = new ArrayList<>();
+        zvanja = new ArrayList<>();
     }
 
     public Nastavnik() {
@@ -51,6 +53,14 @@ public class Nastavnik {
         }
         zvanja.add(zvanje);
         zvanje.setNastavnik(this);
+    }
+
+    public int getIdNastavnik() {
+        return idNastavnik;
+    }
+
+    public List<DrziPredmet> getDrziPredmet() {
+        return drziPredmet;
     }
 
     public String getIme() {
@@ -101,4 +111,15 @@ public class Nastavnik {
         this.zvanja = zvanja;
     }
 
+    @Override
+    public String toString() {
+        return "Nastavnik{" +
+                "idNastavnik=" + idNastavnik +
+                ", ime='" + ime + '\'' +
+                ", prezime='" + prezime + '\'' +
+                ", srednjeIme='" + srednjeIme + '\'' +
+                ", email='" + email + '\'' +
+                ", obrazovanje='" + obrazovanje + '\'' +
+                '}';
+    }
 }

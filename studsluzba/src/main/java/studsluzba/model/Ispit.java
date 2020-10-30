@@ -24,6 +24,10 @@ public class Ispit {
     @JoinColumn(name = "idPredmet")
     private Predmet predmet;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idIspitniRok")
+    private IspitniRok ispitniRok;
+
     @OneToMany(mappedBy = "ispit", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<IzlazakNaIspit> izlasciNaIspit;
 
@@ -38,11 +42,16 @@ public class Ispit {
 
     }
 
-    public Ispit(LocalDate datumOdrzavanja, Predmet predmet, Nastavnik nastavnik, String vremePocetka) {
+    public Ispit(String sifraIspita, LocalDate datumOdrzavanja, String vremePocetka, boolean unetiPoeni, Predmet predmet, IspitniRok ispitniRok, Nastavnik nastavnik) {
+        this.sifraIspita = sifraIspita;
         this.datumOdrzavanja = datumOdrzavanja;
-        this.predmet = predmet;
-        this.nastavnik = nastavnik;
         this.vremePocetka = vremePocetka;
+        this.unetiPoeni = unetiPoeni;
+        this.predmet = predmet;
+        this.ispitniRok = ispitniRok;
+        this.nastavnik = nastavnik;
+        prijavaIspita = new ArrayList<>();
+        izlasciNaIspit = new ArrayList<>();
     }
 
     public void addPrijavaIspita(PrijavaIspita prijava) {
@@ -59,6 +68,18 @@ public class Ispit {
         }
         izlasciNaIspit.add(izlazakNaIspit);
         izlazakNaIspit.setIspit(this);
+    }
+
+    public IspitniRok getIspitniRok() {
+        return ispitniRok;
+    }
+
+    public List<IzlazakNaIspit> getIzlasciNaIspit() {
+        return izlasciNaIspit;
+    }
+
+    public List<PrijavaIspita> getPrijavaIspita() {
+        return prijavaIspita;
     }
 
     public int getIdIspit() {
@@ -117,4 +138,21 @@ public class Ispit {
         this.sifraIspita = sifraIspita;
     }
 
+    public void setIspitniRok(IspitniRok ispitniRok) {
+        this.ispitniRok = ispitniRok;
+    }
+
+    @Override
+    public String toString() {
+        return "Ispit{" +
+                "idIspit=" + idIspit +
+                ", sifraIspita='" + sifraIspita + '\'' +
+                ", datumOdrzavanja=" + datumOdrzavanja +
+                ", vremePocetka='" + vremePocetka + '\'' +
+                ", unetiPoeni=" + unetiPoeni +
+                ", predmet=" + predmet +
+                ", ispitniRok=" + ispitniRok +
+                ", nastavnik=" + nastavnik +
+                '}';
+    }
 }

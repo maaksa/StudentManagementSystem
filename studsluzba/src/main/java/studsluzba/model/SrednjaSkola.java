@@ -16,12 +16,8 @@ public class SrednjaSkola {
     private String mesto;
     private String vrsta;
 
-	/*@OneToMany(mappedBy = "srednjaSkola", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	private List<Student> studenti;*/
-
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "idStudent")
-    private Student student;
+    @OneToMany(mappedBy = "srednjaSkola", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<Student> studenti;
 
     public SrednjaSkola() {
 
@@ -31,26 +27,19 @@ public class SrednjaSkola {
         this.naziv = naziv;
         this.mesto = mesto;
         this.vrsta = vrsta;
+        studenti = new ArrayList<>();
     }
 
-/*	public void addStudent(Student student) {
-		if (studenti == null) {
-			studenti = new ArrayList<>();
-		}
-		studenti.add(student);
-		student.setSrednjaSkola(this);
-	}*/
-
-/*	public List<Student> getStudenti() {
-		return studenti;
-	}*/
-
-    public Student getStudent() {
-        return student;
+    public void addStudent(Student student) {
+        if (studenti == null) {
+            studenti = new ArrayList<>();
+        }
+        studenti.add(student);
+        student.setSrednjaSkola(this);
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public List<Student> getStudenti() {
+        return studenti;
     }
 
     public int getIdSrednjaSkola() {
@@ -81,4 +70,13 @@ public class SrednjaSkola {
         this.vrsta = vrsta;
     }
 
+    @Override
+    public String toString() {
+        return "SrednjaSkola{" +
+                "idSrednjaSkola=" + idSrednjaSkola +
+                ", naziv='" + naziv + '\'' +
+                ", mesto='" + mesto + '\'' +
+                ", vrsta='" + vrsta + '\'' +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package studsluzba.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -14,34 +15,47 @@ public class SkolskaGodina {
     private int datum;
     private boolean aktivna;
 
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idObnovaGodina")
     private ObnovaGodina obnovaGodine;
 
-    /* ODKOMENTARISATI
-    @OneToMany
-    @JoinColumn(name = "idIspitniRok")
+    @OneToMany(mappedBy = "skolskaGod", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<IspitniRok> ispitniRokovi;
-    */
 
     public SkolskaGodina() {
-        super();
+
+    }
+
+    public SkolskaGodina(int datum, boolean aktivna, ObnovaGodina obnovaGodine) {
+        this.datum = datum;
+        this.aktivna = aktivna;
+        this.obnovaGodine = obnovaGodine;
+        ispitniRokovi = new ArrayList<>();
+    }
+
+    public void addIspitniRok(IspitniRok ispitniRok) {
+        if (ispitniRokovi == null) {
+            ispitniRokovi = new ArrayList<>();
+        }
+        ispitniRokovi.add(ispitniRok);
+        ispitniRok.setSkolskaGod(this);
     }
 
     public int getIdSkolskaGodina() {
         return idSkolskaGodina;
     }
-    /*
-     * public List<Predmet> getPredemti() { return predemti; }
-     *
-     * public void setPredemti(List<Predmet> predemti) { this.predemti = predemti; }
-     *
-     * public List<Nastavnik> getNastavnici() { return nastavnici; }
-     *
-     * public void setNastavnici(List<Nastavnik> nastavnici) { this.nastavnici =
-     * nastavnici; }
-     */
+
+    public List<IspitniRok> getIspitniRokovi() {
+        return ispitniRokovi;
+    }
+
+    public ObnovaGodina getObnovaGodine() {
+        return obnovaGodine;
+    }
+
+    public void setObnovaGodine(ObnovaGodina obnovaGodine) {
+        this.obnovaGodine = obnovaGodine;
+    }
 
     public int getDatum() {
         return datum;
@@ -62,7 +76,10 @@ public class SkolskaGodina {
     @Override
     public String toString() {
         return "SkolskaGodina{" +
-                "datum=" + datum +
+                "idSkolskaGodina=" + idSkolskaGodina +
+                ", datum=" + datum +
+                ", aktivna=" + aktivna +
+                ", obnovaGodine=" + obnovaGodine +
                 '}';
     }
 }
