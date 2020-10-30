@@ -32,5 +32,6 @@ public interface IspitRepository extends CrudRepository<Ispit, Integer> {
             "sl.index.broj = :broj))")
     List<PredispitneObaveze> getPoint(int broj, String naziv, int godina);
 
-    //List<StudIndex> sortStudByExamResults(String sifraIspita);
+    @Query("select si.broj, si.godina, si.studProgram.skraceniNaziv, si.prijavaIspita.izlazakNaIspit.brojOsvojenihPoena from StudIndex si where si.prijavaIspita.ispit.idIspit = :id")
+    List<Object[]> sortStudByExamResults(int id);
 }

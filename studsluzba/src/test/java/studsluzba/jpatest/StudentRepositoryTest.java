@@ -181,7 +181,7 @@ public class StudentRepositoryTest {
         //index
         studIndex.setGodina(2018);
         studIndex.setAktivan(true);
-        studIndex.setBroj(45);
+        studIndex.setBroj(57);
         studIndex.setOdKadJeAktivan(LocalDate.now());
         studIndex.addPolozioPredmet(polozioPredmet);
         studIndex.addUpisGodina(upisGodina);
@@ -229,11 +229,11 @@ public class StudentRepositoryTest {
         //studRepo.save(s);
 
         //upit izvlacenje studenta preko broja indeksa
-//         Student student = studRepo.selectStudentByIndex(45);
+//         Student student = studRepo.selectStudentByIndex(57);
 //        System.out.println(student);
 
         //upit selekcija svih položenih ispita preko broja indeksa studenta
-//         List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(45);
+//         List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(57);
 //        System.out.println(polozioPredmeti);
 
         //upit selekcija studenta koristeci ime ili prezime ili ime i prezime
@@ -245,11 +245,11 @@ public class StudentRepositoryTest {
 //        System.out.println(studenti);
 
         //pregled svih upisanih godina za broj indeksa
-//         List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(45);
+//         List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(57);
 //        System.out.println(upisaneGodine);
 
         //pregled obnovljenih godina za broj indeksa
-//        List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(45);
+//        List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(57);
 //         System.out.println(obnovaGodine);
 
     }

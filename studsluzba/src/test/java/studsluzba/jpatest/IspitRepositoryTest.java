@@ -31,12 +31,12 @@ public class IspitRepositoryTest {
 
         //selekcija ostvarenih poena na predispinim obavezama za studenta na određenom
         //predmetu u školskoj godini
-//        List<PredispitneObaveze> predispitneObaveze = ispitRepository.getPoint(45,"Softverske komponente", 2019);
+//        List<PredispitneObaveze> predispitneObaveze = ispitRepository.getPoint(57,"Softverske komponente", 2019);
 //        System.out.println(predispitneObaveze);
 
         //za datog studenta i predmet vratiti koliko je puta student polagao predmet (izašao na
         //ispit)
-//        Integer cnt = ispitRepository.getCountIspitOut("Softverske komponente", 45);
+//        Integer cnt = ispitRepository.getCountIspitOut("Softverske komponente", 57);
 //        System.out.println(cnt);
 
         //rezultati ispita u vidu sortiranog spiska studenata (sortirati prvo po stud programu, zatim
@@ -44,6 +44,11 @@ public class IspitRepositoryTest {
         //plus poeni sa ispita) TODO
        /* List<StudIndex> studenti = ispitRepository.sortStudByExamResults("1234");
         System.out.println(studenti);*/
+        List<Object[]> studenti = ispitRepository.sortStudByExamResults(1);
+        for(Object [] pogodak:studenti)
+            for(Object o: pogodak)
+                 System.out.println(o);
+
 
 
     }

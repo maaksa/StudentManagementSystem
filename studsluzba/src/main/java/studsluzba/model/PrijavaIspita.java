@@ -19,8 +19,13 @@ public class PrijavaIspita {
     @JoinColumn(name = "idIspit")
     private Ispit ispit;
 
+    //obrnuto manyToOne
     @OneToMany(mappedBy = "prijavaIspita", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<StudIndex> studIndexi;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idIzlazak")
+    private IzlazakNaIspit izlazakNaIspit;
 
     public PrijavaIspita() {
     }
