@@ -59,7 +59,7 @@ public class StudentRepositoryTest {
 
 
         //Osvojene pred
-        osvojeniPredispitniPoeni.setUkupanBrojPoena(45);
+        osvojeniPredispitniPoeni.setUkupanBrojPoena(60);
         osvojeniPredispitniPoeni.setStudentIndeks(studIndex);
         osvojeniPredispitniPoeni.addPredIspitne(predispitneObaveze);
 
@@ -164,28 +164,27 @@ public class StudentRepositoryTest {
         predmet.addPredIspitne(predispitneObaveze1);
 
 
-
         //studProg
         studProgram.addVrstaStudija(vrstaStudija);
         studProgram.addPredmet(predmet);
         studProgram.setGodinaAkreditacije(LocalDate.now());
-        studProgram.setNaziv("Racunarske nauke");
-        studProgram.setSkraceniNaziv("RN");
-        studProgram.setNazivZvanja("Diplomirani informaticar");
+        studProgram.setNaziv("Inzinjerstvo");
+        studProgram.setSkraceniNaziv("RI");
+        studProgram.setNazivZvanja("Diplomirani inzinjer");
         studProgram.setTrajanje(8);
         studProgram.addStudIndex(studIndex);
 
         //polozioPred
-        polozioPredmet.setOcena(9);
+        polozioPredmet.setOcena(8);
         polozioPredmet.addPredmet(predmet);
         polozioPredmet.setPriznatSaDrugogFaksa(false);
-        polozioPredmet.setUkupanBrojPoena(80);
+        polozioPredmet.setUkupanBrojPoena(60);
         polozioPredmet.setIzlazakNaIspit(izlazakNaIspit);
 
         //index
         studIndex.setGodina(2018);
         studIndex.setAktivan(true);
-        studIndex.setBroj(57);
+        studIndex.setBroj(50);
         studIndex.setOdKadJeAktivan(LocalDate.now());
         studIndex.addPolozioPredmet(polozioPredmet);
         studIndex.addUpisGodina(upisGodina);
@@ -207,9 +206,9 @@ public class StudentRepositoryTest {
         visokaSkola.addStudent(s);
 
         //student
-        s.setIme("Nikola");
-        s.setPrezime("Punovic");
-        s.setSrednjeIme("Paun");
+        s.setIme("Luka");
+        s.setPrezime("Lukovic");
+        s.setSrednjeIme("Luk");
         s.setBrojLicneKarte("52156654433");
         s.setBrojTelefona(060123433);
         s.setBrojUlice(50);
@@ -239,24 +238,33 @@ public class StudentRepositoryTest {
 
         //upit selekcija svih položenih ispita preko broja indeksa studenta
 //         List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(57);
-//        System.out.println(polozioPredmeti);
+//        for(PolozioPredmet pred : polozioPredmeti){
+//            System.out.println(pred);
+//        }
 
         //upit selekcija studenta koristeci ime ili prezime ili ime i prezime
 //         List<Student> studenti = studRepo.findStudentByNameAndSurname("nikola", null);
-//         System.out.println(studenti);
+//         for(Student student : studenti){
+//             System.out.println(student);
+//         }
 
         //upit selekcija studenata koji su zavrsili odredjenu srednju skolu
 //        List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
-//        System.out.println(studenti);
+//        for(Student student : studenti){
+//             System.out.println(student);
+//         }
 
         //pregled svih upisanih godina za broj indeksa
 //         List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(57);
-//        System.out.println(upisaneGodine);
+//         for(UpisGodina upis : upisaneGodine){
+//             System.out.println(upis);
+//         }
 
         //pregled obnovljenih godina za broj indeksa
 //        List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(57);
-//         System.out.println(obnovaGodine);
-
+//        for (ObnovaGodina obnova : obnovaGodine) {
+//            System.out.println(obnova);
+//        }
     }
 }
 

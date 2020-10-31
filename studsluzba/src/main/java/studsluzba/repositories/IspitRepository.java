@@ -3,10 +3,7 @@ package studsluzba.repositories;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import studsluzba.model.Ispit;
-import studsluzba.model.PredispitneObaveze;
-import studsluzba.model.SkolskaGodina;
-import studsluzba.model.StudIndex;
+import studsluzba.model.*;
 
 import java.util.List;
 
@@ -18,11 +15,11 @@ public interface IspitRepository extends CrudRepository<Ispit, Integer> {
     //where pp.izlazakNaIspit.Ispit.sifra
     @Query("select avg(pp.ocena) from PolozioPredmet pp where pp.izlazakNaIspit.ispit.sifraIspita like :ispitSifra")
     Float getAverageGradeOnTheExam(String ispitSifra);
-    //?????
-  //  @Query("select count(iz.izasaoNaIspit) from IzlazakNaIspit iz where iz.ispit.idIspit = (select i.idIspit " +
-    //        "from Ispit i where i.predmet.nazivPredmeta like :nazivPredmeta " +
-   //         "and i.idIspit = (select si.prijavaIspita.ispit.idIspit from StudIndex si where si.broj = :broj))")
- //   Integer getCountIspitOut(String nazivPredmeta, int broj);
+
+    @Query("select count(iz.izasaoNaIspit) from IzlazakNaIspit iz where iz.ispit.idIspit = (select i.idIspit " +
+            "from Ispit i where i.predmet.nazivPredmeta like :nazivPredmeta " +
+            "and i.predmet.polozioPredmet.studentIndex.idStudIndex = (select si.idStudIndex from StudIndex si where si.broj = :broj))")
+    Integer getCountIspitOut(String nazivPredmeta, int broj);
 
     //selekcija ostvarenih poena na predispinim obavezama za studenta na određenom
     //predmetu u školskoj godini
@@ -32,6 +29,15 @@ public interface IspitRepository extends CrudRepository<Ispit, Integer> {
             "sl.index.broj = :broj))")
     List<PredispitneObaveze> getPoint(int broj, String naziv, int godina);
 
-   // @Query("select si.broj, si.godina, si.studProgram.skraceniNaziv, si.prijavaIspita.izlazakNaIspit.brojOsvojenihPoena from StudIndex si where si.prijavaIspita.ispit.idIspit = :id")
-   // List<Object[]> sortStudByExamResults(int id);
+//    @Query("select si.broj, si.godina, si.studProgram.skraceniNaziv, si.prijavaIspita.izlazakNaIspit.brojOsvojenihPoena from StudIndex si where si.prijavaIspita.ispit.idIspit = :id")
+//    List<Object[]> sortStudByExamResults(int id);
+//si.broj, si.godina, si.studProgram.skraceniNaziv,
+    @Query("select si.predIspitne from StudIndex si where si.idStudIndex in (select pp.studentIndex.idStudIndex from PolozioPredmet pp where pp.izlazakNaIspit.ispit.sifraIspita like :sifraIspita) " +
+            "order by si.studProgram.skraceniNaziv asc, si.godina asc, si.broj")
+    List<OsvojeniPredispitniPoeni> sortStudByExamResults(String sifraIspita);
+
+
 }
+
+
+

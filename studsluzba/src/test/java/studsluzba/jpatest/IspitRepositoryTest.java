@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import studsluzba.model.OsvojeniPredispitniPoeni;
 import studsluzba.model.PredispitneObaveze;
 import studsluzba.model.StudIndex;
 import studsluzba.repositories.IspitRepository;
@@ -23,7 +24,9 @@ public class IspitRepositoryTest {
 
         //svi prijavljeni studenti za ispit
 //         List<StudIndex> studIndeksi = ispitRepository.findStudentsRegisteredForExam(1);
-//         System.out.println(studIndeksi);
+//        for (StudIndex index: studIndeksi) {
+//            System.out.println(index);
+//        }
 
         // prosečna ocena na ispitu
 //         Float avg = ispitRepository.getAverageGradeOnTheExam("1234");
@@ -32,7 +35,9 @@ public class IspitRepositoryTest {
         //selekcija ostvarenih poena na predispinim obavezama za studenta na određenom
         //predmetu u školskoj godini
 //        List<PredispitneObaveze> predispitneObaveze = ispitRepository.getPoint(57,"Softverske komponente", 2019);
-//        System.out.println(predispitneObaveze);
+//        for (PredispitneObaveze obaveze : predispitneObaveze){
+//            System.out.println(obaveze);
+//        }
 
         //za datog studenta i predmet vratiti koliko je puta student polagao predmet (izašao na
         //ispit)
@@ -40,18 +45,13 @@ public class IspitRepositoryTest {
 //        System.out.println(cnt);
 
 
-
         //rezultati ispita u vidu sortiranog spiska studenata (sortirati prvo po stud programu, zatim
         //po godini upisa, pa po broju) sa ukupnim brojem poena na ispitu (predispitne obaveze
-        //plus poeni sa ispita) TODO
-       /* List<StudIndex> studenti = ispitRepository.sortStudByExamResults("1234");
-        System.out.println(studenti);*/
-
-       // List<Object[]> studenti = ispitRepository.sortStudByExamResults(1);
-       // for(Object [] pogodak:studenti)
-         //   for(Object o: pogodak)
-            //     System.out.println(o);
-
+        //plus poeni sa ispita)
+//        List<OsvojeniPredispitniPoeni> osvojeniPredispitniPoenis= ispitRepository.sortStudByExamResults("1234");
+//        for (OsvojeniPredispitniPoeni os : osvojeniPredispitniPoenis){
+//            System.out.println(os);
+//        }
 
 
     }
