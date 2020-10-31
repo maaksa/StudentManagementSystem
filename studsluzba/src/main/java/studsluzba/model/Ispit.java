@@ -19,8 +19,8 @@ public class Ispit {
     private String vremePocetka;
     private boolean unetiPoeni;
 
-    //ne treba
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idPredmet")
     private Predmet predmet;
 

@@ -24,6 +24,10 @@ public class IzlazakNaIspit {
     @JoinColumn(name = "idIspit")
     private Ispit ispit;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idPolozioPredmet")
+    private PolozioPredmet polozioPredmet;
+
     public IzlazakNaIspit() {
 
     }
@@ -87,6 +91,14 @@ public class IzlazakNaIspit {
 
     public void setIspit(Ispit ispit) {
         this.ispit = ispit;
+    }
+
+    public PolozioPredmet getPolozioPredmet() {
+        return polozioPredmet;
+    }
+
+    public void setPolozioPredmet(PolozioPredmet polozioPredmet) {
+        this.polozioPredmet = polozioPredmet;
     }
 
     @Override

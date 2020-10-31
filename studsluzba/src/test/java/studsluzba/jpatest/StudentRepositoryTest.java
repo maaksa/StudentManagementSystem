@@ -95,12 +95,12 @@ public class StudentRepositoryTest {
         ispit.setDatumOdrzavanja(LocalDate.now());
         ispit.setUnetiPoeni(false);
         ispit.setVremePocetka("12:00");
-        ispit.setPredmet(predmet);
         ispit.setNastavnik(nastavnik);
         ispit.addPrijavaIspita(prijavaIspita);
         ispit.setSifraIspita("1234");
         ispit.addIzlazakNaIspit(izlazakNaIspit);
         ispit.addIzlazakNaIspit(izlazakNaIspit1);
+
 
         //ispitni rok
         ispitniRok.setDatumPocetka("14.06.2021");
@@ -113,6 +113,7 @@ public class StudentRepositoryTest {
         izlazakNaIspit.setPonistavanje(false);
         izlazakNaIspit.setBrojOsvojenihPoena(95);
         izlazakNaIspit.setPrijavljenIspit(prijavaIspita);
+        izlazakNaIspit.setPolozioPredmet(polozioPredmet);
         //izlazakNaIspit.setIspit(ispit);
 
         izlazakNaIspit1.setNapomena("Staaaaaa god");
@@ -120,11 +121,12 @@ public class StudentRepositoryTest {
         izlazakNaIspit1.setPonistavanje(false);
         izlazakNaIspit1.setBrojOsvojenihPoena(90);
         izlazakNaIspit1.setPrijavljenIspit(prijavaIspita);
+        izlazakNaIspit1.setPolozioPredmet(polozioPredmet);
         //izlazakNaIspit1.setIspit(ispit);
 
         //prijavaIpsita
-        prijavaIspita.addStudIndex(studIndex);
         prijavaIspita.setDatum(LocalDate.now());
+        prijavaIspita.setIzlazakNaIspit(izlazakNaIspit);
 
         //Upis godine
         upisGodina.setDatum(2020);
@@ -157,9 +159,10 @@ public class StudentRepositoryTest {
         predmet.setOpis("Najjaci predmet");
         predmet.setNazivPredmeta("Softverske komponente");
         predmet.setSifraPredmeta("sk1");
-        predmet.setIspit(ispit);
+        predmet.addIspiti(ispit);
         predmet.addPredIspitne(predispitneObaveze);
         predmet.addPredIspitne(predispitneObaveze1);
+
 
 
         //studProg
@@ -177,6 +180,7 @@ public class StudentRepositoryTest {
         polozioPredmet.addPredmet(predmet);
         polozioPredmet.setPriznatSaDrugogFaksa(false);
         polozioPredmet.setUkupanBrojPoena(80);
+        polozioPredmet.setIzlazakNaIspit(izlazakNaIspit);
 
         //index
         studIndex.setGodina(2018);
@@ -188,6 +192,7 @@ public class StudentRepositoryTest {
         studIndex.addObnovaGodine(obnovaGodina);
         studIndex.addOsvojeniPoeni(osvojeniPredispitniPoeni);
         studIndex.addSlusaPred(slusaPredmet);
+        studIndex.addPrijavaIspita(prijavaIspita);
 
         //srednja sk
         srednjaSkola.setMesto("Obrenovac");

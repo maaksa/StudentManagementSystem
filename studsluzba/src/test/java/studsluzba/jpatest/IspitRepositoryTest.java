@@ -39,15 +39,18 @@ public class IspitRepositoryTest {
 //        Integer cnt = ispitRepository.getCountIspitOut("Softverske komponente", 57);
 //        System.out.println(cnt);
 
+
+
         //rezultati ispita u vidu sortiranog spiska studenata (sortirati prvo po stud programu, zatim
         //po godini upisa, pa po broju) sa ukupnim brojem poena na ispitu (predispitne obaveze
         //plus poeni sa ispita) TODO
        /* List<StudIndex> studenti = ispitRepository.sortStudByExamResults("1234");
         System.out.println(studenti);*/
-        List<Object[]> studenti = ispitRepository.sortStudByExamResults(1);
-        for(Object [] pogodak:studenti)
-            for(Object o: pogodak)
-                 System.out.println(o);
+
+       // List<Object[]> studenti = ispitRepository.sortStudByExamResults(1);
+       // for(Object [] pogodak:studenti)
+         //   for(Object o: pogodak)
+            //     System.out.println(o);
 
 
 

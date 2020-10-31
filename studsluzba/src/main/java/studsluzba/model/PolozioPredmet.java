@@ -29,6 +29,10 @@ public class PolozioPredmet {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "polozioPredmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Predmet> predmeti;
 
+    //izlazak na ispit da ima idIzlazak
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idIzlazak")
+    private IzlazakNaIspit izlazakNaIspit;
 
     public PolozioPredmet() {
 
@@ -92,6 +96,14 @@ public class PolozioPredmet {
 
     public void setPredmeti(List<Predmet> predmeti) {
         this.predmeti = predmeti;
+    }
+
+    public IzlazakNaIspit getIzlazakNaIspit() {
+        return izlazakNaIspit;
+    }
+
+    public void setIzlazakNaIspit(IzlazakNaIspit izlazakNaIspit) {
+        this.izlazakNaIspit = izlazakNaIspit;
     }
 
     @Override

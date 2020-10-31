@@ -19,9 +19,10 @@ public class PrijavaIspita {
     @JoinColumn(name = "idIspit")
     private Ispit ispit;
 
-    //obrnuto manyToOne
-    @OneToMany(mappedBy = "prijavaIspita", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    private List<StudIndex> studIndexi;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idStudIndex")
+    private StudIndex studIndexi;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idIzlazak")
@@ -34,16 +35,9 @@ public class PrijavaIspita {
     public PrijavaIspita(LocalDate datum, Ispit ispit) {
         this.datum = datum;
         this.ispit = ispit;
-        studIndexi = new ArrayList<>();
+
     }
 
-    public void addStudIndex(StudIndex studIndex) {
-        if (studIndexi == null) {
-            studIndexi = new ArrayList<>();
-        }
-        studIndexi.add(studIndex);
-        studIndex.setPrijavaIspita(this);
-    }
 
     public int getIdPrijava() {
         return idPrijava;
@@ -65,8 +59,19 @@ public class PrijavaIspita {
         this.ispit = ispit;
     }
 
-    public List<StudIndex> getStudIndexi() {
+    public StudIndex getStudIndexi() {
         return studIndexi;
     }
 
+    public void setStudIndexi(StudIndex studIndexi) {
+        this.studIndexi = studIndexi;
+    }
+
+    public IzlazakNaIspit getIzlazakNaIspit() {
+        return izlazakNaIspit;
+    }
+
+    public void setIzlazakNaIspit(IzlazakNaIspit izlazakNaIspit) {
+        this.izlazakNaIspit = izlazakNaIspit;
+    }
 }

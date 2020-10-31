@@ -22,10 +22,8 @@ public class StudIndex {
     @JoinColumn(name = "idStudent")
     private Student student;
 
-    //@OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}) lista?
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "idPrijava")
-    private PrijavaIspita prijavaIspita;
+    @OneToMany(mappedBy = "studIndexi", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<PrijavaIspita> prijavaIspita;
 
     @OneToMany(mappedBy = "studentIndex", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<UpisGodina> upisGodina;
@@ -46,13 +44,12 @@ public class StudIndex {
     @JoinColumn(name = "idstudProgram")
     private StudProgram studProgram;
 
-    public StudIndex(int broj, int godina, boolean aktivan, LocalDate odKadJeAktivan, Student student, PrijavaIspita prijavaIspita, StudProgram studProgram) {
+    public StudIndex(int broj, int godina, boolean aktivan, LocalDate odKadJeAktivan, Student student, StudProgram studProgram) {
         this.broj = broj;
         this.godina = godina;
         this.aktivan = aktivan;
         this.odKadJeAktivan = odKadJeAktivan;
         this.student = student;
-        this.prijavaIspita = prijavaIspita;
         this.studProgram = studProgram;
         slusaPredmete = new ArrayList<>();
         predIspitne = new ArrayList<>();
@@ -63,6 +60,16 @@ public class StudIndex {
 
     public StudIndex() {
 
+    }
+
+
+
+    public void addPrijavaIspita(PrijavaIspita prijava) {
+        if (prijavaIspita == null) {
+            prijavaIspita = new ArrayList<>();
+        }
+        prijavaIspita.add(prijava);
+        prijava.setStudIndexi(this);
     }
 
     public void addSlusaPred(SlusaPredmet slusa) {
@@ -177,24 +184,42 @@ public class StudIndex {
         this.student = student;
     }
 
-    public void setPrijavaIspita(PrijavaIspita prijavaIspita) {
+    public List<PrijavaIspita> getPrijavaIspita() {
+        return prijavaIspita;
+    }
+
+    public void setPrijavaIspita(List<PrijavaIspita> prijavaIspita) {
         this.prijavaIspita = prijavaIspita;
     }
 
-    public PrijavaIspita getPrijavaIspita() {
-        return prijavaIspita;
+    public void setUpisGodina(List<UpisGodina> upisGodina) {
+        this.upisGodina = upisGodina;
+    }
+
+    public void setObnovljeneGodine(List<ObnovaGodina> obnovljeneGodine) {
+        this.obnovljeneGodine = obnovljeneGodine;
+    }
+
+    public void setPolozioPredmete(List<PolozioPredmet> polozioPredmete) {
+        this.polozioPredmete = polozioPredmete;
+    }
+
+    public void setPredIspitne(List<OsvojeniPredispitniPoeni> predIspitne) {
+        this.predIspitne = predIspitne;
+    }
+
+    public void setSlusaPredmete(List<SlusaPredmet> slusaPredmete) {
+        this.slusaPredmete = slusaPredmete;
     }
 
     @Override
     public String toString() {
         return "StudIndex{" +
-                "idStudIndex=" + idStudIndex +
-                ", broj=" + broj +
+                "broj=" + broj +
                 ", godina=" + godina +
                 ", aktivan=" + aktivan +
                 ", odKadJeAktivan=" + odKadJeAktivan +
                 ", student=" + student +
-                ", prijavaIspita=" + prijavaIspita +
                 ", studProgram=" + studProgram +
                 '}';
     }

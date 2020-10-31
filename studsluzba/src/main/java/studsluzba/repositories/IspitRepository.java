@@ -15,14 +15,14 @@ public interface IspitRepository extends CrudRepository<Ispit, Integer> {
     @Query("select s from StudIndex s inner join s.prijavaIspita as pi where pi.ispit.idIspit = :idIspit")
     List<StudIndex> findStudentsRegisteredForExam(int idIspit);
 
-
-    @Query("select avg(pp.ocena) from PolozioPredmet pp where pp.studentIndex.prijavaIspita.ispit.sifraIspita like :ispitSifra")
+    //where pp.izlazakNaIspit.Ispit.sifra
+    @Query("select avg(pp.ocena) from PolozioPredmet pp where pp.izlazakNaIspit.ispit.sifraIspita like :ispitSifra")
     Float getAverageGradeOnTheExam(String ispitSifra);
-
-    @Query("select count(iz.izasaoNaIspit) from IzlazakNaIspit iz where iz.ispit.idIspit = (select i.idIspit " +
-            "from Ispit i where i.predmet.nazivPredmeta like :nazivPredmeta " +
-            "and i.idIspit = (select si.prijavaIspita.ispit.idIspit from StudIndex si where si.broj = :broj))")
-    Integer getCountIspitOut(String nazivPredmeta, int broj);
+    //?????
+  //  @Query("select count(iz.izasaoNaIspit) from IzlazakNaIspit iz where iz.ispit.idIspit = (select i.idIspit " +
+    //        "from Ispit i where i.predmet.nazivPredmeta like :nazivPredmeta " +
+   //         "and i.idIspit = (select si.prijavaIspita.ispit.idIspit from StudIndex si where si.broj = :broj))")
+ //   Integer getCountIspitOut(String nazivPredmeta, int broj);
 
     //selekcija ostvarenih poena na predispinim obavezama za studenta na određenom
     //predmetu u školskoj godini
@@ -32,6 +32,6 @@ public interface IspitRepository extends CrudRepository<Ispit, Integer> {
             "sl.index.broj = :broj))")
     List<PredispitneObaveze> getPoint(int broj, String naziv, int godina);
 
-    @Query("select si.broj, si.godina, si.studProgram.skraceniNaziv, si.prijavaIspita.izlazakNaIspit.brojOsvojenihPoena from StudIndex si where si.prijavaIspita.ispit.idIspit = :id")
-    List<Object[]> sortStudByExamResults(int id);
+   // @Query("select si.broj, si.godina, si.studProgram.skraceniNaziv, si.prijavaIspita.izlazakNaIspit.brojOsvojenihPoena from StudIndex si where si.prijavaIspita.ispit.idIspit = :id")
+   // List<Object[]> sortStudByExamResults(int id);
 }

@@ -25,9 +25,9 @@ public class Predmet {
     @JoinColumn(name = "idPolozioPredmet")
     private PolozioPredmet polozioPredmet;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "idIspit")
-    private Ispit ispit;
+    //vise ispita
+    @OneToMany(mappedBy = "predmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<Ispit> ispit;
 
     @OneToMany(mappedBy = "predmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<PredispitneObaveze> obaveze;
@@ -43,7 +43,7 @@ public class Predmet {
     public Predmet() {
     }
 
-    public Predmet(String sifraPredmeta, String nazivPredmeta, String opis, int brojESPB, int fondPredavanja, int fondVezbi, int brojSemestra, PolozioPredmet polozioPredmet, Ispit ispit, ObnovaGodina obnovaGodina, StudProgram studProgram) {
+    public Predmet(String sifraPredmeta, String nazivPredmeta, String opis, int brojESPB, int fondPredavanja, int fondVezbi, int brojSemestra, PolozioPredmet polozioPredmet,  ObnovaGodina obnovaGodina, StudProgram studProgram) {
         this.sifraPredmeta = sifraPredmeta;
         this.nazivPredmeta = nazivPredmeta;
         this.opis = opis;
@@ -52,10 +52,17 @@ public class Predmet {
         this.fondVezbi = fondVezbi;
         this.brojSemestra = brojSemestra;
         this.polozioPredmet = polozioPredmet;
-        this.ispit = ispit;
         this.obnova = obnovaGodina;
         this.studProgram = studProgram;
         obaveze = new ArrayList<>();
+    }
+
+    public void addIspiti(Ispit ispiti) {
+        if (ispit == null) {
+            ispit = new ArrayList<>();
+        }
+        ispit.add(ispiti);
+        ispiti.setPredmet(this);
     }
 
     public void addPredIspitne(PredispitneObaveze predObaveze) {
@@ -150,16 +157,16 @@ public class Predmet {
         return studProgram;
     }
 
-    public void setIspit(Ispit ispit) {
+    public List<Ispit> getIspit() {
+        return ispit;
+    }
+
+    public void setIspit(List<Ispit> ispit) {
         this.ispit = ispit;
     }
 
     public int getIdPredmet() {
         return idPredmet;
-    }
-
-    public Ispit getIspit() {
-        return ispit;
     }
 
     public List<PredispitneObaveze> getObaveze() {
