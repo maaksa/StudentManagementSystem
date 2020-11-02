@@ -24,6 +24,9 @@ public class UpisGodina {
     @JoinColumn(name = "idStudIndex")
     private StudIndex studentIndex;
 	
+/*	@OneToMany
+	@JoinColumn(name = "idPredmet")
+	private List<Predmet> predmetPrenos;*/
 
     private int datum;
     private String napomena;
