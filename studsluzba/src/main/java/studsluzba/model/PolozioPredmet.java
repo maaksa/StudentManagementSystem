@@ -15,11 +15,6 @@ public class PolozioPredmet {
     private float ukupanBrojPoena;
     private boolean priznatSaDrugogFaksa;
 
-    //ne treba>
-    /*@OneToOne
-    @JoinColumn(name = "idVisokaSkola")
-	private VisokaSkola visokaSkola;*/
-
     //student indeks da bude
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idStudIndex")
