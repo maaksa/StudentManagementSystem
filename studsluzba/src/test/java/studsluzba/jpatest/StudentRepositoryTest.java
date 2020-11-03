@@ -225,12 +225,12 @@ public class StudentRepositoryTest {
         s.setPrivemail("nn@gmail.com");
         s.setStudemail("nn@raf.rs");
         s.setUpisaoPrvuGodinu(false);
-        s.setVisokaSkola(null);
+        s.setVisokaSkola(visokaSkola);
         s.addIndex(studIndex);
         s.setUlica("Petra Petrica");
         s.setUspehSrednjaSKola(4.52);
 
-        //studRepo.save(s);
+       // studRepo.save(s);
 
         //upit izvlacenje studenta preko broja indeksa
 //         Student student = studRepo.selectStudentByIndex(57);
