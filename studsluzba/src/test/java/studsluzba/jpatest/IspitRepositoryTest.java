@@ -23,10 +23,10 @@ public class IspitRepositoryTest {
     public void ispitTest() throws Exception {
 
         //svi prijavljeni studenti za ispit
-//         List<StudIndex> studIndeksi = ispitRepository.findStudentsRegisteredForExam("1234");
-//        for (StudIndex index: studIndeksi) {
-//            System.out.println(index);
-//        }
+         List<StudIndex> studIndeksi = ispitRepository.findStudentsRegisteredForExam("1234");
+        for (StudIndex index: studIndeksi) {
+            System.out.println(index);
+        }
 
         // prosečna ocena na ispitu
 //         Float avg = ispitRepository.getAverageGradeOnTheExam("1234");

@@ -26,6 +26,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:13" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.2.2.RELEASE" level="project" />
@@ -102,5 +110,6 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.18" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:2.1" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
