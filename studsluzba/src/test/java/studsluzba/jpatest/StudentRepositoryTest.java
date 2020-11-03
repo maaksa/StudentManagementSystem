@@ -175,7 +175,7 @@ public class StudentRepositoryTest {
         studProgram.addStudIndex(studIndex);
 
         //polozioPred
-        polozioPredmet.setOcena(8);
+        polozioPredmet.setOcena(9);
         polozioPredmet.addPredmet(predmet);
         polozioPredmet.setPriznatSaDrugogFaksa(false);
         polozioPredmet.setUkupanBrojPoena(60);
@@ -184,7 +184,7 @@ public class StudentRepositoryTest {
         //index
         studIndex.setGodina(2018);
         studIndex.setAktivan(true);
-        studIndex.setBroj(50);
+        studIndex.setBroj(55);
         studIndex.setOdKadJeAktivan(LocalDate.now());
         studIndex.addPolozioPredmet(polozioPredmet);
         studIndex.addUpisGodina(upisGodina);
@@ -207,8 +207,8 @@ public class StudentRepositoryTest {
 
         //student
         s.setIme("Luka");
-        s.setPrezime("Lukovic");
-        s.setSrednjeIme("Luk");
+        s.setPrezime("Micic");
+        s.setSrednjeIme("Marko");
         s.setBrojLicneKarte("52156654433");
         s.setBrojTelefona(060123433);
         s.setBrojUlice(50);
@@ -233,38 +233,38 @@ public class StudentRepositoryTest {
        // studRepo.save(s);
 
         //upit izvlacenje studenta preko broja indeksa
-//         Student student = studRepo.selectStudentByIndex(57);
-//        System.out.println(student);
+         //Student student = studRepo.selectStudentByIndex(50);
+        // System.out.println(student);
 
         //upit selekcija svih položenih ispita preko broja indeksa studenta
-//         List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(57);
-//        for(PolozioPredmet pred : polozioPredmeti){
+//         List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(50);
+ //       for(PolozioPredmet pred : polozioPredmeti){
 //            System.out.println(pred);
-//        }
+  //      }
 
         //upit selekcija studenta koristeci ime ili prezime ili ime i prezime
-//         List<Student> studenti = studRepo.findStudentByNameAndSurname("nikola", null);
+//         List<Student> studenti = studRepo.findStudentByNameAndSurname("luka", null);
 //         for(Student student : studenti){
 //             System.out.println(student);
 //         }
 
         //upit selekcija studenata koji su zavrsili odredjenu srednju skolu
-//        List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
-//        for(Student student : studenti){
-//             System.out.println(student);
-//         }
+ //       List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
+ //       for(Student student : studenti){
+ //            System.out.println(student);
+ //        }
 
         //pregled svih upisanih godina za broj indeksa
-//         List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(57);
+//         List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(50);
 //         for(UpisGodina upis : upisaneGodine){
 //             System.out.println(upis);
 //         }
 
         //pregled obnovljenih godina za broj indeksa
-//        List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(57);
+//        List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(50);
 //        for (ObnovaGodina obnova : obnovaGodine) {
 //            System.out.println(obnova);
-//        }
+ //       }
     }
 }
 

@@ -23,7 +23,7 @@ public class IspitRepositoryTest {
     public void ispitTest() throws Exception {
 
         //svi prijavljeni studenti za ispit
-//         List<StudIndex> studIndeksi = ispitRepository.findStudentsRegisteredForExam(1);
+//         List<StudIndex> studIndeksi = ispitRepository.findStudentsRegisteredForExam("1234");
 //        for (StudIndex index: studIndeksi) {
 //            System.out.println(index);
 //        }
@@ -34,14 +34,14 @@ public class IspitRepositoryTest {
 
         //selekcija ostvarenih poena na predispinim obavezama za studenta na određenom
         //predmetu u školskoj godini
-//        List<PredispitneObaveze> predispitneObaveze = ispitRepository.getPoint(57,"Softverske komponente", 2019);
+//        List<PredispitneObaveze> predispitneObaveze = ispitRepository.getPoint(50,"Softverske komponente", 2019);
 //        for (PredispitneObaveze obaveze : predispitneObaveze){
 //            System.out.println(obaveze);
 //        }
 
         //za datog studenta i predmet vratiti koliko je puta student polagao predmet (izašao na
         //ispit)
-//        Integer cnt = ispitRepository.getCountIspitOut("Softverske komponente", 57);
+//        Integer cnt = ispitRepository.getCountIspitOut("Softverske komponente", 50);
 //        System.out.println(cnt);
 
 

@@ -24,7 +24,7 @@ public class StudProgramRepositoryTest {
     public void studPrgoramTest() throws Exception {
 
         //spisak predmeta na studijskom programu
-//         List<Predmet> predmeti = studProgramRepo.selectPredmetiByStudProg("RN");
+//         List<Predmet> predmeti = studProgramRepo.selectPredmetiByStudProg("RI");
 //        for(Predmet p : predmeti){
 //            System.out.println(p);
 //        }

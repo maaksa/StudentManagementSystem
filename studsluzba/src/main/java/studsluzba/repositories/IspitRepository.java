@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface IspitRepository extends CrudRepository<Ispit, Integer> {
 
-    @Query("select s from StudIndex s inner join s.prijavaIspita as pi where pi.ispit.idIspit = :idIspit")
-    List<StudIndex> findStudentsRegisteredForExam(int idIspit);
+    @Query("select s from StudIndex s inner join s.prijavaIspita as pi where pi.ispit.sifraIspita = :sifra")
+    List<StudIndex> findStudentsRegisteredForExam(String sifra);
 
     //where pp.izlazakNaIspit.Ispit.sifra
     @Query("select avg(pp.ocena) from PolozioPredmet pp where pp.izlazakNaIspit.ispit.sifraIspita like :ispitSifra")
