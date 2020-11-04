@@ -218,7 +218,7 @@ public class Student {
     }
 
     public void setPrivemail(String privemail) {
-        privemail = privemail;
+        this.privemail = privemail;
     }
 
     public String getStudemail() {
@@ -226,7 +226,7 @@ public class Student {
     }
 
     public void setStudemail(String studemail) {
-        studemail = studemail;
+        this.studemail = studemail;
     }
 
     public String getBrojLicneKarte() {

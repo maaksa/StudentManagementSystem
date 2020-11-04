@@ -104,11 +104,7 @@ public class ObnovaGodina {
     @Override
     public String toString() {
         return "ObnovaGodina{" +
-                "idObnovaGodina=" + idObnovaGodina +
-                ", datum=" + datum +
-                ", napomena='" + napomena + '\'' +
-                ", studentIndeks=" + studentIndeks +
-                ", skolskaGodina=" + skolskaGodina +
+                "datum=" + datum +
                 '}';
     }
 }

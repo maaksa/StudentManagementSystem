@@ -57,12 +57,11 @@ public class StudentRepositoryTest {
         drziPredmet.setSkolskaGod(skolskaGodina);
         drziPredmet.setSifra("1234");
 
-
         //Osvojene pred
         osvojeniPredispitniPoeni.setUkupanBrojPoena(60);
         osvojeniPredispitniPoeni.setStudentIndeks(studIndex);
         osvojeniPredispitniPoeni.addPredIspitne(predispitneObaveze);
-
+        osvojeniPredispitniPoeni.addPredIspitne(predispitneObaveze1);
 
         //pred ispitne obaveze
         predispitneObaveze.setPoeni(45);
@@ -70,12 +69,10 @@ public class StudentRepositoryTest {
         predispitneObaveze.setVrstaObabeza("Kolokvijum");
         predispitneObaveze.setSkolskaGodina(skolskaGodina);
 
-
         predispitneObaveze1.setPoeni(30);
         predispitneObaveze1.setMaxBrp(50);
         predispitneObaveze1.setVrstaObabeza("Kolokvijum");
         predispitneObaveze1.setSkolskaGodina(skolskaGodina);
-
 
         //nastavnil
         nastavnik.addZvanje(zvanje);
@@ -101,7 +98,6 @@ public class StudentRepositoryTest {
         ispit.addIzlazakNaIspit(izlazakNaIspit);
         ispit.addIzlazakNaIspit(izlazakNaIspit1);
 
-
         //ispitni rok
         ispitniRok.setDatumPocetka("14.06.2021");
         ispitniRok.setDatumZavrsetka("20.06.2021");
@@ -114,7 +110,6 @@ public class StudentRepositoryTest {
         izlazakNaIspit.setBrojOsvojenihPoena(95);
         izlazakNaIspit.setPrijavljenIspit(prijavaIspita);
         izlazakNaIspit.setPolozioPredmet(polozioPredmet);
-        //izlazakNaIspit.setIspit(ispit);
 
         izlazakNaIspit1.setNapomena("Staaaaaa god");
         izlazakNaIspit1.setIzasaoNaIspit(true);
@@ -122,7 +117,6 @@ public class StudentRepositoryTest {
         izlazakNaIspit1.setBrojOsvojenihPoena(90);
         izlazakNaIspit1.setPrijavljenIspit(prijavaIspita);
         izlazakNaIspit1.setPolozioPredmet(polozioPredmet);
-        //izlazakNaIspit1.setIspit(ispit);
 
         //prijavaIpsita
         prijavaIspita.setDatum(LocalDate.now());
@@ -145,7 +139,7 @@ public class StudentRepositoryTest {
         skolskaGodina.setDatum(2019);
         skolskaGodina.setAktivna(true);
         skolskaGodina.addIspitniRok(ispitniRok);
-
+        skolskaGodina.setObnovaGodine(obnovaGodina);
 
         //vrsta studija
         vrstaStudija.setPunNaziv("Osnovne akademske studije");
@@ -162,7 +156,6 @@ public class StudentRepositoryTest {
         predmet.addIspiti(ispit);
         predmet.addPredIspitne(predispitneObaveze);
         predmet.addPredIspitne(predispitneObaveze1);
-
 
         //studProg
         studProgram.addVrstaStudija(vrstaStudija);
@@ -229,42 +222,45 @@ public class StudentRepositoryTest {
         s.addIndex(studIndex);
         s.setUlica("Petra Petrica");
         s.setUspehSrednjaSKola(4.52);
+        s.setPrivemail("lm@gmail.com");
+        s.setStudemail("lm@raf.rs");
+        s.setUspehPrijemni(32);
 
-       // studRepo.save(s);
+        //studRepo.save(s);
 
         //upit izvlacenje studenta preko broja indeksa
-         //Student student = studRepo.selectStudentByIndex(50);
-        // System.out.println(student);
+//        Student student = studRepo.selectStudentByIndex(55);
+//        System.out.println(student);
 
         //upit selekcija svih položenih ispita preko broja indeksa studenta
-//         List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(50);
- //       for(PolozioPredmet pred : polozioPredmeti){
+//        List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(55);
+//        for (PolozioPredmet pred : polozioPredmeti) {
 //            System.out.println(pred);
-  //      }
+//        }
 
         //upit selekcija studenta koristeci ime ili prezime ili ime i prezime
-//         List<Student> studenti = studRepo.findStudentByNameAndSurname("luka", null);
-//         for(Student student : studenti){
-//             System.out.println(student);
-//         }
+//        List<Student> studenti = studRepo.findStudentByNameAndSurname("luka", null);
+//        for (Student student : studenti) {
+//            System.out.println(student);
+//        }
 
         //upit selekcija studenata koji su zavrsili odredjenu srednju skolu
- //       List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
- //       for(Student student : studenti){
- //            System.out.println(student);
- //        }
+//        List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
+//        for (Student student : studenti) {
+//            System.out.println(student);
+//        }
 
         //pregled svih upisanih godina za broj indeksa
-//         List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(50);
-//         for(UpisGodina upis : upisaneGodine){
-//             System.out.println(upis);
-//         }
+//        List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(55);
+//        for (UpisGodina upis : upisaneGodine) {
+//            System.out.println(upis);
+//        }
 
         //pregled obnovljenih godina za broj indeksa
-//        List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(50);
+//        List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(55);
 //        for (ObnovaGodina obnova : obnovaGodine) {
 //            System.out.println(obnova);
- //       }
+//        }
     }
 }
 
