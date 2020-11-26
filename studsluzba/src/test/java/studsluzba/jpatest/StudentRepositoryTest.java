@@ -233,34 +233,34 @@ public class StudentRepositoryTest {
 //        System.out.println(student);
 
         //upit selekcija svih položenih ispita preko broja indeksa studenta
-//        List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(55);
-//        for (PolozioPredmet pred : polozioPredmeti) {
-//            System.out.println(pred);
-//        }
+   /*     List<PolozioPredmet> polozioPredmeti = studRepo.selectPolozeniPredByIndex(55);
+        for (PolozioPredmet pred : polozioPredmeti) {
+            System.out.println(pred);
+        }*/
 
         //upit selekcija studenta koristeci ime ili prezime ili ime i prezime
-//        List<Student> studenti = studRepo.findStudentByNameAndSurname("luka", null);
-//        for (Student student : studenti) {
-//            System.out.println(student);
-//        }
+      /*  List<Student> studenti = studRepo.findStudentByNameAndSurname("luka", null);
+        for (Student student : studenti) {
+            System.out.println(student);
+        }*/
 
         //upit selekcija studenata koji su zavrsili odredjenu srednju skolu
-//        List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
-//        for (Student student : studenti) {
-//            System.out.println(student);
-//        }
+      /*  List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");
+        for (Student student : studenti) {
+            System.out.println(student);
+        }*/
 
         //pregled svih upisanih godina za broj indeksa
-//        List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(55);
-//        for (UpisGodina upis : upisaneGodine) {
-//            System.out.println(upis);
-//        }
+      /*  List<UpisGodina> upisaneGodine = studRepo.findUpisaneGodineByIndex(55);
+        for (UpisGodina upis : upisaneGodine) {
+            System.out.println(upis);
+        }*/
 
         //pregled obnovljenih godina za broj indeksa
-//        List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(55);
-//        for (ObnovaGodina obnova : obnovaGodine) {
-//            System.out.println(obnova);
-//        }
+      /*  List<ObnovaGodina> obnovaGodine = studRepo.findObnovljeneGodineByIndex(55);
+        for (ObnovaGodina obnova : obnovaGodine) {
+            System.out.println(obnova);
+        }*/
     }
 }
 

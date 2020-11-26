@@ -8,10 +8,13 @@ import studsluzba.model.StudProgram;
 import java.util.List;
 
 public interface StudProgramRepository extends CrudRepository<StudProgram, Integer> {
-
-    @Query("select p from Predmet p where p.idPredmet = (select sp.idstudProgram from StudProgram sp where sp.skraceniNaziv like :skraceni_naziv)")
+    //spisak predmeta na studijskom programu
+    @Query("select p from Predmet p where p.studProgram.skraceniNaziv like :skraceni_naziv")
     List<Predmet> selectPredmetiByStudProg(String skraceni_naziv);
 
+    //prosečna ocena studenata na predmetu za raspon godina (na primer zadaje se godine
+    //2015-2018 i vraća se prosečna ocena svih studenata koji su položili predmet u tom
+    //periodu)
     @Query("select avg(pp.ocena) from PolozioPredmet pp where pp.idPolozioPredmet in " +
             "(select pre.predmet.polozioPredmet.idPolozioPredmet from DrziPredmet pre " +
             "where pre.skolskaGod.datum between :odGodine and :doGodine and pre.predmet.nazivPredmeta like :nazivPred)")

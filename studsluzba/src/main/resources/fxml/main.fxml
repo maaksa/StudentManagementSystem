@@ -5,11 +5,11 @@
 
 
 <BorderPane fx:id="mainPane" prefHeight="600" prefWidth="800" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="studsluzba.client.fxmlcontrollers.MainWindowController">
+            fx:controller="studsluzba.client.fxmlcontrollers.MainWindowController"> <!--ovaj fxml fajl je vezan za MainWindowController, glavna scena-->
 
     <top>
 
-        <fx:include source="menuBar.fxml"/>
+        <fx:include source="menuBar.fxml"/> <!--drugi fxml fajl-->
     </top>
 
 </BorderPane>

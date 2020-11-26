@@ -15,7 +15,7 @@ public class ContextFXMLLoader {
     @Autowired
     private ConfigurableApplicationContext context;
 
-    public FXMLLoader getLoader(URL url) {
+    public FXMLLoader getLoader(URL url) {//loadujemo preko spring contexta
         FXMLLoader loader = new FXMLLoader(url);
         loader.setControllerFactory(context::getBean);
         return loader;

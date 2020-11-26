@@ -8,23 +8,28 @@ import org.springframework.data.repository.CrudRepository;
 import studsluzba.model.*;
 
 public interface StudentRepository extends CrudRepository<Student, Integer> {
-
+    //upit selekcija studenta koristeci ime ili prezime ili ime i prezime
     @Query("select s from Student s where lower(s.ime) like :ime or lower(s.prezime) like :prezime")
     List<Student> findStudentByNameAndSurname(String ime, String prezime);
 
+    //upit izvlacenje studenta preko broja indeksa
     @Query("select s from Student s where s.idStudent = (select k.student.idStudent from StudIndex k where k.broj = :br)")
     Student selectStudentByIndex(int br);
 
-    @Query("select p from PolozioPredmet p where p.idPolozioPredmet = (select k.student.idStudent from StudIndex k where k.broj = :br)")
+    //upit selekcija svih položenih ispita preko broja indeksa studenta
+    @Query("select p from PolozioPredmet p where p.studentIndex.broj = :br")
     List<PolozioPredmet> selectPolozeniPredByIndex(int br);
 
-    @Query("select s from Student s inner join s.srednjaSkola as sr where lower(sr.naziv) like :ime_srednje_skole")
+    //upit selekcija studenata koji su zavrsili odredjenu srednju skolu
+    @Query("select s from Student s where lower(s.srednjaSkola.naziv) like :ime_srednje_skole")
     List<Student> findStudentByHighSchool(String ime_srednje_skole);
 
-    @Query("select u from UpisGodina u inner join u.studentIndex as si where si.broj = :br")
+    //pregled svih upisanih godina za broj indeksa
+    @Query("select u from UpisGodina u where u.studentIndex.broj = :br")
     List<UpisGodina> findUpisaneGodineByIndex(int br);
 
-    @Query("select o from ObnovaGodina o inner join o.studentIndeks as si where si.broj = :br")
+    //pregled obnovljenih godina za broj indeksa
+    @Query("select o from ObnovaGodina o where o.studentIndeks.broj = :br")
     List<ObnovaGodina> findObnovljeneGodineByIndex(int br);
 
 }

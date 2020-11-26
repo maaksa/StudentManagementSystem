@@ -72,11 +72,7 @@ public class SrednjaSkola {
 
     @Override
     public String toString() {
-        return "SrednjaSkola{" +
-                "idSrednjaSkola=" + idSrednjaSkola +
-                ", naziv='" + naziv + '\'' +
-                ", mesto='" + mesto + '\'' +
-                ", vrsta='" + vrsta + '\'' +
-                '}';
+        return naziv + ", " + mesto + "," + vrsta;
     }
+
 }

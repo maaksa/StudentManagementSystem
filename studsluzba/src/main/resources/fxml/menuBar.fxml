@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox fx:id="menu" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="studsluzba.client.fxmlcontrollers.MenuBarController">
+      fx:controller="studsluzba.client.fxmlcontrollers.MenuBarController"> <!--ovaj fxml fajl ima svoj kontroler(moze ih i vise biti vezano za jedan), MenuBarController-->
     <MenuBar fx:id="menuBar" style="-fx-background-color: #ADD8E6;">
         <Menu text="Pretraži">
             <items>
@@ -23,7 +23,7 @@
         </Menu>
         <Menu text="Novi">
             <items>
-                <MenuItem text="Student"/>
+                <MenuItem text="Student" onAction="#openNewStudent"/>
                 <MenuItem text="Nastavnik"/>
                 <MenuItem text="Predmet"/>
             </items>
@@ -31,6 +31,8 @@
         <Menu text="Administracija">
             <items>
                 <MenuItem text="Šifarnici"/>
+                <!--zelimo kada kliknemo na studProgrami da nam se promeni scena u controlleru -->
+                <!--ime metode u kontroleru, imamo akciju da nam se pokaze forma to je metoda u controlleru koji je povezan sa ovim fajlom-->
                 <MenuItem text="Studijski programi" onAction="#openStudProgrami"/>
                 <MenuItem text="Školska godina"/>
                 <MenuItem text="Korisnici"/>
