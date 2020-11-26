@@ -118,6 +118,7 @@ public class StudentController {
     @FXML
     DatePicker datumUpisaDp;
 
+    //
     @FXML
     TextArea napomenaTa;
 
