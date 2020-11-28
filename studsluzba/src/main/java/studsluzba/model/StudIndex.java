@@ -40,7 +40,7 @@ public class StudIndex {
     @OneToMany(mappedBy = "index", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<SlusaPredmet> slusaPredmete;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idstudProgram")
     private StudProgram studProgram;
 

@@ -40,7 +40,7 @@ public class Student {
     private boolean upisaoPrvuGodinu;
     private double uspehSrednjaSkola;
     private double uspehPrijemni;
-    private boolean prelaz;
+    private String prelaz;
 
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
@@ -58,7 +58,7 @@ public class Student {
 
     }
 
-    public Student(String ime, String prezime, String srednjeIme, long jmbg, LocalDate daumRodjenja, String mestoRodjenja, String drzavljanstvo, String nacionalnost, char pol, String mesto, String ulica, int brojUlice, long brojTelefona, String privemail, String studemail, String brojLicneKarte, String licnuKartuIzdao, boolean upisaoPrvuGodinu, double uspehSrednjaSkola, double uspehPrijemni, boolean prelaz, SrednjaSkola srednjaSkola, VisokaSkola visokaSkola) {
+    public Student(String ime, String prezime, String srednjeIme, long jmbg, LocalDate daumRodjenja, String mestoRodjenja, String drzavljanstvo, String nacionalnost, char pol, String mesto, String ulica, int brojUlice, long brojTelefona, String privemail, String studemail, String brojLicneKarte, String licnuKartuIzdao, boolean upisaoPrvuGodinu, double uspehSrednjaSkola, double uspehPrijemni, String prelaz, SrednjaSkola srednjaSkola, VisokaSkola visokaSkola) {
         this.ime = ime;
         this.prezime = prezime;
         this.srednjeIme = srednjeIme;
@@ -277,14 +277,13 @@ public class Student {
         this.uspehPrijemni = uspehPrijemni;
     }
 
-    public boolean isPrelaz() {
+    public String getPrelaz() {
         return prelaz;
     }
 
-    public void setPrelaz(boolean prelaz) {
+    public void setPrelaz(String prelaz) {
         this.prelaz = prelaz;
     }
-
 
     public VisokaSkola getVisokaSkola() {
         return visokaSkola;

@@ -27,8 +27,7 @@ public class StudProgram {
     @OneToMany(mappedBy = "studProgram", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<VrstaStudija> vrsteStudija;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idStudIndex")
+    @OneToMany(mappedBy = "studProgram", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<StudIndex> studIndexi;
 
     @OneToMany(mappedBy = "studProgram", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})

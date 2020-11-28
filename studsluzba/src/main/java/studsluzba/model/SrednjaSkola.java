@@ -16,7 +16,7 @@ public class SrednjaSkola {
     private String mesto;
     private String vrsta;
 
-    @OneToMany(mappedBy = "srednjaSkola", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "srednjaSkola", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Student> studenti;
 
     public SrednjaSkola() {

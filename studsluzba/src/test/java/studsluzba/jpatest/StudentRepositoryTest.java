@@ -213,7 +213,7 @@ public class StudentRepositoryTest {
         s.setMestoRodjenja("Beograd");
         s.setNacionalnost("Srbina");
         s.setPol('m');
-        s.setPrelaz(false);
+        s.setPrelaz("");
         s.setUspehSrednjaSKola(4.50);
         s.setPrivemail("nn@gmail.com");
         s.setStudemail("nn@raf.rs");
@@ -226,7 +226,7 @@ public class StudentRepositoryTest {
         s.setStudemail("lm@raf.rs");
         s.setUspehPrijemni(32);
 
-        //studRepo.save(s);
+        studRepo.save(s);
 
         //upit izvlacenje studenta preko broja indeksa
 //        Student student = studRepo.selectStudentByIndex(55);

@@ -19,17 +19,17 @@
             <center>
                 <fx:include source="studentPodaciTabPane.fxml"/> <!--tabPane (u njemu imamo-->
             </center>
-            <bottom> <!--dugme se nalazi ispod tab pane i u kom god da se nalazimo tabu to dugme ce biti dole-->
-                <GridPane alignment="center" hgap="10" vgap="10">
-                    <padding>
-                        <Insets top="20" right="0" bottom="10" left="0"/>
-                    </padding>
-                    <Button text="Sačuvaj"
-                            GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                    <Text text="                                " fx:id="actionTarget" GridPane.columnIndex="1"
-                          GridPane.rowIndex="0"/>
-                </GridPane>
-            </bottom>
+<!--            <bottom> &lt;!&ndash;dugme se nalazi ispod tab pane i u kom god da se nalazimo tabu to dugme ce biti dole&ndash;&gt;-->
+<!--                <GridPane alignment="center" hgap="10" vgap="10">-->
+<!--                    <padding>-->
+<!--                        <Insets top="20" right="0" bottom="10" left="0"/>-->
+<!--                    </padding>-->
+<!--                    <Button text="Sačuvaj"-->
+<!--                            GridPane.columnIndex="0" GridPane.rowIndex="0"/>-->
+<!--                    <Text text="                                " fx:id="actionTarget" GridPane.columnIndex="1"-->
+<!--                          GridPane.rowIndex="0"/>-->
+<!--                </GridPane>-->
+<!--            </bottom>-->
 
         </BorderPane>
 
