@@ -214,6 +214,7 @@ public class StudentController {
 
         System.out.println(studProgram);
         // PROBA KOMITA
+        // Proba opet jos jedna
 
         Student studet = studentService.save(ime, prezime, srednje, Long.parseLong(jmbg), rodjenje, mestoRodjenja, nacionalnost, drzavaRodjenja,
                 pol.charAt(0),
