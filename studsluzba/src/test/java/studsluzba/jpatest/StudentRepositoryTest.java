@@ -226,7 +226,7 @@ public class StudentRepositoryTest {
         s.setStudemail("lm@raf.rs");
         s.setUspehPrijemni(32);
 
-        studRepo.save(s);
+        //studRepo.save(s);
 
         //upit izvlacenje studenta preko broja indeksa
 //        Student student = studRepo.selectStudentByIndex(55);

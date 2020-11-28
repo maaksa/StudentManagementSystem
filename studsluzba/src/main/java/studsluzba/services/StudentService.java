@@ -32,7 +32,7 @@ public class StudentService {
             VisokaSkola visokaSkola = null;
             Student student = new Student(ime, prezime, srednje, jmbg, rodjenje, mestoRodjenja, drzavljanstvo, nacionalnost, pol,
                     mestoStanovanja, adresaStanovanja, brojUlice, brojTelefona, privEmail, studEmail, licna, licnaIzdao, upisaoPrvuGodinu,
-                    uspehSrednja, uspehPrijemnni, prelaz, srednja, visokaSkola);
+                    uspehSrednja, uspehPrijemnni, prelaz, null, visokaSkola);
 
             System.out.println("JE L RADI OVO SERVICE");
             StudIndex studIndex = new StudIndex(indeks, datumUpisa.getYear(), true, datumUpisa, student, program);
