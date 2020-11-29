@@ -38,7 +38,7 @@
                 <Label text="Prezime" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                 <TextField fx:id="prezimeTf" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                 <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                    <Button text="Find" onAction="#findStudentByName"/> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
+                    <Button text="Find" onAction="#findStudentByName"/>
                 </HBox>
             </GridPane>
         </HBox>

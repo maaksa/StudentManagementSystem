@@ -6,6 +6,7 @@ import studsluzba.model.*;
 import studsluzba.repositories.StudentRepository;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -49,9 +50,6 @@ public class StudentService {
                 return null;
             }
 
-
-
-
         } else {
             System.out.println("JE L RADI OVO ELSE");
             return null;
@@ -59,7 +57,7 @@ public class StudentService {
 
     }
 
-    public List<Student> students (String ime, String prezime){
+    public List<Student> findStudent(String ime, String prezime){
         try {
             System.out.println(ime + " " + prezime);
             return studentRepository.findStudentByNameAndSurname(ime, prezime);

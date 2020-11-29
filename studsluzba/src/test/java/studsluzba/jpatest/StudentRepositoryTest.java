@@ -18,8 +18,6 @@ import studsluzba.repositories.*;
 @SpringBootTest
 public class StudentRepositoryTest {
 
-
-
     @Autowired
     DrziPredmetRepository drziPredmetRepository;
 
@@ -156,7 +154,7 @@ public class StudentRepositoryTest {
         ispit.setDatumOdrzavanja(LocalDate.now());
         ispit.setUnetiPoeni(false);
         ispit.setVremePocetka("12:00");
-       // ispit.setNastavnik(nastavnik);
+        // ispit.setNastavnik(nastavnik);
         //   ispit.addPrijavaIspita(prijavaIspita);
         ispit.setSifraIspita("1234");
         // ispit.addIzlazakNaIspit(izlazakNaIspit);
@@ -380,11 +378,11 @@ public class StudentRepositoryTest {
 //            System.out.println(pred);
 //        }
 
-        //upit selekcija studenta koristeci ime ili prezime ili ime i prezime
-//        List<Student> studenti = studRepo.findStudentByNameAndSurname("luka", null);
-//        for (Student student : studenti) {
-//            System.out.println(student);
-//        }
+       // upit selekcija studenta koristeci ime ili prezime ili ime i prezime
+        List<Student> studenti = studRepo.findStudentByNameAndSurname("Luka", "Micic");
+        for (Student student : studenti) {
+            System.out.println(student);
+        }
 
         //upit selekcija studenata koji su zavrsili odredjenu srednju skolu
 //        List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");

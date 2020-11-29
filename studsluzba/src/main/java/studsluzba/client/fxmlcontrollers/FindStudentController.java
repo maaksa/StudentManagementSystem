@@ -183,11 +183,12 @@ public class FindStudentController {
 
     }
 
-    public void findStudentByName(ActionEvent event){
+    public void findStudentByName(ActionEvent event) {
         String ime = imeTf.getText();
         String prezime = prezimeTf.getText();
-        List<Student> studenti = studentService.students(ime, prezime);
-        for(Student s : studenti){
+        List<Student> studenti = studentService.findStudent(ime, prezime);
+        studentiTable.setItems(FXCollections.observableList(studenti));
+        for (Student s : studenti) {
             System.out.println(s.toString());
         }
     }
@@ -195,13 +196,6 @@ public class FindStudentController {
     public void handleOpenModalSrednjeSkole(ActionEvent ae) {
         // TODO kreirati modal window za dodavanje nove srednje skole, mozda i brisanje i promena postojećih ?? strani ključ
         mainViewManager.openModal("addSrednjaSkola");
-    }
-
-    public void updateSrednjeSkole() {
-        //uzimamo sr skole sa novom sr skolom koja je dodata
-        List<SrednjaSkola> srednjeSkole = sifarniciService.getSrednjeSkole();
-        //unosimo sr skole u combo box koji se nalazi u fxml kome pripada ovaj controller (newStudent.fxml)
-        srednjeSkolaCb.setItems(FXCollections.observableArrayList(srednjeSkole));
     }
 
     public void saveStudent(ActionEvent ae) {
