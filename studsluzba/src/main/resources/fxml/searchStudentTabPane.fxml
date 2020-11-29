@@ -37,7 +37,7 @@
 
                     <Label text="Smer: " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                     <!--fx:id koristimo samo za one forme za koje ce nam biti potrebno da pristupamo iz java koda-->
-                    <ComboBox fx:id="smerCB2" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <ComboBox fx:id="smerCB" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
                     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
                         <Button text="Search"/> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
