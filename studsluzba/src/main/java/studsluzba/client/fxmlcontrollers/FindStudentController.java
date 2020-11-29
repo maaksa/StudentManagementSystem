@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import studsluzba.client.MainViewManager;
 import studsluzba.model.SrednjaSkola;
+import studsluzba.model.StudIndex;
 import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
 import studsluzba.services.SifarniciService;
@@ -18,6 +19,7 @@ import studsluzba.services.StudentService;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class FindStudentController {
@@ -180,20 +182,44 @@ public class FindStudentController {
 
     }
 
-    public void findStudentByName(ActionEvent event){
+    public void changeIndex(ActionEvent event) {
+        //todo getIndex.get()
+        StudIndex studIndexSelected = new StudIndex();
+        List<StudIndex> studIndexiSelected = studentiTable.getSelectionModel().getSelectedItem().getIndexi();
+        for (StudIndex si: studIndexiSelected) {
+            if(si.isAktivan()){
+                studIndexSelected = si;
+            }
+        }
+        Integer novaGodina = Integer.parseInt(NovaGodinaIndeksaTf.getText());
+        String novSmer = NovSmerCb.getValue().toString();
+        Integer novBroj = Integer.parseInt(NovBrojIndeksaTf.getText());
+        Student studentClicked = studentiTable.getSelectionModel().getSelectedItem();
+        Optional<Student> studentChangedIndex = studentService.changeIndex(studentClicked, novaGodina, novSmer, novBroj, studIndexSelected);
+
+        updateStudentIndex(novBroj, novSmer, novaGodina);
+    }
+
+    public void updateStudentIndex(Integer broj, String smer, Integer godina) {
+        Student student = studentService.findStudentByIndex(smer, broj, godina);
+        studentiTable.getItems().clear();
+        studentiTable.setItems(FXCollections.observableArrayList(student));
+    }
+
+    public void findStudentByName(ActionEvent event) {
         String ime = imeTf.getText();
         String prezime = prezimeTf.getText();
-        if(ime == null && prezime == null) return;
+        if (ime == null && prezime == null) return;
         List<Student> studenti = studentService.findStudent(ime, prezime);
         studentiTable.setItems(FXCollections.observableList(studenti));
     }
 
-    public void findStudentByIndex(ActionEvent event){
+    public void findStudentByIndex(ActionEvent event) {
         studentiTable.getItems().clear();
         Integer broj = Integer.parseInt(pretragaBrojaIndeksaTf.getText());
         String smer = pretragaSmerCb.getValue().toString();
         Integer godina = Integer.parseInt(pretragaGodinaIndeksaTf.getText());
-        if(broj == null && godina == null && smer == null) return;
+        if (broj == null && godina == null && smer == null) return;
         Student s = studentService.findStudentByIndex(smer, broj, godina);
         studentiTable.getItems().add(s);
     }

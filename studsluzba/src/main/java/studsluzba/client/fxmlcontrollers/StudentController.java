@@ -216,8 +216,6 @@ public class StudentController {
         String brojTelefona = brojTelefonaTf.getText();
         String brojUlice = brojUliceTf.getText();
 
-        System.out.println("JE L RADI OVO STUDENT");
-
         StudProgram studProgram = null;
 
         List<StudProgram> programi = studProgramService.loadAll();
@@ -227,17 +225,10 @@ public class StudentController {
             }
         }
 
-        System.out.println(studProgram);
-        System.out.println(srednja);
-        // PROBA KOMITA
-        // Proba opet jos jedna
-
         Student studet = studentService.save(ime, prezime, srednje, Long.parseLong(jmbg), rodjenje, mestoRodjenja, nacionalnost, drzavaRodjenja,
                 pol.charAt(0),
                 licnaIzdao, prelaz, drzavljanstvo, licna, adresaStanovanja, Integer.parseInt(brojUlice), Long.parseLong(brojTelefona), privEmail,
                 mestoStanovanja, srednja, Double.parseDouble(uspehSrednja), datumUpisa, Double.parseDouble(uspehPrijemnni), smer, Integer.parseInt(indeks), studProgram);
-
-        System.out.println(studet.toString());
 
     }
 }
