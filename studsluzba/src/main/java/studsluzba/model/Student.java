@@ -51,7 +51,7 @@ public class Student {
     @JoinColumn(name = "idVisokaSkola")
     private VisokaSkola visokaSkola;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private List<StudIndex> indexi;
 
     public Student() {

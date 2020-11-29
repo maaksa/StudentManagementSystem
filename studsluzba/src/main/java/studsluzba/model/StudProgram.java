@@ -74,13 +74,6 @@ public class StudProgram {
 
     @Override
     public String toString() {
-        return "StudProgram{" +
-                "idstudProgram=" + idstudProgram +
-                ", naziv='" + naziv + '\'' +
-                ", skraceniNaziv='" + skraceniNaziv + '\'' +
-                ", godinaAkreditacije=" + godinaAkreditacije +
-                ", trajanje=" + trajanje +
-                ", nazivZvanja='" + nazivZvanja + '\'' +
-                '}';
+        return skraceniNaziv;
     }
 }

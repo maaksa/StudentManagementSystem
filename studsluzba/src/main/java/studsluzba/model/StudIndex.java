@@ -119,13 +119,12 @@ public class StudIndex {
 
     @Override
     public String toString() {
-        return "StudIndex{" +
-                "broj=" + broj +
-                ", godina=" + godina +
-                ", aktivan=" + aktivan +
-                ", odKadJeAktivan=" + odKadJeAktivan +
-                ", student=" + student +
-                ", studProgram=" + studProgram +
-                '}';
+        String aktivanIndex;
+        if(aktivan){
+            aktivanIndex = "aktivan";
+        }else
+            aktivanIndex = "nije aktivan";
+
+        return broj + "/" + godina + studProgram + " - " + aktivanIndex;
     }
 }
