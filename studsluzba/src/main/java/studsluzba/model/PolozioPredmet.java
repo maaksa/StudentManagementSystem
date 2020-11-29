@@ -21,12 +21,12 @@ public class PolozioPredmet {
     private boolean priznatSaDrugogFaksa;
 
     //student indeks da bude
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idStudIndex")
     private StudIndex studentIndex;
 
     //suvisno?  jedan ispit
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "polozioPredmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "polozioPredmet")
     private List<Predmet> predmeti;
 
     //izlazak na ispit da ima idIzlazak

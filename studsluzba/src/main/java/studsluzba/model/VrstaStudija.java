@@ -17,7 +17,7 @@ public class VrstaStudija {
     private String punNaziv;
     private String skraceniNaziv;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idstudProgram")
     private StudProgram studProgram;
 

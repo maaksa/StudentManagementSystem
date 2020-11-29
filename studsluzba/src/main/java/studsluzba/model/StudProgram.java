@@ -25,13 +25,13 @@ public class StudProgram {
     private int trajanje;
     private String nazivZvanja;
 
-    @OneToMany(mappedBy = "studProgram", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "studProgram")
     private List<VrstaStudija> vrsteStudija;
 
-    @OneToMany(mappedBy = "studProgram", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "studProgram")
     private List<StudIndex> studIndexi;
 
-    @OneToMany(mappedBy = "studProgram", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "studProgram")
     private List<Predmet> predmeti;
 
     public StudProgram() {

@@ -20,12 +20,12 @@ public class IzlazakNaIspit {
     private boolean izasaoNaIspit;
 
     // proveriti
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idPrijava")
     private PrijavaIspita prijavljenIspit;
 
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idIspit")
     private Ispit ispit;
 

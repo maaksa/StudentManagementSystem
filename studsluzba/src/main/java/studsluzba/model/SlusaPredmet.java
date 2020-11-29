@@ -15,11 +15,11 @@ public class SlusaPredmet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSlusaPredmet;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idStudent")
     private StudIndex index;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idDrziPredmet")
     private DrziPredmet drziPredmet;
 

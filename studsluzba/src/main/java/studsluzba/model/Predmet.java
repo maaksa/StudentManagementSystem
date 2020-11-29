@@ -26,22 +26,22 @@ public class Predmet {
     private int fondVezbi;
     private int brojSemestra;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idPolozioPredmet")
     private PolozioPredmet polozioPredmet;
 
     //vise ispita
-    @OneToMany(mappedBy = "predmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "predmet")
     private List<Ispit> ispit;
 
-    @OneToMany(mappedBy = "predmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "predmet")
     private List<PredispitneObaveze> obaveze;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idObnovaGodina")
     private ObnovaGodina obnova;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idstudProgram")
     private StudProgram studProgram;
 

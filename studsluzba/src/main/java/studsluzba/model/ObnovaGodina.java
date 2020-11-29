@@ -23,7 +23,7 @@ public class ObnovaGodina {
     private String napomena;
 
     //indeks
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idStudIndex")
     private StudIndex studentIndeks;
 
@@ -31,7 +31,7 @@ public class ObnovaGodina {
     @JoinColumn(name = "idSkolskaGodina")
     private SkolskaGodina skolskaGodina;
 
-    @OneToMany(mappedBy = "obnova", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "obnova")
     private List<Predmet> predmetPrenos;
 
     public ObnovaGodina() {

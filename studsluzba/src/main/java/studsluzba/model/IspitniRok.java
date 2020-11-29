@@ -22,10 +22,10 @@ public class IspitniRok {
     private String datumPocetka;
     private String datumZavrsetka;
 
-    @OneToMany(mappedBy = "ispitniRok", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "ispitniRok")
     private List<Ispit> ispiti;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idSkolskaGodina")
     private SkolskaGodina skolskaGod;
 

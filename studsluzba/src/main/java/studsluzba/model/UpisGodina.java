@@ -19,12 +19,12 @@ public class UpisGodina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUpisGodina;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idSkolskaGodina")
     private SkolskaGodina skolskaGodina;
 
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idStudIndex")
     private StudIndex studentIndex;
 	

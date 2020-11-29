@@ -47,11 +47,11 @@ public class Student {
     @JoinColumn(name = "idSrednjaSkola")
     private SrednjaSkola srednjaSkola;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idVisokaSkola")
     private VisokaSkola visokaSkola;
 
-    @OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "student")
     private List<StudIndex> indexi;
 
     public Student() {

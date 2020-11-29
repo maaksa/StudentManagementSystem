@@ -21,7 +21,7 @@ public class VisokaSkola {
     private String mesto;
     private String vrsta;
 
-    @OneToMany(mappedBy = "visokaSkola", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "visokaSkola")
     private List<Student> studentii;
 
     public VisokaSkola() {

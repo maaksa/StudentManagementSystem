@@ -20,7 +20,7 @@ public class Zvanje {
     private String uzaNaucnaOblast;
     private String nazivZvanja;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idNastavnik")
     private Nastavnik nastavnik;
 

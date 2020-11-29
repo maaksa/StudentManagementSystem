@@ -19,19 +19,19 @@ public class DrziPredmet {
     private int idDrziPredmet;
     private String sifra;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idPredmet")
     private Predmet predmet;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idNastavnik")
     private Nastavnik nastavnik;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idSkolskaGodina")
     private SkolskaGodina skolskaGod;
 
-    @OneToMany(mappedBy = "drziPredmet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "drziPredmet")
     private List<SlusaPredmet> slusaPredmet;
 
     public DrziPredmet() {

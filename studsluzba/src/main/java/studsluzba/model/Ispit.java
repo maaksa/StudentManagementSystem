@@ -25,22 +25,22 @@ public class Ispit {
     private boolean unetiPoeni;
 
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idPredmet")
     private Predmet predmet;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idIspitniRok")
     private IspitniRok ispitniRok;
 
-    @OneToMany(mappedBy = "ispit", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "ispit")
     private List<IzlazakNaIspit> izlasciNaIspit;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "idNastavnik")
     private Nastavnik nastavnik;
 
-    @OneToMany(mappedBy = "ispit", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "ispit")
     private List<PrijavaIspita> prijavaIspita;
 
     public Ispit() {

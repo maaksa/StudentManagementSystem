@@ -21,15 +21,15 @@ public class PredispitneObaveze {
     private int poeni;
     private int maxBrp;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idSkolskaGodina")
     private SkolskaGodina skolskaGodina;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idPredmet")
     private Predmet predmet;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idOsvojeniPoeni")
     private OsvojeniPredispitniPoeni osvojeniPredispitniPoeni;
 

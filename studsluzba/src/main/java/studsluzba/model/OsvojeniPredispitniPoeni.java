@@ -19,11 +19,11 @@ public class OsvojeniPredispitniPoeni {
     private int idOsvojeniPoeni;
     private int ukupanBrojPoena;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idStudIndex")
     private StudIndex studentIndeks;
 
-    @OneToMany(mappedBy = "osvojeniPredispitniPoeni", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "osvojeniPredispitniPoeni")
     private List<PredispitneObaveze> predIspitneObaveze;
 
     public OsvojeniPredispitniPoeni() {

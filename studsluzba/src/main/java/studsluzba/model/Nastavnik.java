@@ -24,10 +24,10 @@ public class Nastavnik {
     private String email;
     private String obrazovanje;
 
-    @OneToMany(mappedBy = "nastavnik", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "nastavnik")
     private List<Zvanje> zvanja;
 
-    @OneToMany(mappedBy = "nastavnik", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "nastavnik")
     private List<DrziPredmet> drziPredmet;
 
     public Nastavnik(String ime, String prezime, String srednjeIme, String email, String obrazovanje) {

@@ -23,29 +23,29 @@ public class StudIndex {
     private boolean aktivan;
     private LocalDate odKadJeAktivan;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idStudent")
     private Student student;
 
-    @OneToMany(mappedBy = "studIndexi", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "studIndexi")
     private List<PrijavaIspita> prijavaIspita;
 
-    @OneToMany(mappedBy = "studentIndex", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "studentIndex")
     private List<UpisGodina> upisGodina;
 
-    @OneToMany(mappedBy = "studentIndeks", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "studentIndeks")
     private List<ObnovaGodina> obnovljeneGodine;
 
-    @OneToMany(mappedBy = "studentIndex", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "studentIndex")
     private List<PolozioPredmet> polozioPredmete;
 
-    @OneToMany(mappedBy = "studentIndeks", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "studentIndeks")
     private List<OsvojeniPredispitniPoeni> predIspitne;
 
-    @OneToMany(mappedBy = "index", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "index")
     private List<SlusaPredmet> slusaPredmete;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idstudProgram")
     private StudProgram studProgram;
 

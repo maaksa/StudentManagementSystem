@@ -24,7 +24,7 @@ public class SkolskaGodina {
     @JoinColumn(name = "idObnovaGodina")
     private ObnovaGodina obnovaGodine;
 
-    @OneToMany(mappedBy = "skolskaGod", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "skolskaGod")
     private List<IspitniRok> ispitniRokovi;
 
     public SkolskaGodina() {
