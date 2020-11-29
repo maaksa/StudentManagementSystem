@@ -55,7 +55,7 @@ public class MainViewManager {
         FXMLLoader loader = appFXMLLoader.getLoader(MainViewManager.class.getResource("/fxml/" + fxml + ".fxml"));
         try {
             Parent parent = loader.load();
-            Scene scene = new Scene(parent, 400, 300);
+            Scene scene = new Scene(parent, 900, 1000);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);//kazemo mu da je pomocni prozo ne glavni
             stage.setScene(scene);

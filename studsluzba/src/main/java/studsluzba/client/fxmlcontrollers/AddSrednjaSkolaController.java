@@ -46,7 +46,6 @@ public class AddSrednjaSkolaController {
         studentController.updateSrednjeSkole();
         closeStage(event);
 
-
     }
 
     //ovde inicijalizujemo sta ce nam se prikazati u combo boxevima za fxml modal (dodavanje nove sr skole) tj fxml fajl kome ovaj Controller pripada

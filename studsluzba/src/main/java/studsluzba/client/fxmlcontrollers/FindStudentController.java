@@ -36,6 +36,10 @@ public class FindStudentController {
     @Autowired
     MainViewManager mainViewManager;
 
+    @Autowired
+    OpenDosijeController openDosijeController;
+
+
     // forma ce se koristiti za unos novog i za azuriranje postojeceg studenta
     private Student student;
 
@@ -224,9 +228,11 @@ public class FindStudentController {
         studentiTable.getItems().add(s);
     }
 
-    public void handleOpenModalSrednjeSkole(ActionEvent ae) {
+
+    public void handleOpenDosije(ActionEvent ae) {
+        openDosijeController.student = studentiTable.getSelectionModel().getSelectedItem();
         // TODO kreirati modal window za dodavanje nove srednje skole, mozda i brisanje i promena postojećih ?? strani ključ
-        mainViewManager.openModal("addSrednjaSkola");
+        mainViewManager.openModal("openDosije");
     }
 
     public void updateSrednjeSkole() {

@@ -20,17 +20,6 @@
             <center>
                 <fx:include source="studentPretragaTabPane.fxml"/> <!--tabPane (u njemu imamo-->
             </center>
-<!--            <bottom> &lt;!&ndash;dugme se nalazi ispod tab pane i u kom god da se nalazimo tabu to dugme ce biti dole&ndash;&gt;-->
-<!--                <GridPane alignment="center" hgap="10" vgap="10">-->
-<!--                    <padding>-->
-<!--                        <Insets top="20" right="0" bottom="10" left="0"/>-->
-<!--                    </padding>-->
-<!--                    <Button text="Sačuvaj"-->
-<!--                            GridPane.columnIndex="0" GridPane.rowIndex="0"/>-->
-<!--                    <Text text="                                " fx:id="actionTarget" GridPane.columnIndex="1"-->
-<!--                          GridPane.rowIndex="0"/>-->
-<!--                </GridPane>-->
-<!--            </bottom>-->
             <bottom>
                 <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                     <padding>
@@ -57,12 +46,17 @@
                             </columns>
                         </TableView>
                     </children>
+
                 </VBox>
             </bottom>
-
         </BorderPane>
-
     </center>
 
+<bottom >
+    <HBox alignment="bottom_center" spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <Button  text="Open student dosije" onAction="#handleOpenDosije"/> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
+    </HBox>
+
+</bottom>
 
 </BorderPane>
