@@ -140,6 +140,7 @@ public class StudentController {
     TextField brojUliceTf;
 
 
+
     @FXML
     public void initialize() {
         //najbolje u resources fajlu imati txt fajl spiskova svih drzava i to da se ne menja, da ne cuvamo u bazi
@@ -160,7 +161,6 @@ public class StudentController {
         List<String> smerovi = List.of("RN", "RI", "RD");
         ObservableList<String> smeroviObservableList = FXCollections.observableArrayList(smerovi);
         smerCb.setItems(smeroviObservableList);
-
     }
 
     public void handleOpenModalSrednjeSkole(ActionEvent ae) {
