@@ -47,20 +47,6 @@
     <Tab text="Promena indeksa">
         <HBox alignment="center">
                 <GridPane alignment="center" hgap="10" vgap="10">
-                    <Label text="Broj indeksa" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                    <TextField fx:id="brojIndeksaTf" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-
-                    <Label text="Godina" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                    <!--fx:id koristimo samo za one forme za koje ce nam biti potrebno da pristupamo iz java koda-->
-                    <TextField fx:id="godinaIndeksaTf" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                    <ComboBox fx:id="smerCb" GridPane.columnIndex="3"
-                              GridPane.rowIndex="0"/> <!--ovde ce biti prikazane sve sr skole-->
-                    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                        <Button text="Find"/> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
-                    </HBox>
-                </GridPane>
-
-                <GridPane alignment="center" hgap="10" vgap="10">
                     <padding>
                         <Insets left="40.0"/>
                     </padding>
@@ -75,7 +61,7 @@
 
 
                     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                        <Button text="Find"/> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
+                        <Button  text="Find"/> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
                     </HBox>
                 </GridPane>
 

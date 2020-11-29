@@ -174,9 +174,6 @@ public class FindStudentController {
         List<String> findSmerovi = List.of("RN", "RI", "RD");
         ObservableList<String> smeroviObservableList1 = FXCollections.observableArrayList(findSmerovi);
         pretragaSmerCb.setItems(smeroviObservableList1);
-        List<String> smerovi = List.of("RN", "RI", "RD");
-        ObservableList<String> smeroviObservableList2 = FXCollections.observableArrayList(smerovi);
-        smerCb.setItems(smeroviObservableList2);
         List<String> noviSmerovi = List.of("RN", "RI", "RD");
         ObservableList<String> smeroviObservableList3 = FXCollections.observableArrayList(noviSmerovi);
         NovSmerCb.setItems(smeroviObservableList3);

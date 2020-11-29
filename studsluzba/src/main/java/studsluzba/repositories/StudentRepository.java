@@ -10,7 +10,7 @@ import studsluzba.model.*;
 public interface StudentRepository extends CrudRepository<Student, Integer> {
     //upit selekcija studenta koristeci ime ili prezime ili ime i prezime
     @Query("select s from Student s where "
-            + "(:ime is null or lower(s.ime) like :ime) and "
+            + "(:ime is null or lower(s.ime) like :ime) or "
             + "(:prezime is null or lower(s.prezime) like :prezime)")
     List<Student> findStudentByNameAndSurname(String ime, String prezime);
 
