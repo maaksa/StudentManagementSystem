@@ -59,7 +59,6 @@ public class StudentService {
 
     public List<Student> findStudent(String ime, String prezime){
         try {
-            System.out.println(ime + " " + prezime);
             return studentRepository.findStudentByNameAndSurname(ime, prezime);
         }
         catch (Exception e){
@@ -68,5 +67,13 @@ public class StudentService {
         }
     }
 
-
+    public Student findStudentByIndex(String smer, Integer broj, Integer godina){
+        try {
+            return studentRepository.selectStudentByIndex(smer, broj, godina);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

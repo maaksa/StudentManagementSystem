@@ -15,8 +15,8 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     List<Student> findStudentByNameAndSurname(String ime, String prezime);
 
     //upit izvlacenje studenta preko broja indeksa
-    @Query("select s from Student s where s.idStudent = (select k.student.idStudent from StudIndex k where k.broj = :br)")
-    Student selectStudentByIndex(int br);
+    @Query("select s from Student s where s.idStudent = (select k.student.idStudent from StudIndex k where k.broj = :br and k.studProgram.skraceniNaziv like :smer and k.godina = :godina)")
+    Student selectStudentByIndex(String smer, int br, int godina);
 
     //upit selekcija svih položenih ispita preko broja indeksa studenta
     @Query("select p from PolozioPredmet p where p.studentIndex.broj = :br")

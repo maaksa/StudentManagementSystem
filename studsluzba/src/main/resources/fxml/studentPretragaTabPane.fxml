@@ -23,7 +23,7 @@
 
 
                 <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                    <Button text="Find"/> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
+                    <Button text="Find" onAction="#findStudentByIndex"/> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
                 </HBox>
             </GridPane>
         </center>
