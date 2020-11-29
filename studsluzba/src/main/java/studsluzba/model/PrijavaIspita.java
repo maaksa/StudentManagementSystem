@@ -1,11 +1,16 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "prijavaIspit")
 public class PrijavaIspita {
@@ -38,40 +43,4 @@ public class PrijavaIspita {
 
     }
 
-
-    public int getIdPrijava() {
-        return idPrijava;
-    }
-
-    public LocalDate getDatum() {
-        return datum;
-    }
-
-    public void setDatum(LocalDate datum) {
-        this.datum = datum;
-    }
-
-    public Ispit getIspit() {
-        return ispit;
-    }
-
-    public void setIspit(Ispit ispit) {
-        this.ispit = ispit;
-    }
-
-    public StudIndex getStudIndexi() {
-        return studIndexi;
-    }
-
-    public void setStudIndexi(StudIndex studIndexi) {
-        this.studIndexi = studIndexi;
-    }
-
-    public IzlazakNaIspit getIzlazakNaIspit() {
-        return izlazakNaIspit;
-    }
-
-    public void setIzlazakNaIspit(IzlazakNaIspit izlazakNaIspit) {
-        this.izlazakNaIspit = izlazakNaIspit;
-    }
 }

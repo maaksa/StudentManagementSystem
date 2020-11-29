@@ -1,11 +1,16 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "studIndex")
 public class StudIndex {
@@ -109,107 +114,7 @@ public class StudIndex {
             obnovljeneGodine = new ArrayList<>();
         }
         obnovljeneGodine.add(obnovaGodina);
-        obnovaGodina.setStudentIndex(this);
-    }
-
-    public void setStudProgram(StudProgram studProgram) {
-        this.studProgram = studProgram;
-    }
-
-    public int getIdStudIndex() {
-        return idStudIndex;
-    }
-
-    public int getBroj() {
-        return broj;
-    }
-
-    public void setBroj(int broj) {
-        this.broj = broj;
-    }
-
-    public int getGodina() {
-        return godina;
-    }
-
-    public void setGodina(int godina) {
-        this.godina = godina;
-    }
-
-    public StudProgram getStudProgram() {
-        return studProgram;
-    }
-
-    public List<UpisGodina> getUpisGodina() {
-        return upisGodina;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public List<ObnovaGodina> getObnovljeneGodine() {
-        return obnovljeneGodine;
-    }
-
-    public List<OsvojeniPredispitniPoeni> getPredIspitne() {
-        return predIspitne;
-    }
-
-    public List<PolozioPredmet> getPolozioPredmete() {
-        return polozioPredmete;
-    }
-
-    public List<SlusaPredmet> getSlusaPredmete() {
-        return slusaPredmete;
-    }
-
-    public boolean isAktivan() {
-        return aktivan;
-    }
-
-    public void setAktivan(boolean aktivan) {
-        this.aktivan = aktivan;
-    }
-
-    public LocalDate getOdKadJeAktivan() {
-        return odKadJeAktivan;
-    }
-
-    public void setOdKadJeAktivan(LocalDate odKadJeAktivan) {
-        this.odKadJeAktivan = odKadJeAktivan;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public List<PrijavaIspita> getPrijavaIspita() {
-        return prijavaIspita;
-    }
-
-    public void setPrijavaIspita(List<PrijavaIspita> prijavaIspita) {
-        this.prijavaIspita = prijavaIspita;
-    }
-
-    public void setUpisGodina(List<UpisGodina> upisGodina) {
-        this.upisGodina = upisGodina;
-    }
-
-    public void setObnovljeneGodine(List<ObnovaGodina> obnovljeneGodine) {
-        this.obnovljeneGodine = obnovljeneGodine;
-    }
-
-    public void setPolozioPredmete(List<PolozioPredmet> polozioPredmete) {
-        this.polozioPredmete = polozioPredmete;
-    }
-
-    public void setPredIspitne(List<OsvojeniPredispitniPoeni> predIspitne) {
-        this.predIspitne = predIspitne;
-    }
-
-    public void setSlusaPredmete(List<SlusaPredmet> slusaPredmete) {
-        this.slusaPredmete = slusaPredmete;
+        obnovaGodina.setStudentIndeks(this);
     }
 
     @Override

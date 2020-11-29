@@ -1,5 +1,8 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,14 +10,11 @@ import java.util.List;
 
 import javax.persistence.*;
 
-/**
- * The persistent class for the student database table.
- */
+@Getter
+@Setter
 @Entity
 @Table(name = "student")
-//@NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s")
 public class Student {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +43,7 @@ public class Student {
     private String prelaz;
 
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne()
     @JoinColumn(name = "idSrednjaSkola")
     private SrednjaSkola srednjaSkola;
 
@@ -58,7 +58,7 @@ public class Student {
 
     }
 
-    public Student(String ime, String prezime, String srednjeIme, long jmbg, LocalDate daumRodjenja, String mestoRodjenja, String drzavljanstvo, String nacionalnost, char pol, String mesto, String ulica, int brojUlice, long brojTelefona, String privemail, String studemail, String brojLicneKarte, String licnuKartuIzdao, boolean upisaoPrvuGodinu, double uspehSrednjaSkola, double uspehPrijemni, String prelaz, SrednjaSkola srednjaSkola, VisokaSkola visokaSkola) {
+    public Student(String ime, String prezime, String srednjeIme, long jmbg, LocalDate daumRodjenja, String mestoRodjenja, String drzavljanstvo, String nacionalnost, char pol, String mesto, String ulica, int brojUlice, long brojTelefona, String privemail, String studemail, String brojLicneKarte, String licnuKartuIzdao, boolean upisaoPrvuGodinu, double uspehSrednjaSkola, double uspehPrijemni, String prelaz/*, SrednjaSkola srednjaSkola*/, VisokaSkola visokaSkola) {
         this.ime = ime;
         this.prezime = prezime;
         this.srednjeIme = srednjeIme;
@@ -80,7 +80,7 @@ public class Student {
         this.uspehSrednjaSkola = uspehSrednjaSkola;
         this.uspehPrijemni = uspehPrijemni;
         this.prelaz = prelaz;
-        this.srednjaSkola = srednjaSkola;
+        //this.srednjaSkola = srednjaSkola;
         this.visokaSkola = visokaSkola;
         indexi = new ArrayList<>();
     }
@@ -91,215 +91,6 @@ public class Student {
         }
         indexi.add(studIndex);
         studIndex.setStudent(this);
-    }
-
-    public int getIdstudent() {
-        return this.idStudent;
-    }
-
-    public String getIme() {
-        return this.ime;
-    }
-
-    public void setIme(String ime) {
-        this.ime = ime;
-    }
-
-    public String getPrezime() {
-        return this.prezime;
-    }
-
-    public void setPrezime(String prezime) {
-        this.prezime = prezime;
-    }
-
-    public int getIdStudent() {
-        return idStudent;
-    }
-
-    public double getUspehSrednjaSkola() {
-        return uspehSrednjaSkola;
-    }
-
-    public void setUspehSrednjaSkola(double uspehSrednjaSkola) {
-        this.uspehSrednjaSkola = uspehSrednjaSkola;
-    }
-
-    public String getSrednjeIme() {
-        return srednjeIme;
-    }
-
-    public void setSrednjeIme(String srednjeIme) {
-        this.srednjeIme = srednjeIme;
-    }
-
-    public long getJmbg() {
-        return jmbg;
-    }
-
-    public void setJmbg(long jmbg) {
-        this.jmbg = jmbg;
-    }
-
-    public LocalDate getDaumRodjenja() {
-        return daumRodjenja;
-    }
-
-    public void setDaumRodjenja(LocalDate daumRodjenja) {
-        this.daumRodjenja = daumRodjenja;
-    }
-
-    public String getMestoRodjenja() {
-        return mestoRodjenja;
-    }
-
-    public void setMestoRodjenja(String mestoRodjenja) {
-        this.mestoRodjenja = mestoRodjenja;
-    }
-
-    public String getDrzavljanstvo() {
-        return drzavljanstvo;
-    }
-
-    public void setDrzavljanstvo(String drzavljanstvo) {
-        this.drzavljanstvo = drzavljanstvo;
-    }
-
-    public String getNacionalnost() {
-        return nacionalnost;
-    }
-
-    public void setNacionalnost(String nacionalnost) {
-        this.nacionalnost = nacionalnost;
-    }
-
-    public char getPol() {
-        return pol;
-    }
-
-    public void setPol(char pol) {
-        this.pol = pol;
-    }
-
-    public String getMesto() {
-        return mesto;
-    }
-
-    public void setMesto(String mesto) {
-        this.mesto = mesto;
-    }
-
-    public String getUlica() {
-        return ulica;
-    }
-
-    public void setUlica(String ulica) {
-        this.ulica = ulica;
-    }
-
-    public int getBrojUlice() {
-        return brojUlice;
-    }
-
-    public void setBrojUlice(int brojUlice) {
-        this.brojUlice = brojUlice;
-    }
-
-    public long getBrojTelefona() {
-        return brojTelefona;
-    }
-
-    public void setBrojTelefona(long brojTelefona) {
-        this.brojTelefona = brojTelefona;
-    }
-
-    public String getPrivemail() {
-        return privemail;
-    }
-
-    public void setPrivemail(String privemail) {
-        this.privemail = privemail;
-    }
-
-    public String getStudemail() {
-        return studemail;
-    }
-
-    public void setStudemail(String studemail) {
-        this.studemail = studemail;
-    }
-
-    public String getBrojLicneKarte() {
-        return brojLicneKarte;
-    }
-
-    public void setBrojLicneKarte(String brojLicneKarte) {
-        this.brojLicneKarte = brojLicneKarte;
-    }
-
-    public String getLicnuKartuIzdao() {
-        return licnuKartuIzdao;
-    }
-
-    public void setLicnuKartuIzdao(String licnuKartuIzdao) {
-        this.licnuKartuIzdao = licnuKartuIzdao;
-    }
-
-    public List<StudIndex> getIndexi() {
-        return indexi;
-    }
-
-    public void setIndexi(List<StudIndex> indexi) {
-        this.indexi = indexi;
-    }
-
-    public boolean isUpisaoPrvuGodinu() {
-        return upisaoPrvuGodinu;
-    }
-
-    public void setUpisaoPrvuGodinu(boolean upisaoPrvuGodinu) {
-        this.upisaoPrvuGodinu = upisaoPrvuGodinu;
-    }
-
-    public double getUspehSrednjaSKola() {
-        return uspehSrednjaSkola;
-    }
-
-    public void setUspehSrednjaSKola(double uspehSrednjaSKola) {
-        this.uspehSrednjaSkola = uspehSrednjaSKola;
-    }
-
-    public double getUspehPrijemni() {
-        return uspehPrijemni;
-    }
-
-    public void setUspehPrijemni(double uspehPrijemni) {
-        this.uspehPrijemni = uspehPrijemni;
-    }
-
-    public String getPrelaz() {
-        return prelaz;
-    }
-
-    public void setPrelaz(String prelaz) {
-        this.prelaz = prelaz;
-    }
-
-    public VisokaSkola getVisokaSkola() {
-        return visokaSkola;
-    }
-
-    public void setVisokaSkola(VisokaSkola visokaSkola) {
-        this.visokaSkola = visokaSkola;
-    }
-
-    public SrednjaSkola getSrednjaSkola() {
-        return srednjaSkola;
-    }
-
-    public void setSrednjaSkola(SrednjaSkola srednjaSkola) {
-
-        this.srednjaSkola = srednjaSkola;
     }
 
     @Override

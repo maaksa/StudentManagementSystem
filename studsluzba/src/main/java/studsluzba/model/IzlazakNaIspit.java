@@ -1,7 +1,12 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "izlazakIspit")
 public class IzlazakNaIspit {
@@ -39,66 +44,6 @@ public class IzlazakNaIspit {
         this.izasaoNaIspit = izasaoNaIspit;
         this.prijavljenIspit = prijavljenIspit;
         this.ispit = ispit;
-    }
-
-    public int getIdIzlazak() {
-        return idIzlazak;
-    }
-
-    public int getBrojOsvojenihPoena() {
-        return brojOsvojenihPoena;
-    }
-
-    public void setBrojOsvojenihPoena(int brojOsvojenihPoena) {
-        this.brojOsvojenihPoena = brojOsvojenihPoena;
-    }
-
-    public String getNapomena() {
-        return napomena;
-    }
-
-    public void setNapomena(String napomena) {
-        this.napomena = napomena;
-    }
-
-    public boolean isPonistavanje() {
-        return ponistavanje;
-    }
-
-    public void setPonistavanje(boolean ponistavanje) {
-        this.ponistavanje = ponistavanje;
-    }
-
-    public PrijavaIspita getPrijavljenIspit() {
-        return prijavljenIspit;
-    }
-
-    public void setPrijavljenIspit(PrijavaIspita prijavljenIspit) {
-        this.prijavljenIspit = prijavljenIspit;
-    }
-
-    public boolean isIzasaoNaIspit() {
-        return izasaoNaIspit;
-    }
-
-    public void setIzasaoNaIspit(boolean izasaoNaIspit) {
-        this.izasaoNaIspit = izasaoNaIspit;
-    }
-
-    public Ispit getIspit() {
-        return ispit;
-    }
-
-    public void setIspit(Ispit ispit) {
-        this.ispit = ispit;
-    }
-
-    public PolozioPredmet getPolozioPredmet() {
-        return polozioPredmet;
-    }
-
-    public void setPolozioPredmet(PolozioPredmet polozioPredmet) {
-        this.polozioPredmet = polozioPredmet;
     }
 
     @Override

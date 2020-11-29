@@ -1,10 +1,15 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "predmet")
 public class Predmet {
@@ -72,111 +77,6 @@ public class Predmet {
         obaveze.add(predObaveze);
         predObaveze.setPredmet(this);
     }
-
-    public void setObnova(ObnovaGodina obnova) {
-        this.obnova = obnova;
-    }
-
-    public ObnovaGodina getObnova() {
-        return obnova;
-    }
-
-    public void setPolozioPredmet(PolozioPredmet polozioPredmet) {
-        this.polozioPredmet = polozioPredmet;
-    }
-
-    public PolozioPredmet getPolozioPredmet() {
-        return polozioPredmet;
-    }
-
-    public int getId() {
-        return idPredmet;
-    }
-
-    public String getSifraPredmeta() {
-        return sifraPredmeta;
-    }
-
-    public void setSifraPredmeta(String sifraPredmeta) {
-        this.sifraPredmeta = sifraPredmeta;
-    }
-
-    public String getNazivPredmeta() {
-        return nazivPredmeta;
-    }
-
-    public void setNazivPredmeta(String nazivPredmeta) {
-        this.nazivPredmeta = nazivPredmeta;
-    }
-
-    public String getOpis() {
-        return opis;
-    }
-
-    public void setOpis(String opis) {
-        this.opis = opis;
-    }
-
-    public int getBrojESPB() {
-        return brojESPB;
-    }
-
-    public void setBrojESPB(int brojESPB) {
-        this.brojESPB = brojESPB;
-    }
-
-    public int getFondPredavanja() {
-        return fondPredavanja;
-    }
-
-    public void setFondPredavanja(int fondPredavanja) {
-        this.fondPredavanja = fondPredavanja;
-    }
-
-    public int getFondVezbi() {
-        return fondVezbi;
-    }
-
-    public void setFondVezbi(int fondVezbi) {
-        this.fondVezbi = fondVezbi;
-    }
-
-    public int getBrojSemestra() {
-        return brojSemestra;
-    }
-
-    public void setBrojSemestra(int brojSemestra) {
-        this.brojSemestra = brojSemestra;
-    }
-
-    public void setStudProgram(StudProgram studProgram) {
-        this.studProgram = studProgram;
-    }
-
-    public StudProgram getStudProgram() {
-        return studProgram;
-    }
-
-    public List<Ispit> getIspit() {
-        return ispit;
-    }
-
-    public void setIspit(List<Ispit> ispit) {
-        this.ispit = ispit;
-    }
-
-    public int getIdPredmet() {
-        return idPredmet;
-    }
-
-    public List<PredispitneObaveze> getObaveze() {
-        return obaveze;
-    }
-
-    public void setObaveze(List<PredispitneObaveze> obaveze) {
-        this.obaveze = obaveze;
-    }
-
 
     @Override
     public String toString() {

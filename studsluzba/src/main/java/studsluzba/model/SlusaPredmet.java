@@ -1,7 +1,12 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "slusaPredmet")
 public class SlusaPredmet {
@@ -25,26 +30,6 @@ public class SlusaPredmet {
     public SlusaPredmet(StudIndex index, DrziPredmet drziPredmet) {
         this.index = index;
         this.drziPredmet = drziPredmet;
-    }
-
-    public int getIdSlusaPredmet() {
-        return idSlusaPredmet;
-    }
-
-    public DrziPredmet getDrziPredmet() {
-        return drziPredmet;
-    }
-
-    public void setDrziPredmet(DrziPredmet drziPredmet) {
-        this.drziPredmet = drziPredmet;
-    }
-
-    public StudIndex getIndex() {
-        return index;
-    }
-
-    public void setIndex(StudIndex index) {
-        this.index = index;
     }
 
 

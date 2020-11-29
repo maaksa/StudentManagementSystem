@@ -214,14 +214,13 @@ public class StudentRepositoryTest {
         s.setNacionalnost("Srbina");
         s.setPol('m');
         s.setPrelaz("");
-        s.setUspehSrednjaSKola(4.50);
+        s.setUspehSrednjaSkola(4.50);
         s.setPrivemail("nn@gmail.com");
         s.setStudemail("nn@raf.rs");
         s.setUpisaoPrvuGodinu(false);
         s.setVisokaSkola(visokaSkola);
         s.addIndex(studIndex);
         s.setUlica("Petra Petrica");
-        s.setUspehSrednjaSKola(4.52);
         s.setPrivemail("lm@gmail.com");
         s.setStudemail("lm@raf.rs");
         s.setUspehPrijemni(32);

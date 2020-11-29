@@ -1,10 +1,15 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "osvojeniPoeni")
 public class OsvojeniPredispitniPoeni {
@@ -37,34 +42,6 @@ public class OsvojeniPredispitniPoeni {
         }
         predIspitneObaveze.add(predObaveze);
         predObaveze.setOsvojeniPredispitniPoeni(this);
-    }
-
-    public int getIdOsvojeniPoeni() {
-        return idOsvojeniPoeni;
-    }
-
-    public int getUkupanBrojPoena() {
-        return ukupanBrojPoena;
-    }
-
-    public void setUkupanBrojPoena(int ukupanBrojPoena) {
-        this.ukupanBrojPoena = ukupanBrojPoena;
-    }
-
-    public StudIndex getStudentIndeks() {
-        return studentIndeks;
-    }
-
-    public void setStudentIndeks(StudIndex studentIndeks) {
-        this.studentIndeks = studentIndeks;
-    }
-
-    public List<PredispitneObaveze> getPredIspitneObaveze() {
-        return predIspitneObaveze;
-    }
-
-    public void setPredIspitneObaveze(List<PredispitneObaveze> predIspitneObaveze) {
-        this.predIspitneObaveze = predIspitneObaveze;
     }
 
     @Override

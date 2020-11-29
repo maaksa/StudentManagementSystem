@@ -1,17 +1,18 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * The persistent class for the studProgram database table.
- */
+@Getter
+@Setter
 @Entity
 @Table(name = "studProgram")
-//@NamedQuery(name = "StudProgram.findAll", query = "SELECT s FROM StudProgram s")
 public class StudProgram {
 
     @Id
@@ -69,74 +70,6 @@ public class StudProgram {
         }
         predmeti.add(predmet);
         predmet.setStudProgram(this);
-    }
-
-    public List<StudIndex> getStudIndexi() {
-        return studIndexi;
-    }
-
-    public int getIdstudProgram() {
-        return this.idstudProgram;
-    }
-
-    public String getNaziv() {
-        return this.naziv;
-    }
-
-    public void setNaziv(String naziv) {
-        this.naziv = naziv;
-    }
-
-    public String getSkraceniNaziv() {
-        return this.skraceniNaziv;
-    }
-
-    public void setSkraceniNaziv(String skraceniNaziv) {
-        this.skraceniNaziv = skraceniNaziv;
-    }
-
-    public LocalDate getGodinaAkreditacije() {
-        return godinaAkreditacije;
-    }
-
-    public void setGodinaAkreditacije(LocalDate godinaAkreditacije) {
-        this.godinaAkreditacije = godinaAkreditacije;
-    }
-
-    public int getTrajanje() {
-        return trajanje;
-    }
-
-    public void setTrajanje(int trajanje) {
-        this.trajanje = trajanje;
-    }
-
-    public String getNazivZvanja() {
-        return nazivZvanja;
-    }
-
-    public void setNazivZvanja(String nazivZvanja) {
-        this.nazivZvanja = nazivZvanja;
-    }
-
-    public List<VrstaStudija> getVrsteStudija() {
-        return vrsteStudija;
-    }
-
-
-    /*public Student removeStudent(Student student) {
-        getStudents().remove(student);
-        student.setStudProgram(null);
-
-        return student;
-    }*/
-
-    public List<Predmet> getPredmeti() {
-        return predmeti;
-    }
-
-    public void setPredmeti(List<Predmet> predmets) {
-        this.predmeti = predmets;
     }
 
     @Override

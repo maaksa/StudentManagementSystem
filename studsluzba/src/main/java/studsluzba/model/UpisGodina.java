@@ -1,12 +1,16 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
-
+@Getter
+@Setter
 @Entity
 @Table(name = "upisGodina")
 public class UpisGodina {
@@ -42,43 +46,6 @@ public class UpisGodina {
         this.datum = datum;
         this.napomena = napomena;
         //predmetPrenos  = new ArrayList<>();
-    }
-
-    public StudIndex getStudentIndex() {
-        return studentIndex;
-    }
-
-    public int getIdUpisGodina() {
-        return idUpisGodina;
-    }
-
-    public SkolskaGodina getSkolskaGodina() {
-        return skolskaGodina;
-    }
-
-
-    public void setStudentIndex(StudIndex studentIndex) {
-        this.studentIndex = studentIndex;
-    }
-
-    public void setSkolskaGodina(SkolskaGodina skolskaGodina) {
-        this.skolskaGodina = skolskaGodina;
-    }
-
-    public int getDatum() {
-        return datum;
-    }
-
-    public void setDatum(int datum) {
-        this.datum = datum;
-    }
-
-    public String getNapomena() {
-        return napomena;
-    }
-
-    public void setNapomena(String napomena) {
-        this.napomena = napomena;
     }
 
     @Override

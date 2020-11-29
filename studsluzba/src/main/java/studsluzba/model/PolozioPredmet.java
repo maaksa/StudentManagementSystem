@@ -1,9 +1,14 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "polozioPredmet")
 public class PolozioPredmet {
@@ -47,58 +52,6 @@ public class PolozioPredmet {
         }
         predmeti.add(predmet);
         predmet.setPolozioPredmet(this);
-    }
-
-    public void setPriznatSaDrugogFaksa(boolean priznatSaDrugogFaksa) {
-        this.priznatSaDrugogFaksa = priznatSaDrugogFaksa;
-    }
-
-    public float getUkupanBrojPoena() {
-        return ukupanBrojPoena;
-    }
-
-    public void setUkupanBrojPoena(float ukupanBrojPoena) {
-        this.ukupanBrojPoena = ukupanBrojPoena;
-    }
-
-    public int getIdPolozioPredmet() {
-        return idPolozioPredmet;
-    }
-
-    public int getOcena() {
-        return ocena;
-    }
-
-    public void setOcena(int ocena) {
-        this.ocena = ocena;
-    }
-
-    public StudIndex getStudent() {
-        return studentIndex;
-    }
-
-    public StudIndex getStudentIndex() {
-        return studentIndex;
-    }
-
-    public void setStudentIndex(StudIndex studentIndex) {
-        this.studentIndex = studentIndex;
-    }
-
-    public List<Predmet> getPredmeti() {
-        return predmeti;
-    }
-
-    public void setPredmeti(List<Predmet> predmeti) {
-        this.predmeti = predmeti;
-    }
-
-    public IzlazakNaIspit getIzlazakNaIspit() {
-        return izlazakNaIspit;
-    }
-
-    public void setIzlazakNaIspit(IzlazakNaIspit izlazakNaIspit) {
-        this.izlazakNaIspit = izlazakNaIspit;
     }
 
     @Override

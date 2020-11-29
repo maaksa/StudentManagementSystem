@@ -213,6 +213,7 @@ public class StudentController {
         }
 
         System.out.println(studProgram);
+        System.out.println(srednja);
         // PROBA KOMITA
         // Proba opet jos jedna
 

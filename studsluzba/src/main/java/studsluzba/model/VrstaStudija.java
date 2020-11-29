@@ -1,7 +1,12 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "vrstaStudija")
 public class VrstaStudija {
@@ -24,38 +29,6 @@ public class VrstaStudija {
         this.idVrstaStudija = vrstaStudijaid;
         this.punNaziv = punNaziv;
         this.skraceniNaziv = skraceniNaziv;
-    }
-
-    public int getIdVrstaStudija() {
-        return idVrstaStudija;
-    }
-
-    public int getVrstaStudijaid() {
-        return idVrstaStudija;
-    }
-
-    public String getPunNaziv() {
-        return punNaziv;
-    }
-
-    public void setPunNaziv(String punNaziv) {
-        this.punNaziv = punNaziv;
-    }
-
-    public String getSkraceniNaziv() {
-        return skraceniNaziv;
-    }
-
-    public void setSkraceniNaziv(String skraceniNaziv) {
-        this.skraceniNaziv = skraceniNaziv;
-    }
-
-    public void setStudProgram(StudProgram studProgram) {
-        this.studProgram = studProgram;
-    }
-
-    public StudProgram getStudProgram() {
-        return studProgram;
     }
 
     @Override

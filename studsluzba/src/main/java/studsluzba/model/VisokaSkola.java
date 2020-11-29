@@ -1,9 +1,14 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "visokaSkola")
 public class VisokaSkola {
@@ -35,50 +40,6 @@ public class VisokaSkola {
         }
         studentii.add(student);
         student.setVisokaSkola(this);
-    }
-
-    public void setStudentii(List<Student> studentii) {
-        this.studentii = studentii;
-    }
-
-    public List<Student> getStudentii() {
-        return studentii;
-    }
-
-    public String getMesto() {
-        return mesto;
-    }
-
-    public String getVrsta() {
-        return vrsta;
-    }
-
-    public void setMesto(String mesto) {
-        this.mesto = mesto;
-    }
-
-    public void setVrsta(String vrsta) {
-        this.vrsta = vrsta;
-    }
-
-    public void setStudenti(List<Student> studenti) {
-        this.studentii = studenti;
-    }
-
-    public List<Student> getStudenti() {
-        return studentii;
-    }
-
-    public int getIdVisokaSkola() {
-        return idVisokaSkola;
-    }
-
-    public String getNaziv() {
-        return naziv;
-    }
-
-    public void setNaziv(String naziv) {
-        this.naziv = naziv;
     }
 
     @Override

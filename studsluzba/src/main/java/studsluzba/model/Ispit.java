@@ -1,11 +1,16 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "ispit")
 public class Ispit {
@@ -68,78 +73,6 @@ public class Ispit {
         }
         izlasciNaIspit.add(izlazakNaIspit);
         izlazakNaIspit.setIspit(this);
-    }
-
-    public IspitniRok getIspitniRok() {
-        return ispitniRok;
-    }
-
-    public List<IzlazakNaIspit> getIzlasciNaIspit() {
-        return izlasciNaIspit;
-    }
-
-    public List<PrijavaIspita> getPrijavaIspita() {
-        return prijavaIspita;
-    }
-
-    public int getIdIspit() {
-        return idIspit;
-    }
-
-    public LocalDate getDatumOdrzavanja() {
-        return datumOdrzavanja;
-    }
-
-    public void setDatumOdrzavanja(LocalDate datumOdrzavanja) {
-        this.datumOdrzavanja = datumOdrzavanja;
-    }
-
-    public Predmet getPredmet() {
-        return predmet;
-    }
-
-    public void setPredmet(Predmet predmet) {
-        this.predmet = predmet;
-    }
-
-    public void setIdIspit(int idIspit) {
-        this.idIspit = idIspit;
-    }
-
-    public Nastavnik getNastavnik() {
-        return nastavnik;
-    }
-
-    public void setNastavnik(Nastavnik nastavnik) {
-        this.nastavnik = nastavnik;
-    }
-
-    public String getVremePocetka() {
-        return vremePocetka;
-    }
-
-    public void setVremePocetka(String vremePocetka) {
-        this.vremePocetka = vremePocetka;
-    }
-
-    public boolean isUnetiPoeni() {
-        return unetiPoeni;
-    }
-
-    public void setUnetiPoeni(boolean unetiPoeni) {
-        this.unetiPoeni = unetiPoeni;
-    }
-
-    public String getSifraIspita() {
-        return sifraIspita;
-    }
-
-    public void setSifraIspita(String sifraIspita) {
-        this.sifraIspita = sifraIspita;
-    }
-
-    public void setIspitniRok(IspitniRok ispitniRok) {
-        this.ispitniRok = ispitniRok;
     }
 
     @Override

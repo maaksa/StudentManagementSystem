@@ -1,10 +1,15 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "skolskaGodina")
 public class SkolskaGodina {
@@ -39,38 +44,6 @@ public class SkolskaGodina {
         }
         ispitniRokovi.add(ispitniRok);
         ispitniRok.setSkolskaGod(this);
-    }
-
-    public int getIdSkolskaGodina() {
-        return idSkolskaGodina;
-    }
-
-    public List<IspitniRok> getIspitniRokovi() {
-        return ispitniRokovi;
-    }
-
-    public ObnovaGodina getObnovaGodine() {
-        return obnovaGodine;
-    }
-
-    public void setObnovaGodine(ObnovaGodina obnovaGodine) {
-        this.obnovaGodine = obnovaGodine;
-    }
-
-    public int getDatum() {
-        return datum;
-    }
-
-    public void setDatum(int datum) {
-        this.datum = datum;
-    }
-
-    public boolean isAktivna() {
-        return aktivna;
-    }
-
-    public void setAktivna(boolean aktivna) {
-        this.aktivna = aktivna;
     }
 
     @Override

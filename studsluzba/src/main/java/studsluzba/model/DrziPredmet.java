@@ -1,10 +1,15 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "drziPredmet")
 public class DrziPredmet {
@@ -47,51 +52,6 @@ public class DrziPredmet {
         }
         slusaPredmet.add(predmeti);
         predmeti.setDrziPredmet(this);
-    }
-
-    public int getIdDrziPredmet() {
-        return idDrziPredmet;
-    }
-
-    public Predmet getPredmet() {
-        return predmet;
-    }
-
-    public void setPredmet(Predmet predmet) {
-        this.predmet = predmet;
-    }
-
-    public Nastavnik getNastavnik() {
-        return nastavnik;
-    }
-
-    public void setNastavnik(Nastavnik nastavnik) {
-        this.nastavnik = nastavnik;
-    }
-
-    public SkolskaGodina getSkolskaGod() {
-        return skolskaGod;
-    }
-
-    public void setSkolskaGod(SkolskaGodina skolskaGod) {
-        this.skolskaGod = skolskaGod;
-    }
-
-    public List<SlusaPredmet> getSlusaPredmet() {
-        return slusaPredmet;
-    }
-
-    public String getSifra() {
-        return sifra;
-    }
-
-    public void setSifra(String sifra) {
-        this.sifra = sifra;
-    }
-
-    public void setSlusaPredmet(List<SlusaPredmet> slusaPredmet) {
-        this.slusaPredmet = slusaPredmet;
-
     }
 
 }

@@ -1,10 +1,15 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "nastavnik")
 public class Nastavnik {
@@ -53,62 +58,6 @@ public class Nastavnik {
         }
         zvanja.add(zvanje);
         zvanje.setNastavnik(this);
-    }
-
-    public int getIdNastavnik() {
-        return idNastavnik;
-    }
-
-    public List<DrziPredmet> getDrziPredmet() {
-        return drziPredmet;
-    }
-
-    public String getIme() {
-        return ime;
-    }
-
-    public void setIme(String ime) {
-        this.ime = ime;
-    }
-
-    public String getPrezime() {
-        return prezime;
-    }
-
-    public void setPrezime(String prezime) {
-        this.prezime = prezime;
-    }
-
-    public String getSrednjeIme() {
-        return srednjeIme;
-    }
-
-    public void setSrednjeIme(String srednjeIme) {
-        this.srednjeIme = srednjeIme;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getObrazovanje() {
-        return obrazovanje;
-    }
-
-    public void setObrazovanje(String obrazovanje) {
-        this.obrazovanje = obrazovanje;
-    }
-
-    public List<Zvanje> getZvanja() {
-        return zvanja;
-    }
-
-    public void setZvanja(List<Zvanje> zvanja) {
-        this.zvanja = zvanja;
     }
 
     @Override

@@ -1,9 +1,14 @@
 package studsluzba.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "srednjaSkola")
 public class SrednjaSkola {
@@ -16,7 +21,7 @@ public class SrednjaSkola {
     private String mesto;
     private String vrsta;
 
-    @OneToMany(mappedBy = "srednjaSkola", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "srednjaSkola", fetch = FetchType.EAGER)
     private List<Student> studenti;
 
     public SrednjaSkola() {
@@ -36,38 +41,6 @@ public class SrednjaSkola {
         }
         studenti.add(student);
         student.setSrednjaSkola(this);
-    }
-
-    public List<Student> getStudenti() {
-        return studenti;
-    }
-
-    public int getIdSrednjaSkola() {
-        return idSrednjaSkola;
-    }
-
-    public String getNaziv() {
-        return naziv;
-    }
-
-    public void setNaziv(String naziv) {
-        this.naziv = naziv;
-    }
-
-    public String getMesto() {
-        return mesto;
-    }
-
-    public void setMesto(String mesto) {
-        this.mesto = mesto;
-    }
-
-    public String getVrsta() {
-        return vrsta;
-    }
-
-    public void setVrsta(String vrsta) {
-        this.vrsta = vrsta;
     }
 
     @Override
