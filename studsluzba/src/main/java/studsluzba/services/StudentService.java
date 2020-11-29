@@ -37,7 +37,7 @@ public class StudentService {
 
             System.out.println("JE L RADI OVO SERVICE");
             StudIndex studIndex = new StudIndex(indeks, datumUpisa.getYear(), true, datumUpisa, student, program);
-            student.addIndex(studIndex);
+            studIndex.setStudent(student);
             System.out.println(studIndex);
 
             try {
