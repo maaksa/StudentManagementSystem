@@ -183,6 +183,15 @@ public class FindStudentController {
 
     }
 
+    public void findStudentByName(ActionEvent event){
+        String ime = imeTf.getText();
+        String prezime = prezimeTf.getText();
+        List<Student> studenti = studentService.students(ime, prezime);
+        for(Student s : studenti){
+            System.out.println(s.toString());
+        }
+    }
+
     public void handleOpenModalSrednjeSkole(ActionEvent ae) {
         // TODO kreirati modal window za dodavanje nove srednje skole, mozda i brisanje i promena postojećih ?? strani ključ
         mainViewManager.openModal("addSrednjaSkola");

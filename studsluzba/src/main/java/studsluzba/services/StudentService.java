@@ -6,6 +6,7 @@ import studsluzba.model.*;
 import studsluzba.repositories.StudentRepository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class StudentService {
@@ -56,6 +57,17 @@ public class StudentService {
             return null;
         }
 
+    }
+
+    public List<Student> students (String ime, String prezime){
+        try {
+            System.out.println(ime + " " + prezime);
+            return studentRepository.findStudentByNameAndSurname(ime, prezime);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
 
