@@ -35,6 +35,7 @@ public class StudentService {
             //srednja.addStudent(student);
             student.setSrednjaSkola(srednja);
 
+            srednja.addStudent(student);
             System.out.println("JE L RADI OVO SERVICE");
             StudIndex studIndex = new StudIndex(indeks, datumUpisa.getYear(), true, datumUpisa, student, program);
             studIndex.setStudent(student);

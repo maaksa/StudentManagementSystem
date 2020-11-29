@@ -20,7 +20,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Component
-public class StudentController {
+public class FindStudentController {
 
     @Autowired
     StudentService studentService;
@@ -139,11 +139,13 @@ public class StudentController {
     TextField pretragaBrojaIndeksaTf;
 
     @FXML
-    TextField godinaIndeksaTf;
+    TextField pretragaGodinaIndeksaTf;
 
     @FXML
     ComboBox pretragaSmerCb;
 
+    @FXML
+    TextField godinaIndeksaTf;
 
     @FXML
     ComboBox smerCb;
@@ -152,30 +154,33 @@ public class StudentController {
     TextField brojIndeksaTf;
 
     @FXML
+    TextField NovaGodinaIndeksaTf;
+
+    @FXML
+    ComboBox NovSmerCb;
+
+    @FXML
+    TextField NovBrojIndeksaTf;
+
+    @FXML
     TextField brojUliceTf;
 
+    @FXML
+    private TableView<Student> studentiTable;
 
 
     @FXML
     public void initialize() {
-        //najbolje u resources fajlu imati txt fajl spiskova svih drzava i to da se ne menja, da ne cuvamo u bazi
-        List<String> drzavaCodes = List.of("Republika Srbija", "Crna Gora", "Hrvatska");
-        drzavaRodjenjaCb.setItems(FXCollections.observableArrayList(drzavaCodes));
-        drzavaRodjenjaCb.setValue(new String("Republika Srbija"));
-        drzavljanstvoCb.setItems(FXCollections.observableArrayList(drzavaCodes));
-        drzavljanstvoCb.setValue(new String("Republika Srbija"));
-        List<String> mestaCodes = List.of("Beograd", "Leskovac", "Vranje");
-        ObservableList<String> mestaCodesObservableList = FXCollections.observableArrayList(mestaCodes);
-        mestoRodjenjaCb.setItems(mestaCodesObservableList);
-        mestoStanovanjaCb.setItems(mestaCodesObservableList);
-        //sr skola nam predstavlja sifranik (sifarnik moze nam biti vrsta stduija, zvanja, sve ono sto smo unosili, sluze nam samo da ih vezemo za nesto u ovom sluc za studenta)
-        //i sifarniciServica pozvacemo srSkoleRepo koji ce iz baze izvuci sve sr skole
-        //srednjeSkoleCb ComboBox uvezan sa ComboBox iz fxml fajla kome pripada ovaj Controller, i na ovaj nacin napunimo(azuriramo) comboBox u fxml fajlu
-        List<SrednjaSkola> srednjeSkole = sifarniciService.getSrednjeSkole();
-        srednjeSkolaCb.setItems(FXCollections.observableArrayList(srednjeSkole));
+        List<String> findSmerovi = List.of("RN", "RI", "RD");
+        ObservableList<String> smeroviObservableList1 = FXCollections.observableArrayList(findSmerovi);
+        pretragaSmerCb.setItems(smeroviObservableList1);
         List<String> smerovi = List.of("RN", "RI", "RD");
-        ObservableList<String> smeroviObservableList = FXCollections.observableArrayList(smerovi);
-        smerCb.setItems(smeroviObservableList);
+        ObservableList<String> smeroviObservableList2 = FXCollections.observableArrayList(smerovi);
+        smerCb.setItems(smeroviObservableList2);
+        List<String> noviSmerovi = List.of("RN", "RI", "RD");
+        ObservableList<String> smeroviObservableList3 = FXCollections.observableArrayList(noviSmerovi);
+        NovSmerCb.setItems(smeroviObservableList3);
+
     }
 
     public void handleOpenModalSrednjeSkole(ActionEvent ae) {

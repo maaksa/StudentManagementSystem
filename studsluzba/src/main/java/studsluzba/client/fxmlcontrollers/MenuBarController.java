@@ -22,6 +22,10 @@ public class MenuBarController {
     @FXML
     private MenuBar menuBar;
 
+    public void findStudent(ActionEvent event) {
+        mainViewManager.changeRoot("findStudent");
+    }
+
 
     //naziv metode koja se poziva u menuBar.fxml
     public void openStudProgrami(ActionEvent event) {

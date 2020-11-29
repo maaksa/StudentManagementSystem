@@ -371,6 +371,7 @@ public class StudentRepositoryTest {
 
         //upit izvlacenje studenta preko broja indeksa
 //        Student student = studRepo.selectStudentByIndex(55);
+
 //        System.out.println(student);
 
         //upit selekcija svih položenih ispita preko broja indeksa studenta

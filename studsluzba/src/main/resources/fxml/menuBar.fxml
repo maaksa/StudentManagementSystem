@@ -15,7 +15,7 @@
     <MenuBar fx:id="menuBar" style="-fx-background-color: #ADD8E6;">
         <Menu text="Pretraži">
             <items>
-                <MenuItem text="Studenti" onAction="#openSearchStudent"/>
+                <MenuItem text="Studenti" onAction="#findStudent"/>
                 <MenuItem text="Nastavnici"/>
                 <MenuItem text="Predmeti"/>
                 <MenuItem text="Ispitni rokovi"/>
