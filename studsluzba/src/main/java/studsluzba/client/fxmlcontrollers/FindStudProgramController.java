@@ -32,7 +32,6 @@ public class FindStudProgramController {
     @Autowired
     NastavnikService nastavnikService;
 
-
     @Autowired
     StudProgramService studProgramService;
 
@@ -45,6 +44,7 @@ public class FindStudProgramController {
     @FXML
     private ComboBox pretragaSmerCb;
 
+    private ObservableList<Predmet> sviPredmeti;
 
     @FXML
     private TableView<Predmet> studProgramTable = new TableView<Predmet>();
@@ -54,30 +54,13 @@ public class FindStudProgramController {
         List<String> findSmerovi = List.of("RN", "RI", "RD");
         ObservableList<String> smeroviObservableList1 = FXCollections.observableArrayList(findSmerovi);
         pretragaSmerCb.setItems(smeroviObservableList1);
-        updateNastavniciTable();
     }
 
-    public void addZvanje(ActionEvent ae) {
-//        Nastavnik nastavnikSelected = nastavnikTable.getSelectionModel().getSelectedItem();
-//        String nastavnikNazivZvanja = nazivZvanja.getText();
-//        String nastavnikUzaNaucObla = uzaNaucnaOblast.getText();
-//        LocalDate nastavnikDatumIzbora = datumIzbora.getValue();
-//
-//        nastavnikService.addZvanje(nastavnikNazivZvanja, nastavnikUzaNaucObla, nastavnikDatumIzbora, nastavnikSelected);
-//        updateNastavniciTable();
-
-    }
-
-    public void updateNastavniciTable(){
-//        sviNastavnici = FXCollections.observableList(nastavnikService.getNastavnici());
-//        System.out.println(sviNastavnici);
-//        nastavnikTable.getItems().clear();
-//        nastavnikTable.setItems(sviNastavnici);
-    }
-
-
-    public void handleOpenDosije(ActionEvent ae) {
-
+    public void showStudProgPred(ActionEvent ae) {
+        String smer = String.valueOf(pretragaSmerCb.getValue().toString());
+        sviPredmeti = FXCollections.observableList(studProgramService.getPredmetiByProgram(smer));
+        studProgramTable.getItems().clear();
+        studProgramTable.setItems(sviPredmeti);
     }
 
 

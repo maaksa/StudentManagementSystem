@@ -2,6 +2,8 @@ package studsluzba.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import studsluzba.model.PredispitneObaveze;
+import studsluzba.model.Predmet;
 import studsluzba.model.StudProgram;
 import studsluzba.repositories.StudProgramRepository;
 
@@ -28,6 +30,11 @@ public class StudProgramService {
         List<StudProgram> rez = new ArrayList<StudProgram>();
         iter.forEach(rez::add);
         return rez;
+    }
+
+    public List<Predmet> getPredmetiByProgram(String smer) {
+        List<Predmet> predmetiToReturn = studProgramRepo.selectPredmetiByStudProg(smer);
+        return predmetiToReturn;
     }
 
 }

@@ -16,9 +16,8 @@
                     <ComboBox fx:id="pretragaSmerCb" GridPane.columnIndex="1"
                               GridPane.rowIndex="0"/> <!--ovde ce biti prikazane sve sr skole-->
 
-
                     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                        <Button text="Prikazi" /> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
+                        <Button text="Prikazi" onAction="#showStudProgPred"/> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
                     </HBox>
                 </GridPane>
             </center>
