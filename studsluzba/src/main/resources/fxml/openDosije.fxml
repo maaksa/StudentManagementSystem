@@ -50,8 +50,12 @@
     <Text fx:id="uspehSrednjaSkolaTf" GridPane.columnIndex="1" GridPane.rowIndex="19" />
     <Label text="Uspeh prijmeni" GridPane.columnIndex="0"  GridPane.rowIndex="20" />
     <Text fx:id="uspehPrijemniTf" GridPane.columnIndex="1" GridPane.rowIndex="20" />
+    <Label text="Polozeni predmeti" GridPane.columnIndex="0"  GridPane.rowIndex="21" />
+    <Text fx:id="polozeniPredmeti" GridPane.columnIndex="1" GridPane.rowIndex="21" />
+    <Label text="Slusa predmete" GridPane.columnIndex="0"  GridPane.rowIndex="22" />
+    <Text fx:id="slusaniPredmeti" GridPane.columnIndex="1" GridPane.rowIndex="22" />
 
     <!--akcija za dodavanje te nove srednje skole u controlleru-->
-    <Button onAction="#addStudent" text="Dodaj" GridPane.columnIndex="1" GridPane.rowIndex="21" />
+    <Button onAction="#handleOpenTokStudija" text="Tok studija" GridPane.columnIndex="1" GridPane.rowIndex="24" />
 
 </GridPane>

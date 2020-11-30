@@ -19,8 +19,8 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     Student selectStudentByIndex(String smer, int br, int godina);
 
     //upit selekcija svih položenih ispita preko broja indeksa studenta
-    @Query("select p from PolozioPredmet p where p.studentIndex.broj = :br")
-    List<PolozioPredmet> selectPolozeniPredByIndex(int br);
+    @Query("select p from PolozioPredmet p where p.studentIndex.broj = :br and p.studentIndex.godina = :godina and p.studentIndex.studProgram.skraceniNaziv like :smer")
+    List<PolozioPredmet> selectPolozeniPredByIndex(String smer, int br, int godina);
 
     //upit selekcija studenata koji su zavrsili odredjenu srednju skolu
     @Query("select s from Student s where lower(s.srednjaSkola.naziv) like :ime_srednje_skole")
@@ -34,4 +34,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     @Query("select o from ObnovaGodina o where o.studentIndeks.broj = :br")
     List<ObnovaGodina> findObnovljeneGodineByIndex(int br);
 
+    //upit selekcija svih ispita koje slusa
+    @Query("select p from SlusaPredmet p where p.index.broj = :br and p.index.godina = :godina and p.index.studProgram.skraceniNaziv like :smer")
+    List<SlusaPredmet> selectSlusaPredByIndex(String smer, int br, int godina);
 }

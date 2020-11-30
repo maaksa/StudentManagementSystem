@@ -56,12 +56,6 @@ public class PolozioPredmet {
 
     @Override
     public String toString() {
-        return "PolozioPredmet{" +
-                "idPolozioPredmet=" + idPolozioPredmet +
-                ", ocena=" + ocena +
-                ", ukupanBrojPoena=" + ukupanBrojPoena +
-                ", priznatSaDrugogFaksa=" + priznatSaDrugogFaksa +
-                ", studentIndex=" + studentIndex +
-                '}';
+        return this.getPredmeti().toString();
     }
 }

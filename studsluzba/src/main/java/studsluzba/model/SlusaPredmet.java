@@ -32,5 +32,8 @@ public class SlusaPredmet {
         this.drziPredmet = drziPredmet;
     }
 
-
+    @Override
+    public String toString() {
+        return this.getDrziPredmet().getPredmet().getNazivPredmeta();
+    }
 }

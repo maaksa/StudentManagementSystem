@@ -42,6 +42,10 @@ public class Predmet {
     private ObnovaGodina obnova;
 
     @ManyToOne()
+    @JoinColumn(name = "idUpisGodina")
+    private UpisGodina upisGodina;
+
+    @ManyToOne()
     @JoinColumn(name = "idstudProgram")
     private StudProgram studProgram;
 
@@ -80,8 +84,7 @@ public class Predmet {
 
     @Override
     public String toString() {
-        return "Predmet{" +
-                "nazivPredmeta='" + nazivPredmeta + '\'' +
-                '}';
+        return
+                "Naziv: " + nazivPredmeta;
     }
 }
