@@ -19,18 +19,16 @@ public class UpisGodina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUpisGodina;
 
-    @ManyToOne()
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idSkolskaGodina")
     private SkolskaGodina skolskaGodina;
-
 
     @ManyToOne()
     @JoinColumn(name = "idStudIndex")
     private StudIndex studentIndex;
-	
-	@OneToMany()
-	@JoinColumn(name = "idPredmet")
-	private List<Predmet> predmetPrenos;
+
+    @OneToMany(mappedBy = "upisGodina")
+    private List<Predmet> predmetPrenos;
 
     private int datum;
     private String napomena;
@@ -50,8 +48,6 @@ public class UpisGodina {
 
     @Override
     public String toString() {
-        return "UpisGodina{" +
-                "datum=" + datum +
-                '}';
+        return "godina: " + getSkolskaGodina().getDatum() + "/" + (getSkolskaGodina().getDatum() + 1) % 1000;
     }
 }

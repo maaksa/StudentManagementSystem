@@ -56,8 +56,6 @@ public class ObnovaGodina {
 
     @Override
     public String toString() {
-        return "ObnovaGodina{" +
-                "datum=" + datum +
-                '}';
+        return "godina: " + getSkolskaGodina().getDatum()+"/" + (getSkolskaGodina().getDatum()+1)%1000;
     }
 }

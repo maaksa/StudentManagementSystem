@@ -3,34 +3,129 @@ package studsluzba.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import studsluzba.model.*;
-import studsluzba.repositories.SrednjaSkolaRepository;
-import studsluzba.repositories.StudIndexRepository;
-import studsluzba.repositories.StudentRepository;
+import studsluzba.repositories.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-//bavice nam se svim sifarnicima
 @Service
 public class DosijeService {
 
     @Autowired
     StudentRepository studentRepository;
 
-    public List<PolozioPredmet> getPolozeni(String smer, int studIndex, int godina){
+    @Autowired
+    StudProgramRepository studProgramRepository;
 
-        return  studentRepository.selectPolozeniPredByIndex(smer, studIndex, godina);
+    @Autowired
+    UpisGodineRepository upisGodineRepository;
+
+    @Autowired
+    PredmetRepository predmetRepository;
+
+    @Autowired
+    ObnovaGodinaRepository obnovaGodinaRepository;
+
+    @Autowired
+    SkolskaGodinaRepository skolskaGodinaRepository;
+
+    public List<PolozioPredmet> getPolozeni(String smer, int studIndex, int godina) {
+        return studentRepository.selectPolozeniPredByIndex(smer, studIndex, godina);
     }
 
-    public List<SlusaPredmet> getSlusa(String smer, int studIndex, int godina){
+    public List<SlusaPredmet> getSlusa(String smer, int studIndex, int godina) {
+        return studentRepository.selectSlusaPredByIndex(smer, studIndex, godina);
+    }
 
-        return  studentRepository.selectSlusaPredByIndex(smer, studIndex, godina);
+    public List<UpisGodina> getUpisGodina(String smer, int studIndex, int godina) {
+        return studentRepository.findUpisaneGodineByIndex(smer, studIndex, godina);
+    }
+
+    public List<ObnovaGodina> getObnovaGodina(String smer, int studIndex, int godina) {
+        return studentRepository.findObnovljeneGodineByIndex(smer, studIndex, godina);
     }
 
     public List<Student> getStudenti() {
-        //iz repo sr skola izvucicemo iz baze sve srednje skole i vracamo tu listu controlleru koji je pozvao ovu metodu
         Iterable<Student> iter = studentRepository.findAll();
         List<Student> rez = new ArrayList<Student>();
+        iter.forEach(rez::add);
+        return rez;
+    }
+
+    public List<Predmet> getPredmetiZaStudProgram(String smer) {
+        Iterable<Predmet> iter = studProgramRepository.selectPredmetiByStudProg(smer);
+        List<Predmet> rez = new ArrayList<Predmet>();
+        iter.forEach(rez::add);
+        return rez;
+    }
+
+    public void savaUpis(List<Predmet> predmetiSelected, Integer godinaUpisa, StudIndex studIndex) {
+        List<SkolskaGodina> skolskaGodine = this.getSkolskeGodine();
+        SkolskaGodina skolskaGodinaToSave = new SkolskaGodina();
+        UpisGodina upisGodinaToSave = new UpisGodina();
+        upisGodinaToSave.setStudentIndex(studIndex);
+        upisGodinaToSave.setDatum(godinaUpisa);
+
+        for (SkolskaGodina sk : skolskaGodine) {
+            if (sk.getDatum() == godinaUpisa) {
+                upisGodinaToSave.setSkolskaGodina(sk);
+                break;
+            } else {
+                skolskaGodinaToSave.setDatum(godinaUpisa);
+                skolskaGodinaToSave.setAktivna(true);
+                skolskaGodinaToSave.setUpisGodine(upisGodinaToSave);
+                skolskaGodinaRepository.save(skolskaGodinaToSave);
+                upisGodinaToSave.setSkolskaGodina(skolskaGodinaToSave);
+            }
+        }
+
+        //todo napomenu u gui-ju TEXTAREA
+        upisGodinaToSave.setNapomena(null);
+
+        upisGodineRepository.save(upisGodinaToSave);
+
+        for (Predmet p : predmetiSelected) {
+            p.setUpisGodina(upisGodinaToSave);
+            predmetRepository.save(p);
+        }
+
+    }
+
+    public void saveObnova(List<Predmet> predmetiSelected, Integer godinaUpisa, StudIndex studIndex) {
+        List<SkolskaGodina> skolskaGodine = this.getSkolskeGodine();
+        SkolskaGodina skolskaGodinaToSave = new SkolskaGodina();
+        ObnovaGodina obnovaGodinaToSave = new ObnovaGodina();
+        obnovaGodinaToSave.setStudentIndeks(studIndex);
+        obnovaGodinaToSave.setDatum(godinaUpisa);
+
+        for (SkolskaGodina sk : skolskaGodine) {
+            if (sk.getDatum() == godinaUpisa) {
+                obnovaGodinaToSave.setSkolskaGodina(sk);
+                break;
+            } else {
+                skolskaGodinaToSave.setDatum(godinaUpisa);
+                skolskaGodinaToSave.setAktivna(true);
+                skolskaGodinaToSave.setObnovaGodine(obnovaGodinaToSave);
+                skolskaGodinaRepository.save(skolskaGodinaToSave);
+                obnovaGodinaToSave.setSkolskaGodina(skolskaGodinaToSave);
+            }
+        }
+
+        //todo napomenu u gui-ju TEXTAREA
+        obnovaGodinaToSave.setNapomena(null);
+
+        obnovaGodinaRepository.save(obnovaGodinaToSave);
+
+        for (Predmet p : predmetiSelected) {
+            p.setObnova(obnovaGodinaToSave);
+            predmetRepository.save(p);
+        }
+    }
+
+    public List<SkolskaGodina> getSkolskeGodine() {
+        Iterable<SkolskaGodina> iter = skolskaGodinaRepository.findAll();
+        List<SkolskaGodina> rez = new ArrayList<SkolskaGodina>();
         iter.forEach(rez::add);
         return rez;
     }

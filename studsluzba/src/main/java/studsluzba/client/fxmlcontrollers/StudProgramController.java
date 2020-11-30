@@ -36,6 +36,7 @@ public class StudProgramController {
         sviProgrami = FXCollections.observableList(studProgramService.loadAll());
         //setujemo tabeli view
         programiTable.setItems(sviProgrami);
+
     }
 
     public void handleSaveStudProgram(ActionEvent event) {

@@ -1,5 +1,7 @@
 package studsluzba.client.fxmlcontrollers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -11,21 +13,16 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import studsluzba.client.MainViewManager;
-import studsluzba.model.PolozioPredmet;
-import studsluzba.model.SlusaPredmet;
-import studsluzba.model.StudIndex;
-import studsluzba.model.Student;
+import studsluzba.model.*;
 import studsluzba.services.DosijeService;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Component
 public class OpenTokStudijaController {
 
-
-    //imamo sifarnik servic posto cemo preko njega da dodamo novu srednju skolu
-    //spring nam omogucava da injectujemo ovu klasu preko @autowierd i da tu klasu koristimo u ovoj klasi
     @Autowired
     DosijeService dosijeService;
 
@@ -36,7 +33,6 @@ public class OpenTokStudijaController {
     MainViewManager mainViewManager;
 
     Student student;
-
 
     @FXML
     Text obnovaGodina;
@@ -53,30 +49,65 @@ public class OpenTokStudijaController {
     @FXML
     RadioButton radioButtonObnova;
 
+    private ObservableList<Predmet> sviPredmeti;
+
     @FXML
-    TableView programiTable;
-
-
-
+    private TableView<Predmet> programiTable;
 
     @FXML
     public void addStudent(ActionEvent event) {
         Student ss = new Student();
         dosijeService.saveStudent(ss);
         //update sa novom sr skolom
-      //  findStudentController.updateSrednjeSkole();
+        //  findStudentController.updateSrednjeSkole();
         closeStage(event);
     }
-
 
     public void updateStundetData(Student student) {
 
     }
 
-     @FXML
+    @FXML
     public void initialize() {
-         updateStundetData(student);
+        List<UpisGodina> upisGodinaList = new ArrayList<>();
+        List<ObnovaGodina> obnovaGodinaList = new ArrayList<>();
+        List<StudIndex> studIndexList = student.getIndexi();
+        StudIndex aktivniIndex = new StudIndex();
+        for (StudIndex i : studIndexList) {
+            if (i.isAktivan()) {
+                aktivniIndex = i;
+            }
+            upisGodinaList.addAll(dosijeService.getUpisGodina(i.getStudProgram().getSkraceniNaziv(), i.getBroj(), i.getGodina()));
+            obnovaGodinaList.addAll(dosijeService.getObnovaGodina(i.getStudProgram().getSkraceniNaziv(), i.getBroj(), i.getGodina()));
+        }
+        upisGodina.setText(upisGodinaList.toString());
+        obnovaGodina.setText(obnovaGodinaList.toString());
 
+        sviPredmeti = FXCollections.observableList(dosijeService.getPredmetiZaStudProgram(aktivniIndex.getStudProgram().getSkraceniNaziv()));
+        System.out.println(sviPredmeti);
+        programiTable.setItems(sviPredmeti);
+
+    }
+
+    public void saveUpisObnova(ActionEvent ae) {
+        Integer upisGodina = Integer.parseInt(novaGodina.getText());
+        List<Predmet> predmetiSelected = programiTable.getSelectionModel().getSelectedItems();
+        boolean upisObnovaRaddioB = radioButtonUpis.isSelected();
+        List<StudIndex> studIndexList = student.getIndexi();
+        StudIndex aktivniIndex = new StudIndex();
+
+        for (StudIndex i : studIndexList) {
+            if (i.isAktivan()) {
+                aktivniIndex = i;
+            }
+        }
+
+        if (upisObnovaRaddioB) {
+            dosijeService.savaUpis(predmetiSelected, upisGodina, aktivniIndex);
+        } else {
+            System.out.println("usao");
+            dosijeService.saveObnova(predmetiSelected, upisGodina, aktivniIndex);
+        }
     }
 
     private void closeStage(ActionEvent event) {
@@ -84,4 +115,5 @@ public class OpenTokStudijaController {
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
+
 }

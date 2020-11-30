@@ -308,15 +308,21 @@ public class StudentRepositoryTest {
 //
 //
 //        skolskaGodina.setObnovaGodine(obnovaGodina);
+//        skolskaGodina.setUpisGodine(upisGodina);
 //        skolskaGodinaRepository.save(skolskaGodina);
 //
 //        obnovaGodina.setSkolskaGodina(skolskaGodina);
 //        obnovaGodina.setStudentIndeks(studIndex);
 //        obnovaGodinaRepository.save(obnovaGodina);
 //
+//        upisGodina.setStudentIndex(studIndex);
+//        upisGodina.setSkolskaGodina(skolskaGodina);
+//        upisGodineRepository.save(upisGodina);
+//
 //        predmet.setStudProgram(studProgram);
 //        predmet.setPolozioPredmet(polozioPredmet);
 //        predmet.setObnova(obnovaGodina);
+//        predmet.setUpisGodina(upisGodina);
 //        predmetRepository.save(predmet);
 //
 //        nastavnikRepository.save(nastavnik);
@@ -329,10 +335,10 @@ public class StudentRepositoryTest {
 //        ispit.setPredmet(predmet);
 //        ispitRepository.save(ispit);
 //
-//          prijavaIspita.setIspit(ispit);
-//          prijavaIspita.setStudIndexi(studIndex);
-//         prijavaIspita.setIzlazakNaIspit(izlazakNaIspit);
-//         prijavaIspitaRepository.save(prijavaIspita);
+//        prijavaIspita.setIspit(ispit);
+//        prijavaIspita.setStudIndexi(studIndex);
+//        prijavaIspita.setIzlazakNaIspit(izlazakNaIspit);
+//        prijavaIspitaRepository.save(prijavaIspita);
 //
 //        izlazakNaIspit.setPrijavljenIspit(prijavaIspita);
 //        izlazakNaIspit.setIspit(ispit);
@@ -357,9 +363,7 @@ public class StudentRepositoryTest {
 //        osvojeniPredispitniPoeni.setStudentIndeks(studIndex);
 //        osvojeniPredispitniPoeniRepository.save(osvojeniPredispitniPoeni);
 //
-//        upisGodina.setStudentIndex(studIndex);
-//        upisGodina.setSkolskaGodina(skolskaGodina);
-//        upisGodineRepository.save(upisGodina);
+//
 //
 //        predispitneObaveze.setSkolskaGodina(skolskaGodina);
 //        predispitneObaveze.setOsvojeniPredispitniPoeni(osvojeniPredispitniPoeni);
@@ -378,11 +382,11 @@ public class StudentRepositoryTest {
 //            System.out.println(pred);
 //        }
 
-       // upit selekcija studenta koristeci ime ili prezime ili ime i prezime
-        List<Student> studenti = studRepo.findStudentByNameAndSurname("Luka", "Micic");
-        for (Student student : studenti) {
-            System.out.println(student);
-        }
+        // upit selekcija studenta koristeci ime ili prezime ili ime i prezime
+//        List<Student> studenti = studRepo.findStudentByNameAndSurname("Luka", "Micic");
+//        for (Student student : studenti) {
+//            System.out.println(student);
+//        }
 
         //upit selekcija studenata koji su zavrsili odredjenu srednju skolu
 //        List<Student> studenti = studRepo.findStudentByHighSchool("gimnazija u obrenovcu");

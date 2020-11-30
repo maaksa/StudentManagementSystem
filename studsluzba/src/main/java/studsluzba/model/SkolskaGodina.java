@@ -24,6 +24,10 @@ public class SkolskaGodina {
     @JoinColumn(name = "idObnovaGodina")
     private ObnovaGodina obnovaGodine;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idUpisGodina")
+    private UpisGodina upisGodine;
+
     @OneToMany(mappedBy = "skolskaGod")
     private List<IspitniRok> ispitniRokovi;
 

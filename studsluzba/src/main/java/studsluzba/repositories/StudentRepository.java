@@ -27,12 +27,12 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     List<Student> findStudentByHighSchool(String ime_srednje_skole);
 
     //pregled svih upisanih godina za broj indeksa
-    @Query("select u from UpisGodina u where u.studentIndex.broj = :br")
-    List<UpisGodina> findUpisaneGodineByIndex(int br);
+    @Query("select u from UpisGodina u where u.studentIndex.broj = :br and u.studentIndex.godina = :godina and u.studentIndex.studProgram.skraceniNaziv like :smer")
+    List<UpisGodina> findUpisaneGodineByIndex(String smer, int br, int godina);
 
     //pregled obnovljenih godina za broj indeksa
-    @Query("select o from ObnovaGodina o where o.studentIndeks.broj = :br")
-    List<ObnovaGodina> findObnovljeneGodineByIndex(int br);
+    @Query("select o from ObnovaGodina o where o.studentIndeks.broj = :br and o.studentIndeks.godina = :godina and o.studentIndeks.studProgram.skraceniNaziv like :smer ")
+    List<ObnovaGodina> findObnovljeneGodineByIndex(String smer, int br, int godina);
 
     //upit selekcija svih ispita koje slusa
     @Query("select p from SlusaPredmet p where p.index.broj = :br and p.index.godina = :godina and p.index.studProgram.skraceniNaziv like :smer")
