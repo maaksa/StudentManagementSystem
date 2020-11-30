@@ -19,6 +19,7 @@
                 <MenuItem text="Nastavnici" onAction="#findNastavnik"/>
                 <MenuItem text="Predmeti"/>
                 <MenuItem text="Ispitni rokovi"/>
+                <MenuItem text="Studijski program" onAction="#findStudProgram"/>
             </items>
         </Menu>
         <Menu text="Novi">
