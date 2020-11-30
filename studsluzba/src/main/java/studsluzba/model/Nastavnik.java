@@ -24,7 +24,7 @@ public class Nastavnik {
     private String email;
     private String obrazovanje;
 
-    @OneToMany(mappedBy = "nastavnik")
+    @OneToMany(mappedBy = "nastavnik", fetch = FetchType.EAGER)
     private List<Zvanje> zvanja;
 
     @OneToMany(mappedBy = "nastavnik")
@@ -62,13 +62,6 @@ public class Nastavnik {
 
     @Override
     public String toString() {
-        return "Nastavnik{" +
-                "idNastavnik=" + idNastavnik +
-                ", ime='" + ime + '\'' +
-                ", prezime='" + prezime + '\'' +
-                ", srednjeIme='" + srednjeIme + '\'' +
-                ", email='" + email + '\'' +
-                ", obrazovanje='" + obrazovanje + '\'' +
-                '}';
+        return ime + prezime + zvanja.toString();
     }
 }

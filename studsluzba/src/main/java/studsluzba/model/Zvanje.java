@@ -35,12 +35,6 @@ public class Zvanje {
 
     @Override
     public String toString() {
-        return "Zvanje{" +
-                "idZvanje=" + idZvanje +
-                ", datumIzbora=" + datumIzbora +
-                ", uzaNaucnaOblast='" + uzaNaucnaOblast + '\'' +
-                ", nazivZvanja='" + nazivZvanja + '\'' +
-                ", nastavnik=" + nastavnik +
-                '}';
+        return nazivZvanja;
     }
 }

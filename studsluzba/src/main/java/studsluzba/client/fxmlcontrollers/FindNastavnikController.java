@@ -41,9 +41,6 @@ public class FindNastavnikController {
     @Autowired
     OpenDosijeController openDosijeController;
 
-
-    private Nastavnik nastavnik;
-
     private Zvanje zvanje;
 
     @FXML
@@ -52,8 +49,6 @@ public class FindNastavnikController {
     @FXML
     private TextField prezimeTf;
 
-    @FXML
-    private TableView<Nastavnik> nastavnikTabela;
 
     @FXML
     private TextField nazivZvanja;
@@ -64,11 +59,32 @@ public class FindNastavnikController {
     @FXML
     private DatePicker datumIzbora;
 
+    private ObservableList<Nastavnik> sviNastavnici;
+
+    @FXML
+    private TableView<Nastavnik> nastavnikTable = new TableView<Nastavnik>();
 
     @FXML
     public void initialize() {
+        updateNastavniciTable();
+    }
 
+    public void addZvanje(ActionEvent ae) {
+        Nastavnik nastavnikSelected = nastavnikTable.getSelectionModel().getSelectedItem();
+        String nastavnikNazivZvanja = nazivZvanja.getText();
+        String nastavnikUzaNaucObla = uzaNaucnaOblast.getText();
+        LocalDate nastavnikDatumIzbora = datumIzbora.getValue();
 
+        nastavnikService.addZvanje(nastavnikNazivZvanja, nastavnikUzaNaucObla, nastavnikDatumIzbora, nastavnikSelected);
+        updateNastavniciTable();
+
+    }
+
+    public void updateNastavniciTable(){
+        sviNastavnici = FXCollections.observableList(nastavnikService.getNastavnici());
+        System.out.println(sviNastavnici);
+        nastavnikTable.getItems().clear();
+        nastavnikTable.setItems(sviNastavnici);
     }
 
 

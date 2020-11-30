@@ -28,7 +28,7 @@
                 <Label text="Datum izbora" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
                 <DatePicker fx:id="datumIzbora" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                 <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                    <Button text="Add"/>
+                    <Button text="Add" onAction="#addZvanje"/>
                 </HBox>
             </GridPane>
         </HBox>
