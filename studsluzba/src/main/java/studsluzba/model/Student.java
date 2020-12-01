@@ -95,31 +95,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "idStudent=" + idStudent +
-                ", ime='" + ime + '\'' +
-                ", prezime='" + prezime + '\'' +
-                ", srednjeIme='" + srednjeIme + '\'' +
-                ", jmbg=" + jmbg +
-                ", daumRodjenja=" + daumRodjenja +
-                ", mestoRodjenja='" + mestoRodjenja + '\'' +
-                ", drzavljanstvo='" + drzavljanstvo + '\'' +
-                ", nacionalnost='" + nacionalnost + '\'' +
-                ", pol=" + pol +
-                ", mesto='" + mesto + '\'' +
-                ", ulica='" + ulica + '\'' +
-                ", brojUlice=" + brojUlice +
-                ", brojTelefona=" + brojTelefona +
-                ", privemail='" + privemail + '\'' +
-                ", studemail='" + studemail + '\'' +
-                ", brojLicneKarte='" + brojLicneKarte + '\'' +
-                ", licnuKartuIzdao='" + licnuKartuIzdao + '\'' +
-                ", upisaoPrvuGodinu=" + upisaoPrvuGodinu +
-                ", uspehSrednjaSkola=" + uspehSrednjaSkola +
-                ", uspehPrijemni=" + uspehPrijemni +
-                ", prelaz=" + prelaz +
-                ", srednjaSkola=" + srednjaSkola +
-                ", visokaSkola=" + visokaSkola +
-                '}';
+        return ime + prezime + getIndexi().toString();
     }
 }

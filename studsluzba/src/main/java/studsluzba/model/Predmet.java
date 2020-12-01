@@ -84,7 +84,6 @@ public class Predmet {
 
     @Override
     public String toString() {
-        return
-                "Naziv: " + nazivPredmeta;
+        return "Naziv: " + nazivPredmeta;
     }
 }

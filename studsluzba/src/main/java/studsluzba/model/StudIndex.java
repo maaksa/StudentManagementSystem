@@ -125,6 +125,6 @@ public class StudIndex {
         }else
             aktivanIndex = "nije aktivan";
 
-        return broj + "/" + godina + studProgram + " - " + aktivanIndex;
+        return "indeks: " + broj + "/" + godina + studProgram + " - " + aktivanIndex;
     }
 }

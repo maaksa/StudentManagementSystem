@@ -1,5 +1,7 @@
 package studsluzba.client.fxmlcontrollers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -27,14 +29,10 @@ public class OpenPodaciOIspituController {
     @Autowired
     IspitController ispitController;
 
-
     @Autowired
     MainViewManager mainViewManager;
 
-    Student student;
-
     Ispit ispit;
-
 
     @FXML
     TableView<OsvojeniPredispitniPoeni> studRezultatiTable = new TableView<>();
@@ -42,9 +40,20 @@ public class OpenPodaciOIspituController {
     @FXML
     TableView<StudIndex> prijavljeniStudTable = new TableView<>();
 
+    private ObservableList<StudIndex> sviStudIndexi;
+
+    private ObservableList<OsvojeniPredispitniPoeni> sviPredispitni;
 
     @FXML
     public void initialize() {
+        String sifraIspita = ispit.getSifraIspita();
+        sviStudIndexi = FXCollections.observableList(ispitiService.getPrijavljeniStud(sifraIspita));
+        prijavljeniStudTable.getItems().clear();
+        prijavljeniStudTable.setItems(sviStudIndexi);
+
+        sviPredispitni = FXCollections.observableList(ispitiService.getRezIspit(sifraIspita));
+        studRezultatiTable.getItems().clear();
+        studRezultatiTable.setItems(sviPredispitni);
 
     }
 

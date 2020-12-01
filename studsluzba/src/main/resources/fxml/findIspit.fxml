@@ -30,20 +30,15 @@
                     <children>
                         <TableView fx:id="ispitiTable">
                             <columns>
-                                <TableColumn prefWidth="75.0" text="Ime">
+                                <TableColumn prefWidth="75.0" text="Sifra">
                                     <cellValueFactory>
                                         <PropertyValueFactory
-                                                property="ime"/>
+                                                property="sifraIspita"/>
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="75.0" text="Prezime">
+                                <TableColumn prefWidth="75.0" text="Predmet">
                                     <cellValueFactory>
-                                        <PropertyValueFactory property="prezime"/>
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn prefWidth="75.0" text="Zvanje">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="zvanja"/>
+                                        <PropertyValueFactory property="predmet"/>
                                     </cellValueFactory>
                                 </TableColumn>
                             </columns>

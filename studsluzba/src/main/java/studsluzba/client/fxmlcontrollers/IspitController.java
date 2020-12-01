@@ -27,26 +27,24 @@ public class IspitController {
     @Autowired
     MainViewManager mainViewManager;
 
-    @FXML
-    private TextField nazivIspitaTf;
+    @Autowired
+    OpenPodaciOIspituController openPodaciOIspituController;
 
     @FXML
-    private ComboBox ispitiCb;
+    private TableView<Ispit> ispitiTable = new TableView<>();
 
-
-    @FXML
-    private TableView<Ispit> ispitiTable;
+    private ObservableList<Ispit> sviIspiti;
 
     @FXML
     protected void initialize() {
-//        List<Ispit> ispiti = ispitiService.getIspiti();
-//        ispitiCb.setItems(FXCollections.observableArrayList(ispiti));
-
+        sviIspiti = FXCollections.observableList(ispitiService.getIspiti());
+        ispitiTable.getItems().clear();
+        ispitiTable.setItems(sviIspiti);
     }
 
+
     public void handleOpenPodaci(ActionEvent ae) {
-        //  openDosijeController.student = studentiTable.getSelectionModel().getSelectedItem();
-        // TODO kreirati modal window za dodavanje nove srednje skole, mozda i brisanje i promena postojećih ?? strani ključ
+        openPodaciOIspituController.ispit = ispitiTable.getSelectionModel().getSelectedItem();
         mainViewManager.openModal("openPodaciMain");
     }
 
