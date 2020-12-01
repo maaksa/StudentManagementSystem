@@ -39,8 +39,6 @@ public class FindStudentController {
     @Autowired
     OpenDosijeController openDosijeController;
 
-
-    // forma ce se koristiti za unos novog i za azuriranje postojeceg studenta
     private Student student;
 
     @FXML
@@ -190,8 +188,8 @@ public class FindStudentController {
         //todo getIndex.get()
         StudIndex studIndexSelected = new StudIndex();
         List<StudIndex> studIndexiSelected = studentiTable.getSelectionModel().getSelectedItem().getIndexi();
-        for (StudIndex si: studIndexiSelected) {
-            if(si.isAktivan()){
+        for (StudIndex si : studIndexiSelected) {
+            if (si.isAktivan()) {
                 studIndexSelected = si;
             }
         }

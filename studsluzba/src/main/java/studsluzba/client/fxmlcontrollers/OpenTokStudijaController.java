@@ -55,19 +55,6 @@ public class OpenTokStudijaController {
     private TableView<Predmet> programiTable;
 
     @FXML
-    public void addStudent(ActionEvent event) {
-        Student ss = new Student();
-        dosijeService.saveStudent(ss);
-        //update sa novom sr skolom
-        //  findStudentController.updateSrednjeSkole();
-        closeStage(event);
-    }
-
-    public void updateStundetData(Student student) {
-
-    }
-
-    @FXML
     public void initialize() {
         List<UpisGodina> upisGodinaList = new ArrayList<>();
         List<ObnovaGodina> obnovaGodinaList = new ArrayList<>();

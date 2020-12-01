@@ -8,7 +8,6 @@ import studsluzba.repositories.SrednjaSkolaRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-//bavice nam se svim sifarnicima
 @Service
 public class SifarniciService {
 
@@ -16,7 +15,6 @@ public class SifarniciService {
     SrednjaSkolaRepository srednjaSkolaRepository;
 
     public List<SrednjaSkola> getSrednjeSkole() {
-        //iz repo sr skola izvucicemo iz baze sve srednje skole i vracamo tu listu controlleru koji je pozvao ovu metodu
         Iterable<SrednjaSkola> iter = srednjaSkolaRepository.findAll();
         List<SrednjaSkola> rez = new ArrayList<SrednjaSkola>();
         iter.forEach(rez::add);

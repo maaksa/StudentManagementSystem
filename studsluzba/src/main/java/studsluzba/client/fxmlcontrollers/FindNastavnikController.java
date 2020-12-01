@@ -88,9 +88,5 @@ public class FindNastavnikController {
     }
 
 
-    public void handleOpenDosije(ActionEvent ae) {
-
-    }
-
 
 }

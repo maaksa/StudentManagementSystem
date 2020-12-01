@@ -19,9 +19,6 @@ import java.util.List;
 @Component
 public class AddIspitController {
 
-
-    //imamo ispit servic posto cemo preko njega da dodamo nov ispit
-    //spring nam omogucava da injectujemo ovu klasu preko @autowierd i da tu klasu koristimo u ovoj klasi
     @Autowired
     IspitiService ispitiService;
 
@@ -31,8 +28,6 @@ public class AddIspitController {
     @FXML
     TextField sifraIspitaTf;
 
-
-    //akcija koja nam se izvrsava kad u fxml fajlu kome pripada ovaj controller pozovemo akciju #addSrednjaSkola
     @FXML
     public void addIspit(ActionEvent event) {
         Ispit ss = new Ispit();
@@ -40,7 +35,6 @@ public class AddIspitController {
         closeStage(event);
     }
 
-    //ovde inicijalizujemo sta ce nam se prikazati u combo boxevima za fxml modal tj fxml fajl kome ovaj Controller pripada
     @FXML
     public void initialize() {
 

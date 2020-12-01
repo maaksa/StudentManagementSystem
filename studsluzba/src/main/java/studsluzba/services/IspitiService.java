@@ -9,7 +9,6 @@ import studsluzba.repositories.IspitRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-//bavice nam se svim sifarnicima
 @Service
 public class IspitiService {
 
@@ -17,7 +16,6 @@ public class IspitiService {
     IspitRepository ispitRepository;
 
     public List<Ispit> getIspiti() {
-        //iz repo ispita izvucicemo iz baze sve ispite i vracamo tu listu controlleru koji je pozvao ovu metodu
         Iterable<Ispit> iter = ispitRepository.findAll();
         List<Ispit> rez = new ArrayList<Ispit>();
         iter.forEach(rez::add);

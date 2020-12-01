@@ -21,9 +21,6 @@ import java.util.List;
 @Component
 public class OpenDosijeController {
 
-
-    //imamo sifarnik servic posto cemo preko njega da dodamo novu srednju skolu
-    //spring nam omogucava da injectujemo ovu klasu preko @autowierd i da tu klasu koristimo u ovoj klasi
     @Autowired
     DosijeService dosijeService;
 
@@ -125,17 +122,6 @@ public class OpenDosijeController {
     @FXML
     TableView programiTable;
 
-
-
-
-    @FXML
-    public void addStudent(ActionEvent event) {
-        Student ss = new Student();
-        dosijeService.saveStudent(ss);
-        //update sa novom sr skolom
-      //  findStudentController.updateSrednjeSkole();
-        closeStage(event);
-    }
 
     public void handleOpenTokStudija(ActionEvent ae) {
         openTokStudijaController.student = student;

@@ -18,7 +18,7 @@
     <center>
         <BorderPane>
             <center>
-                <fx:include source="studentPretragaTabPane.fxml"/> <!--tabPane (u njemu imamo-->
+                <fx:include source="studentPretragaTabPane.fxml"/>
             </center>
             <bottom>
                 <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
@@ -29,8 +29,8 @@
                         <TableView fx:id="studentiTable">
                             <columns>
                                 <TableColumn prefWidth="75.0" text="Ime">
-                                    <cellValueFactory><!--da bi nam se java bean klasa smestila u tabelu preko get i set metoda-->
-                                        <PropertyValueFactory property="ime"/><!--skraceniNaziv je ime polja za tu klasu za koju zelimo da nam se prikazu podatci u tabeli-->
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="ime"/>
                                     </cellValueFactory>
                                 </TableColumn>
                                 <TableColumn prefWidth="75.0" text="Prezime">
@@ -52,11 +52,12 @@
         </BorderPane>
     </center>
 
-<bottom >
-    <HBox alignment="bottom_center" spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="2">
-        <Button  text="Open student dosije" onAction="#handleOpenDosije"/> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
-    </HBox>
+    <bottom>
+        <HBox alignment="bottom_center" spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button text="Open student dosije"
+                    onAction="#handleOpenDosije"/> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
+        </HBox>
 
-</bottom>
+    </bottom>
 
 </BorderPane>

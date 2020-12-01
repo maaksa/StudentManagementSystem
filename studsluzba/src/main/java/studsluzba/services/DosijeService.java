@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import studsluzba.model.*;
 import studsluzba.repositories.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 

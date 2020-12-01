@@ -27,7 +27,6 @@ public class IspitController {
     @Autowired
     MainViewManager mainViewManager;
 
-    //da bi mogli da pokupimo uneto u ekransku formu, ime mora biti isto kao ime koje smo zadali u fx:id u fxml fajlu
     @FXML
     private TextField nazivIspitaTf;
 
@@ -38,18 +37,11 @@ public class IspitController {
     @FXML
     private TableView<Ispit> ispitiTable;
 
-    //ova metoda se svaki put izvrsava kada se otvori ekranska forma ciji je ovo kontroler
     @FXML
     protected void initialize() {
         List<Ispit> ispiti = ispitiService.getIspiti();
         ispitiCb.setItems(FXCollections.observableArrayList(ispiti));
 
     }
-
-    public void handleSaveStudProgram(ActionEvent event) {
-        // TODO kreirati modal window za dodavanje nove srednje skole, mozda i brisanje i promena postojećih ?? strani ključ
-        mainViewManager.openModal("addIspit");
-    }
-
 
 }

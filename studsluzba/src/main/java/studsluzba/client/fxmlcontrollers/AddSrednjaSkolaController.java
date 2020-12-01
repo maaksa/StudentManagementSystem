@@ -17,9 +17,6 @@ import java.util.List;
 @Component
 public class AddSrednjaSkolaController {
 
-
-    //imamo sifarnik servic posto cemo preko njega da dodamo novu srednju skolu
-    //spring nam omogucava da injectujemo ovu klasu preko @autowierd i da tu klasu koristimo u ovoj klasi
     @Autowired
     SifarniciService sifarniciService;
 
@@ -34,7 +31,6 @@ public class AddSrednjaSkolaController {
     ComboBox<String> tipNoveSrednjeSkoleCb;
 
 
-    //akcija koja nam se izvrsava kad u fxml fajlu kome pripada ovaj controller pozovemo akciju #addSrednjaSkola
     @FXML
     public void addSrednjaSkola(ActionEvent event) {
         SrednjaSkola ss = new SrednjaSkola();
@@ -42,13 +38,11 @@ public class AddSrednjaSkolaController {
         ss.setNaziv(nazivNoveSrednjeSkoleTf.getText());
         if (tipNoveSrednjeSkoleCb.getValue() != null) ss.setVrsta(tipNoveSrednjeSkoleCb.getValue());
         sifarniciService.saveSrednjaSkola(ss);
-        //update sa novom sr skolom
         studentController.updateSrednjeSkole();
         closeStage(event);
 
     }
 
-    //ovde inicijalizujemo sta ce nam se prikazati u combo boxevima za fxml modal (dodavanje nove sr skole) tj fxml fajl kome ovaj Controller pripada
     @FXML
     public void initialize() {
         List<String> tipSrednjeSkoleCodes = List.of("gimnazija", "srednje strucna skola");

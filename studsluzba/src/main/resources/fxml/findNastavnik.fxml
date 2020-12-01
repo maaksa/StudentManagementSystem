@@ -3,7 +3,6 @@
 
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.text.Text?>
 <?import javafx.geometry.*?>
 
 
@@ -18,7 +17,7 @@
     <center>
         <BorderPane>
             <center>
-                <fx:include source="nastvanikTabPane.fxml"/> <!--tabPane (u njemu imamo-->
+                <fx:include source="nastvanikTabPane.fxml"/>
             </center>
             <bottom>
                 <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">

@@ -4,7 +4,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<!--pomocni prozor za dodavanje sr skole-->
 
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.geometry.Insets?>
@@ -20,7 +19,6 @@
             <Text fx:id="upisGodina" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
             <Label text="Obnova godina" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-            <!--fx:id koristimo samo za one forme za koje ce nam biti potrebno da pristupamo iz java koda-->
             <Text fx:id="obnovaGodina" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
             <Label text="Upis godina" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
             <TextField fx:id="novaGodina" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
@@ -58,15 +56,15 @@
                 <TableView fx:id="programiTable">
                     <columns>
                         <TableColumn prefWidth="75.0" text="Ime">
-                            <cellValueFactory><!--da bi nam se java bean klasa smestila u tabelu preko get i set metoda-->
+                            <cellValueFactory>
                                 <PropertyValueFactory
-                                        property="nazivPredmeta"/><!--skraceniNaziv je ime polja za tu klasu za koju zelimo da nam se prikazu podatci u tabeli-->
+                                        property="nazivPredmeta"/>
                             </cellValueFactory>
                         </TableColumn>
                         <TableColumn prefWidth="75.0" text="Sifra">
-                            <cellValueFactory><!--da bi nam se java bean klasa smestila u tabelu preko get i set metoda-->
+                            <cellValueFactory>
                                 <PropertyValueFactory
-                                        property="sifraPredmeta"/><!--skraceniNaziv je ime polja za tu klasu za koju zelimo da nam se prikazu podatci u tabeli-->
+                                        property="sifraPredmeta"/>
                             </cellValueFactory>
                         </TableColumn>
                     </columns>

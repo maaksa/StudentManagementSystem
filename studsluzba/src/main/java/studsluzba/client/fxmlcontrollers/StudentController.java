@@ -155,7 +155,6 @@ public class StudentController {
     TextField brojUliceTf;
 
 
-
     @FXML
     public void initialize() {
         //najbolje u resources fajlu imati txt fajl spiskova svih drzava i to da se ne menja, da ne cuvamo u bazi
@@ -184,9 +183,7 @@ public class StudentController {
     }
 
     public void updateSrednjeSkole() {
-        //uzimamo sr skole sa novom sr skolom koja je dodata
         List<SrednjaSkola> srednjeSkole = sifarniciService.getSrednjeSkole();
-        //unosimo sr skole u combo box koji se nalazi u fxml kome pripada ovaj controller (newStudent.fxml)
         srednjeSkolaCb.setItems(FXCollections.observableArrayList(srednjeSkole));
     }
 

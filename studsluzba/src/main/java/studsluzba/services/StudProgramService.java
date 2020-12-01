@@ -2,7 +2,6 @@ package studsluzba.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import studsluzba.model.PredispitneObaveze;
 import studsluzba.model.Predmet;
 import studsluzba.model.StudProgram;
 import studsluzba.repositories.StudProgramRepository;
@@ -24,8 +23,6 @@ public class StudProgramService {
     }
 
     public List<StudProgram> loadAll() {
-        //findAll metoda nam vraca Iterable po specifikaciji
-        //nama treba da vratimo List<>, iterable ima metodu forEach koja ce da iz iterable prepakuje u listu
         Iterable<StudProgram> iter = studProgramRepo.findAll();
         List<StudProgram> rez = new ArrayList<StudProgram>();
         iter.forEach(rez::add);

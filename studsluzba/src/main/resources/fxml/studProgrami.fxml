@@ -7,10 +7,8 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
@@ -19,7 +17,6 @@
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="studsluzba.client.fxmlcontrollers.StudProgramController">
 
     <top>
-        <!--svaki fxml fajl ce nam u top-u imati ovaj menuBar-->
         <fx:include source="menuBar.fxml"/>
     </top>
     <center>
@@ -28,11 +25,10 @@
             <TextField fx:id="nazivTf" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
             <Label text="Skraćeni naziv" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-            <!--fx:id koristimo samo za one forme za koje ce nam biti potrebno da pristupamo iz java koda-->
             <TextField fx:id="skraceniNazivTf" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
             <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                <Button onAction="#handleSaveStudProgram" text="Sačuvaj"/> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
+                <Button onAction="#handleSaveStudProgram" text="Sačuvaj"/>
             </HBox>
         </GridPane>
     </center>
@@ -45,8 +41,8 @@
                 <TableView fx:id="programiTable">
                     <columns>
                         <TableColumn prefWidth="75.0" text="Skraceni naziv">
-                            <cellValueFactory><!--da bi nam se java bean klasa smestila u tabelu preko get i set metoda-->
-                                <PropertyValueFactory property="skraceniNaziv"/><!--skraceniNaziv je ime polja za tu klasu za koju zelimo da nam se prikazu podatci u tabeli-->
+                            <cellValueFactory>
+                                <PropertyValueFactory property="skraceniNaziv"/>
                             </cellValueFactory>
                         </TableColumn>
                         <TableColumn prefWidth="75.0" text="Pun naziv">
