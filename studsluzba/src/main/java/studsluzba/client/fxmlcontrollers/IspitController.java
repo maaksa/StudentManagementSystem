@@ -39,9 +39,15 @@ public class IspitController {
 
     @FXML
     protected void initialize() {
-        List<Ispit> ispiti = ispitiService.getIspiti();
-        ispitiCb.setItems(FXCollections.observableArrayList(ispiti));
+//        List<Ispit> ispiti = ispitiService.getIspiti();
+//        ispitiCb.setItems(FXCollections.observableArrayList(ispiti));
 
+    }
+
+    public void handleOpenPodaci(ActionEvent ae) {
+        //  openDosijeController.student = studentiTable.getSelectionModel().getSelectedItem();
+        // TODO kreirati modal window za dodavanje nove srednje skole, mozda i brisanje i promena postojećih ?? strani ključ
+        mainViewManager.openModal("openPodaciMain");
     }
 
 }

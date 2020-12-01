@@ -15,7 +15,7 @@
                 <MenuItem text="Studenti" onAction="#findStudent"/>
                 <MenuItem text="Nastavnici" onAction="#findNastavnik"/>
                 <MenuItem text="Predmeti"/>
-                <MenuItem text="Ispitni rokovi"/>
+                <MenuItem text="Ispiti" onAction="#findIspit"/>
                 <MenuItem text="Studijski program" onAction="#findStudProgram"/>
             </items>
         </Menu>

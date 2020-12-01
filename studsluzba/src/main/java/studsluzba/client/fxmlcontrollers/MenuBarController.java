@@ -42,6 +42,10 @@ public class MenuBarController {
     public void findNastavnik(ActionEvent event) {
         mainViewManager.changeRoot("findNastavnik");
     }
+    public void findIspit(ActionEvent event) {
+        mainViewManager.changeRoot("findIspit");
+    }
+
 
     public void findStudProgram(ActionEvent event) {
         mainViewManager.changeRoot("findStudProgram");

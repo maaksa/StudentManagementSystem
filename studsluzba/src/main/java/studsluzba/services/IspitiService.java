@@ -22,6 +22,7 @@ public class IspitiService {
         return rez;
     }
 
+
     public Ispit saveIspit(Ispit ss) {
         return ispitRepository.save(ss);
     }
