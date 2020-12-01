@@ -43,15 +43,6 @@ public class ObnovaGodina {
         this.napomena = napomena;
         this.studentIndeks = studentIndeks;
         this.skolskaGodina = skolskaGodina;
-        predmetPrenos = new ArrayList<>();
-    }
-
-    public void addPredmetPrenos(Predmet predmet) {
-        if (predmetPrenos == null) {
-            predmetPrenos = new ArrayList<>();
-        }
-        predmetPrenos.add(predmet);
-        predmet.setObnova(this);
     }
 
     @Override

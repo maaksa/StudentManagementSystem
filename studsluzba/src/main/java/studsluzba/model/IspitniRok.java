@@ -33,28 +33,14 @@ public class IspitniRok {
         this.datumPocetka = datumPocetka;
         this.datumZavrsetka = datumZavrsetka;
         this.skolskaGod = skolskaGod;
-        ispiti = new ArrayList<>();
     }
 
     public IspitniRok() {
 
     }
 
-    public void addIspit(Ispit i) {
-        if (ispiti == null) {
-            ispiti = new ArrayList<>();
-        }
-        ispiti.add(i);
-        i.setIspitniRok(this);
-    }
-
     @Override
     public String toString() {
-        return "IspitniRok{" +
-                "idIspitniRok=" + idIspitniRok +
-                ", datumPocetka='" + datumPocetka + '\'' +
-                ", datumZavrsetka='" + datumZavrsetka + '\'' +
-                ", skolskaGod=" + skolskaGod +
-                '}';
+        return "datum pocetka: " + datumPocetka + "-" + "datumZavrsetka: " + datumZavrsetka;
     }
 }

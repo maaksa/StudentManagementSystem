@@ -82,16 +82,8 @@ public class Student {
         this.prelaz = prelaz;
         //this.srednjaSkola = srednjaSkola;
         this.visokaSkola = visokaSkola;
-        indexi = new ArrayList<>();
     }
 
-    public void addIndex(StudIndex studIndex) {
-        if (indexi == null) {
-            indexi = new ArrayList<>();
-        }
-        indexi.add(studIndex);
-        studIndex.setStudent(this);
-    }
 
     @Override
     public String toString() {

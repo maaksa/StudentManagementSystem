@@ -11,11 +11,13 @@ import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import studsluzba.client.MainViewManager;
-import studsluzba.model.Ispit;
-import studsluzba.model.Nastavnik;
-import studsluzba.model.Predmet;
+import studsluzba.model.*;
 import studsluzba.services.IspitiService;
 import studsluzba.services.NastavnikService;
+import studsluzba.services.SifarniciService;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Component
 public class NewIspitController {
@@ -30,44 +32,70 @@ public class NewIspitController {
     MainViewManager mainViewManager;
 
     @Autowired
-    OpenPodaciOIspituController openPodaciOIspituController;
+    SifarniciService sifarniciService;
 
     @FXML
-    DatePicker datumOdrzavanja;
+    DatePicker datumOdrzavanjaTf;
 
     @FXML
-    TextField sifraIspita;
+    TextField sifraIspitaTf;
 
     @FXML
-    TextField vremePocetka;
+    TextField vremePocetkaTf;
 
     @FXML
-    ComboBox ispitniRok;
+    ComboBox<IspitniRok> ispitniRokCb = new ComboBox<>();
 
     @FXML
-    ComboBox predmet;
+    ComboBox<Predmet> predmetCb = new ComboBox<>();
 
     @FXML
-    ComboBox nastavnik;
+    ComboBox<Nastavnik> nastavnikCb = new ComboBox<>();
 
-    @FXML
-    private TableView<Ispit> ispitiTable = new TableView<>();
-
-    private ObservableList<Predmet> predmeti;
-    private ObservableList<Nastavnik> nastavnici;
 
     @FXML
     protected void initialize() {
+        List<IspitniRok> ispitniRokList = sifarniciService.getIspitniRokovi();
+        ispitniRokCb.setItems(FXCollections.observableArrayList(ispitniRokList));
 
-        nastavnici = FXCollections.observableList(nastavnikService.getNastavnici());
-        nastavnik.setItems(nastavnici);
+        List<Predmet> predmetList = sifarniciService.getPredmeti();
+        predmetCb.setItems(FXCollections.observableArrayList(predmetList));
+
+        List<Nastavnik> nastavnikList = sifarniciService.getNastavnici();
+        nastavnikCb.setItems(FXCollections.observableArrayList(nastavnikList));
+    }
+
+    public void addIspit(ActionEvent ae) {
+        String sifraIspita = sifraIspitaTf.getText();
+        LocalDate datumOdrzavanja = datumOdrzavanjaTf.getValue();
+        String vremePocetka = vremePocetkaTf.getText();
+        IspitniRok ispitniRok = ispitniRokCb.getValue();
+        Predmet predmet = predmetCb.getValue();
+        Nastavnik nastavnik = nastavnikCb.getValue();
+
+        ispitiService.saveIspit(sifraIspita, datumOdrzavanja, vremePocetka, ispitniRok, predmet, nastavnik);
+
+        resetValues();
 
     }
 
+    public void resetValues() {
+        sifraIspitaTf.clear();
+        vremePocetkaTf.clear();
+        datumOdrzavanjaTf.getEditor().clear();
+        ispitniRokCb.getSelectionModel().clearSelection();
+        predmetCb.getSelectionModel().clearSelection();
+        nastavnikCb.getSelectionModel().clearSelection();
+    }
+
+    public void updateIspitniRokovi() {
+        List<IspitniRok> ispitniRokList = sifarniciService.getIspitniRokovi();
+        ispitniRokCb.setItems(FXCollections.observableArrayList(ispitniRokList));
+    }
 
     public void handleOpenPodaci(ActionEvent ae) {
-        openPodaciOIspituController.ispit = ispitiTable.getSelectionModel().getSelectedItem();
         mainViewManager.openModal("addIspitniRok");
     }
+
 
 }

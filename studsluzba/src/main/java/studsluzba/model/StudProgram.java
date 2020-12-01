@@ -43,33 +43,6 @@ public class StudProgram {
         this.godinaAkreditacije = godinaAkreditacije;
         this.trajanje = trajanje;
         this.nazivZvanja = nazivZvanja;
-        predmeti = new ArrayList<>();
-        studIndexi = new ArrayList<>();
-        vrsteStudija = new ArrayList<>();
-    }
-
-    public void addVrstaStudija(VrstaStudija vrstaStudija) {
-        if (vrsteStudija == null) {
-            vrsteStudija = new ArrayList<>();
-        }
-        vrsteStudija.add(vrstaStudija);
-        vrstaStudija.setStudProgram(this);
-    }
-
-    public void addStudIndex(StudIndex studIndex) {
-        if (studIndexi == null) {
-            studIndexi = new ArrayList<>();
-        }
-        studIndexi.add(studIndex);
-        studIndex.setStudProgram(this);
-    }
-
-    public void addPredmet(Predmet predmet) {
-        if (predmeti == null) {
-            predmeti = new ArrayList<>();
-        }
-        predmeti.add(predmet);
-        predmet.setStudProgram(this);
     }
 
     @Override

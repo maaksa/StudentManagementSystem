@@ -36,28 +36,10 @@ public class Nastavnik {
         this.srednjeIme = srednjeIme;
         this.email = email;
         this.obrazovanje = obrazovanje;
-        drziPredmet = new ArrayList<>();
-        zvanja = new ArrayList<>();
     }
 
     public Nastavnik() {
 
-    }
-
-    public void addDrziPredmet(DrziPredmet drzi) {
-        if (drziPredmet == null) {
-            drziPredmet = new ArrayList<>();
-        }
-        drziPredmet.add(drzi);
-        drzi.setNastavnik(this);
-    }
-
-    public void addZvanje(Zvanje zvanje) {
-        if (zvanja == null) {
-            zvanja = new ArrayList<>();
-        }
-        zvanja.add(zvanje);
-        zvanje.setNastavnik(this);
     }
 
     @Override

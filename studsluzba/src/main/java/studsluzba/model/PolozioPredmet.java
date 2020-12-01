@@ -43,15 +43,6 @@ public class PolozioPredmet {
         this.ukupanBrojPoena = ukupanBrojPoena;
         this.priznatSaDrugogFaksa = priznatSaDrugogFaksa;
         this.studentIndex = studentIndex;
-        predmeti = new ArrayList<>();
-    }
-
-    public void addPredmet(Predmet predmet) {
-        if (predmeti == null) {
-            predmeti = new ArrayList<>();
-        }
-        predmeti.add(predmet);
-        predmet.setPolozioPredmet(this);
     }
 
     @Override

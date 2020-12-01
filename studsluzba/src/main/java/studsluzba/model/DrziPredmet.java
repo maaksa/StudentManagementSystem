@@ -43,15 +43,6 @@ public class DrziPredmet {
         this.predmet = predmet;
         this.nastavnik = nastavnik;
         this.skolskaGod = skolskaGod;
-        slusaPredmet = new ArrayList<>();
-    }
-
-    public void addSlusaPredmet(SlusaPredmet predmeti) {
-        if (slusaPredmet == null) {
-            slusaPredmet = new ArrayList<>();
-        }
-        slusaPredmet.add(predmeti);
-        predmeti.setDrziPredmet(this);
     }
 
 }

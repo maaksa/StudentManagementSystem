@@ -55,24 +55,6 @@ public class Ispit {
         this.predmet = predmet;
         this.ispitniRok = ispitniRok;
         this.nastavnik = nastavnik;
-        prijavaIspita = new ArrayList<>();
-        izlasciNaIspit = new ArrayList<>();
-    }
-
-    public void addPrijavaIspita(PrijavaIspita prijava) {
-        if (prijavaIspita == null) {
-            prijavaIspita = new ArrayList<>();
-        }
-        prijavaIspita.add(prijava);
-        prijava.setIspit(this);
-    }
-
-    public void addIzlazakNaIspit(IzlazakNaIspit izlazakNaIspit) {
-        if (izlasciNaIspit == null) {
-            izlasciNaIspit = new ArrayList<>();
-        }
-        izlasciNaIspit.add(izlazakNaIspit);
-        izlazakNaIspit.setIspit(this);
     }
 
     @Override

@@ -31,15 +31,6 @@ public class VisokaSkola {
         this.naziv = naziv;
         this.mesto = mesto;
         this.vrsta = vrsta;
-        studentii = new ArrayList<>();
-    }
-
-    public void addStudent(Student student) {
-        if (studentii == null) {
-            studentii = new ArrayList<>();
-        }
-        studentii.add(student);
-        student.setVisokaSkola(this);
     }
 
     @Override

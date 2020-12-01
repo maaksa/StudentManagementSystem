@@ -11,12 +11,15 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import studsluzba.model.IspitniRok;
 import studsluzba.model.Predmet;
 import studsluzba.model.SkolskaGodina;
 import studsluzba.model.SrednjaSkola;
 import studsluzba.services.DosijeService;
+import studsluzba.services.IspitiService;
 import studsluzba.services.SifarniciService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -26,40 +29,39 @@ public class AddIspitniRokController {
     SifarniciService sifarniciService;
 
     @Autowired
-    DosijeService dosijeService;
+    IspitiService ispitiService;
 
     @Autowired
-    StudentController studentController;
+    NewIspitController newIspitController;
 
     @FXML
-    DatePicker datumPocetka;
+    DatePicker datumPocetkaDp;
 
     @FXML
-    DatePicker datumZavrsetka;
+    DatePicker datumZavrsetkaDp;
 
     @FXML
-    ComboBox<SkolskaGodina> skolskaGodina;
-
-    private ObservableList<SkolskaGodina> skolskeLista;
+    ComboBox<SkolskaGodina> skolskaGodinaCb = new ComboBox<>();
 
 
     @FXML
-    public void addSrednjaSkola(ActionEvent event) {
-//        SrednjaSkola ss = new SrednjaSkola();
-//        if (mestoNoveSrednjeSkoleCb.getValue() != null) ss.setMesto(mestoNoveSrednjeSkoleCb.getValue());
-//        ss.setNaziv(nazivNoveSrednjeSkoleTf.getText());
-//        if (tipNoveSrednjeSkoleCb.getValue() != null) ss.setVrsta(tipNoveSrednjeSkoleCb.getValue());
-//        sifarniciService.saveSrednjaSkola(ss);
-//        studentController.updateSrednjeSkole();
-//        closeStage(event);
+    public void addIspitniRok(ActionEvent event) {
+        LocalDate pocetak = datumPocetkaDp.getValue();
+        LocalDate zavrsetak = datumZavrsetkaDp.getValue();
+        SkolskaGodina skolskaGodina = skolskaGodinaCb.getValue();
+
+        ispitiService.saveIspitniRok(pocetak, zavrsetak, skolskaGodina);
+
+        newIspitController.updateIspitniRokovi();
+        closeStage(event);
 
     }
 
 
     @FXML
     public void initialize() {
-        skolskeLista = FXCollections.observableList(dosijeService.getSkolskeGodine());
-        skolskaGodina.setItems(skolskeLista);
+        List<SkolskaGodina> skolskeLista = FXCollections.observableList(sifarniciService.getSkolskeGodine());
+        skolskaGodinaCb.setItems(FXCollections.observableArrayList(skolskeLista));
     }
 
     private void closeStage(ActionEvent event) {

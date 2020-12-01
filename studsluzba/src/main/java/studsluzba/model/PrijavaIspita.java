@@ -40,7 +40,6 @@ public class PrijavaIspita {
     public PrijavaIspita(LocalDate datum, Ispit ispit) {
         this.datum = datum;
         this.ispit = ispit;
-
     }
 
 }

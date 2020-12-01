@@ -43,7 +43,6 @@ public class UpisGodina {
         this.studentIndex = studentIndex;
         this.datum = datum;
         this.napomena = napomena;
-        //predmetPrenos  = new ArrayList<>();
     }
 
     @Override

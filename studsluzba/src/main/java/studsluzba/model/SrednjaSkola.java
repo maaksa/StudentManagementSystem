@@ -32,9 +32,9 @@ public class SrednjaSkola {
         this.naziv = naziv;
         this.mesto = mesto;
         this.vrsta = vrsta;
-        studenti = new ArrayList<>();
     }
 
+    //todo ?
     public void addStudent(Student student) {
         if (studenti == null) {
             studenti = new ArrayList<>();

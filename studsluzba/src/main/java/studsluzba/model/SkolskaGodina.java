@@ -39,24 +39,10 @@ public class SkolskaGodina {
         this.datum = datum;
         this.aktivna = aktivna;
         this.obnovaGodine = obnovaGodine;
-        ispitniRokovi = new ArrayList<>();
-    }
-
-    public void addIspitniRok(IspitniRok ispitniRok) {
-        if (ispitniRokovi == null) {
-            ispitniRokovi = new ArrayList<>();
-        }
-        ispitniRokovi.add(ispitniRok);
-        ispitniRok.setSkolskaGod(this);
     }
 
     @Override
     public String toString() {
-        return "SkolskaGodina{" +
-                "idSkolskaGodina=" + idSkolskaGodina +
-                ", datum=" + datum +
-                ", aktivna=" + aktivna +
-                ", obnovaGodine=" + obnovaGodine +
-                '}';
+        return "skolska godina: " + datum;
     }
 }

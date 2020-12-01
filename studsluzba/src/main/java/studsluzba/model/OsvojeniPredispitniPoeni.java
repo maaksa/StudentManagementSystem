@@ -33,15 +33,6 @@ public class OsvojeniPredispitniPoeni {
     public OsvojeniPredispitniPoeni(int ukupanBrojPoena, StudIndex studentIndeks) {
         this.ukupanBrojPoena = ukupanBrojPoena;
         this.studentIndeks = studentIndeks;
-        predIspitneObaveze = new ArrayList<>();
-    }
-
-    public void addPredIspitne(PredispitneObaveze predObaveze) {
-        if (predIspitneObaveze == null) {
-            predIspitneObaveze = new ArrayList<>();
-        }
-        predIspitneObaveze.add(predObaveze);
-        predObaveze.setOsvojeniPredispitniPoeni(this);
     }
 
     @Override

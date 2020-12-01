@@ -63,23 +63,6 @@ public class Predmet {
         this.polozioPredmet = polozioPredmet;
         this.obnova = obnovaGodina;
         this.studProgram = studProgram;
-        obaveze = new ArrayList<>();
-    }
-
-    public void addIspiti(Ispit ispiti) {
-        if (ispit == null) {
-            ispit = new ArrayList<>();
-        }
-        ispit.add(ispiti);
-        ispiti.setPredmet(this);
-    }
-
-    public void addPredIspitne(PredispitneObaveze predObaveze) {
-        if (obaveze == null) {
-            obaveze = new ArrayList<>();
-        }
-        obaveze.add(predObaveze);
-        predObaveze.setPredmet(this);
     }
 
     @Override
