@@ -209,7 +209,8 @@ public class StudentController {
         String nacionalnost = nacionalnostTf.getText();
         String licnaIzdao = licnuKartuIzdaoTf.getText();
         String privEmail = emailTf.getText();
-        String pol = radioButtonMuski.getText();
+        char pol;
+        boolean polMuski = radioButtonMuski.isSelected();
         String brojTelefona = brojTelefonaTf.getText();
         String brojUlice = brojUliceTf.getText();
 
@@ -222,8 +223,14 @@ public class StudentController {
             }
         }
 
+        if (polMuski) {
+            pol = 'm';
+        } else {
+            pol = 'z';
+        }
+
         Student studet = studentService.save(ime, prezime, srednje, Long.parseLong(jmbg), rodjenje, mestoRodjenja, nacionalnost, drzavaRodjenja,
-                pol.charAt(0),
+                pol,
                 licnaIzdao, prelaz, drzavljanstvo, licna, adresaStanovanja, Integer.parseInt(brojUlice), Long.parseLong(brojTelefona), privEmail,
                 mestoStanovanja, srednja, Double.parseDouble(uspehSrednja), datumUpisa, Double.parseDouble(uspehPrijemnni), smer, Integer.parseInt(indeks), studProgram);
 
