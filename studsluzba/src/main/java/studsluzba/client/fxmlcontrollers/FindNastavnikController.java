@@ -60,13 +60,22 @@ public class FindNastavnikController {
     private DatePicker datumIzbora;
 
     private ObservableList<Nastavnik> sviNastavnici;
+    private ObservableList<DrziPredmet> sviDrziPredmeti;
+    @FXML
+    private ComboBox<SkolskaGodina> skolskaGodinaCb = new ComboBox<>();
 
     //todo
     @FXML
     private TableView<Nastavnik> nastavnikTable = new TableView<Nastavnik>();
 
     @FXML
+    private TableView<DrziPredmet> drziPredmetTable = new TableView<DrziPredmet>();
+
+
+    @FXML
     public void initialize() {
+        List<SkolskaGodina> skolskeLista = FXCollections.observableList(sifarniciService.getSkolskeGodine());
+        skolskaGodinaCb.setItems(FXCollections.observableArrayList(skolskeLista));
         updateNastavniciTable();
     }
 
@@ -81,13 +90,32 @@ public class FindNastavnikController {
 
     }
 
-    public void updateNastavniciTable(){
+    public void findNastavnik(ActionEvent ae) {
+
+    }
+
+    public void addNewDrzi(ActionEvent ae) {
+        mainViewManager.openModal("addDrziPredmet");
+    }
+
+    public void updateDrziPredmet() {
+        List<DrziPredmet> drziPredmetList = sifarniciService.getDrziPredmeti();
+        drziPredmetTable.setItems(FXCollections.observableArrayList(drziPredmetList));
+    }
+
+    public void updateDrziTable() {
+        sviDrziPredmeti = FXCollections.observableList(sifarniciService.getDrziPredmeti());
+        drziPredmetTable.getItems().clear();
+        drziPredmetTable.setItems(sviDrziPredmeti);
+        updateDrziPredmet();
+    }
+
+    public void updateNastavniciTable() {
         sviNastavnici = FXCollections.observableList(nastavnikService.getNastavnici());
         System.out.println(sviNastavnici);
         nastavnikTable.getItems().clear();
         nastavnikTable.setItems(sviNastavnici);
     }
-
 
 
 }

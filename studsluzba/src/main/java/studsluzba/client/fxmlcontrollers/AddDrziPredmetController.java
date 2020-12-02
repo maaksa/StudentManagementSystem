@@ -32,6 +32,8 @@ public class AddDrziPredmetController {
     @Autowired
     NewSlusaPredmetController newSlusaPredmetController;
 
+    @Autowired
+    FindNastavnikController findNastavnikController;
     //todo
     @FXML
     ComboBox<SkolskaGodina> skolskaGodinaCb = new ComboBox<>();
@@ -58,6 +60,7 @@ public class AddDrziPredmetController {
         slusaPredmetService.addDrziPredmet(skolskaGodina, nastavnik, predmet, sifra);
 
         newSlusaPredmetController.updateDrziPredmet();
+        findNastavnikController.updateDrziPredmet();
 
         closeStage(event);
     }
