@@ -28,6 +28,10 @@ public class NastavnikService {
         return rez;
     }
 
+    public List<DrziPredmet> findNastavnikBySk(SkolskaGodina skolskaGodina){
+        return nastavnikRepository.findNastavnikBySk(skolskaGodina);
+    }
+
     public void addZvanje(String nastavnikNazivZvanja, String nastavnikUzaNaucObla, LocalDate nastavnikDatumIzbora, Nastavnik nastavnik) {
         Zvanje zvanje = new Zvanje();
         zvanje.setUzaNaucnaOblast(nastavnikUzaNaucObla);

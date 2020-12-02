@@ -28,7 +28,6 @@ public class FindNastavnikController {
     @Autowired
     NastavnikService nastavnikService;
 
-
     @Autowired
     SifarniciService sifarniciService;
 
@@ -61,6 +60,7 @@ public class FindNastavnikController {
 
     private ObservableList<Nastavnik> sviNastavnici;
     private ObservableList<DrziPredmet> sviDrziPredmeti;
+
     @FXML
     private ComboBox<SkolskaGodina> skolskaGodinaCb = new ComboBox<>();
 
@@ -87,11 +87,12 @@ public class FindNastavnikController {
 
         nastavnikService.addZvanje(nastavnikNazivZvanja, nastavnikUzaNaucObla, nastavnikDatumIzbora, nastavnikSelected);
         updateNastavniciTable();
-
     }
 
     public void findNastavnik(ActionEvent ae) {
-
+        SkolskaGodina skolskaGodina = skolskaGodinaCb.getValue();
+        List<DrziPredmet> drziPredmetList = nastavnikService.findNastavnikBySk(skolskaGodina);
+        drziPredmetTable.setItems(FXCollections.observableArrayList(drziPredmetList));
     }
 
     public void addNewDrzi(ActionEvent ae) {
@@ -99,7 +100,8 @@ public class FindNastavnikController {
     }
 
     public void updateDrziPredmet() {
-        List<DrziPredmet> drziPredmetList = sifarniciService.getDrziPredmeti();
+        SkolskaGodina skolskaGodina = skolskaGodinaCb.getValue();
+        List<DrziPredmet> drziPredmetList = nastavnikService.findNastavnikBySk(skolskaGodina);
         drziPredmetTable.setItems(FXCollections.observableArrayList(drziPredmetList));
     }
 
