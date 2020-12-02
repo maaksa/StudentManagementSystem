@@ -40,6 +40,7 @@ public class AddIspitniRokController {
     @FXML
     DatePicker datumZavrsetkaDp;
 
+    //todo
     @FXML
     ComboBox<SkolskaGodina> skolskaGodinaCb = new ComboBox<>();
 

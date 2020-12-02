@@ -45,4 +45,8 @@ public class DrziPredmet {
         this.skolskaGod = skolskaGod;
     }
 
+    @Override
+    public String toString() {
+        return "predmet: " + predmet + ", profesor: " + nastavnik + ", godina: " + skolskaGod;
+    }
 }

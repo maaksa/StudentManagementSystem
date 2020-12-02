@@ -26,6 +26,9 @@ public class SifarniciService {
     @Autowired
     SkolskaGodinaRepository skolskaGodinaRepository;
 
+    @Autowired
+    DrziPredmetRepository drziPredmetRepository;
+
     public List<SrednjaSkola> getSrednjeSkole() {
         Iterable<SrednjaSkola> iter = srednjaSkolaRepository.findAll();
         List<SrednjaSkola> rez = new ArrayList<SrednjaSkola>();
@@ -43,6 +46,13 @@ public class SifarniciService {
     public List<IspitniRok> getIspitniRokovi() {
         Iterable<IspitniRok> iter = ispitniRokRepository.findAll();
         List<IspitniRok> rez = new ArrayList<IspitniRok>();
+        iter.forEach(rez::add);
+        return rez;
+    }
+
+    public List<DrziPredmet> getDrziPredmeti() {
+        Iterable<DrziPredmet> iter = drziPredmetRepository.findAll();
+        List<DrziPredmet> rez = new ArrayList<DrziPredmet>();
         iter.forEach(rez::add);
         return rez;
     }

@@ -61,6 +61,7 @@ public class FindNastavnikController {
 
     private ObservableList<Nastavnik> sviNastavnici;
 
+    //todo
     @FXML
     private TableView<Nastavnik> nastavnikTable = new TableView<Nastavnik>();
 

@@ -37,33 +37,35 @@ public class NewSlusaPredmetController {
     @Autowired
     SlusaPredmetService slusaPredmetService;
 
+    //todo
     @FXML
     TableView<StudIndex> indexiTable = new TableView<>();
 
+    //todo
     @FXML
     ComboBox<DrziPredmet> drziPredmetCb = new ComboBox<>();
 
 
     @FXML
     protected void initialize() {
-       // List<Student> studentiLista = slusaPredmetService.loadAll();
-      //  studentCb.setItems(FXCollections.observableArrayList(studentiLista));
+        List<StudIndex> studIndexList = slusaPredmetService.getStudIndexi();
+        indexiTable.setItems(FXCollections.observableArrayList(studIndexList));
 
-//        List<DrziPredmet> drziLista = slusaPredmetService.getPredmeti();
-//        drziPredmetCb.setItems(FXCollections.observableArrayList(drziLista));
-
+        List<DrziPredmet> drziLista = sifarniciService.getDrziPredmeti();
+        drziPredmetCb.setItems(FXCollections.observableArrayList(drziLista));
     }
 
     public void openSlusaPredmet(ActionEvent ae) {
 
     }
 
-    public void resetValues() {
-
+    public void updateDrziPredmet() {
+        List<DrziPredmet> drziPredmetList = sifarniciService.getDrziPredmeti();
+        drziPredmetCb.setItems(FXCollections.observableArrayList(drziPredmetList));
     }
 
-    public void updateIspitniRokovi() {
-
+    public void resetValues() {
+        drziPredmetCb.getSelectionModel().clearSelection();
     }
 
     public void handleOpenDrziPredmet(ActionEvent ae) {
@@ -71,6 +73,13 @@ public class NewSlusaPredmetController {
     }
 
     public void handleOpenSlusaPredmet(ActionEvent ae) {
+        DrziPredmet drziPredmet = drziPredmetCb.getValue();
+        List<StudIndex> studIndexList = indexiTable.getSelectionModel().getSelectedItems();
+
+        slusaPredmetService.addSlusaPred(drziPredmet, studIndexList);
+
+        resetValues();
+
         mainViewManager.openModal("openViewSlusaPredmet");
     }
 

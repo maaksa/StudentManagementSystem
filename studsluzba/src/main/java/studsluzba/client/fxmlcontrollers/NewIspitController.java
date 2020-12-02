@@ -49,6 +49,7 @@ public class NewIspitController {
     @FXML
     ComboBox<Predmet> predmetCb;
 
+    //todo
     @FXML
     ComboBox<Nastavnik> nastavnikCb = new ComboBox<>();
 
