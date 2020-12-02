@@ -44,10 +44,10 @@ public class NewIspitController {
     TextField vremePocetkaTf;
 
     @FXML
-    ComboBox<IspitniRok> ispitniRokCb = new ComboBox<>();
+    ComboBox<IspitniRok> ispitniRokCb;
 
     @FXML
-    ComboBox<Predmet> predmetCb = new ComboBox<>();
+    ComboBox<Predmet> predmetCb;
 
     @FXML
     ComboBox<Nastavnik> nastavnikCb = new ComboBox<>();

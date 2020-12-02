@@ -31,6 +31,7 @@ public class SkolskaGodina {
     @OneToMany(mappedBy = "skolskaGod")
     private List<IspitniRok> ispitniRokovi;
 
+
     public SkolskaGodina() {
 
     }

@@ -39,6 +39,10 @@ public class MenuBarController {
         mainViewManager.changeRoot("newStudent");
     }
 
+    public void newSlusaPredmet(ActionEvent event) {
+        mainViewManager.changeRoot("newSlusaPredmet");
+    }
+
     public void newIspit(ActionEvent event) {
         mainViewManager.changeRoot("newIspit");
     }
