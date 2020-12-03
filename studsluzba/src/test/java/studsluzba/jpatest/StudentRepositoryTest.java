@@ -288,85 +288,85 @@ public class StudentRepositoryTest {
         s.setStudemail("lm@raf.rs");
         s.setUspehPrijemni(32);
 
-        srednjaSkolaRepository.save(srednjaSkola);
-        s.setSrednjaSkola(srednjaSkola);
-
-        visokaSkolaRepository.save(visokaSkola);
-        s.setVisokaSkola(visokaSkola);
-
-        studRepo.save(s);
-
-        studProgramRepository.save(studProgram);
-
-        studIndex.setStudProgram(studProgram);
-        studIndex.setStudent(s);
-        studIndexRepository.save(studIndex);
-
-        polozioPredmet.setStudentIndex(studIndex);
-        polozioPredmet.setIzlazakNaIspit(izlazakNaIspit);
-        polozioPredmetRepository.save(polozioPredmet);
-
-
-        skolskaGodina.setObnovaGodine(obnovaGodina);
-        skolskaGodina.setUpisGodine(upisGodina);
-        skolskaGodinaRepository.save(skolskaGodina);
-
-        obnovaGodina.setSkolskaGodina(skolskaGodina);
-        obnovaGodina.setStudentIndeks(studIndex);
-        obnovaGodinaRepository.save(obnovaGodina);
-
-        upisGodina.setStudentIndex(studIndex);
-        upisGodina.setSkolskaGodina(skolskaGodina);
-        upisGodineRepository.save(upisGodina);
-
-        predmet.setStudProgram(studProgram);
-        predmet.setPolozioPredmet(polozioPredmet);
-        predmet.setObnova(obnovaGodina);
-        predmet.setUpisGodina(upisGodina);
-        predmetRepository.save(predmet);
-
-        nastavnikRepository.save(nastavnik);
-
-        ispitniRok.setSkolskaGod(skolskaGodina);
-        ispitniRokRepository.save(ispitniRok);
-
-        ispit.setIspitniRok(ispitniRok);
-        ispit.setNastavnik(nastavnik);
-        ispit.setPredmet(predmet);
-        ispitRepository.save(ispit);
-
-        prijavaIspita.setIspit(ispit);
-        prijavaIspita.setStudIndexi(studIndex);
-        prijavaIspita.setIzlazakNaIspit(izlazakNaIspit);
-        prijavaIspitaRepository.save(prijavaIspita);
-
-        izlazakNaIspit.setPrijavljenIspit(prijavaIspita);
-        izlazakNaIspit.setIspit(ispit);
-        izlazakNaIspit.setPolozioPredmet(polozioPredmet);
-        izlazakNaIspitRepository.save(izlazakNaIspit);
-
-        drziPredmet.setPredmet(predmet);
-        drziPredmet.setNastavnik(nastavnik);
-        drziPredmet.setSkolskaGod(skolskaGodina);
-        drziPredmetRepository.save(drziPredmet);
-
-        slusaPredmet.setDrziPredmet(drziPredmet);
-        slusaPredmet.setIndex(studIndex);
-        slusaPredmetRepository.save(slusaPredmet);
-
-        zvanje.setNastavnik(nastavnik);
-        zvanjeRepository.save(zvanje);
-
-        vrstaStudija.setStudProgram(studProgram);
-        vrstaStudijaRepository.save(vrstaStudija);
-
-        osvojeniPredispitniPoeni.setStudentIndeks(studIndex);
-        osvojeniPredispitniPoeniRepository.save(osvojeniPredispitniPoeni);
-
-        predispitneObaveze.setSkolskaGodina(skolskaGodina);
-        predispitneObaveze.setOsvojeniPredispitniPoeni(osvojeniPredispitniPoeni);
-        predispitneObaveze.setPredmet(predmet);
-        predispitneObavezeRepository.save(predispitneObaveze);
+//        srednjaSkolaRepository.save(srednjaSkola);
+//        s.setSrednjaSkola(srednjaSkola);
+//
+//        visokaSkolaRepository.save(visokaSkola);
+//        s.setVisokaSkola(visokaSkola);
+//
+//        studRepo.save(s);
+//
+//        studProgramRepository.save(studProgram);
+//
+//        studIndex.setStudProgram(studProgram);
+//        studIndex.setStudent(s);
+//        studIndexRepository.save(studIndex);
+//
+//        polozioPredmet.setStudentIndex(studIndex);
+//        polozioPredmet.setIzlazakNaIspit(izlazakNaIspit);
+//        polozioPredmetRepository.save(polozioPredmet);
+//
+//
+//        skolskaGodina.setObnovaGodine(obnovaGodina);
+//        skolskaGodina.setUpisGodine(upisGodina);
+//        skolskaGodinaRepository.save(skolskaGodina);
+//
+//        obnovaGodina.setSkolskaGodina(skolskaGodina);
+//        obnovaGodina.setStudentIndeks(studIndex);
+//        obnovaGodinaRepository.save(obnovaGodina);
+//
+//        upisGodina.setStudentIndex(studIndex);
+//        upisGodina.setSkolskaGodina(skolskaGodina);
+//        upisGodineRepository.save(upisGodina);
+//
+//        predmet.setStudProgram(studProgram);
+//        predmet.setPolozioPredmet(polozioPredmet);
+//        predmet.setObnova(obnovaGodina);
+//        predmet.setUpisGodina(upisGodina);
+//        predmetRepository.save(predmet);
+//
+//        nastavnikRepository.save(nastavnik);
+//
+//        ispitniRok.setSkolskaGod(skolskaGodina);
+//        ispitniRokRepository.save(ispitniRok);
+//
+//        ispit.setIspitniRok(ispitniRok);
+//        ispit.setNastavnik(nastavnik);
+//        ispit.setPredmet(predmet);
+//        ispitRepository.save(ispit);
+//
+//        prijavaIspita.setIspit(ispit);
+//        prijavaIspita.setStudIndexi(studIndex);
+//        prijavaIspita.setIzlazakNaIspit(izlazakNaIspit);
+//        prijavaIspitaRepository.save(prijavaIspita);
+//
+//        izlazakNaIspit.setPrijavljenIspit(prijavaIspita);
+//        izlazakNaIspit.setIspit(ispit);
+//        izlazakNaIspit.setPolozioPredmet(polozioPredmet);
+//        izlazakNaIspitRepository.save(izlazakNaIspit);
+//
+//        drziPredmet.setPredmet(predmet);
+//        drziPredmet.setNastavnik(nastavnik);
+//        drziPredmet.setSkolskaGod(skolskaGodina);
+//        drziPredmetRepository.save(drziPredmet);
+//
+//        slusaPredmet.setDrziPredmet(drziPredmet);
+//        slusaPredmet.setIndex(studIndex);
+//        slusaPredmetRepository.save(slusaPredmet);
+//
+//        zvanje.setNastavnik(nastavnik);
+//        zvanjeRepository.save(zvanje);
+//
+//        vrstaStudija.setStudProgram(studProgram);
+//        vrstaStudijaRepository.save(vrstaStudija);
+//
+//        osvojeniPredispitniPoeni.setStudentIndeks(studIndex);
+//        osvojeniPredispitniPoeniRepository.save(osvojeniPredispitniPoeni);
+//
+//        predispitneObaveze.setSkolskaGodina(skolskaGodina);
+//        predispitneObaveze.setOsvojeniPredispitniPoeni(osvojeniPredispitniPoeni);
+//        predispitneObaveze.setPredmet(predmet);
+//        predispitneObavezeRepository.save(predispitneObaveze);
 
 
         //upit izvlacenje studenta preko broja indeksa

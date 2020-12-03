@@ -1,16 +1,15 @@
 package studsluzba.client;
 
-import java.io.IOException;
-
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import java.io.IOException;
 
 @Component
 //kada i init metodi inicijalizujemo spring kontekst, spring ce u pozadini da skenira i sve

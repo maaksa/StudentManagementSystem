@@ -1,11 +1,10 @@
 package studsluzba.repositories;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-
 import studsluzba.model.*;
+
+import java.util.List;
 
 public interface StudentRepository extends CrudRepository<Student, Integer> {
     //upit selekcija studenta koristeci ime ili prezime ili ime i prezime

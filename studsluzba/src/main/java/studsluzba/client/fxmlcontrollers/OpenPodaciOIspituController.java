@@ -5,20 +5,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import studsluzba.client.MainViewManager;
-import studsluzba.model.*;
-import studsluzba.services.DosijeService;
+import studsluzba.model.Ispit;
+import studsluzba.model.OsvojeniPredispitniPoeni;
+import studsluzba.model.StudIndex;
 import studsluzba.services.IspitiService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class OpenPodaciOIspituController {

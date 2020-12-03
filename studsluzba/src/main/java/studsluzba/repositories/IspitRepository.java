@@ -2,8 +2,10 @@ package studsluzba.repositories;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-
-import studsluzba.model.*;
+import studsluzba.model.Ispit;
+import studsluzba.model.OsvojeniPredispitniPoeni;
+import studsluzba.model.PredispitneObaveze;
+import studsluzba.model.StudIndex;
 
 import java.util.List;
 

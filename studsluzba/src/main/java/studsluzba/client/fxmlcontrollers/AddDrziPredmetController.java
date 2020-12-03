@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +12,9 @@ import org.springframework.stereotype.Component;
 import studsluzba.model.Nastavnik;
 import studsluzba.model.Predmet;
 import studsluzba.model.SkolskaGodina;
-import studsluzba.services.IspitiService;
 import studsluzba.services.SifarniciService;
 import studsluzba.services.SlusaPredmetService;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -64,7 +61,6 @@ public class AddDrziPredmetController {
 
         closeStage(event);
     }
-
 
 
     @FXML

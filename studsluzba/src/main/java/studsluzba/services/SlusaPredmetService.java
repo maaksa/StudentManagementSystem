@@ -6,7 +6,6 @@ import studsluzba.model.*;
 import studsluzba.repositories.DrziPredmetRepository;
 import studsluzba.repositories.SlusaPredmetRepository;
 import studsluzba.repositories.StudIndexRepository;
-import studsluzba.repositories.StudProgramRepository;
 
 import java.util.ArrayList;
 import java.util.List;

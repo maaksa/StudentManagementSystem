@@ -2,9 +2,11 @@ package studsluzba.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import studsluzba.model.*;
+import studsluzba.model.DrziPredmet;
+import studsluzba.model.Nastavnik;
+import studsluzba.model.SkolskaGodina;
+import studsluzba.model.Zvanje;
 import studsluzba.repositories.NastavnikRepository;
-
 import studsluzba.repositories.ZvanjeRepository;
 
 import java.time.LocalDate;

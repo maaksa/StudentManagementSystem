@@ -1,14 +1,12 @@
 package studsluzba.client;
 
 
-import java.net.URL;
-
-
+import javafx.fxml.FXMLLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
-import javafx.fxml.FXMLLoader;
+import java.net.URL;
 
 @Component
 public class ContextFXMLLoader {
