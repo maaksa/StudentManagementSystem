@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.text.Text?>
-<?import javafx.geometry.*?>
-
-
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.*?>
+
 <BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml"
             fx:controller="studsluzba.client.fxmlcontrollers.FindStudentController">
 
@@ -26,7 +23,8 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                     </padding>
                     <children>
-                        <Label fx:id="validacija" text=" " GridPane.halignment="LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                        <Label fx:id="validacija" text=" " GridPane.halignment="LEFT" GridPane.columnIndex="0"
+                               GridPane.rowIndex="0"/>
                         <TableView fx:id="studentiTable">
                             <columns>
                                 <TableColumn prefWidth="75.0" text="Ime">

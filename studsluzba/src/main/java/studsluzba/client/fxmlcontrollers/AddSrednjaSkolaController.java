@@ -25,8 +25,10 @@ public class AddSrednjaSkolaController {
 
     @FXML
     TextField nazivNoveSrednjeSkoleTf;
+
     @FXML
     ComboBox<String> mestoNoveSrednjeSkoleCb;
+
     @FXML
     ComboBox<String> tipNoveSrednjeSkoleCb;
 
@@ -40,7 +42,6 @@ public class AddSrednjaSkolaController {
         sifarniciService.saveSrednjaSkola(ss);
         studentController.updateSrednjeSkole();
         closeStage(event);
-
     }
 
     @FXML

@@ -34,7 +34,6 @@ public class AddIspitniRokController {
     @FXML
     DatePicker datumZavrsetkaDp;
 
-    //todo
     @FXML
     ComboBox<SkolskaGodina> skolskaGodinaCb = new ComboBox<>();
 
@@ -51,7 +50,6 @@ public class AddIspitniRokController {
         closeStage(event);
 
     }
-
 
     @FXML
     public void initialize() {

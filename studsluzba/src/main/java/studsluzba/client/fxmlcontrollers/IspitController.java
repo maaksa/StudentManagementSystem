@@ -23,7 +23,6 @@ public class IspitController {
     @Autowired
     OpenPodaciOIspituController openPodaciOIspituController;
 
-    //todo
     @FXML
     private TableView<Ispit> ispitiTable = new TableView<>();
 

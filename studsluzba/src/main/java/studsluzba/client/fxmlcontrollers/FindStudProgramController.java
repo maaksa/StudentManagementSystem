@@ -40,7 +40,6 @@ public class FindStudProgramController {
 
     private ObservableList<Predmet> sviPredmeti;
 
-    //todo
     @FXML
     private TableView<Predmet> studProgramTable = new TableView<Predmet>();
 

@@ -31,15 +31,13 @@ public class AddDrziPredmetController {
 
     @Autowired
     FindNastavnikController findNastavnikController;
-    //todo
+
     @FXML
     ComboBox<SkolskaGodina> skolskaGodinaCb = new ComboBox<>();
 
-    //todo
     @FXML
     ComboBox<Nastavnik> nastavnikCb = new ComboBox<>();
 
-    //todo
     @FXML
     ComboBox<Predmet> predmetCb = new ComboBox<>();
 
@@ -61,7 +59,6 @@ public class AddDrziPredmetController {
 
         closeStage(event);
     }
-
 
     @FXML
     public void initialize() {

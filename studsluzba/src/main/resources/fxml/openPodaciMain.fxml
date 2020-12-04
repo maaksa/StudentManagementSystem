@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.layout.BorderPane?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.geometry.*?>
-
-
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml"
             fx:controller="studsluzba.client.fxmlcontrollers.OpenPodaciOIspituController">
 

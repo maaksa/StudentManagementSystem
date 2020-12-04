@@ -5,8 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,7 +17,6 @@ import studsluzba.services.SifarniciService;
 import studsluzba.services.StudProgramService;
 import studsluzba.services.StudentService;
 
-import java.awt.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -65,7 +62,6 @@ public class FindStudentController {
     @FXML
     private TextField emailTf;
 
-
     @FXML
     private RadioButton radioButtonMuski;
 
@@ -105,9 +101,6 @@ public class FindStudentController {
     @FXML
     TextField licnuKartuIzdaoTf;
 
-    // prvi upis
-
-    //povezali smo comboBox sa onim iz fxml fajla kome pripada ovaj controller
     @FXML
     ComboBox<SrednjaSkola> srednjeSkolaCb;
 
@@ -223,16 +216,15 @@ public class FindStudentController {
 
     public void findStudentByIndex(ActionEvent event) {
         studentiTable.getItems().clear();
-        if(pretragaBrojaIndeksaTf.getText().isEmpty() || pretragaSmerCb.getValue() == null || pretragaGodinaIndeksaTf.getText().isEmpty()){
+        if (pretragaBrojaIndeksaTf.getText().isEmpty() || pretragaSmerCb.getValue() == null || pretragaGodinaIndeksaTf.getText().isEmpty()) {
             validacija.setText("Popunite sva polja");
             validacija.setStyle("-fx-background-color: #ff0000;");
             return;
         }
         String Broj = pretragaBrojaIndeksaTf.getText();
         String Godina = pretragaGodinaIndeksaTf.getText();
-        if(!(Broj.matches("\\d*") && Godina.matches("\\d*")))
-        {
-            validacija.setText("unesite ispravan format podataka");
+        if (!(Broj.matches("\\d*") && Godina.matches("\\d*"))) {
+            validacija.setText("Unesite ispravan format podataka");
             validacija.setStyle("-fx-background-color: #ff0000;");
             return;
         }
@@ -240,7 +232,7 @@ public class FindStudentController {
         Integer broj = Integer.parseInt(pretragaBrojaIndeksaTf.getText());
         String smer = pretragaSmerCb.getValue().toString();
         Integer godina = Integer.parseInt(pretragaGodinaIndeksaTf.getText());
-        if(studentService.findStudentByIndex(smer, broj, godina) == null) {
+        if (studentService.findStudentByIndex(smer, broj, godina) == null) {
             validacija.setText("Student ne postoji");
             validacija.setStyle("-fx-background-color: #ff0000;");
             return;
@@ -291,7 +283,6 @@ public class FindStudentController {
         String brojTelefona = brojTelefonaTf.getText();
         String brojUlice = brojUliceTf.getText();
 
-        System.out.println("JE L RADI OVO STUDENT");
 
         StudProgram studProgram = null;
 
@@ -302,10 +293,6 @@ public class FindStudentController {
             }
         }
 
-        System.out.println(studProgram);
-        System.out.println(srednja);
-        // PROBA KOMITA
-        // Proba opet jos jedna
 
         Student studet = studentService.save(ime, prezime, srednje, Long.parseLong(jmbg), rodjenje, mestoRodjenja, nacionalnost, drzavaRodjenja,
                 pol.charAt(0),

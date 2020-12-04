@@ -17,14 +17,12 @@ public class MenuBarController {
     @Autowired
     MainViewManager mainViewManager;
 
-
     @FXML
     private MenuBar menuBar;
 
     public void findStudent(ActionEvent event) {
         mainViewManager.changeRoot("findStudent");
     }
-
 
     //naziv metode koja se poziva u menuBar.fxml
     public void openStudProgrami(ActionEvent event) {
@@ -49,16 +47,16 @@ public class MenuBarController {
     public void findNastavnik(ActionEvent event) {
         mainViewManager.changeRoot("findNastavnik");
     }
+
     public void findIspit(ActionEvent event) {
         mainViewManager.changeRoot("findIspit");
     }
-
 
     public void findStudProgram(ActionEvent event) {
         mainViewManager.changeRoot("findStudProgram");
     }
 
-    public void openSearchStudent(ActionEvent event){
+    public void openSearchStudent(ActionEvent event) {
         mainViewManager.changeRoot("searchStudent");
     }
 

@@ -33,10 +33,8 @@ public class OpenViewSlusaPredmetController {
 
     private ObservableList<SlusaPredmet> sviSlusaPredmet;
 
-    //todo
     @FXML
     TableView<SlusaPredmet> slusaTable = new TableView<>();
-
 
     @FXML
     protected void initialize() {

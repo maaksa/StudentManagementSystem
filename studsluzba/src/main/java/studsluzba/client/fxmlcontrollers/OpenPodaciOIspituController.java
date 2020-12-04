@@ -29,11 +29,9 @@ public class OpenPodaciOIspituController {
 
     Ispit ispit;
 
-    //todo
     @FXML
     TableView<OsvojeniPredispitniPoeni> studRezultatiTable = new TableView<>();
 
-    //todo
     @FXML
     TableView<StudIndex> prijavljeniStudTable = new TableView<>();
 

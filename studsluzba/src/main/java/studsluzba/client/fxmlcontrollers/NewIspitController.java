@@ -49,7 +49,6 @@ public class NewIspitController {
     @FXML
     ComboBox<Predmet> predmetCb;
 
-    //todo
     @FXML
     ComboBox<Nastavnik> nastavnikCb = new ComboBox<>();
 
@@ -97,6 +96,5 @@ public class NewIspitController {
     public void handleOpenPodaci(ActionEvent ae) {
         mainViewManager.openModal("addIspitniRok");
     }
-
 
 }

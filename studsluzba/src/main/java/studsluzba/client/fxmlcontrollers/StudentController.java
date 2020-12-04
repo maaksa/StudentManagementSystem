@@ -37,7 +37,6 @@ public class StudentController {
     @Autowired
     MainViewManager mainViewManager;
 
-    // forma ce se koristiti za unos novog i za azuriranje postojeceg studenta
     private Student student;
 
     @FXML
@@ -101,9 +100,6 @@ public class StudentController {
     @FXML
     TextField licnuKartuIzdaoTf;
 
-    // prvi upis
-
-    //povezali smo comboBox sa onim iz fxml fajla kome pripada ovaj controller
     @FXML
     ComboBox<SrednjaSkola> srednjeSkolaCb;
 
@@ -137,7 +133,6 @@ public class StudentController {
     @FXML
     DatePicker datumUpisaDp;
 
-    //
     @FXML
     TextField pretragaBrojaIndeksaTf;
 

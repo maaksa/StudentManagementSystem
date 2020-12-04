@@ -30,7 +30,7 @@ public class NastavnikService {
         return rez;
     }
 
-    public List<DrziPredmet> findNastavnikBySk(SkolskaGodina skolskaGodina){
+    public List<DrziPredmet> findNastavnikBySk(SkolskaGodina skolskaGodina) {
         return nastavnikRepository.findNastavnikBySk(skolskaGodina);
     }
 

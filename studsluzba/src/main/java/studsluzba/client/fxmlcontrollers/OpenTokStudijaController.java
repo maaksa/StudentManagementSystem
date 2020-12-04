@@ -102,5 +102,4 @@ public class OpenTokStudijaController {
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
-
 }

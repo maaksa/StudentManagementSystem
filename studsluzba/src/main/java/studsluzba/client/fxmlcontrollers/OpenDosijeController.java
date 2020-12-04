@@ -53,16 +53,16 @@ public class OpenDosijeController {
     Text jmbg;
 
     @FXML
-     Text datumRodjenjaDp;
+    Text datumRodjenjaDp;
 
     @FXML
-     Text emailTf;
+    Text emailTf;
 
     @FXML
-     Text studemailTf;
+    Text studemailTf;
 
     @FXML
-     Text pol;
+    Text pol;
 
     @FXML
     Text brojTelefonaTf;
@@ -157,21 +157,21 @@ public class OpenDosijeController {
         List<StudIndex> indeksi = new ArrayList<>();
         List<SlusaPredmet> slusaLista = new ArrayList<>();
         indeksi = student.getIndexi();
-        for(StudIndex i: indeksi){
+        for (StudIndex i : indeksi) {
             polozeniLista.addAll(dosijeService.getPolozeni(i.getStudProgram().getSkraceniNaziv(), i.getBroj(), i.getGodina()));
         }
         polozeniPredmeti.setText(polozeniLista.toString());
-        for(StudIndex i : indeksi){
+        for (StudIndex i : indeksi) {
             slusaLista.addAll(dosijeService.getSlusa(i.getStudProgram().getSkraceniNaziv(), i.getBroj(), i.getGodina()));
         }
         // TODO Ne ispisivati predmete koji su polozeni
-       slusaniPredmeti.setText(slusaLista.toString());
+        slusaniPredmeti.setText(slusaLista.toString());
 
     }
 
-     @FXML
+    @FXML
     public void initialize() {
-         updateStundetData(student);
+        updateStundetData(student);
 
     }
 

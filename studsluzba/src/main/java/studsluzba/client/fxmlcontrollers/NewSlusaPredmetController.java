@@ -35,11 +35,9 @@ public class NewSlusaPredmetController {
     @Autowired
     SlusaPredmetService slusaPredmetService;
 
-    //todo
     @FXML
     TableView<StudIndex> indexiTable = new TableView<>();
 
-    //todo
     @FXML
     ComboBox<DrziPredmet> drziPredmetCb = new ComboBox<>();
 
@@ -80,6 +78,5 @@ public class NewSlusaPredmetController {
 
         mainViewManager.openModal("openViewSlusaPredmet");
     }
-
 
 }

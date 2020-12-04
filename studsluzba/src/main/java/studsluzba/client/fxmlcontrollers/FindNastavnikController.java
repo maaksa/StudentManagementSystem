@@ -62,12 +62,12 @@ public class FindNastavnikController {
     private DatePicker datumIzbora;
 
     private ObservableList<Nastavnik> sviNastavnici;
+
     private ObservableList<DrziPredmet> sviDrziPredmeti;
 
     @FXML
     private ComboBox<SkolskaGodina> skolskaGodinaCb = new ComboBox<>();
 
-    //todo
     @FXML
     private TableView<Nastavnik> nastavnikTable = new TableView<Nastavnik>();
 
