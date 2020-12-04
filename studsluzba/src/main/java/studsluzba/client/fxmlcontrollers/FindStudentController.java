@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,6 +19,7 @@ import studsluzba.services.SifarniciService;
 import studsluzba.services.StudProgramService;
 import studsluzba.services.StudentService;
 
+import java.awt.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -172,6 +175,9 @@ public class FindStudentController {
     @FXML
     private TableView<Student> studentiTable;
 
+    @FXML
+    Label validacija;
+
 
     @FXML
     public void initialize() {
@@ -181,7 +187,6 @@ public class FindStudentController {
         List<String> noviSmerovi = List.of("RN", "RI", "RD");
         ObservableList<String> smeroviObservableList3 = FXCollections.observableArrayList(noviSmerovi);
         NovSmerCb.setItems(smeroviObservableList3);
-
     }
 
     public void changeIndex(ActionEvent event) {
@@ -218,11 +223,31 @@ public class FindStudentController {
 
     public void findStudentByIndex(ActionEvent event) {
         studentiTable.getItems().clear();
+        if(pretragaBrojaIndeksaTf.getText().isEmpty() || pretragaSmerCb.getValue() == null || pretragaGodinaIndeksaTf.getText().isEmpty()){
+            validacija.setText("Popunite sva polja");
+            validacija.setStyle("-fx-background-color: #ff0000;");
+            return;
+        }
+        String Broj = pretragaBrojaIndeksaTf.getText();
+        String Godina = pretragaGodinaIndeksaTf.getText();
+        if(!(Broj.matches("\\d*") && Godina.matches("\\d*")))
+        {
+            validacija.setText("unesite ispravan format podataka");
+            validacija.setStyle("-fx-background-color: #ff0000;");
+            return;
+        }
+
         Integer broj = Integer.parseInt(pretragaBrojaIndeksaTf.getText());
         String smer = pretragaSmerCb.getValue().toString();
         Integer godina = Integer.parseInt(pretragaGodinaIndeksaTf.getText());
-        if (broj == null && godina == null && smer == null) return;
+        if(studentService.findStudentByIndex(smer, broj, godina) == null) {
+            validacija.setText("Student ne postoji");
+            validacija.setStyle("-fx-background-color: #ff0000;");
+            return;
+        }
         Student s = studentService.findStudentByIndex(smer, broj, godina);
+        validacija.setText("");
+        validacija.setStyle("-fx-background-color: white;");
         studentiTable.getItems().add(s);
     }
 
