@@ -17,8 +17,6 @@ import studsluzba.services.NastavnikService;
 import studsluzba.services.StudProgramService;
 import studsluzba.services.StudentService;
 
-import java.util.List;
-
 @Component
 public class FindStudProgramController {
 

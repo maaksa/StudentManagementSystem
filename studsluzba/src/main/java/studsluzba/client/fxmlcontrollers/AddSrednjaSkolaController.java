@@ -15,8 +15,6 @@ import studsluzba.coders.SimpleCode;
 import studsluzba.model.SrednjaSkola;
 import studsluzba.services.SifarniciService;
 
-import java.util.List;
-
 @Component
 public class AddSrednjaSkolaController {
 

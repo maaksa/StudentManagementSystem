@@ -1,45 +1,42 @@
 package studsluzba.coders;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 
 
 @Component
 public class CoderFactory {
-	
-	
-	
-	private Coder<SimpleCode> drzaveCoder;
-	private Coder<SimpleCode> mestaCoder;
-	private Coder<SimpleCode> tipSrednjeSkole;
-	private Coder<SimpleCode> smerCoder;
 
-	
-	
-	// ucita samo ako nije ucitano
-	public Coder<SimpleCode> getSimpleCoder(CoderType coderType){
-		
-		switch(coderType) {
-				
-			case DRZAVA: 
-				if(drzaveCoder==null)
-					drzaveCoder = new TextFileSimpleCoder(coderType.getPath());
-				return drzaveCoder;
-			case MESTO:				
-				if(mestaCoder==null)
-					mestaCoder = new TextFileSimpleCoder(coderType.getPath());
-				return mestaCoder;
-			case TIP_SREDNJE_SKOLE:
-				if(tipSrednjeSkole==null)
-					tipSrednjeSkole = new TextFileSimpleCoder(coderType.getPath());
-				return tipSrednjeSkole;
-			case SMER:
-				if(smerCoder==null)
-					smerCoder = new TextFileSimpleCoder(coderType.getPath());
-				return smerCoder;
-			default: return null;
-		}
+
+    private Coder<SimpleCode> drzaveCoder;
+    private Coder<SimpleCode> mestaCoder;
+    private Coder<SimpleCode> tipSrednjeSkole;
+    private Coder<SimpleCode> smerCoder;
+
+
+    // ucita samo ako nije ucitano
+    public Coder<SimpleCode> getSimpleCoder(CoderType coderType) {
+
+        switch (coderType) {
+
+            case DRZAVA:
+                if (drzaveCoder == null)
+                    drzaveCoder = new TextFileSimpleCoder(coderType.getPath());
+                return drzaveCoder;
+            case MESTO:
+                if (mestaCoder == null)
+                    mestaCoder = new TextFileSimpleCoder(coderType.getPath());
+                return mestaCoder;
+            case TIP_SREDNJE_SKOLE:
+                if (tipSrednjeSkole == null)
+                    tipSrednjeSkole = new TextFileSimpleCoder(coderType.getPath());
+                return tipSrednjeSkole;
+            case SMER:
+                if (smerCoder == null)
+                    smerCoder = new TextFileSimpleCoder(coderType.getPath());
+                return smerCoder;
+            default:
+                return null;
+        }
 		/*
 		 * 
 		 * 
@@ -53,9 +50,8 @@ public class CoderFactory {
 			e.printStackTrace();
 			return null;
 		}
-		*/			
-	}
-	
-	
+		*/
+    }
+
 
 }
