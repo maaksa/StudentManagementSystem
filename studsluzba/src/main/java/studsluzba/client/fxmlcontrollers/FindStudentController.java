@@ -9,6 +9,8 @@ import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import studsluzba.client.MainViewManager;
+import studsluzba.coders.CoderFactory;
+import studsluzba.coders.CoderType;
 import studsluzba.model.SrednjaSkola;
 import studsluzba.model.StudIndex;
 import studsluzba.model.StudProgram;
@@ -171,15 +173,14 @@ public class FindStudentController {
     @FXML
     Label validacija;
 
+    @Autowired
+    CoderFactory coderFactory;
+
 
     @FXML
     public void initialize() {
-        List<String> findSmerovi = List.of("RN", "RI", "RD");
-        ObservableList<String> smeroviObservableList1 = FXCollections.observableArrayList(findSmerovi);
-        pretragaSmerCb.setItems(smeroviObservableList1);
-        List<String> noviSmerovi = List.of("RN", "RI", "RD");
-        ObservableList<String> smeroviObservableList3 = FXCollections.observableArrayList(noviSmerovi);
-        NovSmerCb.setItems(smeroviObservableList3);
+        pretragaSmerCb.setItems(FXCollections.observableArrayList(coderFactory.getSimpleCoder(CoderType.SMER).getCodes()));
+        NovSmerCb.setItems(FXCollections.observableArrayList(coderFactory.getSimpleCoder(CoderType.SMER).getCodes()));
     }
 
     public void changeIndex(ActionEvent event) {

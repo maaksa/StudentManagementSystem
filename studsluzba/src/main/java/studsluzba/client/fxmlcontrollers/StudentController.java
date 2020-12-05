@@ -12,6 +12,9 @@ import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import studsluzba.client.MainViewManager;
+import studsluzba.coders.CoderFactory;
+import studsluzba.coders.CoderType;
+import studsluzba.coders.SimpleCode;
 import studsluzba.model.SrednjaSkola;
 import studsluzba.model.StudProgram;
 import studsluzba.model.Student;
@@ -80,16 +83,16 @@ public class StudentController {
     TextField adresaStanovanjaTf;
     // TODO da li i mesta da idu preko sifarnika
     @FXML
-    ComboBox<String> mestoStanovanjaCb;
+    ComboBox<SimpleCode> mestoStanovanjaCb;
 
     @FXML
-    ComboBox<String> mestoRodjenjaCb;
+    ComboBox<SimpleCode> mestoRodjenjaCb;
 
     @FXML
-    ComboBox<String> drzavaRodjenjaCb;
+    ComboBox<SimpleCode> drzavaRodjenjaCb;
 
     @FXML
-    ComboBox<String> drzavljanstvoCb;
+    ComboBox<SimpleCode> drzavljanstvoCb;
 
     @FXML
     TextField nacionalnostTf;
@@ -152,27 +155,27 @@ public class StudentController {
     @FXML
     TextField brojUliceTf;
 
+    @Autowired
+    CoderFactory coderFactory;
+
 
     @FXML
     public void initialize() {
-        //najbolje u resources fajlu imati txt fajl spiskova svih drzava i to da se ne menja, da ne cuvamo u bazi
-        List<String> drzavaCodes = List.of("Republika Srbija", "Crna Gora", "Hrvatska");
-        drzavaRodjenjaCb.setItems(FXCollections.observableArrayList(drzavaCodes));
-        drzavaRodjenjaCb.setValue(new String("Republika Srbija"));
-        drzavljanstvoCb.setItems(FXCollections.observableArrayList(drzavaCodes));
-        drzavljanstvoCb.setValue(new String("Republika Srbija"));
-        List<String> mestaCodes = List.of("Beograd", "Leskovac", "Vranje");
-        ObservableList<String> mestaCodesObservableList = FXCollections.observableArrayList(mestaCodes);
-        mestoRodjenjaCb.setItems(mestaCodesObservableList);
-        mestoStanovanjaCb.setItems(mestaCodesObservableList);
+
+        drzavljanstvoCb.setItems(FXCollections.observableArrayList(coderFactory.getSimpleCoder(CoderType.DRZAVA).getCodes()));
+        drzavaRodjenjaCb.setItems(FXCollections.observableArrayList(coderFactory.getSimpleCoder(CoderType.DRZAVA).getCodes()));
+        mestoRodjenjaCb.setItems(FXCollections.observableArrayList(coderFactory.getSimpleCoder(CoderType.MESTO).getCodes()));
+        mestoStanovanjaCb.setItems(FXCollections.observableArrayList(coderFactory.getSimpleCoder(CoderType.MESTO).getCodes()));
+
+
         //sr skola nam predstavlja sifranik (sifarnik moze nam biti vrsta stduija, zvanja, sve ono sto smo unosili, sluze nam samo da ih vezemo za nesto u ovom sluc za studenta)
         //i sifarniciServica pozvacemo srSkoleRepo koji ce iz baze izvuci sve sr skole
         //srednjeSkoleCb ComboBox uvezan sa ComboBox iz fxml fajla kome pripada ovaj Controller, i na ovaj nacin napunimo(azuriramo) comboBox u fxml fajlu
         List<SrednjaSkola> srednjeSkole = sifarniciService.getSrednjeSkole();
         srednjeSkolaCb.setItems(FXCollections.observableArrayList(srednjeSkole));
-        List<String> smerovi = List.of("RN", "RI", "RD");
-        ObservableList<String> smeroviObservableList = FXCollections.observableArrayList(smerovi);
-        smerCb.setItems(smeroviObservableList);
+
+        smerCb.setItems(FXCollections.observableArrayList(coderFactory.getSimpleCoder(CoderType.SMER).getCodes()));
+
     }
 
     public void handleOpenModalSrednjeSkole(ActionEvent ae) {
@@ -191,12 +194,12 @@ public class StudentController {
         String srednje = srednjeImeTf.getText();
         String jmbg = jmbgTf.getText();
         LocalDate rodjenje = datumRodjenjaDp.getValue();
-        String mestoRodjenja = mestoRodjenjaCb.getValue();
-        String drzavaRodjenja = drzavaRodjenjaCb.getValue();
-        String drzavljanstvo = drzavljanstvoCb.getValue();
+        String mestoRodjenja = mestoRodjenjaCb.getValue().toString();
+        String drzavaRodjenja = drzavaRodjenjaCb.getValue().toString();
+        String drzavljanstvo = drzavljanstvoCb.getValue().toString();
         String licna = brojLicneKarteTf.getText();
         String adresaStanovanja = adresaStanovanjaTf.getText();
-        String mestoStanovanja = mestoStanovanjaCb.getValue();
+        String mestoStanovanja = mestoStanovanjaCb.getValue().toString();
         SrednjaSkola srednja = srednjeSkolaCb.getValue();
         String uspehSrednja = uspehSrednjaSkolaTf.getText();
         String uspehPrijemnni = uspehPrijemniTf.getText();

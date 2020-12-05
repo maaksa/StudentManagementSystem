@@ -9,6 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import studsluzba.coders.CoderFactory;
+import studsluzba.coders.CoderType;
+import studsluzba.coders.SimpleCode;
 import studsluzba.model.SrednjaSkola;
 import studsluzba.services.SifarniciService;
 
@@ -27,18 +30,20 @@ public class AddSrednjaSkolaController {
     TextField nazivNoveSrednjeSkoleTf;
 
     @FXML
-    ComboBox<String> mestoNoveSrednjeSkoleCb;
+    ComboBox<SimpleCode> mestoNoveSrednjeSkoleCb;
 
     @FXML
-    ComboBox<String> tipNoveSrednjeSkoleCb;
+    ComboBox<SimpleCode> tipNoveSrednjeSkoleCb;
 
+    @Autowired
+    CoderFactory coderFactory;
 
     @FXML
     public void addSrednjaSkola(ActionEvent event) {
         SrednjaSkola ss = new SrednjaSkola();
-        if (mestoNoveSrednjeSkoleCb.getValue() != null) ss.setMesto(mestoNoveSrednjeSkoleCb.getValue());
+        if (mestoNoveSrednjeSkoleCb.getValue() != null) ss.setMesto(mestoNoveSrednjeSkoleCb.getValue().toString());
         ss.setNaziv(nazivNoveSrednjeSkoleTf.getText());
-        if (tipNoveSrednjeSkoleCb.getValue() != null) ss.setVrsta(tipNoveSrednjeSkoleCb.getValue());
+        if (tipNoveSrednjeSkoleCb.getValue() != null) ss.setVrsta(tipNoveSrednjeSkoleCb.getValue().toString());
         sifarniciService.saveSrednjaSkola(ss);
         studentController.updateSrednjeSkole();
         closeStage(event);
@@ -46,10 +51,7 @@ public class AddSrednjaSkolaController {
 
     @FXML
     public void initialize() {
-        List<String> tipSrednjeSkoleCodes = List.of("gimnazija", "srednje strucna skola");
-        tipNoveSrednjeSkoleCb.setItems(FXCollections.observableArrayList(tipSrednjeSkoleCodes));
-        List<String> mestaCodes = List.of("Beograd", "Kruševac", "Niš");
-        mestoNoveSrednjeSkoleCb.setItems(FXCollections.observableArrayList(mestaCodes));
+        mestoNoveSrednjeSkoleCb.setItems(FXCollections.observableArrayList(coderFactory.getSimpleCoder(CoderType.MESTO).getCodes()));
     }
 
     private void closeStage(ActionEvent event) {

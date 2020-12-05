@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import studsluzba.client.MainViewManager;
+import studsluzba.coders.CoderFactory;
+import studsluzba.coders.CoderType;
 import studsluzba.model.Predmet;
 import studsluzba.services.NastavnikService;
 import studsluzba.services.StudProgramService;
@@ -43,11 +45,12 @@ public class FindStudProgramController {
     @FXML
     private TableView<Predmet> studProgramTable = new TableView<Predmet>();
 
+    @Autowired
+    CoderFactory coderFactory;
+
     @FXML
     public void initialize() {
-        List<String> findSmerovi = List.of("RN", "RI", "RD");
-        ObservableList<String> smeroviObservableList1 = FXCollections.observableArrayList(findSmerovi);
-        pretragaSmerCb.setItems(smeroviObservableList1);
+        pretragaSmerCb.setItems(FXCollections.observableArrayList(coderFactory.getSimpleCoder(CoderType.SMER).getCodes()));
     }
 
     public void showStudProgPred(ActionEvent ae) {
