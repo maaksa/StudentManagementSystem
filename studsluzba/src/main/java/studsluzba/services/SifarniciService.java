@@ -14,6 +14,7 @@ public class SifarniciService {
     @Autowired
     SrednjaSkolaRepository srednjaSkolaRepository;
 
+
     @Autowired
     NastavnikRepository nastavnikRepository;
 
@@ -41,6 +42,10 @@ public class SifarniciService {
         List<SkolskaGodina> rez = new ArrayList<SkolskaGodina>();
         iter.forEach(rez::add);
         return rez;
+    }
+
+    public SkolskaGodina saveSkolska(SkolskaGodina s){
+        return skolskaGodinaRepository.save(s);
     }
 
     public List<IspitniRok> getIspitniRokovi() {

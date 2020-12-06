@@ -50,6 +50,7 @@ public class AddSrednjaSkolaController {
     @FXML
     public void initialize() {
         mestoNoveSrednjeSkoleCb.setItems(FXCollections.observableArrayList(coderFactory.getSimpleCoder(CoderType.MESTO).getCodes()));
+        tipNoveSrednjeSkoleCb.setItems(FXCollections.observableArrayList(coderFactory.getSimpleCoder(CoderType.TIP_SREDNJE_SKOLE).getCodes()));
     }
 
     private void closeStage(ActionEvent event) {

@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 import studsluzba.client.MainViewManager;
 import studsluzba.model.*;
 import studsluzba.services.DosijeService;
+import studsluzba.services.SifarniciService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,9 @@ public class OpenTokStudijaController {
     FindStudentController findStudentController;
 
     @Autowired
+    SifarniciService sifarniciService;
+
+    @Autowired
     MainViewManager mainViewManager;
 
     Student student;
@@ -42,6 +47,10 @@ public class OpenTokStudijaController {
 
     @FXML
     TextField novaGodina;
+
+
+    @FXML
+    ComboBox<SkolskaGodina> skolskaGodinaCb = new ComboBox<>();
 
     @FXML
     RadioButton radioButtonUpis;
@@ -56,6 +65,8 @@ public class OpenTokStudijaController {
 
     @FXML
     public void initialize() {
+        List<SkolskaGodina> skolskeLista = FXCollections.observableList(sifarniciService.getSkolskeGodine());
+        skolskaGodinaCb.setItems(FXCollections.observableArrayList(skolskeLista));
         List<UpisGodina> upisGodinaList = new ArrayList<>();
         List<ObnovaGodina> obnovaGodinaList = new ArrayList<>();
         List<StudIndex> studIndexList = student.getIndexi();

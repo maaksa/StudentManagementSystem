@@ -20,6 +20,7 @@
                 <MenuItem text="Student" onAction="#openNewStudent"/>
                 <MenuItem text="Slusa predmet" onAction="#newSlusaPredmet"/>
                 <MenuItem text="Ispit" onAction="#newIspit"/>
+                <MenuItem text="Skolska godina" onAction="#novaSkolska"/>
             </items>
         </Menu>
         <Menu text="Administracija">
