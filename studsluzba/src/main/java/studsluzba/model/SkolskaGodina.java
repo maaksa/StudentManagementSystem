@@ -18,11 +18,11 @@ public class SkolskaGodina {
     private int datum;
     private boolean aktivna;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "idObnovaGodina")
     private ObnovaGodina obnovaGodine;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "idUpisGodina")
     private UpisGodina upisGodine;
 

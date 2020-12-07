@@ -15,12 +15,16 @@ import studsluzba.coders.SimpleCode;
 import studsluzba.model.SkolskaGodina;
 import studsluzba.model.SrednjaSkola;
 import studsluzba.services.SifarniciService;
+import studsluzba.services.SkolskaGodinaService;
 
 @Component
 public class NewSkolskaController {
 
     @Autowired
     SifarniciService sifarniciService;
+
+    @Autowired
+    SkolskaGodinaService skolskaGodinaService;
 
     @FXML
     TextField novaSkolska;
@@ -34,8 +38,12 @@ public class NewSkolskaController {
         if (novaSkolska.getText() != null){
             skolska.setDatum(Integer.parseInt(novaSkolska.getText()));
             skolska.setAktivna(true);
+
         }
+        skolskaGodinaService.updateSkolskeGodine();
         sifarniciService.saveSkolska(skolska);
+        novaSkolska.clear();
+
     }
 
     @FXML

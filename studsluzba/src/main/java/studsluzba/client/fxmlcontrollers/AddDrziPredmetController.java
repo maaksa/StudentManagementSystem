@@ -15,6 +15,7 @@ import studsluzba.model.SkolskaGodina;
 import studsluzba.services.SifarniciService;
 import studsluzba.services.SlusaPredmetService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -69,7 +70,13 @@ public class AddDrziPredmetController {
         nastavnikCb.setItems(FXCollections.observableArrayList(nastavnikList));
 
         List<SkolskaGodina> skolskeLista = FXCollections.observableList(sifarniciService.getSkolskeGodine());
-        skolskaGodinaCb.setItems(FXCollections.observableArrayList(skolskeLista));
+        List<SkolskaGodina> skolskaGodinaList = new ArrayList<>();
+        for (SkolskaGodina sk : skolskeLista) {
+            if(sk.isAktivna()){
+                skolskaGodinaList.add(sk);
+            }
+        }
+        skolskaGodinaCb.setItems(FXCollections.observableArrayList(skolskaGodinaList));
     }
 
     private void closeStage(ActionEvent event) {

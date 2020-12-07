@@ -59,28 +59,15 @@ public class DosijeService {
         return rez;
     }
 
-    public void savaUpis(List<Predmet> predmetiSelected, Integer godinaUpisa, StudIndex studIndex) {
-        List<SkolskaGodina> skolskaGodine = this.getSkolskeGodine();
-        SkolskaGodina skolskaGodinaToSave = new SkolskaGodina();
+    public void savaUpis(List<Predmet> predmetiSelected, SkolskaGodina godinaUpisa, StudIndex studIndex) {
         UpisGodina upisGodinaToSave = new UpisGodina();
         upisGodinaToSave.setStudentIndex(studIndex);
-        upisGodinaToSave.setDatum(godinaUpisa);
-
-        for (SkolskaGodina sk : skolskaGodine) {
-            if (sk.getDatum() == godinaUpisa) {
-                upisGodinaToSave.setSkolskaGodina(sk);
-                break;
-            } else {
-                skolskaGodinaToSave.setDatum(godinaUpisa);
-                skolskaGodinaToSave.setAktivna(true);
-                skolskaGodinaToSave.setUpisGodine(upisGodinaToSave);
-                skolskaGodinaRepository.save(skolskaGodinaToSave);
-                upisGodinaToSave.setSkolskaGodina(skolskaGodinaToSave);
-            }
-        }
-
-        //todo napomenu u gui-ju TEXTAREA
         upisGodinaToSave.setNapomena(null);
+        upisGodinaToSave.setDatum(godinaUpisa.getDatum());
+        upisGodinaToSave.setSkolskaGodina(godinaUpisa);
+
+        godinaUpisa.setUpisGodine(upisGodinaToSave);
+        skolskaGodinaRepository.save(godinaUpisa);
 
         upisGodineRepository.save(upisGodinaToSave);
 
@@ -91,28 +78,15 @@ public class DosijeService {
 
     }
 
-    public void saveObnova(List<Predmet> predmetiSelected, Integer godinaUpisa, StudIndex studIndex) {
-        List<SkolskaGodina> skolskaGodine = this.getSkolskeGodine();
-        SkolskaGodina skolskaGodinaToSave = new SkolskaGodina();
+    public void saveObnova(List<Predmet> predmetiSelected, SkolskaGodina godinaUpisa, StudIndex studIndex) {
         ObnovaGodina obnovaGodinaToSave = new ObnovaGodina();
         obnovaGodinaToSave.setStudentIndeks(studIndex);
-        obnovaGodinaToSave.setDatum(godinaUpisa);
-
-        for (SkolskaGodina sk : skolskaGodine) {
-            if (sk.getDatum() == godinaUpisa) {
-                obnovaGodinaToSave.setSkolskaGodina(sk);
-                break;
-            } else {
-                skolskaGodinaToSave.setDatum(godinaUpisa);
-                skolskaGodinaToSave.setAktivna(true);
-                skolskaGodinaToSave.setObnovaGodine(obnovaGodinaToSave);
-                skolskaGodinaRepository.save(skolskaGodinaToSave);
-                obnovaGodinaToSave.setSkolskaGodina(skolskaGodinaToSave);
-            }
-        }
-
-        //todo napomenu u gui-ju TEXTAREA
         obnovaGodinaToSave.setNapomena(null);
+        obnovaGodinaToSave.setDatum(godinaUpisa.getDatum());
+        obnovaGodinaToSave.setSkolskaGodina(godinaUpisa);
+
+        godinaUpisa.setObnovaGodine(obnovaGodinaToSave);
+        skolskaGodinaRepository.save(godinaUpisa);
 
         obnovaGodinaRepository.save(obnovaGodinaToSave);
 
@@ -120,6 +94,34 @@ public class DosijeService {
             p.setObnova(obnovaGodinaToSave);
             predmetRepository.save(p);
         }
+//        List<SkolskaGodina> skolskaGodine = this.getSkolskeGodine();
+//        SkolskaGodina skolskaGodinaToSave = new SkolskaGodina();
+//        ObnovaGodina obnovaGodinaToSave = new ObnovaGodina();
+//        obnovaGodinaToSave.setStudentIndeks(studIndex);
+//        obnovaGodinaToSave.setDatum(godinaUpisa);
+//
+//        for (SkolskaGodina sk : skolskaGodine) {
+//            if (sk.getDatum() == godinaUpisa) {
+//                obnovaGodinaToSave.setSkolskaGodina(sk);
+//                break;
+//            } else {
+//                skolskaGodinaToSave.setDatum(godinaUpisa);
+//                skolskaGodinaToSave.setAktivna(true);
+//                skolskaGodinaToSave.setObnovaGodine(obnovaGodinaToSave);
+//                skolskaGodinaRepository.save(skolskaGodinaToSave);
+//                obnovaGodinaToSave.setSkolskaGodina(skolskaGodinaToSave);
+//            }
+//        }
+//
+//        //todo napomenu u gui-ju TEXTAREA
+//        obnovaGodinaToSave.setNapomena(null);
+//
+//        obnovaGodinaRepository.save(obnovaGodinaToSave);
+//
+//        for (Predmet p : predmetiSelected) {
+//            p.setObnova(obnovaGodinaToSave);
+//            predmetRepository.save(p);
+//        }
     }
 
     public List<SkolskaGodina> getSkolskeGodine() {

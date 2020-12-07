@@ -66,7 +66,13 @@ public class OpenTokStudijaController {
     @FXML
     public void initialize() {
         List<SkolskaGodina> skolskeLista = FXCollections.observableList(sifarniciService.getSkolskeGodine());
-        skolskaGodinaCb.setItems(FXCollections.observableArrayList(skolskeLista));
+        List<SkolskaGodina> aktivnaSkolska = new ArrayList<>();
+        for (SkolskaGodina sk : skolskeLista) {
+            if(sk.isAktivna()){
+                aktivnaSkolska.add(sk);
+            }
+        }
+        skolskaGodinaCb.setItems(FXCollections.observableArrayList(aktivnaSkolska));
         List<UpisGodina> upisGodinaList = new ArrayList<>();
         List<ObnovaGodina> obnovaGodinaList = new ArrayList<>();
         List<StudIndex> studIndexList = student.getIndexi();
@@ -88,7 +94,8 @@ public class OpenTokStudijaController {
     }
 
     public void saveUpisObnova(ActionEvent ae) {
-        Integer upisGodina = Integer.parseInt(novaGodina.getText());
+        SkolskaGodina upisSkolskaGodina = skolskaGodinaCb.getValue();
+        //Integer upisGodina = Integer.parseInt(novaGodina.getText());
         List<Predmet> predmetiSelected = programiTable.getSelectionModel().getSelectedItems();
         boolean upisObnovaRaddioB = radioButtonUpis.isSelected();
         List<StudIndex> studIndexList = student.getIndexi();
@@ -101,10 +108,10 @@ public class OpenTokStudijaController {
         }
 
         if (upisObnovaRaddioB) {
-            dosijeService.savaUpis(predmetiSelected, upisGodina, aktivniIndex);
+            dosijeService.savaUpis(predmetiSelected, upisSkolskaGodina, aktivniIndex);
         } else {
             System.out.println("usao");
-            dosijeService.saveObnova(predmetiSelected, upisGodina, aktivniIndex);
+            dosijeService.saveObnova(predmetiSelected, upisSkolskaGodina, aktivniIndex);
         }
     }
 

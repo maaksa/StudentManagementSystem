@@ -24,7 +24,7 @@ public class ObnovaGodina {
     @JoinColumn(name = "idStudIndex")
     private StudIndex studentIndeks;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "idSkolskaGodina")
     private SkolskaGodina skolskaGodina;
 

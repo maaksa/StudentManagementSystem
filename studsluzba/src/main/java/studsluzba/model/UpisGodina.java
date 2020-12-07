@@ -16,7 +16,7 @@ public class UpisGodina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUpisGodina;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "idSkolskaGodina")
     private SkolskaGodina skolskaGodina;
 
