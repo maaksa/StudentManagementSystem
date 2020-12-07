@@ -59,10 +59,10 @@ public class DosijeService {
         return rez;
     }
 
-    public void savaUpis(List<Predmet> predmetiSelected, SkolskaGodina godinaUpisa, StudIndex studIndex) {
+    public void savaUpis(List<Predmet> predmetiSelected, SkolskaGodina godinaUpisa, StudIndex studIndex, String napomena) {
         UpisGodina upisGodinaToSave = new UpisGodina();
         upisGodinaToSave.setStudentIndex(studIndex);
-        upisGodinaToSave.setNapomena(null);
+        upisGodinaToSave.setNapomena(napomena);
         upisGodinaToSave.setDatum(godinaUpisa.getDatum());
         upisGodinaToSave.setSkolskaGodina(godinaUpisa);
 
@@ -78,10 +78,10 @@ public class DosijeService {
 
     }
 
-    public void saveObnova(List<Predmet> predmetiSelected, SkolskaGodina godinaUpisa, StudIndex studIndex) {
+    public void saveObnova(List<Predmet> predmetiSelected, SkolskaGodina godinaUpisa, StudIndex studIndex, String napomena) {
         ObnovaGodina obnovaGodinaToSave = new ObnovaGodina();
         obnovaGodinaToSave.setStudentIndeks(studIndex);
-        obnovaGodinaToSave.setNapomena(null);
+        obnovaGodinaToSave.setNapomena(napomena);
         obnovaGodinaToSave.setDatum(godinaUpisa.getDatum());
         obnovaGodinaToSave.setSkolskaGodina(godinaUpisa);
 

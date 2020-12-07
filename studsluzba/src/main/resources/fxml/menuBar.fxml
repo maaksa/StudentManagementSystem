@@ -10,7 +10,6 @@
             <items>
                 <MenuItem text="Studenti" onAction="#findStudent"/>
                 <MenuItem text="Nastavnici" onAction="#findNastavnik"/>
-                <MenuItem text="Predmeti"/>
                 <MenuItem text="Ispiti" onAction="#findIspit"/>
                 <MenuItem text="Studijski program" onAction="#findStudProgram"/>
             </items>
@@ -25,10 +24,7 @@
         </Menu>
         <Menu text="Administracija">
             <items>
-                <MenuItem text="Šifarnici"/>
                 <MenuItem text="Studijski programi" onAction="#openStudProgrami"/>
-                <MenuItem text="Školska godina"/>
-                <MenuItem text="Korisnici"/>
             </items>
         </Menu>
     </MenuBar>

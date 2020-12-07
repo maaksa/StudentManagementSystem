@@ -19,10 +19,12 @@
             <Text fx:id="obnovaGodina" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
             <Label text="Skolska godina" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
             <ComboBox fx:id="skolskaGodinaCb" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            <Label text="Napomena" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextArea fx:id="napomena" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 
-            <Button onAction="#saveUpisObnova" text="Sacuvaj" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <Button onAction="#saveUpisObnova" text="Sacuvaj" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
 
-            <HBox alignment="bottom_right" spacing="30" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <HBox alignment="bottom_right" spacing="30" GridPane.columnIndex="1" GridPane.rowIndex="5">
                 <Label text="Upis obnova" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
                 <HBox GridPane.columnIndex="0" GridPane.rowIndex="9">
                     <fx:define>

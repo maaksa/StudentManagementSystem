@@ -20,8 +20,4 @@
         </BorderPane>
     </Tab>
 
-    <Tab text="Neki">
-
-    </Tab>
-
 </TabPane>

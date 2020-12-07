@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +40,9 @@ public class OpenTokStudijaController {
     Text obnovaGodina;
 
     @FXML
+    TextArea napomena;
+
+    @FXML
     Text upisGodina;
 
     @FXML
@@ -68,7 +68,7 @@ public class OpenTokStudijaController {
         List<SkolskaGodina> skolskeLista = FXCollections.observableList(sifarniciService.getSkolskeGodine());
         List<SkolskaGodina> aktivnaSkolska = new ArrayList<>();
         for (SkolskaGodina sk : skolskeLista) {
-            if(sk.isAktivna()){
+            if (sk.isAktivna()) {
                 aktivnaSkolska.add(sk);
             }
         }
@@ -100,6 +100,7 @@ public class OpenTokStudijaController {
         boolean upisObnovaRaddioB = radioButtonUpis.isSelected();
         List<StudIndex> studIndexList = student.getIndexi();
         StudIndex aktivniIndex = new StudIndex();
+        String napomenaText = napomena.getText();
 
         for (StudIndex i : studIndexList) {
             if (i.isAktivan()) {
@@ -108,10 +109,9 @@ public class OpenTokStudijaController {
         }
 
         if (upisObnovaRaddioB) {
-            dosijeService.savaUpis(predmetiSelected, upisSkolskaGodina, aktivniIndex);
+            dosijeService.savaUpis(predmetiSelected, upisSkolskaGodina, aktivniIndex, napomenaText);
         } else {
-            System.out.println("usao");
-            dosijeService.saveObnova(predmetiSelected, upisSkolskaGodina, aktivniIndex);
+            dosijeService.saveObnova(predmetiSelected, upisSkolskaGodina, aktivniIndex, napomenaText);
         }
     }
 
