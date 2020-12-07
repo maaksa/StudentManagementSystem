@@ -90,6 +90,7 @@ public class OpenTokStudijaController {
         sviPredmeti = FXCollections.observableList(dosijeService.getPredmetiZaStudProgram(aktivniIndex.getStudProgram().getSkraceniNaziv()));
         System.out.println(sviPredmeti);
         programiTable.setItems(sviPredmeti);
+        programiTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
     }
 

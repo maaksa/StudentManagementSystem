@@ -97,7 +97,7 @@ public class StudentService {
 
     public List<Student> findStudent(String ime, String prezime) {
         try {
-            return studentRepository.findStudentByNameAndSurname(ime, prezime);
+            return studentRepository.findStudentByNameAndSurname(ime.toLowerCase(), prezime.toLowerCase());
         } catch (Exception e) {
             e.printStackTrace();
             return null;

@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -45,6 +46,7 @@ public class NewSlusaPredmetController {
     @FXML
     protected void initialize() {
         List<StudIndex> studIndexList = slusaPredmetService.getStudIndexi();
+        indexiTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         indexiTable.setItems(FXCollections.observableArrayList(studIndexList));
 
         List<DrziPredmet> drziLista = sifarniciService.getDrziPredmeti();
