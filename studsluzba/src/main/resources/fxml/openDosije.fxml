@@ -54,6 +54,15 @@
     <Label text="Slusa predmete" GridPane.columnIndex="0" GridPane.rowIndex="22"/>
     <Text fx:id="slusaniPredmeti" GridPane.columnIndex="1" GridPane.rowIndex="22"/>
 
+
+    <Label text="Ulica" GridPane.columnIndex="2" GridPane.rowIndex="10"/>
+    <TextField fx:id="novaUlica" GridPane.columnIndex="3" GridPane.rowIndex="10"/>
+    <Label text="Mesto " GridPane.columnIndex="2" GridPane.rowIndex="11"/>
+    <TextField fx:id="novoMestoStanovanja" GridPane.columnIndex="3" GridPane.rowIndex="11"/>
+    <Label text="br ulice" GridPane.columnIndex="2" GridPane.rowIndex="12"/>
+    <TextField fx:id="noviBrojUlice" GridPane.columnIndex="3" GridPane.rowIndex="12"/>
+    <Button onAction="#Preseljenje" text="Preselio se" GridPane.columnIndex="3" GridPane.rowIndex="13"/>
+
     <Button onAction="#handleOpenTokStudija" text="Tok studija" GridPane.columnIndex="1" GridPane.rowIndex="24"/>
 
 </GridPane>

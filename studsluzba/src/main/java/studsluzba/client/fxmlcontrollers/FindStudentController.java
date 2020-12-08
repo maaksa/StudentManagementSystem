@@ -247,7 +247,8 @@ public class FindStudentController {
     public void handleOpenDosije(ActionEvent ae) {
         openDosijeController.student = studentiTable.getSelectionModel().getSelectedItem();
         // TODO kreirati modal window za dodavanje nove srednje skole, mozda i brisanje i promena postojećih ?? strani ključ
-        mainViewManager.openModal("openDosije");
+        //mainViewManager.openModal("openDosije");
+        mainViewManager.openModal("StudentTabPane");
     }
 
     public void updateSrednjeSkole() {

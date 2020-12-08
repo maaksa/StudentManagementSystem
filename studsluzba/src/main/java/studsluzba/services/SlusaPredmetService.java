@@ -30,6 +30,10 @@ public class SlusaPredmetService {
         return rez;
     }
 
+    public List<SlusaPredmet> getSlusaPredmeti()    //todo ovde da vratimo listu SlusaPredmeta za odredjenog studenta
+    {
+        return null;
+    }
     public List<SlusaPredmet> getSlusaPred() {
         Iterable<SlusaPredmet> iter = slusaPredmetRepo.findAll();
         List<SlusaPredmet> rez = new ArrayList<SlusaPredmet>();

@@ -124,11 +124,28 @@ public class OpenDosijeController {
     @FXML
     TableView programiTable;
 
+    @FXML
+    TextField novaUlica;
+
+    @FXML
+    TextField novoMestoStanovanja;
+
+    @FXML
+    TextField noviBrojUlice;
+
 
     public void handleOpenTokStudija(ActionEvent ae) {
         openTokStudijaController.student = student;
         // TODO kreirati modal window za dodavanje nove srednje skole, mozda i brisanje i promena postojećih ?? strani ključ
         mainViewManager.openModal("openTokStudija");
+    }
+
+    public void Preseljenje(ActionEvent ae){
+        student.setUlica(novaUlica.getText());
+        student.setMesto(novoMestoStanovanja.getText());
+        student.setBrojUlice(Integer.parseInt(noviBrojUlice.getText()));
+        updateStundetData(student);
+        //todo ne cuva u bazi
     }
 
     public void updateStundetData(Student student) {
@@ -142,9 +159,11 @@ public class OpenDosijeController {
         studemailTf.setText(student.getStudemail());
         pol.setText(String.valueOf(student.getPol()));
         brojTelefonaTf.setText(Long.toString(student.getBrojTelefona()));
+
         ulica.setText(student.getUlica());
         mestoStanovanja.setText(student.getMesto());
         brojUlice.setText(Integer.toString(student.getBrojUlice()));
+
         mestoRodjenja.setText(student.getMestoRodjenja());
         drzavljanstvo.setText(student.getDrzavljanstvo());
         nacionalnost.setText(student.getNacionalnost());
@@ -172,7 +191,6 @@ public class OpenDosijeController {
     @FXML
     public void initialize() {
         updateStundetData(student);
-
     }
 
     private void closeStage(ActionEvent event) {
