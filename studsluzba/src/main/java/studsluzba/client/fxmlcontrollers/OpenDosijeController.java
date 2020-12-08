@@ -4,20 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import studsluzba.client.MainViewManager;
-import studsluzba.model.PolozioPredmet;
-import studsluzba.model.SlusaPredmet;
-import studsluzba.model.StudIndex;
-import studsluzba.model.Student;
+import studsluzba.model.*;
 import studsluzba.services.DosijeService;
+import studsluzba.services.PolozioPredmetService;
+import studsluzba.services.SifarniciService;
 import studsluzba.services.SlusaPredmetService;
 
 import java.util.ArrayList;
@@ -40,6 +36,12 @@ public class OpenDosijeController {
 
     @Autowired
     SlusaPredmetService slusaPredmetService;
+
+    @Autowired
+    SifarniciService sifarniciService;
+
+    @Autowired
+    PolozioPredmetService polozioPredmetService;
 
     Student student;
 
@@ -140,7 +142,13 @@ public class OpenDosijeController {
     TextField noviBrojUlice;
 
     @FXML
-    TableView SlusaPredemetTable;
+    TableView SlusaPredemetTable = new TableView();
+
+    @FXML
+    TableView polozeniPredmetiTable = new TableView();
+
+    @FXML
+    ComboBox<Predmet> predmetiCb = new ComboBox<>();
 
     public void handleOpenTokStudija(ActionEvent ae) {
         openTokStudijaController.student = student;
@@ -148,7 +156,7 @@ public class OpenDosijeController {
         mainViewManager.openModal("openTokStudija");
     }
 
-    public void Preseljenje(ActionEvent ae){
+    public void Preseljenje(ActionEvent ae) {
         student.setUlica(novaUlica.getText());
         student.setMesto(novoMestoStanovanja.getText());
         student.setBrojUlice(Integer.parseInt(noviBrojUlice.getText()));
@@ -200,12 +208,42 @@ public class OpenDosijeController {
 
     }
 
+    public void handleDodajPolozeniPredmet(ActionEvent ae) {
+        StudIndex aktivniIndex = new StudIndex();
+        List<StudIndex> indexi = student.getIndexi();
+        for (StudIndex index : indexi) {
+            if (index.isAktivan()) {
+                aktivniIndex = index;
+            }
+        }
+        Predmet predmet = predmetiCb.getValue();
+        polozioPredmetService.addPolozioPredmet(aktivniIndex, predmet);
+        updatePolozeniPredTable(aktivniIndex);
+    }
+
+
     @FXML
     public void initialize() {
         updateStundetData(student);
-        List<SlusaPredmet> slusaPredmets = slusaPredmetService.getSlusaPredmeti(student);
-        SlusaPredemetTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        StudIndex aktivniIndex = new StudIndex();
+        List<StudIndex> indexi = student.getIndexi();
+        for (StudIndex index : indexi) {
+            if (index.isAktivan()) {
+                aktivniIndex = index;
+            }
+        }
+        List<Predmet> predmetList = sifarniciService.getPredmeti();
+        predmetiCb.setItems(FXCollections.observableArrayList(predmetList));
+        updatePolozeniPredTable(aktivniIndex);
+        List<SlusaPredmet> slusaPredmets = slusaPredmetService.getSlusaPredmetiByIndex(aktivniIndex.getBroj());
         SlusaPredemetTable.setItems(FXCollections.observableArrayList(slusaPredmets));
+
+    }
+
+    public void updatePolozeniPredTable(StudIndex aktivniIndex) {
+        List<PolozioPredmet> polozioPredmets = polozioPredmetService.getPolozeniPredmetiByIndex(aktivniIndex.getBroj());
+        polozeniPredmetiTable.setItems(FXCollections.observableArrayList(polozioPredmets));
+
     }
 
     private void closeStage(ActionEvent event) {

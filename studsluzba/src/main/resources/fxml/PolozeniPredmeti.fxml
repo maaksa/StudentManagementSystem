@@ -7,7 +7,7 @@
 
 <BorderPane fx:id="menu" prefHeight="428.0" prefWidth="581.0" xmlns="http://javafx.com/javafx/8.0.171"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="studsluzba.client.fxmlcontrollers.NewSlusaPredmetController">
+            fx:controller="studsluzba.client.fxmlcontrollers.OpenDosijeController">
 
     <top>
         <fx:include source="menuBar.fxml"/>
@@ -19,6 +19,7 @@
                       GridPane.rowIndex="1"/>
             <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="1">
                 <Button onAction="#handleOpenDrziPredmet" text="Dodaj novi polozen predmet"/>
+                <Button onAction="#handleDodajPolozeniPredmet" text="Dodaj Polozeni Predmet"/>
             </HBox>
         </GridPane>
     </center>
@@ -30,14 +31,9 @@
             <children>
                 <TableView fx:id="polozeniPredmetiTable">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="Naziv Predmeta">
+                        <TableColumn prefWidth="75.0" text="Predmeti">
                             <cellValueFactory>
-                                <PropertyValueFactory property="broj"/>
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn prefWidth="75.0" text="Sifra Predmeta">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="godina"/>
+                                <PropertyValueFactory property="predmeti"/>
                             </cellValueFactory>
                         </TableColumn>
                     </columns>
@@ -46,5 +42,6 @@
         </VBox>
 
     </bottom>
+
 
 </BorderPane>

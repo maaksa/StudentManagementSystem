@@ -34,7 +34,7 @@ public class StudIndex {
     @OneToMany(mappedBy = "studentIndeks")
     private List<ObnovaGodina> obnovljeneGodine;
 
-    @OneToMany(mappedBy = "studentIndex")
+    @OneToMany(mappedBy = "studentIndex", fetch = FetchType.EAGER)
     private List<PolozioPredmet> polozioPredmete;
 
     @OneToMany(mappedBy = "studentIndeks")

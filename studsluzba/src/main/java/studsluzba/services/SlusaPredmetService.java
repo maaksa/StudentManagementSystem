@@ -30,20 +30,17 @@ public class SlusaPredmetService {
         return rez;
     }
 
-    public List<SlusaPredmet> getSlusaPredmeti(Student student)    //todo ovde da vratimo listu SlusaPredmeta za odredjenog studenta
-    {
-        StudIndex si = null;
-        for (StudIndex s : student.getIndexi()) {
-            if(s.isAktivan()){
-                si = s;
-            }
-        }
-       // Iterable<SlusaPredmet> iter = slusaPredmetRepo.findSlusaPredmet(student.getIdStudent());
-        Iterable<SlusaPredmet> iter = si.getSlusaPredmete();
+    public List<SlusaPredmet> getSlusaPredmetiByIndex(int broj){
+        return slusaPredmetRepo.getSlusaPredmetiByIndex(broj);
+    }
+
+    public List<SlusaPredmet> getSlusaPredmeti(Student student) {
+        Iterable<SlusaPredmet> iter = slusaPredmetRepo.findAll();
         List<SlusaPredmet> rez = new ArrayList<SlusaPredmet>();
         iter.forEach(rez::add);
         return rez;
     }
+
     public List<SlusaPredmet> getSlusaPred() {
         Iterable<SlusaPredmet> iter = slusaPredmetRepo.findAll();
         List<SlusaPredmet> rez = new ArrayList<SlusaPredmet>();

@@ -29,19 +29,14 @@
             <children>
                 <TableView fx:id="SlusaPredemetTable">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="Naziv Predmeta">
+                        <TableColumn prefWidth="75.0" text="Student">
                             <cellValueFactory>
-                                <PropertyValueFactory property="broj"/>
+                                <PropertyValueFactory property="index"/>
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="75.0" text="Sifra Predmeta">
+                        <TableColumn prefWidth="75.0" text="Podaci">
                             <cellValueFactory>
-                                <PropertyValueFactory property="godina"/>
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn prefWidth="75.0" text="Nastavnik">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="student"/>
+                                <PropertyValueFactory property="drziPredmet"/>
                             </cellValueFactory>
                         </TableColumn>
                     </columns>
