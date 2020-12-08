@@ -1,9 +1,11 @@
 package studsluzba.client.fxmlcontrollers;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -16,6 +18,7 @@ import studsluzba.model.SlusaPredmet;
 import studsluzba.model.StudIndex;
 import studsluzba.model.Student;
 import studsluzba.services.DosijeService;
+import studsluzba.services.SlusaPredmetService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,9 @@ public class OpenDosijeController {
 
     @Autowired
     MainViewManager mainViewManager;
+
+    @Autowired
+    SlusaPredmetService slusaPredmetService;
 
     Student student;
 
@@ -133,6 +139,8 @@ public class OpenDosijeController {
     @FXML
     TextField noviBrojUlice;
 
+    @FXML
+    TableView SlusaPredemetTable;
 
     public void handleOpenTokStudija(ActionEvent ae) {
         openTokStudijaController.student = student;
@@ -146,6 +154,10 @@ public class OpenDosijeController {
         student.setBrojUlice(Integer.parseInt(noviBrojUlice.getText()));
         dosijeService.saveStudent(student);
         updateStundetData(student);
+    }
+
+    public void handleOpenDrziPredmet(ActionEvent ae) {
+        mainViewManager.openModal("addDrziPredmet");
     }
 
     public void updateStundetData(Student student) {
@@ -191,6 +203,9 @@ public class OpenDosijeController {
     @FXML
     public void initialize() {
         updateStundetData(student);
+        List<SlusaPredmet> slusaPredmets = slusaPredmetService.getSlusaPredmeti(student);
+        SlusaPredemetTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        SlusaPredemetTable.setItems(FXCollections.observableArrayList(slusaPredmets));
     }
 
     private void closeStage(ActionEvent event) {

@@ -30,9 +30,19 @@ public class SlusaPredmetService {
         return rez;
     }
 
-    public List<SlusaPredmet> getSlusaPredmeti()    //todo ovde da vratimo listu SlusaPredmeta za odredjenog studenta
+    public List<SlusaPredmet> getSlusaPredmeti(Student student)    //todo ovde da vratimo listu SlusaPredmeta za odredjenog studenta
     {
-        return null;
+        StudIndex si = null;
+        for (StudIndex s : student.getIndexi()) {
+            if(s.isAktivan()){
+                si = s;
+            }
+        }
+       // Iterable<SlusaPredmet> iter = slusaPredmetRepo.findSlusaPredmet(student.getIdStudent());
+        Iterable<SlusaPredmet> iter = si.getSlusaPredmete();
+        List<SlusaPredmet> rez = new ArrayList<SlusaPredmet>();
+        iter.forEach(rez::add);
+        return rez;
     }
     public List<SlusaPredmet> getSlusaPred() {
         Iterable<SlusaPredmet> iter = slusaPredmetRepo.findAll();
