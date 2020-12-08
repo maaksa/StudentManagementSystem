@@ -144,8 +144,8 @@ public class OpenDosijeController {
         student.setUlica(novaUlica.getText());
         student.setMesto(novoMestoStanovanja.getText());
         student.setBrojUlice(Integer.parseInt(noviBrojUlice.getText()));
+        dosijeService.saveStudent(student);
         updateStundetData(student);
-        //todo ne cuva u bazi
     }
 
     public void updateStundetData(Student student) {
