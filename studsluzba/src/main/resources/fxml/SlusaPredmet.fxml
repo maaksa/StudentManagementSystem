@@ -18,6 +18,8 @@
                       GridPane.rowIndex="1"/>
             <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="1">
                 <Button onAction="#handleOpenDrziPredmet" text="Dodaj novi predmet"/>
+                <Button onAction="#handleAddSlusaPredmet" text="Dodaj slusa predmet"/>
+
             </HBox>
         </GridPane>
     </center>

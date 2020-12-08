@@ -148,6 +148,9 @@ public class OpenDosijeController {
     TableView polozeniPredmetiTable = new TableView();
 
     @FXML
+    ComboBox<DrziPredmet> drziPredmetCb = new ComboBox<>();
+
+    @FXML
     ComboBox<Predmet> predmetiCb = new ComboBox<>();
 
     public void handleOpenTokStudija(ActionEvent ae) {
@@ -234,16 +237,35 @@ public class OpenDosijeController {
         }
         List<Predmet> predmetList = sifarniciService.getPredmeti();
         predmetiCb.setItems(FXCollections.observableArrayList(predmetList));
+        List<DrziPredmet> drziPredmetList = sifarniciService.getDrziPredmeti();
+        drziPredmetCb.setItems(FXCollections.observableArrayList(drziPredmetList));
         updatePolozeniPredTable(aktivniIndex);
-        List<SlusaPredmet> slusaPredmets = slusaPredmetService.getSlusaPredmetiByIndex(aktivniIndex.getBroj());
-        SlusaPredemetTable.setItems(FXCollections.observableArrayList(slusaPredmets));
-
+        updateSlusaPredTable(aktivniIndex);
     }
 
     public void updatePolozeniPredTable(StudIndex aktivniIndex) {
         List<PolozioPredmet> polozioPredmets = polozioPredmetService.getPolozeniPredmetiByIndex(aktivniIndex.getBroj());
         polozeniPredmetiTable.setItems(FXCollections.observableArrayList(polozioPredmets));
 
+    }
+
+    public void updateSlusaPredTable(StudIndex aktivniIndex) {
+        List<SlusaPredmet> slusaPredmets = slusaPredmetService.getSlusaPredmetiByIndex(aktivniIndex.getBroj());
+        SlusaPredemetTable.setItems(FXCollections.observableArrayList(slusaPredmets));
+
+    }
+
+    public void handleAddSlusaPredmet(ActionEvent ae) {
+        StudIndex aktivniIndex = new StudIndex();
+        List<StudIndex> indexi = student.getIndexi();
+        for (StudIndex index : indexi) {
+            if (index.isAktivan()) {
+                aktivniIndex = index;
+            }
+        }
+        DrziPredmet drziPredmet = drziPredmetCb.getValue();
+        slusaPredmetService.addSlusaPred(drziPredmet, student.getIndexi());
+        updateSlusaPredTable(aktivniIndex);
     }
 
     private void closeStage(ActionEvent event) {
