@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.*?>
-
 <BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml"
             fx:controller="studsluzba.client.fxmlcontrollers.IspitController">
 
@@ -36,7 +35,7 @@
                                                 property="sifraIspita"/>
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="75.0" text="Predmet">
+                                <TableColumn prefWidth="200.0" text="Predmet">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="predmet"/>
                                     </cellValueFactory>

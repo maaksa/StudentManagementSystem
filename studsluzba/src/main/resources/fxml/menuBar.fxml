@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
-
 <VBox fx:id="menu" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="studsluzba.client.fxmlcontrollers.MenuBarController">
     <MenuBar fx:id="menuBar" style="-fx-background-color: #ADD8E6;">

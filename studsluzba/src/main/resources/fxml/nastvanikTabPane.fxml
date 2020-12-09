@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.geometry.Insets?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
 <TabPane xmlns:fx="http://javafx.com/fxml" fx:controller="studsluzba.client.fxmlcontrollers.FindNastavnikController">
     <Tab text="Pregled i unos koji nastvanik drzi koji predmeta">
         <BorderPane>
@@ -30,12 +29,12 @@
                     <children>
                         <TableView fx:id="drziPredmetTable">
                             <columns>
-                                <TableColumn prefWidth="75.0" text="Nastvanik">
+                                <TableColumn prefWidth="150.0" text="Nastvanik">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="nastavnik"/>
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="75.0" text="Predmet">
+                                <TableColumn prefWidth="200.0" text="Predmet">
                                     <cellValueFactory>
                                         <PropertyValueFactory
                                                 property="predmet"/>
@@ -46,7 +45,7 @@
                                         <PropertyValueFactory property="sifra"/>
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="75.0" text="Skolska godina">
+                                <TableColumn prefWidth="175.0" text="Skolska godina">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="skolskaGod"/>
                                     </cellValueFactory>
@@ -98,7 +97,7 @@
                                         <PropertyValueFactory property="prezime"/>
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="75.0" text="Zvanje">
+                                <TableColumn prefWidth="150.0" text="Zvanje">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="zvanja"/>
                                     </cellValueFactory>

@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-
 <BorderPane fx:id="menu" prefHeight="308.0" prefWidth="301.0" xmlns="http://javafx.com/javafx/8.0.171"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="studsluzba.client.fxmlcontrollers.OpenViewSlusaPredmetController">
@@ -19,12 +18,12 @@
             <children>
                 <TableView fx:id="slusaTable">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="Student">
+                        <TableColumn prefWidth="170.0" text="Student">
                             <cellValueFactory>
                                 <PropertyValueFactory property="index"/>
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="75.0" text="Podaci">
+                        <TableColumn prefWidth="675.0" text="Podaci">
                             <cellValueFactory>
                                 <PropertyValueFactory property="drziPredmet"/>
                             </cellValueFactory>

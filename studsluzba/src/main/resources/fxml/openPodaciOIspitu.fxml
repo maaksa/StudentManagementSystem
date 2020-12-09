@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.geometry.Insets?>
-
 <TabPane xmlns:fx="http://javafx.com/fxml"
          fx:controller="studsluzba.client.fxmlcontrollers.OpenPodaciOIspituController">
 

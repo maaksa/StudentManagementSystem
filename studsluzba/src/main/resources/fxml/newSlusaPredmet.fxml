@@ -4,7 +4,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.*?>
-
 <BorderPane fx:id="menu" prefHeight="428.0" prefWidth="581.0" xmlns="http://javafx.com/javafx/8.0.171"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="studsluzba.client.fxmlcontrollers.NewSlusaPredmetController">
@@ -41,7 +40,7 @@
                                 <PropertyValueFactory property="godina"/>
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="75.0" text="Student">
+                        <TableColumn prefWidth="600.0" text="Student">
                             <cellValueFactory>
                                 <PropertyValueFactory property="student"/>
                             </cellValueFactory>

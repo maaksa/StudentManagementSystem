@@ -4,7 +4,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.*?>
-
 <BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml"
             fx:controller="studsluzba.client.fxmlcontrollers.FindStudentController">
 
@@ -37,7 +36,7 @@
                                         <PropertyValueFactory property="prezime"/>
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="75.0" text="Indeks">
+                                <TableColumn prefWidth="200.0" text="Indeks">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="indexi"/>
                                     </cellValueFactory>
