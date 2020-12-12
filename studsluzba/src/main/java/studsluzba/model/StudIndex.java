@@ -47,6 +47,12 @@ public class StudIndex {
     @JoinColumn(name = "idstudProgram")
     private StudProgram studProgram;
 
+    public StudIndex(int broj, int godina, StudProgram studProgram){
+        this.broj = broj;
+        this.godina = godina;
+        this.studProgram = studProgram;
+    }
+
     public StudIndex(int broj, int godina, boolean aktivan, LocalDate odKadJeAktivan, Student student, StudProgram studProgram) {
         this.broj = broj;
         this.godina = godina;

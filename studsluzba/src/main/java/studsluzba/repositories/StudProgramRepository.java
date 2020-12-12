@@ -19,4 +19,7 @@ public interface StudProgramRepository extends CrudRepository<StudProgram, Integ
             "(select pre.predmet.polozioPredmet.idPolozioPredmet from DrziPredmet pre " +
             "where pre.skolskaGod.datum between :odGodine and :doGodine and pre.predmet.nazivPredmeta like :nazivPred)")
     Float selectProsecnaOcenaZaRasponGodina(String nazivPred, int odGodine, int doGodine);
+
+    @Query("select sp from StudProgram sp where sp.skraceniNaziv like :skraceniNaziv")
+    StudProgram getStudProgramBySkraceniNaziv(String skraceniNaziv);
 }

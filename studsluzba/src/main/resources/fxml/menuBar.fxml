@@ -24,6 +24,7 @@
         <Menu text="Administracija">
             <items>
                 <MenuItem text="Studijski programi" onAction="#openStudProgrami"/>
+                <MenuItem text="Import" onAction="#openImport"/>
             </items>
         </Menu>
     </MenuBar>

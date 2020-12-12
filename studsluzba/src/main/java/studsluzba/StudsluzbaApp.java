@@ -49,6 +49,7 @@ public class StudsluzbaApp extends Application {
         //mozemo iz konteksta da uzmemo taj obj posto ima anotaciju @Component
         //getBean isto kao i anotacija @Autowired, getBean koristimo ako nam je taj obj potreban samo u nekoj metodi ne u celoj klasi
         MainViewManager mainView = springContext.getBean(MainViewManager.class);
+        mainView.setMainStage(primaryStage);
         primaryStage.setScene(mainView.createScene());
         primaryStage.show();
     }

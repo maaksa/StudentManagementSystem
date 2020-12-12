@@ -64,4 +64,9 @@ public class MenuBarController {
         mainViewManager.changeRoot("searchStudent");
     }
 
+    public void openImport(ActionEvent event) {
+        mainViewManager.changeRoot("importData");
+    }
+
+
 }

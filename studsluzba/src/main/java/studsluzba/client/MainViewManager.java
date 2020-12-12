@@ -4,11 +4,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.io.IOException;
 
 @Component
@@ -25,6 +27,8 @@ public class MainViewManager {
     ContextFXMLLoader appFXMLLoader;
 
     private Scene scene;
+
+    private Stage mainStage;
 
     //ovu metodu smo pozvali u start metodi, prva scena koja nam se kreira
     public Scene createScene() {
@@ -44,7 +48,6 @@ public class MainViewManager {
         try {
             scene.setRoot(loader.load());//promenimo mu izgled ono sto smo loadovali iz fxml fajla koji smo prosledili getLoader metodi
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -61,9 +64,17 @@ public class MainViewManager {
             stage.showAndWait();
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    public void setMainStage(Stage stage) {
+        this.mainStage = stage;
+    }
+
+    public File openFileChooser() {
+        FileChooser fileChooser = new FileChooser();//fileCooser potreban mu je stage na kome ce se otvoriti
+        return fileChooser.showOpenDialog(mainStage);
     }
 }
 
