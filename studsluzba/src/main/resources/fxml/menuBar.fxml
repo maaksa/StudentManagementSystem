@@ -27,6 +27,11 @@
                 <MenuItem text="Import" onAction="#openImport"/>
             </items>
         </Menu>
+        <Menu text="Izvestaji">
+            <items>
+                <MenuItem text="Spiskovi studenata" onAction="#openSpiskoviStudenataIzvestaj"/>
+            </items>
+        </Menu>
     </MenuBar>
 
 </VBox>

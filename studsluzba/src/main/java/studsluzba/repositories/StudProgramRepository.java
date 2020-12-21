@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import studsluzba.model.Predmet;
 import studsluzba.model.StudProgram;
+import studsluzba.model.Student;
 
 import java.util.List;
 
@@ -22,4 +23,9 @@ public interface StudProgramRepository extends CrudRepository<StudProgram, Integ
 
     @Query("select sp from StudProgram sp where sp.skraceniNaziv like :skraceniNaziv")
     StudProgram getStudProgramBySkraceniNaziv(String skraceniNaziv);
+
+    @Query("select si.student from StudIndex si where si.studProgram = :sp ")
+        //dodati da je indeks aktivan and si.aktivan = true
+    List<Student> getStudentiNaProgramu(StudProgram sp);
+
 }

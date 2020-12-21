@@ -124,7 +124,6 @@ public class StudentService {
     }
 
     public StudIndex saveStudentAndIndex(String ime, String prezime, String studProgram, int broj, int godinaUpisa) {
-
         Student s = new Student(ime, prezime);
         s = studentRepository.save(s);
         StudProgram sp = studProgramRepository.getStudProgramBySkraceniNaziv(studProgram);

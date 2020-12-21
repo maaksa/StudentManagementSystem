@@ -72,6 +72,10 @@ public class MainViewManager {
         this.mainStage = stage;
     }
 
+    public Stage getMainStage() {
+        return this.mainStage;
+    }
+
     public File openFileChooser() {
         FileChooser fileChooser = new FileChooser();//fileCooser potreban mu je stage na kome ce se otvoriti
         return fileChooser.showOpenDialog(mainStage);

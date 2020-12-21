@@ -68,5 +68,8 @@ public class MenuBarController {
         mainViewManager.changeRoot("importData");
     }
 
+    public void openSpiskoviStudenataIzvestaj(ActionEvent ecent) {
+        mainViewManager.changeRoot("spiskoviStudenataIzvestaji");
+    }
 
 }

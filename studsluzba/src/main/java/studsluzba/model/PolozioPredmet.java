@@ -46,6 +46,9 @@ public class PolozioPredmet {
 
     @Override
     public String toString() {
-        return this.getPredmeti().toString();
+        return this.getPredmeti().toString();  /*.replace(",", "")  //remove the commas
+                .replace("[", "")  //remove the right bracket
+                .replace("]", "")  //remove the left bracket
+                .trim(); */
     }
 }

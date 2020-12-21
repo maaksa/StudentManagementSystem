@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import studsluzba.model.Predmet;
 import studsluzba.model.StudProgram;
+import studsluzba.model.Student;
 import studsluzba.repositories.StudProgramRepository;
 
 import java.util.ArrayList;
@@ -32,6 +33,10 @@ public class StudProgramService {
     public List<Predmet> getPredmetiByProgram(String smer) {
         List<Predmet> predmetiToReturn = studProgramRepo.selectPredmetiByStudProg(smer);
         return predmetiToReturn;
+    }
+
+    public List<Student> getStudentiNaProgramu(StudProgram sp) {
+        return studProgramRepo.getStudentiNaProgramu(sp);
     }
 
 }
