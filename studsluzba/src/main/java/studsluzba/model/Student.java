@@ -57,7 +57,7 @@ public class Student {
 
     public Student(String ime, String prezime) {
         this.ime = ime;
-        this.prelaz = prezime;
+        this.prezime = prezime;
     }
 
     public Student(String ime, String prezime, String srednjeIme, long jmbg, LocalDate daumRodjenja, String mestoRodjenja, String drzavljanstvo, String nacionalnost, char pol, String mesto, String ulica, int brojUlice, long brojTelefona, String privemail, String studemail, String brojLicneKarte, String licnuKartuIzdao, boolean upisaoPrvuGodinu, double uspehSrednjaSkola, double uspehPrijemni, String prelaz/*, SrednjaSkola srednjaSkola*/, VisokaSkola visokaSkola) {

@@ -128,6 +128,7 @@ public class StudentService {
         s = studentRepository.save(s);
         StudProgram sp = studProgramRepository.getStudProgramBySkraceniNaziv(studProgram);
         StudIndex si = new StudIndex(broj, godinaUpisa, sp);
+        si.setAktivan(true);
         si.setStudent(s);
         return studIndexRepository.save(si);
     }

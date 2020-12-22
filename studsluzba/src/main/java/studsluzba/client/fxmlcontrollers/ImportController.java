@@ -27,12 +27,12 @@ public class ImportController {
 
     private File fajl;
 
-    public void izaberiFajl(ActionEvent ecent) {
+    public void izaberiFajl(ActionEvent ae) {
         fajl = mainViewManager.openFileChooser();
         nazivFajlaLabel.setText(fajl.getName());
     }
 
-    public void zapocniImport(ActionEvent ecent) {
+    public void zapocniImport(ActionEvent ae) {
         String poruka = csvPoeniImporter.importCSV(fajl);
         izvestajImportLabel.setText(poruka);
     }

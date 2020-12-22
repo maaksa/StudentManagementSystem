@@ -14,7 +14,7 @@ public class IzlazakNaIspit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idIzlazak;
 
-    private int brojOsvojenihPoena;
+    private double brojOsvojenihPoena;
     private String napomena;
     private boolean ponistavanje;
     private boolean izasaoNaIspit;
@@ -29,8 +29,8 @@ public class IzlazakNaIspit {
     @JoinColumn(name = "idIspit")
     private Ispit ispit;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idPolozioPredmet")
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idPolozioPredmet") //todo bilo je all
     private PolozioPredmet polozioPredmet;
 
     public IzlazakNaIspit() {

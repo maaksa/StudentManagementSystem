@@ -16,7 +16,7 @@ public class PredispitneObaveze {
     private int idPredIspitne;
 
     private String vrstaObabeza;
-    private int poeni;
+    private double poeni;
     private int maxBrp;
 
     @ManyToOne()

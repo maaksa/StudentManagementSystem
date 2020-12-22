@@ -5,4 +5,6 @@ import studsluzba.model.Predmet;
 
 public interface PredmetRepository  extends CrudRepository<Predmet,Integer>{
 
+    Predmet getPredmetByNazivPredmeta(String naziv);
+
 }

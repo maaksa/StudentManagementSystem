@@ -15,7 +15,7 @@ public class OsvojeniPredispitniPoeni {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idOsvojeniPoeni;
-    private int ukupanBrojPoena;
+    private double ukupanBrojPoena;
 
     @ManyToOne()
     @JoinColumn(name = "idStudIndex")

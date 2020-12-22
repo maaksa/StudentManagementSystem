@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import studsluzba.model.*;
 import studsluzba.repositories.IspitRepository;
 import studsluzba.repositories.IspitniRokRepository;
+import studsluzba.repositories.NastavnikRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,6 +19,9 @@ public class IspitiService {
 
     @Autowired
     IspitniRokRepository ispitniRokRepository;
+
+    @Autowired
+    NastavnikRepository nastavnikRepository;
 
     public List<Ispit> getIspiti() {
         Iterable<Ispit> iter = ispitRepository.findAll();
@@ -54,5 +58,20 @@ public class IspitiService {
         ispit.setUnetiPoeni(false);
 
         ispitRepository.save(ispit);
+    }
+
+    public Ispit createIspit(Predmet predmet) {
+        Ispit ispit = new Ispit();
+        ispit.setPredmet(predmet);
+        ispit.setSifraIspita("89842");
+        Nastavnik nastavnik = new Nastavnik();
+        nastavnik.setIme("Pera");
+        nastavnik.setPrezime("Mikic");
+
+        nastavnikRepository.save(nastavnik);
+
+        ispit.setNastavnik(nastavnik);
+
+        return ispitRepository.save(ispit);
     }
 }

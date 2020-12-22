@@ -29,8 +29,8 @@ public class PolozioPredmet {
     private List<Predmet> predmeti;
 
     //izlazak na ispit da ima idIzlazak
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idIzlazak")
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "idIzlazak") //todo bilo je all
     private IzlazakNaIspit izlazakNaIspit;
 
     public PolozioPredmet() {
