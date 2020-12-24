@@ -11,9 +11,10 @@
 
 <center>
 	<VBox alignment="center" spacing="8">
-	<Label text="Spisak po studijskom programu" />
-	<HBox alignment="center" spacing="8">	
-		<ComboBox fx:id="studProgramiCb" />
+	<Label text="Spisak studenata koji su izasli na ispit" />
+	<HBox alignment="center" spacing="8">
+		<ComboBox fx:id="predmetiCb" />
+		<ComboBox fx:id="ispitniRokoviCb" />
 		<Button text="Generiši" onAction="#handleGenerisiSpisakPoStudProgramu"/>
 	</HBox>
 	</VBox>
