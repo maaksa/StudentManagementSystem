@@ -62,7 +62,6 @@ public class SpiskoviStudenataIzvestajiController {
 
         Predmet predmet = predmetiCb.getValue();
         IspitniRok rok = ispitniRokoviCb.getValue();
-        List<Student> studenti = izlazakNaIspitService.prijaveljeniStudenti(predmet,rok);
 
         List<PrijavaIspita> prijaveIspita = izlazakNaIspitService.prijave(predmet, rok);
         PrijavaIspita prijava = prijaveIspita.get(0);
@@ -73,6 +72,7 @@ public class SpiskoviStudenataIzvestajiController {
 
         String imePredmeta = predmet.getNazivPredmeta();
         String sifraPredmeta = predmet.getSifraPredmeta();
+        String studProgram = predmet.getStudProgram().getNaziv();
 
         for(PrijavaIspita p : prijaveIspita){
             TEST t = new TEST();
@@ -82,16 +82,57 @@ public class SpiskoviStudenataIzvestajiController {
             t.setBrojPoena(p.getIzlazakNaIspit().getPolozioPredmet().getUkupanBrojPoena());
             t.setOcena(p.getIzlazakNaIspit().getPolozioPredmet().getOcena());
             sviIzlasci.add(t);
-
-            System.out.println(t.getIme() + '\n');
-            System.out.println(t.getPrezime() + '\n');
-            System.out.println(t.getStudIndex() + '\n');
-            System.out.println(t.getBrojPoena() + '\n');
-            System.out.println(t.getOcena() + '\n');
         }
 
+        int brojPrijavljenih = prijaveIspita.size();
+        int brojPolaganja = 0;
+        int nisuPolagali = 0;
+        int polozili = 0;
+        double prolaznost = 0;
+        String Prolaznost;
+
+        double procenatOsvojenih5 = 0; int count5 = 0;
+        double procenatOsvojenih6 = 0; int count6 = 0;
+        double procenatOsvojenih7 = 0; int count7 = 0;
+        double procenatOsvojenih8 = 0; int count8 = 0;
+        double procenatOsvojenih9 = 0; int count9 = 0;
+        double procenatOsvojenih10 = 0; int count10 = 0;
 
 
+
+        for(PrijavaIspita p : prijaveIspita){
+            if(p.getIzlazakNaIspit() != null) brojPolaganja++;
+            else nisuPolagali++;
+
+            if(p.getIzlazakNaIspit().getPolozioPredmet().getOcena() > 5)
+                polozili++;
+
+            if(p.getIzlazakNaIspit().getPolozioPredmet() != null)
+            {
+                if(p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 6) count6++;
+                else if(p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 7) count7++;
+                else if(p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 8) count8++;
+                else if(p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 9) count9++;
+                else count10++;
+            }
+            else count5++;
+        }
+        prolaznost = (polozili * 100) / brojPolaganja;
+        Prolaznost = Double.toString(prolaznost) + '%';
+
+        procenatOsvojenih5 = (count5 * 100) / brojPolaganja;
+        procenatOsvojenih6 = (count6 * 100) / polozili;
+        procenatOsvojenih7 = (count7 * 100) / polozili;
+        procenatOsvojenih8 = (count8 * 100) / polozili;
+        procenatOsvojenih9 = (count9 * 100) / polozili;
+        procenatOsvojenih10 = (count10 * 100) / polozili;
+
+        String procenat5 = Double.toString(procenatOsvojenih5) + '%';
+        String procenat6 = Double.toString(procenatOsvojenih6) + '%';
+        String procenat7 = Double.toString(procenatOsvojenih7) + '%';
+        String procenat8 = Double.toString(procenatOsvojenih8) + '%';
+        String procenat9 = Double.toString(procenatOsvojenih9) + '%';
+        String procenat10 = Double.toString(procenatOsvojenih10) + '%';
 
         List<DrziPredmet> drziPredmeti = sifarniciService.getDrziPredmeti();
         Nastavnik nastavnik = null;
@@ -102,6 +143,7 @@ public class SpiskoviStudenataIzvestajiController {
         }
         int sifraNastavnika = nastavnik.getIdNastavnik();
         String imeNastavnika = nastavnik.getIme() + " " + nastavnik.getSrednjeIme() + " " + nastavnik.getPrezime();
+        params.put("studProgram", studProgram);
         params.put("sifraPredmeta", sifraPredmeta);
         params.put("imePredmeta", imePredmeta);
         params.put("imeNastavnika", imeNastavnika);
@@ -110,6 +152,19 @@ public class SpiskoviStudenataIzvestajiController {
         params.put("ispitniRok", ispitniRok);
         params.put("vremeOdrzavanja", vremeOdrzavanja);
         params.put("skolskaGod", skolskaGod);
+
+        params.put("brojPrijavljenih", brojPrijavljenih);
+        params.put("brojPolaganja", brojPolaganja);
+        params.put("nisuPolagali", nisuPolagali);
+        params.put("polozili", polozili);
+        params.put("prolaznost", Prolaznost);
+
+        params.put("procenat5", procenat5);
+        params.put("procenat6", procenat6);
+        params.put("procenat7", procenat7);
+        params.put("procenat8", procenat8);
+        params.put("procenat9", procenat9);
+        params.put("procenat10", procenat10);
 
         //reportsManager.openReport(studenti, params, "spisakStudenataZaStudProgram");
         reportsManager.openReport(sviIzlasci, params, "spisakStudenataZaStudProgram");
