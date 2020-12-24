@@ -89,17 +89,6 @@ public class SpiskoviStudenataIzvestajiController {
             System.out.println(t.getBrojPoena() + '\n');
             System.out.println(t.getOcena() + '\n');
         }
-        int brojPrijavljenih = prijaveIspita.size();
-        int brojPolaganja = 0;
-        int nisuPolagali = 0;
-        int polozili = 0;
-
-        for(PrijavaIspita p : prijaveIspita){
-            if(p.getIzlazakNaIspit() != null) brojPolaganja++;
-            else nisuPolagali++;
-            if(p.getIzlazakNaIspit().getPolozioPredmet().getOcena() > 5)
-                polozili++;
-        }
 
 
 
@@ -122,10 +111,6 @@ public class SpiskoviStudenataIzvestajiController {
         params.put("vremeOdrzavanja", vremeOdrzavanja);
         params.put("skolskaGod", skolskaGod);
 
-        params.put("brojPrijavljenih", brojPrijavljenih);
-        params.put("brojPolaganja", brojPolaganja);
-        params.put("nisuPolagali", nisuPolagali);
-        params.put("polozili", polozili);
         //reportsManager.openReport(studenti, params, "spisakStudenataZaStudProgram");
         reportsManager.openReport(sviIzlasci, params, "spisakStudenataZaStudProgram");
     }
