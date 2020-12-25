@@ -61,6 +61,7 @@ public class SpiskoviStudenataIzvestajiController {
         IspitniRok rok = ispitniRokoviCb.getValue();
 
         List<PrijavaIspita> prijaveIspita = izlazakNaIspitService.prijave(predmet, rok);
+        System.out.println(prijaveIspita.size());
         PrijavaIspita prijava = prijaveIspita.get(0);
         String vremeOdrzavanja = prijava.getIspit().getVremePocetka().toString();
         String datumOdrzavanja = prijava.getIspit().getDatumOdrzavanja().toString();
