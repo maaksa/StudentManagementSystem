@@ -40,7 +40,9 @@ public class PolozioPredmetService {
             polozioPredmet.setUkupanBrojPoena((float) poeni);
             polozioPredmet.setPriznatSaDrugogFaksa(false);
 
-            if (poeni > 50 && poeni < 61) {
+            if (poeni < 51) {
+                polozioPredmet.setOcena(5);
+            } else if (poeni > 50 && poeni < 61) {
                 polozioPredmet.setOcena(6);
             } else if (poeni > 60 && poeni < 71) {
                 polozioPredmet.setOcena(7);
@@ -58,8 +60,7 @@ public class PolozioPredmetService {
             predmetRepository.save(predmet);
 
             return toReturn;
-        }
-        else
+        } else
             return null;
     }
 

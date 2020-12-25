@@ -9,11 +9,9 @@ import org.springframework.stereotype.Component;
 import studsluzba.client.reports.ReportsManager;
 import studsluzba.model.*;
 import studsluzba.services.IzlazakNaIspitService;
-import studsluzba.services.PrijavaIspitaService;
 import studsluzba.services.SifarniciService;
 import studsluzba.services.StudProgramService;
 
-import java.time.Clock;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,7 +50,6 @@ public class SpiskoviStudenataIzvestajiController {
         List<IspitniRok> ispitniRokList = sifarniciService.getIspitniRokovi();
         ispitniRokoviCb.setItems(FXCollections.observableArrayList(ispitniRokList));
 
-        // System.out.println(ispitniRokList.size());   = 243
     }
 
     public void handleGenerisiSpisakPoStudProgramu(ActionEvent ecent) {
@@ -74,13 +71,18 @@ public class SpiskoviStudenataIzvestajiController {
         String sifraPredmeta = predmet.getSifraPredmeta();
         String studProgram = predmet.getStudProgram().getNaziv();
 
-        for(PrijavaIspita p : prijaveIspita){
+        for (PrijavaIspita p : prijaveIspita) {
             TEST t = new TEST();
             t.setIme(p.getStudIndexi().getStudent().getIme());
             t.setPrezime(p.getStudIndexi().getStudent().getPrezime());
             t.setStudIndex(p.getStudIndexi().toString());
+            PolozioPredmet pp = p.getIzlazakNaIspit().getPolozioPredmet();
+            if (pp == null) {
+                continue;
+            }
             t.setBrojPoena(p.getIzlazakNaIspit().getPolozioPredmet().getUkupanBrojPoena());
             t.setOcena(p.getIzlazakNaIspit().getPolozioPredmet().getOcena());
+
             sviIzlasci.add(t);
         }
 
@@ -91,34 +93,42 @@ public class SpiskoviStudenataIzvestajiController {
         double prolaznost = 0;
         String Prolaznost;
 
-        double procenatOsvojenih5 = 0; int count5 = 0;
-        double procenatOsvojenih6 = 0; int count6 = 0;
-        double procenatOsvojenih7 = 0; int count7 = 0;
-        double procenatOsvojenih8 = 0; int count8 = 0;
-        double procenatOsvojenih9 = 0; int count9 = 0;
-        double procenatOsvojenih10 = 0; int count10 = 0;
+        double procenatOsvojenih5 = 0;
+        int count5 = 0;
+        double procenatOsvojenih6 = 0;
+        int count6 = 0;
+        double procenatOsvojenih7 = 0;
+        int count7 = 0;
+        double procenatOsvojenih8 = 0;
+        int count8 = 0;
+        double procenatOsvojenih9 = 0;
+        int count9 = 0;
+        double procenatOsvojenih10 = 0;
+        int count10 = 0;
 
 
-
-        for(PrijavaIspita p : prijaveIspita){
-            if(p.getIzlazakNaIspit() != null) brojPolaganja++;
+        for (PrijavaIspita p : prijaveIspita) {
+            if (p.getIzlazakNaIspit() != null) brojPolaganja++;
             else nisuPolagali++;
-
-            if(p.getIzlazakNaIspit().getPolozioPredmet().getOcena() > 5)
+            PolozioPredmet pp2 = p.getIzlazakNaIspit().getPolozioPredmet();
+            if (pp2 == null) {
+                continue;
+            }
+            if (p.getIzlazakNaIspit().getPolozioPredmet().getUkupanBrojPoena() > 50)
                 polozili++;
 
-            if(p.getIzlazakNaIspit().getPolozioPredmet() != null)
-            {
-                if(p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 6) count6++;
-                else if(p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 7) count7++;
-                else if(p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 8) count8++;
-                else if(p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 9) count9++;
-                else count10++;
+            if (p.getIzlazakNaIspit().getPolozioPredmet() != null) {
+                if (p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 5) count5++;
+                else if (p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 6) count6++;
+                else if (p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 7) count7++;
+                else if (p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 8) count8++;
+                else if (p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 9) count9++;
+                else if (p.getIzlazakNaIspit().getPolozioPredmet().getOcena() == 10) count10++;
             }
-            else count5++;
         }
         prolaznost = (polozili * 100) / brojPolaganja;
         Prolaznost = Double.toString(prolaznost) + '%';
+
 
         procenatOsvojenih5 = (count5 * 100) / brojPolaganja;
         procenatOsvojenih6 = (count6 * 100) / polozili;
@@ -134,14 +144,8 @@ public class SpiskoviStudenataIzvestajiController {
         String procenat9 = Double.toString(procenatOsvojenih9) + '%';
         String procenat10 = Double.toString(procenatOsvojenih10) + '%';
 
-        List<DrziPredmet> drziPredmeti = sifarniciService.getDrziPredmeti();
-        Nastavnik nastavnik = null;
-        for(DrziPredmet d : drziPredmeti){
-            if(d.getPredmet().getNazivPredmeta().equals(imePredmeta)){
-                nastavnik = d.getNastavnik();
-            }
-        }
-        int sifraNastavnika = nastavnik.getIdNastavnik();
+        int sifraNastavnika = prijava.getIspit().getNastavnik().getIdNastavnik();
+        Nastavnik nastavnik = prijava.getIspit().getNastavnik();
         String imeNastavnika = nastavnik.getIme() + " " + nastavnik.getSrednjeIme() + " " + nastavnik.getPrezime();
         params.put("studProgram", studProgram);
         params.put("sifraPredmeta", sifraPredmeta);
