@@ -47,6 +47,13 @@ public class CSVPoeniImporter {
     private SkolskaGodina skolskaGodina;
     private Ispit ispit;
 
+    //////////////
+    private IspitniRok ispitniRokJun = new IspitniRok();
+    private IspitniRok ispitniRokJul = new IspitniRok();
+    private IspitniRok ispitniRokAvg = new IspitniRok();
+    private IspitniRok ispitniRokSep = new IspitniRok();
+    ////////////
+
     public String importCSV(File f) {
         Scanner sc = null;
         ArrayList<String> predispitni = new ArrayList<>();
@@ -81,7 +88,7 @@ public class CSVPoeniImporter {
                 ispitni.add(deloviNaslovIspiti[i]);
             }
 
-            ispit = ispitiService.createIspit(predmet);
+            ispit = ispitiService.createIspit(predmet, ispitniRokJun, ispitniRokJul, ispitniRokAvg, ispitniRokSep);
 
             int brojSacuvanihStudenata = 0;
             while (sc.hasNext()) {
@@ -111,7 +118,6 @@ public class CSVPoeniImporter {
                     PredispitneObaveze predispitneObaveze;
                     PrijavaIspita prijavaIspita;
                     IzlazakNaIspit izlazakNaIspit;
-                    IspitniRok ispitniRok;
                     PolozioPredmet polozioPredmet;
                     switch (i) {
                         case 5:
@@ -130,8 +136,8 @@ public class CSVPoeniImporter {
                                     predispitni.get(2), skolskaGodina, osvojeniPredispitniPoeni);
                             break;
                         case 8:
-                            ispitniRok = ispitniRokService.createIspitniRok(skolskaGodina, ispitni.get(0), ispit);
-                            prijavaIspita = prijavaIspitaService.createPrijava(ispit, si);
+                            ispitniRokJun = ispitniRokService.createIspitniRok(skolskaGodina, ispitni.get(0), ispit);
+                            prijavaIspita = prijavaIspitaService.createPrijava(ispit, si, ispitniRokJun);
                             ukupniPoeni = ukupnoPredispitnih + Double.parseDouble(delovi[i]);
                             if (ukupniPoeni > 50) {
                                 polozio = true;
@@ -140,8 +146,8 @@ public class CSVPoeniImporter {
                             izlazakNaIspit = izlazakNaIspitService.createIzlazak(ispit, prijavaIspita, polozioPredmet, Double.parseDouble(delovi[i]));
                             break;
                         case 9:
-                            ispitniRok = ispitniRokService.createIspitniRok(skolskaGodina, ispitni.get(1), ispit);
-                            prijavaIspita = prijavaIspitaService.createPrijava(ispit, si);
+                            ispitniRokJul = ispitniRokService.createIspitniRok(skolskaGodina, ispitni.get(1), ispit);
+                            prijavaIspita = prijavaIspitaService.createPrijava(ispit, si, ispitniRokJul);
                             ukupniPoeni = ukupnoPredispitnih + Double.parseDouble(delovi[i]);
                             if (ukupniPoeni > 50) {
                                 polozio = true;
@@ -150,8 +156,8 @@ public class CSVPoeniImporter {
                             izlazakNaIspit = izlazakNaIspitService.createIzlazak(ispit, prijavaIspita, polozioPredmet, Double.parseDouble(delovi[i]));
                             break;
                         case 10:
-                            ispitniRok = ispitniRokService.createIspitniRok(skolskaGodina, ispitni.get(2), ispit);
-                            prijavaIspita = prijavaIspitaService.createPrijava(ispit, si);
+                            ispitniRokAvg = ispitniRokService.createIspitniRok(skolskaGodina, ispitni.get(2), ispit);
+                            prijavaIspita = prijavaIspitaService.createPrijava(ispit, si, ispitniRokAvg);
                             ukupniPoeni = ukupnoPredispitnih + Double.parseDouble(delovi[i]);
                             if (ukupniPoeni > 50) {
                                 polozio = true;
@@ -160,8 +166,8 @@ public class CSVPoeniImporter {
                             izlazakNaIspit = izlazakNaIspitService.createIzlazak(ispit, prijavaIspita, polozioPredmet, Double.parseDouble(delovi[i]));
                             break;
                         case 11:
-                            ispitniRok = ispitniRokService.createIspitniRok(skolskaGodina, ispitni.get(3), ispit);
-                            prijavaIspita = prijavaIspitaService.createPrijava(ispit, si);
+                            ispitniRokSep = ispitniRokService.createIspitniRok(skolskaGodina, ispitni.get(3), ispit);
+                            prijavaIspita = prijavaIspitaService.createPrijava(ispit, si, ispitniRokSep);
                             ukupniPoeni = ukupnoPredispitnih + Double.parseDouble(delovi[i]);
                             if (ukupniPoeni > 50) {
                                 polozio = true;

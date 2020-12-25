@@ -9,6 +9,7 @@ import studsluzba.repositories.NastavnikRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -53,25 +54,55 @@ public class IspitiService {
         ispit.setSifraIspita(sifra);
         ispit.setDatumOdrzavanja(datum);
         ispit.setPredmet(predmet);
-        ispit.setIspitniRok(ispitniRok);
         ispit.setNastavnik(nastavnik);
         ispit.setUnetiPoeni(false);
 
         ispitRepository.save(ispit);
+
+        ispitniRok.setIspit(ispit);
+        ispitniRokRepository.save(ispitniRok);
     }
 
-    public Ispit createIspit(Predmet predmet) {
+    public Ispit createIspit(Predmet predmet, IspitniRok isj, IspitniRok isjul, IspitniRok isa, IspitniRok iss) {
+
+        isj.setDatumPocetka("jun");
+        isj.setDatumZavrsetka("jul");
+
+        isjul.setDatumPocetka("jul");
+        isjul.setDatumZavrsetka("avgust");
+
+        isa.setDatumPocetka("avgust");
+        isa.setDatumZavrsetka("septembar");
+
+        iss.setDatumPocetka("septembar");
+        iss.setDatumZavrsetka("oktobar");
+
         Ispit ispit = new Ispit();
         ispit.setPredmet(predmet);
         ispit.setSifraIspita("89842");
+        ispit.setDatumOdrzavanja(LocalDate.now());
+        ispit.setVremePocetka("13:00");
         Nastavnik nastavnik = new Nastavnik();
         nastavnik.setIme("Pera");
         nastavnik.setPrezime("Mikic");
+        nastavnik.setSrednjeIme("Mika");
 
         nastavnikRepository.save(nastavnik);
 
         ispit.setNastavnik(nastavnik);
 
-        return ispitRepository.save(ispit);
+        Ispit toReturn = ispitRepository.save(ispit);
+
+        isj.setIspit(ispit);
+        isjul.setIspit(ispit);
+        isa.setIspit(ispit);
+        iss.setIspit(ispit);
+
+        ispitniRokRepository.save(isj);
+        ispitniRokRepository.save(isjul);
+        ispitniRokRepository.save(isa);
+        ispitniRokRepository.save(iss);
+
+        return toReturn;
     }
 }

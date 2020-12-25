@@ -11,8 +11,8 @@ import java.util.List;
 public interface PrijavaIspitaRepository extends CrudRepository<PrijavaIspita, Integer> {
 
     // ovo treba da vrati listu svih prijava studenata za ispit prosledjenog predmeta i roka i da su izasli na ispit
-    @Query("select p from PrijavaIspita p where p.ispit.idIspit = (select i.idIspit from Ispit i where i.predmet" +
-            "= :predmet and i.ispitniRok = :ispitniRok) and p.izlazakNaIspit.izasaoNaIspit is not null")
+    @Query("select p from PrijavaIspita p where p.ispitniRok.idIspitniRok = (select ir.idIspitniRok from IspitniRok ir where ir.ispit.predmet" +
+            "= :predmet and ir = :ispitniRok) and p.izlazakNaIspit.izasaoNaIspit is not null")
     List<PrijavaIspita> prijave (Predmet predmet, IspitniRok ispitniRok);
 
 }

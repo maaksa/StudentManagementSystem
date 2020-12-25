@@ -21,6 +21,11 @@ public class PrijavaIspita {
     @JoinColumn(name = "idIspit")
     private Ispit ispit;
 
+    ///////////////
+    @ManyToOne()
+    @JoinColumn(name = "idIspitniRok")
+    private IspitniRok ispitniRok;
+    ///////////////
 
     @ManyToOne()
     @JoinColumn(name = "idStudIndex")

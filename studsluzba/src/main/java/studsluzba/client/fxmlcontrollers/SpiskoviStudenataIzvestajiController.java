@@ -147,7 +147,6 @@ public class SpiskoviStudenataIzvestajiController {
         int sifraNastavnika = prijava.getIspit().getNastavnik().getIdNastavnik();
         Nastavnik nastavnik = prijava.getIspit().getNastavnik();
         String imeNastavnika = nastavnik.getIme() + " " + nastavnik.getSrednjeIme() + " " + nastavnik.getPrezime();
-        params.put("studProgram", studProgram);
         params.put("sifraPredmeta", sifraPredmeta);
         params.put("imePredmeta", imePredmeta);
         params.put("imeNastavnika", imeNastavnika);

@@ -19,8 +19,17 @@ public class IspitniRok {
     private String datumPocetka;
     private String datumZavrsetka;
 
+//    @OneToMany(mappedBy = "ispitniRok")
+//    private List<Ispit> ispiti;
+
+    //////////////////////
     @OneToMany(mappedBy = "ispitniRok")
-    private List<Ispit> ispiti;
+    private List<PrijavaIspita> prijavaIspitaList;
+    ////////////////////
+
+    @ManyToOne()
+    @JoinColumn(name = "idIspit")
+    private Ispit ispit;
 
     @ManyToOne()
     @JoinColumn(name = "idSkolskaGodina")
