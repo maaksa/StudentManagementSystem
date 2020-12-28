@@ -19,7 +19,6 @@ public class ObnovaGodina {
     private int datum;
     private String napomena;
 
-    //indeks
     @ManyToOne()
     @JoinColumn(name = "idStudIndex")
     private StudIndex studentIndeks;

@@ -80,7 +80,7 @@ public class FindStudentController {
 
     @FXML
     TextField adresaStanovanjaTf;
-    // TODO da li i mesta da idu preko sifarnika
+
     @FXML
     ComboBox<String> mestoStanovanjaCb;
 
@@ -183,7 +183,6 @@ public class FindStudentController {
     }
 
     public void changeIndex(ActionEvent event) {
-        //todo getIndex.get()
         StudIndex studIndexSelected = new StudIndex();
         List<StudIndex> studIndexiSelected = studentiTable.getSelectionModel().getSelectedItem().getIndexi();
         for (StudIndex si : studIndexiSelected) {
@@ -246,15 +245,11 @@ public class FindStudentController {
 
     public void handleOpenDosije(ActionEvent ae) {
         openDosijeController.student = studentiTable.getSelectionModel().getSelectedItem();
-        // TODO kreirati modal window za dodavanje nove srednje skole, mozda i brisanje i promena postojećih ?? strani ključ
-        //mainViewManager.openModal("openDosije");
         mainViewManager.openModal("StudentTabPane");
     }
 
     public void updateSrednjeSkole() {
-        //uzimamo sr skole sa novom sr skolom koja je dodata
         List<SrednjaSkola> srednjeSkole = sifarniciService.getSrednjeSkole();
-        //unosimo sr skole u combo box koji se nalazi u fxml kome pripada ovaj controller (newStudent.fxml)
         srednjeSkolaCb.setItems(FXCollections.observableArrayList(srednjeSkole));
     }
 

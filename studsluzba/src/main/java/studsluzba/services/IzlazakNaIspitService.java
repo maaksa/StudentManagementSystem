@@ -45,7 +45,6 @@ public class IzlazakNaIspitService {
         return toReturn;
     }
 
-    // ova metoda treba da vrati sve studente koji su izasli na ispit koji su prijavili
     public List<Student> prijaveljeniStudenti(Predmet predmet, IspitniRok rok){
         List<PrijavaIspita> StudPrijave = new ArrayList<>();
         StudPrijave = prijavaIspitaRepository.prijave(predmet, rok);

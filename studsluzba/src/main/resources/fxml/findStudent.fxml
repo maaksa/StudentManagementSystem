@@ -53,7 +53,7 @@
     <bottom>
         <HBox alignment="bottom_center" spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <Button text="Open student dosije"
-                    onAction="#handleOpenDosije"/> <!--na klik dugmeta save u kontorleu pozivamo ovu metodu-->
+                    onAction="#handleOpenDosije"/>
         </HBox>
 
     </bottom>

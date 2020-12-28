@@ -94,34 +94,7 @@ public class DosijeService {
             p.setObnova(obnovaGodinaToSave);
             predmetRepository.save(p);
         }
-//        List<SkolskaGodina> skolskaGodine = this.getSkolskeGodine();
-//        SkolskaGodina skolskaGodinaToSave = new SkolskaGodina();
-//        ObnovaGodina obnovaGodinaToSave = new ObnovaGodina();
-//        obnovaGodinaToSave.setStudentIndeks(studIndex);
-//        obnovaGodinaToSave.setDatum(godinaUpisa);
-//
-//        for (SkolskaGodina sk : skolskaGodine) {
-//            if (sk.getDatum() == godinaUpisa) {
-//                obnovaGodinaToSave.setSkolskaGodina(sk);
-//                break;
-//            } else {
-//                skolskaGodinaToSave.setDatum(godinaUpisa);
-//                skolskaGodinaToSave.setAktivna(true);
-//                skolskaGodinaToSave.setObnovaGodine(obnovaGodinaToSave);
-//                skolskaGodinaRepository.save(skolskaGodinaToSave);
-//                obnovaGodinaToSave.setSkolskaGodina(skolskaGodinaToSave);
-//            }
-//        }
-//
-//        //todo napomenu u gui-ju TEXTAREA
-//        obnovaGodinaToSave.setNapomena(null);
-//
-//        obnovaGodinaRepository.save(obnovaGodinaToSave);
-//
-//        for (Predmet p : predmetiSelected) {
-//            p.setObnova(obnovaGodinaToSave);
-//            predmetRepository.save(p);
-//        }
+
     }
 
     public List<SkolskaGodina> getSkolskeGodine() {

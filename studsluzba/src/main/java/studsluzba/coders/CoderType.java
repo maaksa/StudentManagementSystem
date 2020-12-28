@@ -34,7 +34,7 @@ public enum CoderType {
     }
 
     private Class<? extends Coder<? extends AbstractCode>> tip;
-    private String path; // fajl za tekst file codere ili REST path za backend sifarnike
+    private String path;
 
 
 }

@@ -82,7 +82,6 @@ public class Student {
         this.uspehSrednjaSkola = uspehSrednjaSkola;
         this.uspehPrijemni = uspehPrijemni;
         this.prelaz = prelaz;
-        //this.srednjaSkola = srednjaSkola;
         this.visokaSkola = visokaSkola;
     }
 

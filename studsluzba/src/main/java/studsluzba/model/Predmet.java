@@ -28,7 +28,6 @@ public class Predmet {
     @JoinColumn(name = "idPolozioPredmet")
     private PolozioPredmet polozioPredmet;
 
-    //vise ispita
     @OneToMany(mappedBy = "predmet")
     private List<Ispit> ispit;
 

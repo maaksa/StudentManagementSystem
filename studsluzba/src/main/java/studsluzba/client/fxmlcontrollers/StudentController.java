@@ -80,7 +80,7 @@ public class StudentController {
 
     @FXML
     TextField adresaStanovanjaTf;
-    // TODO da li i mesta da idu preko sifarnika
+
     @FXML
     ComboBox<SimpleCode> mestoStanovanjaCb;
 
@@ -166,10 +166,6 @@ public class StudentController {
         mestoRodjenjaCb.setItems(FXCollections.observableArrayList(coderFactory.getSimpleCoder(CoderType.MESTO).getCodes()));
         mestoStanovanjaCb.setItems(FXCollections.observableArrayList(coderFactory.getSimpleCoder(CoderType.MESTO).getCodes()));
 
-
-        //sr skola nam predstavlja sifranik (sifarnik moze nam biti vrsta stduija, zvanja, sve ono sto smo unosili, sluze nam samo da ih vezemo za nesto u ovom sluc za studenta)
-        //i sifarniciServica pozvacemo srSkoleRepo koji ce iz baze izvuci sve sr skole
-        //srednjeSkoleCb ComboBox uvezan sa ComboBox iz fxml fajla kome pripada ovaj Controller, i na ovaj nacin napunimo(azuriramo) comboBox u fxml fajlu
         List<SrednjaSkola> srednjeSkole = sifarniciService.getSrednjeSkole();
         srednjeSkolaCb.setItems(FXCollections.observableArrayList(srednjeSkole));
 
@@ -178,7 +174,6 @@ public class StudentController {
     }
 
     public void handleOpenModalSrednjeSkole(ActionEvent ae) {
-        // TODO kreirati modal window za dodavanje nove srednje skole, mozda i brisanje i promena postojećih ?? strani ključ
         mainViewManager.openModal("addSrednjaSkola");
     }
 

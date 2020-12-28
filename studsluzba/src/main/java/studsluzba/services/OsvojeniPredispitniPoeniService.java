@@ -19,7 +19,6 @@ public class OsvojeniPredispitniPoeniService {
         OsvojeniPredispitniPoeni osvojeniPredispitniPoeni = new OsvojeniPredispitniPoeni();
         osvojeniPredispitniPoeni.setStudentIndeks(si);
         osvojeniPredispitniPoeni.setUkupanBrojPoena(0);
-        System.out.println(osvojeniPredispitniPoeni);
         return osvojeniPredispitniPoeniRepository.save(osvojeniPredispitniPoeni);
     }
 

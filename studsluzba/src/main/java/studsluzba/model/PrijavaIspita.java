@@ -21,11 +21,9 @@ public class PrijavaIspita {
     @JoinColumn(name = "idIspit")
     private Ispit ispit;
 
-    ///////////////
     @ManyToOne()
     @JoinColumn(name = "idIspitniRok")
     private IspitniRok ispitniRok;
-    ///////////////
 
     @ManyToOne()
     @JoinColumn(name = "idStudIndex")
@@ -37,7 +35,6 @@ public class PrijavaIspita {
 
     public PrijavaIspita() {
     }
-
 
     public PrijavaIspita(LocalDate datum, Ispit ispit) {
         this.datum = datum;

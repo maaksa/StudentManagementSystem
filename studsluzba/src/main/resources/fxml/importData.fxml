@@ -21,7 +21,7 @@
         <VBox alignment="CENTER" spacing="8">
             <children>
                 <ComboBox>
-                    <items> <!--unosenje hardkodovanih elemenata komboboxa-->
+                    <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Import poena za predmet"/>
                             <String fx:value="Import predmeta"/>

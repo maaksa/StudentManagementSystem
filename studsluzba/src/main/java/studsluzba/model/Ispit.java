@@ -27,10 +27,6 @@ public class Ispit {
     @JoinColumn(name = "idPredmet")
     private Predmet predmet;
 
-//    @ManyToOne()
-//    @JoinColumn(name = "idIspitniRok")
-//    private IspitniRok ispitniRok;
-
     @OneToMany(mappedBy = "ispit")
     private List<IspitniRok> ispitniRokovi;
 
@@ -54,7 +50,6 @@ public class Ispit {
         this.vremePocetka = vremePocetka;
         this.unetiPoeni = unetiPoeni;
         this.predmet = predmet;
-       // this.ispitniRok = ispitniRok;
         this.nastavnik = nastavnik;
     }
 
@@ -67,7 +62,6 @@ public class Ispit {
                 ", vremePocetka='" + vremePocetka + '\'' +
                 ", unetiPoeni=" + unetiPoeni +
                 ", predmet=" + predmet +
-                //", ispitniRok=" + ispitniRok +
                 ", nastavnik=" + nastavnik +
                 '}';
     }

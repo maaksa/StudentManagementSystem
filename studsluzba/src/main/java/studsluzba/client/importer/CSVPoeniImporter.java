@@ -63,17 +63,14 @@ public class CSVPoeniImporter {
         try {
             sc = new Scanner(f, "UTF-8");
 
-            //predmet
             String nazivPredmeta = sc.nextLine();
             String[] naziv = nazivPredmeta.split(",");
             predmet = predmetService.getPredmet(naziv[0]);
 
-            //sk godina
             String skGodina = sc.nextLine();
             String[] skgod = skGodina.split(",");
             skolskaGodina = skolskaGodinaService.getSkolskaGodina(skgod[0]);
 
-            //klk test kviz...
             String naslovObaveze = sc.nextLine();
             String[] deloviNaslovPredispitni = naslovObaveze.split(",");
             for (int i = 5; i < deloviNaslovPredispitni.length - 4; i++) {
@@ -81,7 +78,6 @@ public class CSVPoeniImporter {
                 predispitni.add(deloviNaslovPredispitni[i]);
             }
 
-            //jun jul avg sep
             String[] deloviNaslovIspiti = naslovObaveze.split(",");
             for (int i = deloviNaslovIspiti.length - 4; i < deloviNaslovIspiti.length; i++) {
                 System.out.println(deloviNaslovIspiti[i]);
@@ -97,14 +93,13 @@ public class CSVPoeniImporter {
                 double ukupniPoeni = 0;
                 String line = sc.nextLine();
                 String[] delovi = line.split(",");
-                System.out.println("------------------------------------------------");
                 String studProgram = delovi[0];
                 int broj = Integer.parseInt(delovi[1]);
                 int godina = Integer.parseInt(delovi[2]);
                 String prezime = delovi[3];
                 String ime = delovi[4];
                 StudIndex si = studentService.getStudentIndeks(studProgram, broj, godina);
-                if (si == null) {  // student ne postoji dodajemo ga, u realnom sistemu se ovo ne moze desiti
+                if (si == null) {
                     si = studentService.saveStudentAndIndex(ime, prezime, studProgram, broj, godina);
                     brojSacuvanihStudenata++;
                 }
@@ -178,7 +173,6 @@ public class CSVPoeniImporter {
                     }
                 }
 
-                System.out.println(ukupnoPredispitnih);
                 osvojeniPredispitniPoeniService.updateUkupni(osvojeniPredispitniPoeni, ukupnoPredispitnih);
 
             }

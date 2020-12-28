@@ -1,4 +1,4 @@
-package studsluzba.model;
+package studsluzba.client.reports.reportbeans;
 
 public class TEST {
 

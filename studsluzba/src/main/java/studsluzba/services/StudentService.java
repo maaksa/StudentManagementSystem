@@ -37,9 +37,7 @@ public class StudentService {
                 != null && drzavaRodjenja != null && drzavljanstvo != null && licna != null && adresaStanovanja
                 != null && mestoStanovanja != null && srednja != null && datumUpisa != null && smer != null) {
 
-            //todo visoka skola
             VisokaSkola visokaSkola = null;
-            System.out.println(srednja.getIdSrednjaSkola() + srednja.getNaziv());
             Student student = new Student(ime, prezime, srednje, jmbg, rodjenje, mestoRodjenja, drzavljanstvo, nacionalnost, pol,
                     mestoStanovanja, adresaStanovanja, brojUlice, brojTelefona, privEmail, null, licna, licnaIzdao, false,
                     uspehSrednja, uspehPrijemnni, prelaz, visokaSkola);
@@ -68,7 +66,6 @@ public class StudentService {
             }
 
         } else {
-            //todo popup
             return null;
         }
 

@@ -8,12 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Šifarnici koji se čitaju iz tektualnog fajla gde je jedan red šifra u šifarniku
- * primer: države, mesta
- *
- * @author bojanads
- */
 public class TextFileSimpleCoder extends Coder<SimpleCode> {
 
     private String filePath;
@@ -37,7 +31,6 @@ public class TextFileSimpleCoder extends Coder<SimpleCode> {
                 codes.add(new SimpleCode(code));
             }
         } catch (IOException e) {
-            // TODO log
             e.printStackTrace();
         } finally {
             scanner.close();

@@ -117,7 +117,6 @@ public class FindNastavnikController {
 
     public void updateNastavniciTable() {
         sviNastavnici = FXCollections.observableList(nastavnikService.getNastavnici());
-        System.out.println(sviNastavnici);
         nastavnikTable.getItems().clear();
         nastavnikTable.setItems(sviNastavnici);
     }

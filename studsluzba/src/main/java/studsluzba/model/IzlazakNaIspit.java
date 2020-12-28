@@ -19,7 +19,6 @@ public class IzlazakNaIspit {
     private boolean ponistavanje;
     private boolean izasaoNaIspit;
 
-    // proveriti
     @OneToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idPrijava")
     private PrijavaIspita prijavljenIspit;

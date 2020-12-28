@@ -22,30 +22,7 @@ public class IspitniRokService {
         IspitniRok ispitniRok = ispitniRokRepository.findByDatumPocetka(naziv);
         ispitniRok.setSkolskaGod(skolskaGodina);
 
-//        switch (naziv) {
-//            case "jun":
-//                ispitniRok.setDatumPocetka("jun");
-//                ispitniRok.setDatumZavrsetka("jul");
-//                break;
-//            case "jul":
-//                ispitniRok.setDatumPocetka("jul");
-//                ispitniRok.setDatumZavrsetka("avgust");
-//                break;
-//            case "avgust":
-//                ispitniRok.setDatumPocetka("avgust");
-//                ispitniRok.setDatumZavrsetka("septembar");
-//                break;
-//            case "septembar":
-//                ispitniRok.setDatumPocetka("septembar");
-//                ispitniRok.setDatumZavrsetka("oktobar");
-//                break;
-//        }
-
         IspitniRok toReturn = ispitniRokRepository.save(ispitniRok);
-
-        //ispit.setIspitniRok(ispitniRok);
-
-        //ispitRepository.save(ispit);
 
         return toReturn;
 

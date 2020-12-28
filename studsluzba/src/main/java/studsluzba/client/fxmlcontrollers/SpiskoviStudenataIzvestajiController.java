@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import studsluzba.client.reports.ReportsManager;
+import studsluzba.client.reports.reportbeans.TEST;
 import studsluzba.model.*;
 import studsluzba.services.IzlazakNaIspitService;
 import studsluzba.services.SifarniciService;
@@ -55,7 +56,7 @@ public class SpiskoviStudenataIzvestajiController {
     public void handleGenerisiSpisakPoStudProgramu(ActionEvent ecent) {
         List<TEST> sviIzlasci = new ArrayList<>();
 
-        Map<String, Object> params = new HashMap<String, Object>(); //naziv parametra , vrednost parametra (treba da nam bude istog naziva kao naziv koji smo dali tom parametru studProgram
+        Map<String, Object> params = new HashMap<String, Object>();
 
         Predmet predmet = predmetiCb.getValue();
         IspitniRok rok = ispitniRokoviCb.getValue();
@@ -170,7 +171,6 @@ public class SpiskoviStudenataIzvestajiController {
         params.put("procenat9", procenat9);
         params.put("procenat10", procenat10);
 
-        //reportsManager.openReport(studenti, params, "spisakStudenataZaStudProgram");
         reportsManager.openReport(sviIzlasci, params, "spisakStudenataZaStudProgram");
     }
 

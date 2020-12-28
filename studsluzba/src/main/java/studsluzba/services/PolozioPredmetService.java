@@ -22,10 +22,10 @@ public class PolozioPredmetService {
     public void addPolozioPredmet(StudIndex aktivanIndex, Predmet predmet) {
         PolozioPredmet polozioPredmet = new PolozioPredmet();
         polozioPredmet.setStudentIndex(aktivanIndex);
-        polozioPredmet.setUkupanBrojPoena(0);//todo
-        polozioPredmet.setPriznatSaDrugogFaksa(false);//todo
-        polozioPredmet.setIzlazakNaIspit(null);//todo
-        polozioPredmet.setOcena(0);//todo
+        polozioPredmet.setUkupanBrojPoena(0);
+        polozioPredmet.setPriznatSaDrugogFaksa(false);
+        polozioPredmet.setIzlazakNaIspit(null);
+        polozioPredmet.setOcena(0);
         polozioPredmetRepository.save(polozioPredmet);
 
         predmet.setPolozioPredmet(polozioPredmet);

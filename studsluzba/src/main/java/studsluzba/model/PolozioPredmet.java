@@ -19,16 +19,13 @@ public class PolozioPredmet {
     private float ukupanBrojPoena;
     private boolean priznatSaDrugogFaksa;
 
-    //student indeks da bude
     @ManyToOne()
     @JoinColumn(name = "idStudIndex")
     private StudIndex studentIndex;
 
-    //suvisno?  jedan ispit
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "polozioPredmet")
     private List<Predmet> predmeti;
 
-    //izlazak na ispit da ima idIzlazak
     @OneToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idIzlazak") //todo bilo je all
     private IzlazakNaIspit izlazakNaIspit;
@@ -46,9 +43,6 @@ public class PolozioPredmet {
 
     @Override
     public String toString() {
-        return this.getPredmeti().toString();  /*.replace(",", "")  //remove the commas
-                .replace("[", "")  //remove the right bracket
-                .replace("]", "")  //remove the left bracket
-                .trim(); */
+        return this.getPredmeti().toString();
     }
 }

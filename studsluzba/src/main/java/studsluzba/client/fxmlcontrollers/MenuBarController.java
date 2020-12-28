@@ -11,9 +11,6 @@ import studsluzba.client.MainViewManager;
 @Component
 public class MenuBarController {
 
-    //anotacija da nam iz spring konteksta (spring u pozadini sve radi) uzme obj ove klase (ima @Component) i postavi ga ovde za
-    //ovu klasu da mozemo da ga korsitimo
-    //za menjanje scena ne menjamo MainViewManager
     @Autowired
     MainViewManager mainViewManager;
 
@@ -24,11 +21,7 @@ public class MenuBarController {
         mainViewManager.changeRoot("findStudent");
     }
 
-    //naziv metode koja se poziva u menuBar.fxml
     public void openStudProgrami(ActionEvent event) {
-        //kad zelimo da promenimo scenu nama treba MainViewManager posto
-        // nam on ima metode za menjanje scene, i onda do obj te klase dolazimo tako sto preko springa uradimo dependency injection
-        // preko anotacije @Autowired
         mainViewManager.changeRoot("studProgrami");
     }
 

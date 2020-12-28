@@ -88,7 +88,6 @@ public class OpenTokStudijaController {
         obnovaGodina.setText(obnovaGodinaList.toString());
 
         sviPredmeti = FXCollections.observableList(dosijeService.getPredmetiZaStudProgram(aktivniIndex.getStudProgram().getSkraceniNaziv()));
-        System.out.println(sviPredmeti);
         programiTable.setItems(sviPredmeti);
         programiTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -96,7 +95,6 @@ public class OpenTokStudijaController {
 
     public void saveUpisObnova(ActionEvent ae) {
         SkolskaGodina upisSkolskaGodina = skolskaGodinaCb.getValue();
-        //Integer upisGodina = Integer.parseInt(novaGodina.getText());
         List<Predmet> predmetiSelected = programiTable.getSelectionModel().getSelectedItems();
         boolean upisObnovaRaddioB = radioButtonUpis.isSelected();
         List<StudIndex> studIndexList = student.getIndexi();

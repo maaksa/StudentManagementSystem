@@ -158,11 +158,10 @@ public class OpenDosijeController {
 
     public void handleOpenTokStudija(ActionEvent ae) {
         openTokStudijaController.student = student;
-        // TODO kreirati modal window za dodavanje nove srednje skole, mozda i brisanje i promena postojećih ?? strani ključ
         mainViewManager.openModal("openTokStudija");
     }
 
-    public void Preseljenje(ActionEvent ae) {
+    public void preseljenje(ActionEvent ae) {
         student.setUlica(novaUlica.getText());
         student.setMesto(novoMestoStanovanja.getText());
         student.setBrojUlice(Integer.parseInt(noviBrojUlice.getText()));
@@ -209,7 +208,6 @@ public class OpenDosijeController {
         for (StudIndex i : indeksi) {
             slusaLista.addAll(dosijeService.getSlusa(i.getStudProgram().getSkraceniNaziv(), i.getBroj(), i.getGodina()));
         }
-        // TODO Ne ispisivati predmete koji su polozeni
         slusaniPredmeti.setText(slusaLista.toString());
 
     }

@@ -34,7 +34,6 @@ public class SrednjaSkola {
         this.vrsta = vrsta;
     }
 
-    //todo ?
     public void addStudent(Student student) {
         if (studenti == null) {
             studenti = new ArrayList<>();
